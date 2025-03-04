@@ -17,43 +17,53 @@ public class Main {
         String line = null;
 
         Map<Long, Task> fullMap = new HashMap<>();
-        tasks.forEach(task -> {fullMap.put(task.getId(), task);});
+        tasks.forEach(task -> {
+            fullMap.put(task.getId(), task);
+        });
 
         Set<Task> workingSet = new HashSet<>();
         Map<Long, NodeTask> tree = null;
         selectTasks(fullMap, workingSet);
-        int currentIndex = 0;
+        NodeTask currentTask = null;
 
         while (!"q".equals(line)) {
             try {
                 fullMap.clear();
-                tasks.forEach(task -> {fullMap.put(task.getId(), task);});
+                tasks.forEach(task -> {
+                    fullMap.put(task.getId(), task);
+                });
                 tree = buildTree(tasks, links);
                 displayTasks(tree, fullMap, workingSet);
 
-                    System.out.println("Enter choice: ");
-                    line = reader.readLine();
-
+                System.out.println("Enter choice: ");
+                line = reader.readLine();
 
                 switch (line) {
                     case "k": // Move up
-                        currentIndex++;
+                        currentTask = moveUp(currentTask, tree);
                         break;
                     case "j": // Move down
-                        currentIndex--;
+                        currentTask = moveDown(currentTask, tree);
                         break;
                     case "\r": // Enter key
                         //selectTask();
                         break;
-                    case "c":
+                    case "cs":
                         System.out.println("Enter name: ");
                         String name = reader.readLine();
                         System.out.println("Enter description: ");
                         String desc = reader.readLine();
-                        createTask(name, desc);
+                        createSubTask(links, fullMap, currentTask, name, desc);
+                        break;
+                    case "cd":
+                        System.out.println("Enter name: ");
+                        String dname = reader.readLine();
+                        System.out.println("Enter description: ");
+                        String ddesc = reader.readLine();
+                        createDepTask(links, fullMap, currentTask, dname, ddesc);
                         break;
                     case "q": // Quit
-                       break;
+                        break;
                     default:
                         break;
                 }
@@ -63,30 +73,54 @@ public class Main {
             }
         }
 
-        /*Task featureDev = new Task("review spec", "looks for certain things: focus on outcomes, interfaces/missing specs/",
-             Creator.of(Task.of("", "")),
-                Creator.of(Task.of("", "")));*/
-
-
-        /*        .addTask("add unit tests", "unit tests template/checklist, large datasets", new TaskBuilder().build())
-                .addTask("write the code", "things to look for, constants, DRY etc", new Task.Builder().build())
-                .addTask("testing the code", "testing testing, match outcomes? large datasets, experiment env, logs, loom, links, any regressions etc ", new Tasks.Builder().build())
-                .addTask("review the code", "things to look for, db indexes, simpler impls, " +
-                "AI code review step, linting, other tools+tests", new Tasks.Builder().build())
-                .addTask("PR template", "<PR template> goes here", new Tasks.Builder().build())
-                .build();
-*/
-        //could create a new instance... for a new branch
-        //need a wrapper object.
-        //all.load(); //indicates state which tasks are completed versus not etc
-        // show parent, go into or out of up/down.
-        // Be good to print out too and can see.
         writeJson("tasks.json", toJson(tasks));
         writeJson("links.json", toJson(links));
     }
 
-    private static void createTask(String name, String desc) {
+    private static NodeTask moveUp(NodeTask currentTask, Map<Long, NodeTask> taskMap) {
+        List<Long> all = new ArrayList<>(currentTask.getSubTasks());
+        all.addAll(currentTask.getDependencies());
+        int ind = all.indexOf(currentTask.getId());
+        if (ind == -1 || ind == 0) {
+            //Must be the parent we need then if not any other task
+            return taskMap.get(currentTask.getParentId());
+        }
+        return taskMap.get(all.get(ind - 1));
+    }
 
+    private static NodeTask moveDown(NodeTask currentTask, Map<Long, NodeTask> taskMap) {
+        List<Long> all = new ArrayList<>(currentTask.getSubTasks());
+        all.addAll(currentTask.getDependencies());
+        int ind = all.indexOf(currentTask.getId());
+        if (ind < all.size() - 1) {
+            return taskMap.get(all.get(ind + 1));
+        }
+        return currentTask;
+    }
+
+    private static Task createCommonTask(Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
+        long nKey = Collections.max(fullMap.keySet()) + 1;
+        Task task = new Task(nKey, name, desc);
+        NodeTask t = new NodeTask(task.getId());
+        fullMap.put(task.getId(), task);
+        t.setParentId(currentTask.getId());
+        return task;
+    }
+
+    private static void createSubTask(List<Link> links, Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
+        Task task = createCommonTask(fullMap, currentTask, name, desc);
+        //TODO set links here too
+        currentTask.getSubTasks().add(task.getId());
+        Link link = new Link(currentTask.getId(), LinkType.SUBTASK, task.getId());
+        links.add(link);
+    }
+
+    private static void createDepTask(List<Link> links, Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
+        Task task = createCommonTask(fullMap, currentTask, name, desc);
+        //TODO set links here too
+        currentTask.getDependencies().add(task.getId());
+        Link link = new Link(currentTask.getId(), LinkType.DEPENDENCY, task.getId());
+        links.add(link);
     }
 
     private static Map<Long, NodeTask> buildTree(List<Task> tasks, List<Link> links) {
@@ -153,7 +187,8 @@ public class Main {
             File jsonFile = new File(fileName);
 
             // Deserialize JSON into a Task object.
-            List<Task> loadedTasks = mapper.readValue(jsonFile, new TypeReference<List<Task>>(){});
+            List<Task> loadedTasks = mapper.readValue(jsonFile, new TypeReference<List<Task>>() {
+            });
 
             System.out.println("Loaded tasks");
             return loadedTasks;
@@ -172,7 +207,8 @@ public class Main {
             File jsonFile = new File(fileName);
 
             // Deserialize JSON into a Task object.
-            List<Link> loadedTasks = mapper.readValue(jsonFile, new TypeReference<List<Link>>(){});
+            List<Link> loadedTasks = mapper.readValue(jsonFile, new TypeReference<List<Link>>() {
+            });
 
             System.out.println("Loaded tasks");
             return loadedTasks;

@@ -8,6 +8,12 @@ public class Link {
     private long right;
     private LinkType linkType;
 
+    public Link(long left, LinkType linkType, long right) {
+        this.left = left;
+        this.right = right;
+        this.linkType = linkType;
+    }
+
     public long getLeft() {
         return left;
     }
