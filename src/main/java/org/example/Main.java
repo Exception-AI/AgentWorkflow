@@ -22,9 +22,9 @@ public class Main {
         });
 
         Set<Task> workingSet = new HashSet<>();
-        Map<Long, NodeTask> tree = null;
+        Map<Long, NodeTask> tree = buildTree(tasks, links);;
         selectTasks(fullMap, workingSet);
-        NodeTask currentTask = null;
+        NodeTask currentTask = (!workingSet.isEmpty()) ? tree.get(workingSet.stream().findFirst().get().getId()) : null;
 
         while (!"q".equals(line)) {
             try {
