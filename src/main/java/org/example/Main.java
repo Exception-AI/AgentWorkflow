@@ -78,6 +78,9 @@ public class Main {
     }
 
     private static NodeTask moveUp(NodeTask currentTask, Map<Long, NodeTask> taskMap) {
+        if (currentTask == null) {
+            return null;
+        }
         List<Long> all = new ArrayList<>(currentTask.getSubTasks());
         all.addAll(currentTask.getDependencies());
         int ind = all.indexOf(currentTask.getId());
@@ -89,6 +92,9 @@ public class Main {
     }
 
     private static NodeTask moveDown(NodeTask currentTask, Map<Long, NodeTask> taskMap) {
+        if (currentTask == null) {
+            return null;
+        }
         List<Long> all = new ArrayList<>(currentTask.getSubTasks());
         all.addAll(currentTask.getDependencies());
         int ind = all.indexOf(currentTask.getId());
