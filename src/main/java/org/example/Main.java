@@ -98,26 +98,26 @@ public class Main {
         return currentTask;
     }
 
-    private static Task createCommonTask(Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
+    private static Task createCommonTask(List<Link> links, Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
         long nKey = Collections.max(fullMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         NodeTask t = new NodeTask(task.getId());
         fullMap.put(task.getId(), task);
         t.setParentId(currentTask.getId());
+        Link link = new Link(currentTask.getId(), LinkType.PARENT, task.getId());
+        links.add(link);
         return task;
     }
 
     private static void createSubTask(List<Link> links, Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
-        Task task = createCommonTask(fullMap, currentTask, name, desc);
-        //TODO set links here too
+        Task task = createCommonTask(links, fullMap, currentTask, name, desc);
         currentTask.getSubTasks().add(task.getId());
         Link link = new Link(currentTask.getId(), LinkType.SUBTASK, task.getId());
         links.add(link);
     }
 
     private static void createDepTask(List<Link> links, Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
-        Task task = createCommonTask(fullMap, currentTask, name, desc);
-        //TODO set links here too
+        Task task = createCommonTask(links, fullMap, currentTask, name, desc);
         currentTask.getDependencies().add(task.getId());
         Link link = new Link(currentTask.getId(), LinkType.DEPENDENCY, task.getId());
         links.add(link);
