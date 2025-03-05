@@ -7,8 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
 
-        Helper helper = new Helper();
-        helper.setup();
+        Helper helper = new Helper("tasks.json", "links.json");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 

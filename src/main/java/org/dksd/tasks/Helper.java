@@ -23,6 +23,27 @@ public class Helper {
     private Map<Long, NodeTask> tree = null;
     private NodeTask currentTask = null;
 
+    public Helper(File taskFile, File linksFile) {
+        load(taskFile, linksFile);
+    }
+
+    public Helper(String taskFilename, String linksFilename) {
+        load(new File(taskFilename), new File(linksFilename));
+    }
+
+    private void load(File taskFile, File linksFile) {
+        fullMap = new HashMap<>();
+        workingSet = new ArrayList<>();
+        tasks = loadTasks(taskFile);
+        links = loadLinks(linksFile);
+        tree = buildTree(tasks, links);
+        tasks.forEach(task -> {
+            fullMap.put(task.getId(), task);
+        });
+        selectTasks();
+        currentTask = (!workingSet.isEmpty()) ? tree.get(workingSet.stream().findFirst().get().getId()) : null;
+    }
+
     public NodeTask moveUp() {
         if (currentTask == null) {
             return null;
@@ -111,16 +132,14 @@ public class Helper {
         return null;
     }
 
-    public List<Task> loadTasks(String fileName) {
+    public List<Task> loadTasks(File file) {
         // Create an ObjectMapper instance.
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            // Replace "task.json" with the path to your JSON file.
-            File jsonFile = new File(fileName);
 
             // Deserialize JSON into a Task object.
-            List<Task> loadedTasks = mapper.readValue(jsonFile, new TypeReference<List<Task>>() {
+            List<Task> loadedTasks = mapper.readValue(file, new TypeReference<List<Task>>() {
             });
 
             System.out.println("Loaded tasks");
@@ -131,16 +150,13 @@ public class Helper {
         return new ArrayList<>();
     }
 
-    public List<Link> loadLinks(String fileName) {
+    public List<Link> loadLinks(File file) {
         // Create an ObjectMapper instance.
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            // Replace "task.json" with the path to your JSON file.
-            File jsonFile = new File(fileName);
-
             // Deserialize JSON into a Task object.
-            List<Link> loadedTasks = mapper.readValue(jsonFile, new TypeReference<List<Link>>() {
+            List<Link> loadedTasks = mapper.readValue(file, new TypeReference<List<Link>>() {
             });
 
             System.out.println("Loaded tasks");
@@ -173,22 +189,6 @@ public class Helper {
             int ii = rand.nextInt(indexes.size());
             workingSet.add(fullMap.get(indexes.get(ii)));
         }
-    }
-
-    public void setup() {
-        fullMap = new HashMap<>();
-        workingSet = new ArrayList<>();
-        tasks = loadTasks("tasks.json");
-        links = loadLinks("links.json");
-        tree = buildTree(tasks, links);
-
-        tasks.forEach(task -> {
-            fullMap.put(task.getId(), task);
-        });
-
-        selectTasks();
-        currentTask = (!workingSet.isEmpty()) ? tree.get(workingSet.stream().findFirst().get().getId()) : null;
-
     }
 
     public void displayTasks() {

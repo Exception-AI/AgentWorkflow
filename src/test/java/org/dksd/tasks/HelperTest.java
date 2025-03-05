@@ -3,6 +3,8 @@ package org.dksd.tasks;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HelperTest {
@@ -11,12 +13,15 @@ class HelperTest {
 
     @BeforeEach
     void setUp() {
-        helper = new Helper();
+        ClassLoader classLoader = getClass().getClassLoader();
+        File tasksFile = new File(classLoader.getResource("test_tasks.json").getFile());
+        File linksFile = new File(classLoader.getResource("test_links.json").getFile());
+        helper = new Helper(tasksFile, linksFile);
     }
 
     @Test
     void moveUp() {
-        
+        helper.moveUp();
     }
 
     @Test
