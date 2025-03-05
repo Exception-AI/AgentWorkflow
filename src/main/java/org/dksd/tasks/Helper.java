@@ -256,7 +256,7 @@ public class Helper {
             String hierarchy = "";
             while (p.getParentId() != null) {
                 p = taskNodeMap.get(p.getParentId());
-                hierarchy = taskMap.get(p.getId()).getName() + suffix + " -> " + hierarchy;
+                hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
             }
 
             System.out.println("Task: " + hierarchy);
@@ -275,6 +275,7 @@ public class Helper {
                 System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
             }
             System.out.flush();
+            System.out.println();
         }
     }
 
