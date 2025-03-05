@@ -71,41 +71,37 @@ public class Helper {
         return currentTask;
     }
 
-    public Task createCommonTask(String name, String desc) {
+    public Task createCommonTask(Task parent, String name, String desc) {
         long nKey = (taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         tasks.add(task);
         NodeTask t = new NodeTask(task.getId());
         addTaskToTree(task);
         taskMap.put(task.getId(), task);
-        if (currentTask != null) {
-            t.setParentId(currentTask.getId());
-            Link link = new Link(currentTask.getId(), LinkType.PARENT, task.getId());
+        if (parent != null) {
+            t.setParentId(parent.getId());
+            Link link = new Link(parent.getId(), LinkType.PARENT, task.getId());
             links.add(link);
             addLinkToTree(link);
-        } else {
-            currentTask = t;
         }
         return task;
     }
 
-    public Task createTask(String name, String desc) {
-        return createCommonTask(name, desc);
+    public Task createTask(Task parent, String name, String desc) {
+        return createCommonTask(parent, name, desc);
     }
 
-    public Task createSubTask(String name, String desc) {
-        Task task = createCommonTask(name, desc);
-        currentTask.getSubTasks().add(task.getId());
-        Link link = new Link(currentTask.getId(), LinkType.SUBTASK, task.getId());
+    public Task createSubTask(Task parent, String name, String desc) {
+        Task task = createCommonTask(parent, name, desc);
+        Link link = new Link(parent.getId(), LinkType.SUBTASK, task.getId());
         links.add(link);
         addLinkToTree(link);
         return task;
     }
 
-    public Task createDepTask(String name, String desc) {
-        Task task = createCommonTask(name, desc);
-        currentTask.getDependencies().add(task.getId());
-        Link link = new Link(currentTask.getId(), LinkType.DEPENDENCY, task.getId());
+    public Task createDepTask(Task parent, String name, String desc) {
+        Task task = createCommonTask(parent, name, desc);
+        Link link = new Link(parent.getId(), LinkType.DEPENDENCY, task.getId());
         links.add(link);
         addLinkToTree(link);
         return task;
@@ -251,6 +247,10 @@ public class Helper {
 
     public NodeTask getCurrentTask() {
         return currentTask;
+    }
+
+    public Task getCurrent() {
+        return taskMap.get(currentTask.getId());
     }
 
     public List<Task> getWorkingSet() {

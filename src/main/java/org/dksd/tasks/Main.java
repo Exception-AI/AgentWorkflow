@@ -33,21 +33,21 @@ public class Main {
                         String tname = reader.readLine();
                         System.out.print("Enter description: ");
                         String tdesc = reader.readLine();
-                        helper.createTask(tname, tdesc);
+                        helper.createTask(helper.getCurrent(), tname, tdesc);
                         break;
                     case "cs":
                         System.out.print("Enter sub name: ");
                         String name = reader.readLine();
                         System.out.print("Enter description: ");
                         String desc = reader.readLine();
-                        helper.createSubTask(name, desc);
+                        helper.createSubTask(helper.getCurrent(), name, desc);
                         break;
                     case "cd":
                         System.out.print("Enter dep name: ");
                         String dname = reader.readLine();
                         System.out.print("Enter description: ");
                         String ddesc = reader.readLine();
-                        helper.createDepTask(dname, ddesc);
+                        helper.createDepTask(helper.getCurrent(), dname, ddesc);
                         break;
                     case "q": // Quit
                         break;
