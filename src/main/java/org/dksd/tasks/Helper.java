@@ -249,13 +249,14 @@ public class Helper {
 
     public void displayTasks() {
         for (Task wt : workingSet) {
-            /*NodeTask p = taskNodeMap.get(wt.getId());
+            NodeTask p = taskNodeMap.get(wt.getId());
+            String hierarchy = "";
             while (p.getParentId() != null) {
-                System.out.println(taskMap.get(wt.getId()).getName() + " -> ");
                 p = taskNodeMap.get(p.getParentId());
-            }*/
+                hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
+            }
 
-            System.out.println("Task: " + wt.getName() + " : " + wt.getDescription());
+            System.out.println("Task: " + hierarchy);
             System.out.println("  Name       : " + wt.getName());
             System.out.println("  Description: " + wt.getDescription());
             System.out.flush();
