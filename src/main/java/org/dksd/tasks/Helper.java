@@ -22,6 +22,8 @@ public class Helper {
     private List<Link> links = null;
     private Map<Long, NodeTask> taskNodeMap = new HashMap<>();
     private NodeTask currentTask = null;
+    private Task ROOT = new Task(0L, "ROOT", "ROOT");
+    private Map<Long, Long> positions = new HashMap<>();
 
     public Helper(File taskFile, File linksFile) {
         load(taskFile, linksFile);
@@ -40,55 +42,95 @@ public class Helper {
         tasks.forEach(task -> taskMap.put(task.getId(), task));
         selectTasks();
         currentTask = (!workingSet.isEmpty()) ? taskNodeMap.get(workingSet.stream().findFirst().get().getId()) : null;
+        taskNodeMap.put(ROOT.getId(), new NodeTask(0));
+        taskMap.put(ROOT.getId(), ROOT);
+
     }
 
-    public NodeTask moveUp() {
-        if (currentTask == null) {
-            return null;
+    public NodeTask moveUp(NodeTask current) {
+        if (current.getId() == ROOT.getId()) {
+            return current;
         }
-        List<Long> all = new ArrayList<>(currentTask.getSubTasks());
-        all.addAll(currentTask.getDependencies());
-        int ind = all.indexOf(currentTask.getId());
-        if (ind == -1 || ind == 0) {
-            //Must be the parent we need then if not any other task
-            currentTask = taskNodeMap.get(currentTask.getParentId());
-        } else {
-            currentTask = taskNodeMap.get(all.get(ind - 1));
+        if (!isFirst(getParentSubTasks(current), current.getId()) && isPresent(getParentSubTasks(current), current.getId())) {
+            return taskNodeMap.get(prev(getParentSubTasks(current), current.getId()));
         }
-        return currentTask;
+        return taskNodeMap.get(current.getParentId());
     }
 
-    public NodeTask moveDown() {
-        if (currentTask == null) {
-            return null;
+    private Long prev(List<Long> list, Long indx) {
+        int index = list.indexOf(indx);
+        if (index < 1) {
+            return -1L;
         }
-        List<Long> all = new ArrayList<>(currentTask.getSubTasks());
-        all.addAll(currentTask.getDependencies());
-        int ind = all.indexOf(currentTask.getId());
-        if (ind < all.size() - 1) {
-            currentTask = taskNodeMap.get(all.get(ind + 1));
+        return list.get(index - 1);
+    }
+
+    private Long next(List<Long> list, Long indx) {
+        int index = list.indexOf(indx);
+        if (index == -1 || index >= list.size() - 1) {
+            return -1L;
         }
-        return currentTask;
+        return list.get(index + 1);
+    }
+
+    private List<Long> getParentSubTasks(NodeTask node) {
+        return taskNodeMap.get(node.getParentId()).getSubTasks();
+    }
+
+    private List<Long> getParentDepTasks(NodeTask node) {
+        return taskNodeMap.get(node.getParentId()).getDependencies();
+    }
+
+    private boolean isSubTask(NodeTask node) {
+        return getParentSubTasks(node).contains(node.getId());
+    }
+
+    private boolean isDepTask(NodeTask node) {
+        return getParentDepTasks(node).contains(node.getId());
+    }
+
+    public NodeTask moveDown(NodeTask current) {
+        if (!isLast(getParentSubTasks(current), current.getId()) && isPresent(getParentSubTasks(current), current.getId())) {
+            return taskNodeMap.get(next(getParentSubTasks(current), current.getId()));
+        }
+        return current;
+    }
+
+    private boolean isLast(List<Long> parentSubTasks, Long nodeId) {
+        if (parentSubTasks == null || parentSubTasks.isEmpty()) {
+            return false;
+        }
+        return parentSubTasks.getLast().equals(nodeId);
+    }
+
+    private boolean isFirst(List<Long> parentSubTasks, Long nodeId) {
+        if (parentSubTasks == null || parentSubTasks.isEmpty()) {
+            return false;
+        }
+        return parentSubTasks.getFirst().equals(nodeId);
+    }
+
+    private boolean isPresent(List<Long> parentSubTasks, Long nodeId) {
+        return parentSubTasks.contains(nodeId);
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
+        assert parent != null;
         long nKey = (taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         tasks.add(task);
         NodeTask t = new NodeTask(task.getId());
         addTaskToTree(task);
         taskMap.put(task.getId(), task);
-        if (parent != null) {
-            t.setParentId(parent.getId());
-            Link link = new Link(parent.getId(), LinkType.PARENT, task.getId());
-            links.add(link);
-            addLinkToTree(link);
-        }
+        t.setParentId(parent.getId());
+        Link link = new Link(parent.getId(), LinkType.PARENT, task.getId());
+        links.add(link);
+        addLinkToTree(link);
         return task;
     }
 
-    public Task createTask(Task parent, String name, String desc) {
-        return createCommonTask(parent, name, desc);
+    public Task createProjectTask(String name, String desc) {
+        return createSubTask(ROOT, name, desc);
     }
 
     public Task createSubTask(Task parent, String name, String desc) {
@@ -255,5 +297,9 @@ public class Helper {
 
     public List<Task> getWorkingSet() {
         return workingSet;
+    }
+
+    public void setCurrentTask(NodeTask nodeTask) {
+        this.currentTask = nodeTask;
     }
 }

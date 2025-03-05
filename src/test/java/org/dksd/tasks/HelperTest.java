@@ -24,8 +24,8 @@ class HelperTest {
     }
 
     @Test
-    void createTask() {
-        Task task = helper.createTask(null, "First Task", "first description");
+    void createTaskTest() {
+        Task task = helper.createProjectTask("First Task", "first description");
         System.out.println("Task:" + task);
         System.out.println("Tasks:" + helper.getTasks());
         System.out.println("Links:" + helper.getLinks());
@@ -43,10 +43,10 @@ class HelperTest {
     }
 
     @Test
-    void createSiblingTasks() {
-        Task task = helper.createTask(null, "Parent Task", "first description");
-        helper.createTask(task, "Second Task", "first description");
-        helper.createTask(task, "Third Task", "first description");
+    void createProjectTasksTest() {
+        Task task = helper.createProjectTask("Parent Task", "first description");
+        helper.createProjectTask( "Second Task", "first description");
+        helper.createProjectTask( "Third Task", "first description");
         System.out.println("Tasks:" + helper.getTasks());
         System.out.println("Links:" + helper.getLinks());
         System.out.println("Tree:" + helper.getTaskNodeMap());
@@ -62,8 +62,8 @@ class HelperTest {
     }
 
     @Test
-    void createSubTask() {
-        Task task = helper.createTask(null, "First Task", "first description");
+    void createSubTaskTest() {
+        Task task = helper.createProjectTask("First Task", "first description");
         Task subTask = helper.createSubTask(task, "First Sub Task", "first sub description");
         System.out.println("Tasks:" + helper.getTasks());
         System.out.println("Links:" + helper.getLinks());
@@ -83,8 +83,8 @@ class HelperTest {
     }
 
     @Test
-    void createDepTask() {
-        Task task = helper.createTask(null, "First Task", "first description");
+    void createDepTaskTest() {
+        Task task = helper.createProjectTask("First Task", "first description");
         Task depTask = helper.createDepTask(task, "First Dep Task", "first dep description");
         System.out.println("Tasks:" + helper.getTasks());
         System.out.println("Links:" + helper.getLinks());
@@ -105,7 +105,7 @@ class HelperTest {
 
     @Test
     void createSubTaskStress() {
-        Task task = helper.createTask(null, "First Task", "first description");
+        Task task = helper.createProjectTask("First Task", "first description");
         for (int i = 0; i < 10000; i++) {
             helper.createSubTask(task, "First Sub Task", "first sub description");
         }
@@ -117,15 +117,41 @@ class HelperTest {
     }
 
     @Test
-    void moveUp() {
-       Task task = helper.createTask(null, "Parent Task", "first description");
-        helper.createTask(task, "Second Task", "first description");
-        helper.createTask(task, "Third Task", "first description");
-        helper.moveUp();
+    void moveUpTest() {
+        Task p1 = helper.createProjectTask("First Project", "first project description");
+        Task p2 = helper.createProjectTask("Second Project", "first project description");
+        Task p3 = helper.createProjectTask("Third Project", "first project description");
+        helper.createDepTask(p2, "Second Dep Task", "Second dep description");
+        Task p7 = helper.createSubTask(p3, "Third Dep Task", "Third dep description");
+        System.out.println(helper.getTaskNodeMap().get(p7.getId()));
+        NodeTask nt = helper.moveUp(helper.getTaskNodeMap().get(p7.getId()));
+        System.out.println(nt);
+        assertEquals(3L, nt.getId());
+        nt = helper.moveUp(nt);
+        assertEquals(2L, nt.getId());
+        nt = helper.moveUp(nt);
+        assertEquals(1L, nt.getId());
+        nt = helper.moveUp(nt);
+        assertEquals(0L, nt.getId());
+        nt = helper.moveUp(nt);
+        assertEquals(0L, nt.getId());
     }
 
     @Test
-    void moveDown() {
+    void moveDownTest() {
+        Task p1 = helper.createProjectTask("First Project", "first project description");
+        Task p2 = helper.createProjectTask("Second Project", "first project description");
+        Task p3 = helper.createProjectTask("Third Project", "first project description");
+        helper.createDepTask(p2, "Second Dep Task", "Second dep description");
+        Task p7 = helper.createSubTask(p3, "Third Dep Task", "Third dep description");
+        System.out.println(helper.getTaskNodeMap().get(p7.getId()));
+        NodeTask nt = helper.moveDown(helper.getTaskNodeMap().get(p1.getId()));
+        System.out.println(nt);
+        assertEquals(2L, nt.getId());
+        nt = helper.moveDown(nt);
+        assertEquals(3L, nt.getId());
+        nt = helper.moveDown(nt);
+        assertEquals(3L, nt.getId());
     }
 
     @Test

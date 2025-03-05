@@ -20,20 +20,20 @@ public class Main {
 
                 switch (line) {
                     case "k": // Move up
-                        helper.moveUp();
+                        helper.setCurrentTask(helper.moveUp(helper.getCurrentTask()));
                         break;
                     case "j": // Move down
-                        helper.moveDown();
+                        helper.setCurrentTask(helper.moveDown(helper.getCurrentTask()));
                         break;
                     case "\r": // Enter key
                         //selectTask();
                         break;
-                    case "ct":
-                        System.out.print("Enter task name: ");
+                    case "cparent":
+                        System.out.print("Enter parent task name: ");
                         String tname = reader.readLine();
                         System.out.print("Enter description: ");
                         String tdesc = reader.readLine();
-                        helper.createTask(helper.getCurrent(), tname, tdesc);
+                        helper.createProjectTask(tname, tdesc);
                         break;
                     case "cs":
                         System.out.print("Enter sub name: ");
