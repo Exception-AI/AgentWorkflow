@@ -28,10 +28,10 @@ public class Main {
                     case "\r": // Enter key
                         //selectTask();
                         break;
-                    case "cparent":
-                        System.out.print("Enter parent task name: ");
+                    case "cproject":
+                        System.out.print("Enter project name: ");
                         String tname = reader.readLine();
-                        System.out.print("Enter description: ");
+                        System.out.print("Enter project description: ");
                         String tdesc = reader.readLine();
                         helper.createProjectTask(tname, tdesc);
                         break;

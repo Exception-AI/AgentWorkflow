@@ -37,13 +37,12 @@ public class Helper {
         workingSet = new ArrayList<>();
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
-        buildTree();
+        taskMap.put(ROOT.getId(), ROOT);
+        taskNodeMap.put(ROOT.getId(), new NodeTask(0));
         tasks.forEach(task -> taskMap.put(task.getId(), task));
+        buildTree();
         selectTasks();
         currentTask = (!workingSet.isEmpty()) ? taskNodeMap.get(workingSet.stream().findFirst().get().getId()) : null;
-        taskNodeMap.put(ROOT.getId(), new NodeTask(0));
-        taskMap.put(ROOT.getId(), ROOT);
-
     }
 
     public NodeTask moveUp(NodeTask current) {
@@ -170,7 +169,6 @@ public class Helper {
     }
 
     public void buildTree() {
-        taskNodeMap.clear();
         for (Task task : tasks) {
             addTaskToTree(task);
         }
@@ -200,7 +198,6 @@ public class Helper {
             List<Task> loadedTasks = mapper.readValue(file, new TypeReference<>() {
             });
 
-            System.out.println("Loaded tasks");
             return loadedTasks;
         } catch (Exception e) {
             e.printStackTrace();
@@ -217,7 +214,6 @@ public class Helper {
             List<Link> loadedTasks = mapper.readValue(file, new TypeReference<>() {
             });
 
-            System.out.println("Loaded tasks");
             return loadedTasks;
         } catch (Exception e) {
             e.printStackTrace();
@@ -245,28 +241,34 @@ public class Helper {
         List<Long> indexes = new ArrayList<>(taskMap.keySet());
         for (int i = 0; i < 10 && workingSet.size() < 10; i++) {
             int ii = rand.nextInt(indexes.size());
-            workingSet.add(taskMap.get(indexes.get(ii)));
+            if (!workingSet.contains(taskMap.get(indexes.get(ii)))) {
+                workingSet.add(taskMap.get(indexes.get(ii)));
+            }
         }
     }
 
     public void displayTasks() {
         for (Task wt : workingSet) {
-            NodeTask p = taskNodeMap.get(wt.getId());
+            /*NodeTask p = taskNodeMap.get(wt.getId());
             while (p.getParentId() != null) {
                 System.out.println(taskMap.get(wt.getId()).getName() + " -> ");
                 p = taskNodeMap.get(p.getParentId());
-            }
+            }*/
 
             System.out.println("Task: " + wt.getName() + " : " + wt.getDescription());
-
+            System.out.println("  Name       : " + wt.getName());
+            System.out.println("  Description: " + wt.getDescription());
+            System.out.flush();
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
                 System.out.println("  SubTasks: ");
                 System.out.println("      - " + taskMap.get(subTask).getName() + " : " + taskMap.get(subTask).getDescription());
             }
+            System.out.flush();
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
                 System.out.println("  Dependencies: ");
                 System.out.println("      - " + taskMap.get(dep).getName() + " : " + taskMap.get(dep).getDescription());
             }
+            System.out.flush();
         }
     }
 
