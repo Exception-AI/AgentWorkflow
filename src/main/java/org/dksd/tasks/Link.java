@@ -1,6 +1,4 @@
-package org.example;
-
-import java.util.List;
+package org.dksd.tasks;
 
 public class Link {
 
