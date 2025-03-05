@@ -49,14 +49,14 @@ public class Main {
                         //selectTask();
                         break;
                     case "cs":
-                        System.out.println("Enter name: ");
+                        System.out.println("Enter sub name: ");
                         String name = reader.readLine();
                         System.out.println("Enter description: ");
                         String desc = reader.readLine();
                         createSubTask(links, fullMap, currentTask, name, desc);
                         break;
                     case "cd":
-                        System.out.println("Enter name: ");
+                        System.out.println("Enter dep name: ");
                         String dname = reader.readLine();
                         System.out.println("Enter description: ");
                         String ddesc = reader.readLine();
