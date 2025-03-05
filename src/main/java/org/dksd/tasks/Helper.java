@@ -23,7 +23,6 @@ public class Helper {
     private Map<Long, NodeTask> taskNodeMap = new HashMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
-    private Map<Long, Long> positions = new HashMap<>();
 
     public Helper(File taskFile, File linksFile) {
         load(taskFile, linksFile);
