@@ -1,4 +1,4 @@
-package org.example;
+package org.dksd.tasks;
 
 public enum LinkType {
     PARENT,
