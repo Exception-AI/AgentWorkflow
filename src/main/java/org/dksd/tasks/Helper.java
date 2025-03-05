@@ -249,25 +249,30 @@ public class Helper {
 
     public void displayTasks() {
         for (Task wt : workingSet) {
+
+            String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
+
             NodeTask p = taskNodeMap.get(wt.getId());
             String hierarchy = "";
             while (p.getParentId() != null) {
                 p = taskNodeMap.get(p.getParentId());
-                hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
+                hierarchy = taskMap.get(p.getId()).getName() + suffix + " -> " + hierarchy;
             }
 
             System.out.println("Task: " + hierarchy);
-            System.out.println("  Name       : " + wt.getName());
+            System.out.println("  Name       : " + wt.getName() + suffix);
             System.out.println("  Description: " + wt.getDescription());
             System.out.flush();
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
+                suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
                 System.out.println("  SubTasks: ");
-                System.out.println("      - " + taskMap.get(subTask).getName() + " : " + taskMap.get(subTask).getDescription());
+                System.out.println("      - " + taskMap.get(subTask).getName() + suffix + " : " + taskMap.get(subTask).getDescription());
             }
             System.out.flush();
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
+                suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
                 System.out.println("  Dependencies: ");
-                System.out.println("      - " + taskMap.get(dep).getName() + " : " + taskMap.get(dep).getDescription());
+                System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
             }
             System.out.flush();
         }
