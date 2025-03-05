@@ -25,6 +25,12 @@ public class Main {
                     case "j": // Move down
                         helper.setCurrentTask(helper.moveDown(helper.getCurrentTask()));
                         break;
+                    case "n": // Next
+                        helper.setCurrentTask(helper.nextTask(helper.getCurrentTask()));
+                        break;
+                    case "p": // Next
+                        helper.setCurrentTask(helper.prevTask(helper.getCurrentTask()));
+                        break;
                     case "\r": // Enter key
                         //selectTask();
                         break;

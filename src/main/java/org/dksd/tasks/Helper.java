@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
 
 public class Helper {
 
@@ -20,7 +21,7 @@ public class Helper {
     private List<Task> workingSet = new ArrayList<>();
     private List<Task> tasks = null;
     private List<Link> links = null;
-    private Map<Long, NodeTask> taskNodeMap = new HashMap<>();
+    private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
 
@@ -63,7 +64,7 @@ public class Helper {
         return list.get(index - 1);
     }
 
-    private Long next(List<Long> list, Long indx) {
+    private Long nextInList(List<Long> list, Long indx) {
         int index = list.indexOf(indx);
         if (index == -1 || index >= list.size() - 1) {
             return -1L;
@@ -89,7 +90,7 @@ public class Helper {
 
     public NodeTask moveDown(NodeTask current) {
         if (!isLast(getParentSubTasks(current), current.getId()) && isPresent(getParentSubTasks(current), current.getId())) {
-            return taskNodeMap.get(next(getParentSubTasks(current), current.getId()));
+            return taskNodeMap.get(nextInList(getParentSubTasks(current), current.getId()));
         }
         return current;
     }
@@ -263,15 +264,19 @@ public class Helper {
             System.out.println("  Name       : " + wt.getName() + suffix);
             System.out.println("  Description: " + wt.getDescription());
             System.out.flush();
+            if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
+                System.out.println("  SubTasks: ");
+            }
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
                 suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
-                System.out.println("  SubTasks: ");
                 System.out.println("      - " + taskMap.get(subTask).getName() + suffix + " : " + taskMap.get(subTask).getDescription());
             }
             System.out.flush();
+            if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
+                System.out.println("  Dependencies: ");
+            }
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
                 suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
-                System.out.println("  Dependencies: ");
                 System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
             }
             System.out.flush();
@@ -309,5 +314,25 @@ public class Helper {
 
     public void setCurrentTask(NodeTask nodeTask) {
         this.currentTask = nodeTask;
+    }
+
+    public NodeTask nextTask(NodeTask currentTask) {
+        Map.Entry<Long, NodeTask> nextEntry = taskNodeMap.higherEntry(currentTask.getId());
+
+        if (nextEntry != null) {
+            return nextEntry.getValue();
+        } else {
+            return currentTask; // or handle the case differently
+        }
+    }
+
+    public NodeTask prevTask(NodeTask currentTask) {
+        Map.Entry<Long, NodeTask> nextEntry = taskNodeMap.lowerEntry(currentTask.getId());
+
+        if (nextEntry != null) {
+            return nextEntry.getValue();
+        } else {
+            return currentTask; // or handle the case differently
+        }
     }
 }
