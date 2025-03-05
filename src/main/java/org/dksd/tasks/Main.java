@@ -7,8 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
 
-        Helper helper = new Helper();
-        helper.setup();
+        Helper helper = new Helper("tasks.json", "links.json");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
@@ -16,32 +15,39 @@ public class Main {
             try {
                 helper.displayTasks();
 
-                System.out.println("Enter choice: ");
+                System.out.print("Enter choice: ");
                 line = reader.readLine();
 
                 switch (line) {
                     case "k": // Move up
-                        helper.moveUp();
+                        helper.setCurrentTask(helper.moveUp(helper.getCurrentTask()));
                         break;
                     case "j": // Move down
-                        helper.moveDown();
+                        helper.setCurrentTask(helper.moveDown(helper.getCurrentTask()));
                         break;
                     case "\r": // Enter key
                         //selectTask();
                         break;
+                    case "cparent":
+                        System.out.print("Enter parent task name: ");
+                        String tname = reader.readLine();
+                        System.out.print("Enter description: ");
+                        String tdesc = reader.readLine();
+                        helper.createProjectTask(tname, tdesc);
+                        break;
                     case "cs":
-                        System.out.println("Enter sub name: ");
+                        System.out.print("Enter sub name: ");
                         String name = reader.readLine();
-                        System.out.println("Enter description: ");
+                        System.out.print("Enter description: ");
                         String desc = reader.readLine();
-                        helper.createSubTask(name, desc);
+                        helper.createSubTask(helper.getCurrent(), name, desc);
                         break;
                     case "cd":
-                        System.out.println("Enter dep name: ");
+                        System.out.print("Enter dep name: ");
                         String dname = reader.readLine();
-                        System.out.println("Enter description: ");
+                        System.out.print("Enter description: ");
                         String ddesc = reader.readLine();
-                        helper.createDepTask(dname, ddesc);
+                        helper.createDepTask(helper.getCurrent(), dname, ddesc);
                         break;
                     case "q": // Quit
                         break;

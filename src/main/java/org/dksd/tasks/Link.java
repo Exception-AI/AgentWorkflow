@@ -1,5 +1,7 @@
 package org.dksd.tasks;
 
+import java.util.Objects;
+
 public class Link {
 
     private long left;
@@ -34,5 +36,31 @@ public class Link {
 
     public void setLinkType(LinkType linkType) {
         this.linkType = linkType;
+    }
+
+    @Override
+    public String toString() {
+        return "Link{" +
+                "left=" + left +
+                ", right=" + right +
+                ", linkType=" + linkType +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Link link = (Link) o;
+        return left == link.left && right == link.right && linkType == link.linkType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(left, right, linkType);
     }
 }
