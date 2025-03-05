@@ -1,1 +1,9 @@
-[ ]
+[ {
+  "left" : 0,
+  "right" : 1,
+  "linkType" : "PARENT"
+}, {
+  "left" : 0,
+  "right" : 1,
+  "linkType" : "SUBTASK"
+} ]

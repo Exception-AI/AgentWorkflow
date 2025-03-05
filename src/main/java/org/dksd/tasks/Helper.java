@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
 
 public class Helper {
 
@@ -20,10 +21,9 @@ public class Helper {
     private List<Task> workingSet = new ArrayList<>();
     private List<Task> tasks = null;
     private List<Link> links = null;
-    private Map<Long, NodeTask> taskNodeMap = new HashMap<>();
+    private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
-    private Map<Long, Long> positions = new HashMap<>();
 
     public Helper(File taskFile, File linksFile) {
         load(taskFile, linksFile);
@@ -38,13 +38,12 @@ public class Helper {
         workingSet = new ArrayList<>();
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
-        buildTree();
+        taskMap.put(ROOT.getId(), ROOT);
+        taskNodeMap.put(ROOT.getId(), new NodeTask(0));
         tasks.forEach(task -> taskMap.put(task.getId(), task));
+        buildTree();
         selectTasks();
         currentTask = (!workingSet.isEmpty()) ? taskNodeMap.get(workingSet.stream().findFirst().get().getId()) : null;
-        taskNodeMap.put(ROOT.getId(), new NodeTask(0));
-        taskMap.put(ROOT.getId(), ROOT);
-
     }
 
     public NodeTask moveUp(NodeTask current) {
@@ -65,7 +64,7 @@ public class Helper {
         return list.get(index - 1);
     }
 
-    private Long next(List<Long> list, Long indx) {
+    private Long nextInList(List<Long> list, Long indx) {
         int index = list.indexOf(indx);
         if (index == -1 || index >= list.size() - 1) {
             return -1L;
@@ -91,7 +90,7 @@ public class Helper {
 
     public NodeTask moveDown(NodeTask current) {
         if (!isLast(getParentSubTasks(current), current.getId()) && isPresent(getParentSubTasks(current), current.getId())) {
-            return taskNodeMap.get(next(getParentSubTasks(current), current.getId()));
+            return taskNodeMap.get(nextInList(getParentSubTasks(current), current.getId()));
         }
         return current;
     }
@@ -171,7 +170,6 @@ public class Helper {
     }
 
     public void buildTree() {
-        taskNodeMap.clear();
         for (Task task : tasks) {
             addTaskToTree(task);
         }
@@ -201,7 +199,6 @@ public class Helper {
             List<Task> loadedTasks = mapper.readValue(file, new TypeReference<>() {
             });
 
-            System.out.println("Loaded tasks");
             return loadedTasks;
         } catch (Exception e) {
             e.printStackTrace();
@@ -218,7 +215,6 @@ public class Helper {
             List<Link> loadedTasks = mapper.readValue(file, new TypeReference<>() {
             });
 
-            System.out.println("Loaded tasks");
             return loadedTasks;
         } catch (Exception e) {
             e.printStackTrace();
@@ -246,28 +242,45 @@ public class Helper {
         List<Long> indexes = new ArrayList<>(taskMap.keySet());
         for (int i = 0; i < 10 && workingSet.size() < 10; i++) {
             int ii = rand.nextInt(indexes.size());
-            workingSet.add(taskMap.get(indexes.get(ii)));
+            if (!workingSet.contains(taskMap.get(indexes.get(ii)))) {
+                workingSet.add(taskMap.get(indexes.get(ii)));
+            }
         }
     }
 
     public void displayTasks() {
         for (Task wt : workingSet) {
+
+            String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
+
             NodeTask p = taskNodeMap.get(wt.getId());
+            String hierarchy = "";
             while (p.getParentId() != null) {
-                System.out.println(taskMap.get(wt.getId()).getName() + " -> ");
                 p = taskNodeMap.get(p.getParentId());
+                hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
             }
 
-            System.out.println("Task: " + wt.getName() + " : " + wt.getDescription());
-
-            for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
+            System.out.println("Task: " + hierarchy);
+            System.out.println("  Name       : " + wt.getName() + suffix);
+            System.out.println("  Description: " + wt.getDescription());
+            System.out.flush();
+            if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
                 System.out.println("  SubTasks: ");
-                System.out.println("      - " + taskMap.get(subTask).getName() + " : " + taskMap.get(subTask).getDescription());
+            }
+            for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
+                suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
+                System.out.println("      - " + taskMap.get(subTask).getName() + suffix + " : " + taskMap.get(subTask).getDescription());
+            }
+            System.out.flush();
+            if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
+                System.out.println("  Dependencies: ");
             }
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
-                System.out.println("  Dependencies: ");
-                System.out.println("      - " + taskMap.get(dep).getName() + " : " + taskMap.get(dep).getDescription());
+                suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
+                System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
             }
+            System.out.flush();
+            System.out.println();
         }
     }
 
@@ -301,5 +314,25 @@ public class Helper {
 
     public void setCurrentTask(NodeTask nodeTask) {
         this.currentTask = nodeTask;
+    }
+
+    public NodeTask nextTask(NodeTask currentTask) {
+        Map.Entry<Long, NodeTask> nextEntry = taskNodeMap.higherEntry(currentTask.getId());
+
+        if (nextEntry != null) {
+            return nextEntry.getValue();
+        } else {
+            return currentTask; // or handle the case differently
+        }
+    }
+
+    public NodeTask prevTask(NodeTask currentTask) {
+        Map.Entry<Long, NodeTask> nextEntry = taskNodeMap.lowerEntry(currentTask.getId());
+
+        if (nextEntry != null) {
+            return nextEntry.getValue();
+        } else {
+            return currentTask; // or handle the case differently
+        }
     }
 }

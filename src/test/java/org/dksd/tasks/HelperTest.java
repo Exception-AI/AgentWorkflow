@@ -152,6 +152,8 @@ class HelperTest {
         assertEquals(3L, nt.getId());
         nt = helper.moveDown(nt);
         assertEquals(3L, nt.getId());
+        String tasks = helper.toJson(helper.getTasks());
+        System.out.println(tasks);
     }
 
     @Test

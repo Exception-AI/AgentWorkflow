@@ -4,9 +4,25 @@ import java.util.*;
 
 public class Task {
 
-    private final long id;
-    private final String name;
-    private final String description;
+    private long id;
+    private String name;
+    private String description;
+
+    public Task() {
+
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getName() {
         return name;
