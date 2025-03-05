@@ -2,6 +2,7 @@ package org.dksd.tasks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class NodeTask {
 
@@ -32,5 +33,28 @@ public class NodeTask {
 
     public List<Long> getDependencies() {
         return dependencies;
+    }
+
+    @Override
+    public String toString() {
+        return "NodeTask{" +
+                "parentId=" + parentId +
+                ", id=" + id +
+                ", subTasks=" + subTasks +
+                ", dependencies=" + dependencies +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NodeTask nodeTask = (NodeTask) o;
+        return id == nodeTask.id && Objects.equals(parentId, nodeTask.parentId) && Objects.equals(subTasks, nodeTask.subTasks) && Objects.equals(dependencies, nodeTask.dependencies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parentId, id, subTasks, dependencies);
     }
 }

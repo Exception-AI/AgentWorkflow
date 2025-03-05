@@ -15,7 +15,7 @@ public class Main {
             try {
                 helper.displayTasks();
 
-                System.out.println("Enter choice: ");
+                System.out.print("Enter choice: ");
                 line = reader.readLine();
 
                 switch (line) {
@@ -28,17 +28,24 @@ public class Main {
                     case "\r": // Enter key
                         //selectTask();
                         break;
+                    case "ct":
+                        System.out.print("Enter task name: ");
+                        String tname = reader.readLine();
+                        System.out.print("Enter description: ");
+                        String tdesc = reader.readLine();
+                        helper.createTask(tname, tdesc);
+                        break;
                     case "cs":
-                        System.out.println("Enter sub name: ");
+                        System.out.print("Enter sub name: ");
                         String name = reader.readLine();
-                        System.out.println("Enter description: ");
+                        System.out.print("Enter description: ");
                         String desc = reader.readLine();
                         helper.createSubTask(name, desc);
                         break;
                     case "cd":
-                        System.out.println("Enter dep name: ");
+                        System.out.print("Enter dep name: ");
                         String dname = reader.readLine();
-                        System.out.println("Enter description: ");
+                        System.out.print("Enter description: ");
                         String ddesc = reader.readLine();
                         helper.createDepTask(dname, ddesc);
                         break;

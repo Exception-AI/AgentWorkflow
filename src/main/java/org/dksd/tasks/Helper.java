@@ -16,11 +16,11 @@ import java.util.Random;
 
 public class Helper {
 
-    private Map<Long, Task> fullMap = new HashMap<>();
+    private Map<Long, Task> taskMap = new HashMap<>();
     private List<Task> workingSet = new ArrayList<>();
     private List<Task> tasks = null;
     private List<Link> links = null;
-    private Map<Long, NodeTask> tree = null;
+    private Map<Long, NodeTask> taskNodeMap = new HashMap<>();
     private NodeTask currentTask = null;
 
     public Helper(File taskFile, File linksFile) {
@@ -32,16 +32,14 @@ public class Helper {
     }
 
     private void load(File taskFile, File linksFile) {
-        fullMap = new HashMap<>();
+        taskMap = new HashMap<>();
         workingSet = new ArrayList<>();
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
-        tree = buildTree(tasks, links);
-        tasks.forEach(task -> {
-            fullMap.put(task.getId(), task);
-        });
+        buildTree();
+        tasks.forEach(task -> taskMap.put(task.getId(), task));
         selectTasks();
-        currentTask = (!workingSet.isEmpty()) ? tree.get(workingSet.stream().findFirst().get().getId()) : null;
+        currentTask = (!workingSet.isEmpty()) ? taskNodeMap.get(workingSet.stream().findFirst().get().getId()) : null;
     }
 
     public NodeTask moveUp() {
@@ -53,9 +51,9 @@ public class Helper {
         int ind = all.indexOf(currentTask.getId());
         if (ind == -1 || ind == 0) {
             //Must be the parent we need then if not any other task
-            currentTask = tree.get(currentTask.getParentId());
+            currentTask = taskNodeMap.get(currentTask.getParentId());
         } else {
-            currentTask = tree.get(all.get(ind - 1));
+            currentTask = taskNodeMap.get(all.get(ind - 1));
         }
         return currentTask;
     }
@@ -68,57 +66,80 @@ public class Helper {
         all.addAll(currentTask.getDependencies());
         int ind = all.indexOf(currentTask.getId());
         if (ind < all.size() - 1) {
-            currentTask = tree.get(all.get(ind + 1));
+            currentTask = taskNodeMap.get(all.get(ind + 1));
         }
         return currentTask;
     }
 
-    public Task createCommonTask(List<Link> links, Map<Long, Task> fullMap, NodeTask currentTask, String name, String desc) {
-        long nKey = Collections.max(fullMap.keySet()) + 1;
+    public Task createCommonTask(String name, String desc) {
+        long nKey = (taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
+        tasks.add(task);
         NodeTask t = new NodeTask(task.getId());
-        fullMap.put(task.getId(), task);
-        t.setParentId(currentTask.getId());
-        Link link = new Link(currentTask.getId(), LinkType.PARENT, task.getId());
-        links.add(link);
+        addTaskToTree(task);
+        taskMap.put(task.getId(), task);
+        if (currentTask != null) {
+            t.setParentId(currentTask.getId());
+            Link link = new Link(currentTask.getId(), LinkType.PARENT, task.getId());
+            links.add(link);
+            addLinkToTree(link);
+        } else {
+            currentTask = t;
+        }
         return task;
     }
 
-    public void createSubTask(String name, String desc) {
-        Task task = createCommonTask(links, fullMap, currentTask, name, desc);
+    public Task createTask(String name, String desc) {
+        return createCommonTask(name, desc);
+    }
+
+    public Task createSubTask(String name, String desc) {
+        Task task = createCommonTask(name, desc);
         currentTask.getSubTasks().add(task.getId());
         Link link = new Link(currentTask.getId(), LinkType.SUBTASK, task.getId());
         links.add(link);
+        addLinkToTree(link);
+        return task;
     }
 
-    public void createDepTask(String name, String desc) {
-        Task task = createCommonTask(links, fullMap, currentTask, name, desc);
+    public Task createDepTask(String name, String desc) {
+        Task task = createCommonTask(name, desc);
         currentTask.getDependencies().add(task.getId());
         Link link = new Link(currentTask.getId(), LinkType.DEPENDENCY, task.getId());
         links.add(link);
+        addLinkToTree(link);
+        return task;
     }
 
-    public Map<Long, NodeTask> buildTree(List<Task> tasks, List<Link> links) {
-        Map<Long, NodeTask> taskMap = new HashMap<>();
+    private NodeTask addTaskToTree(Task task) {
+        NodeTask t = new NodeTask(task.getId());
+        taskNodeMap.put(task.getId(), t);
+        return t;
+    }
+
+    private void addLinkToTree(Link link) {
+        if (LinkType.PARENT.equals(link.getLinkType())) {
+            taskNodeMap.get(link.getRight()).setParentId(link.getLeft());
+        }
+        if (LinkType.CHILD.equals(link.getLinkType())) {
+            taskNodeMap.get(link.getLeft()).setParentId(link.getRight());
+        }
+        if (LinkType.SUBTASK.equals(link.getLinkType())) {
+            taskNodeMap.get(link.getLeft()).getSubTasks().add(link.getRight());
+        }
+        if (LinkType.DEPENDENCY.equals(link.getLinkType())) {
+            taskNodeMap.get(link.getLeft()).getDependencies().add(link.getRight());
+        }
+    }
+
+    public void buildTree() {
+        taskNodeMap.clear();
         for (Task task : tasks) {
-            NodeTask t = new NodeTask(task.getId());
-            taskMap.put(task.getId(), t);
+            addTaskToTree(task);
         }
         for (Link link : links) {
-            if (LinkType.PARENT.equals(link.getLinkType())) {
-                taskMap.get(link.getRight()).setParentId(link.getLeft());
-            }
-            if (LinkType.CHILD.equals(link.getLinkType())) {
-                taskMap.get(link.getLeft()).setParentId(link.getRight());
-            }
-            if (LinkType.SUBTASK.equals(link.getLinkType())) {
-                taskMap.get(link.getLeft()).getSubTasks().add(link.getRight());
-            }
-            if (LinkType.DEPENDENCY.equals(link.getLinkType())) {
-                taskMap.get(link.getLeft()).getDependencies().add(link.getRight());
-            }
+            addLinkToTree(link);
         }
-        return taskMap;
     }
 
     public String toJson(List<?> tasks) {
@@ -139,7 +160,7 @@ public class Helper {
         try {
 
             // Deserialize JSON into a Task object.
-            List<Task> loadedTasks = mapper.readValue(file, new TypeReference<List<Task>>() {
+            List<Task> loadedTasks = mapper.readValue(file, new TypeReference<>() {
             });
 
             System.out.println("Loaded tasks");
@@ -156,7 +177,7 @@ public class Helper {
 
         try {
             // Deserialize JSON into a Task object.
-            List<Link> loadedTasks = mapper.readValue(file, new TypeReference<List<Link>>() {
+            List<Link> loadedTasks = mapper.readValue(file, new TypeReference<>() {
             });
 
             System.out.println("Loaded tasks");
@@ -180,43 +201,59 @@ public class Helper {
 
     public void selectTasks() {
         //TODO this is where it can get more fancy
-        if (fullMap.isEmpty()) {
+        if (taskMap.isEmpty()) {
             return;
         }
         Random rand = new Random();
-        List<Long> indexes = new ArrayList<>(fullMap.keySet());
+        List<Long> indexes = new ArrayList<>(taskMap.keySet());
         for (int i = 0; i < 10 && workingSet.size() < 10; i++) {
             int ii = rand.nextInt(indexes.size());
-            workingSet.add(fullMap.get(indexes.get(ii)));
+            workingSet.add(taskMap.get(indexes.get(ii)));
         }
     }
 
     public void displayTasks() {
         for (Task wt : workingSet) {
-            NodeTask p = tree.get(wt.getId());
+            NodeTask p = taskNodeMap.get(wt.getId());
             while (p.getParentId() != null) {
-                System.out.println(fullMap.get(wt.getId()).getName() + " -> ");
-                p = tree.get(p.getParentId());
+                System.out.println(taskMap.get(wt.getId()).getName() + " -> ");
+                p = taskNodeMap.get(p.getParentId());
             }
 
             System.out.println("Task: " + wt.getName() + " : " + wt.getDescription());
 
-            for (Long subTask : tree.get(wt.getId()).getSubTasks()) {
+            for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
                 System.out.println("  SubTasks: ");
-                System.out.println("      - " + fullMap.get(subTask).getName() + " : " + fullMap.get(subTask).getDescription());
+                System.out.println("      - " + taskMap.get(subTask).getName() + " : " + taskMap.get(subTask).getDescription());
             }
-            for (Long dep : tree.get(wt.getId()).getDependencies()) {
+            for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
                 System.out.println("  Dependencies: ");
-                System.out.println("      - " + fullMap.get(dep).getName() + " : " + fullMap.get(dep).getDescription());
+                System.out.println("      - " + taskMap.get(dep).getName() + " : " + taskMap.get(dep).getDescription());
             }
         }
     }
 
-    public List<?> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public List<?> getLinks() {
+    public List<Link> getLinks() {
         return links;
+    }
+
+    public Map<Long, NodeTask> getTaskNodeMap() {
+        return taskNodeMap;
+    }
+
+    public Map<Long, Task> getTaskMap() {
+        return taskMap;
+    }
+
+    public NodeTask getCurrentTask() {
+        return currentTask;
+    }
+
+    public List<Task> getWorkingSet() {
+        return workingSet;
     }
 }
