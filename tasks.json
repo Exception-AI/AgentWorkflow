@@ -26,4 +26,88 @@
   "id" : 7,
   "name" : "External Dependencies checked",
   "description" : "Database indexes? Offline pipelines tested? Online path? Focus on interfaces here"
+}, {
+  "id" : 8,
+  "name" : "Tax Return 2025",
+  "description" : "Complete the tax return for personal"
+}, {
+  "id" : 9,
+  "name" : "Tax return for EAI 2025",
+  "description" : "Company tax return"
+}, {
+  "id" : 10,
+  "name" : "Erica Road House Project",
+  "description" : "Schematics and drawings and contractor visit"
+}, {
+  "id" : 11,
+  "name" : "University of San Diego",
+  "description" : "All tasks to do to get ready for the start and during MSC"
+}, {
+  "id" : 12,
+  "name" : "Schedule Webinar",
+  "description" : "first step to introducing you to all the most important elements of your program"
+}, {
+  "id" : 13,
+  "name" : "Schedule Your New Student Check-In Phone Call",
+  "description" : "It is required that you attend a Welcome Webinar before you schedule this call"
+}, {
+  "id" : 14,
+  "name" : "Review all information on your student success center",
+  "description" : "Please bookmark your Student Success Center. Your Student Success Center is the best resource for all information specific to your program. Please expect to refer to this website for updated information each semester. It contains information on textbooks, payment options/refund policies, registration information, academic calendars, and FAQs."
+}, {
+  "id" : 15,
+  "name" : "Get Started on Your New Student Orientation Course - Due May 2nd!",
+  "description" : "You have been registered for and will have access to your New Student Orientation in the next 4-8 hours. The orientation is mandatory and must be completed by Friday, May 2, 2025. Many students tell me they spend anywhere from 16-20 hours working through their orientation, so please set ample time aside to complete all the modules! You can refer to the Orientation Guide for step-by-step instructions."
+}, {
+  "id" : 16,
+  "name" : "Secure Your Financing Plan",
+  "description" : "We recommend that students start this planning early as some funding"
+}, {
+  "id" : 17,
+  "name" : "EAI Roadmap 2025",
+  "description" : "Covers the various goals and roadmaps we are aiming for"
+}, {
+  "id" : 18,
+  "name" : "Create Website Template",
+  "description" : "Create the responsive website template and host it on Coolio"
+}, {
+  "id" : 19,
+  "name" : "Integrate Stripe for payments",
+  "description" : "Stripe is required for credit card payments"
+}, {
+  "id" : 20,
+  "name" : "Install Terms and Conditions in all code and websites",
+  "description" : "As the name says"
+}, {
+  "id" : 21,
+  "name" : "First AI enabled tasks program available for sale",
+  "description" : "The full tasks and planning software that is AI enabled with PSO is ready to be sold"
+}, {
+  "id" : 22,
+  "name" : "Do EAI tax return for 2025",
+  "description" : "do the tax return, there is another task out there that covers the details"
+}, {
+  "id" : 23,
+  "name" : "Setup coolio to be operational to serve various use cases",
+  "description" : "Coolio is the main hosting arm of EAI and needs to be setup accordingly"
+}, {
+  "id" : 24,
+  "name" : "Complete first AI Agent and Prompt Templates for sale/implementation",
+  "description" : "Covers prompting and inference at small scale"
+}, {
+  "id" : 25,
+  "name" : "Setup/Create learning platform for AI and sale on EAI website",
+  "description" : "Can be pre recorded videos and or scheduled webinars on all thgins AI and coding complete"
+}, {
+  "id" : 26,
+  "name" : "Create first AI Coding Agent called Bob",
+  "description" : "Full on coding agent using AI and tasks and LLMs"
+}, {
+  "id" : 27,
+  "name" : "Create first AI enabled Data scientist",
+  "description" : "using llm tasks etc"
+}, {
+  "id" : 28,
+  "name" : "CrCreate first scientific paper/journal in the AI space",
+  "description" : "can add more detail here"
 } ]

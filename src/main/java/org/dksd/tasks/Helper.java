@@ -254,6 +254,7 @@ public class Helper {
     }
 
     public void displayTasks() {
+        String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //Needs to be recursive right?
         //for (Task wt : workingSet) {
             Task wt = taskMap.get(currentTask.getId());

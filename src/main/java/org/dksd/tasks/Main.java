@@ -50,6 +50,9 @@ public class Main {
                     case "e":
                         helper.multiInput(reader, (name, desc) -> helper.updateTask(helper.getCurrent(), name, desc));
                         break;
+                    case ":w": // Write
+                        write(helper);
+                        break;
                     case "q": // Quit
                         break;
                     default:
@@ -60,10 +63,12 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
+        write(helper);
+    }
 
+    public static void write(Helper helper) {
         helper.writeJson("tasks.json", helper.toJson(helper.getTasks()));
         helper.writeJson("links.json", helper.toJson(helper.getLinks()));
         helper.writeJson("constraints.json", helper.toJson(helper.getConstraints()));
     }
-
 }
