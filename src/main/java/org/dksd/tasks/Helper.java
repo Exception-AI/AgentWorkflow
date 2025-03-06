@@ -3,12 +3,13 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.jline.reader.LineReader;
+import org.dksd.tasks.model.LinkType;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class Helper {
     private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
+    private ObjectMapper mapper = new ObjectMapper();
 
     public Helper(File taskFile, File linksFile, File constraintsFile) {
         load(taskFile, linksFile, constraintsFile);
@@ -40,12 +42,14 @@ public class Helper {
     private void load(File taskFile, File linksFile, File constraintsFile) {
         taskMap = new HashMap<>();
         workingSet = new ArrayList<>();
-        tasks = loadFile(taskFile);
-        links = loadFile(linksFile);
-        constraints = loadFile(constraintsFile);
+        tasks = loadTasks(taskFile);
+        links = loadLinks(linksFile);
+        constraints = loadConstraints(constraintsFile);
         taskMap.put(ROOT.getId(), ROOT);
         taskNodeMap.put(ROOT.getId(), new NodeTask(0));
-        tasks.forEach(task -> taskMap.put(task.getId(), task));
+        for (Task task : tasks) {
+            taskMap.put(task.getId(), task);
+        }
         buildTree();
         selectTasks();
         currentTask = (!workingSet.isEmpty()) ? taskNodeMap.get(workingSet.stream().findFirst().get().getId()) : null;
@@ -123,13 +127,17 @@ public class Helper {
         long nKey = (taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         tasks.add(task);
-        NodeTask t = new NodeTask(task.getId());
-        addTaskToTree(task);
         taskMap.put(task.getId(), task);
+        NodeTask t = new NodeTask(task.getId());
+        taskNodeMap.put(task.getId(), t);
         t.setParentId(parent.getId());
         Link link = new Link(parent.getId(), LinkType.PARENT, task.getId());
         links.add(link);
         addLinkToTree(link);
+        Constraint constraint = new Constraint();
+        constraint.defaultConfig();
+        constraints.add(constraint);
+        t.getConstraints().add(task.getId());
         return task;
     }
 
@@ -153,12 +161,6 @@ public class Helper {
         return task;
     }
 
-    private NodeTask addTaskToTree(Task task) {
-        NodeTask t = new NodeTask(task.getId());
-        taskNodeMap.put(task.getId(), t);
-        return t;
-    }
-
     private void addLinkToTree(Link link) {
         if (LinkType.PARENT.equals(link.getLinkType())) {
             taskNodeMap.get(link.getRight()).setParentId(link.getLeft());
@@ -176,7 +178,8 @@ public class Helper {
 
     public void buildTree() {
         for (Task task : tasks) {
-            addTaskToTree(task);
+            NodeTask t = new NodeTask(task.getId());
+            taskNodeMap.put(task.getId(), t);
         }
         for (Link link : links) {
             addLinkToTree(link);
@@ -194,15 +197,30 @@ public class Helper {
         return null;
     }
 
-    public <T> List<T> loadFile(File file) {
-        // Create an ObjectMapper instance.
-        ObjectMapper mapper = new ObjectMapper();
-
+    public List<Task> loadTasks(File file) {
         try {
-            // Deserialize JSON into a Task object.
-            return mapper.readValue(file, new TypeReference<>() {
+            return mapper.readValue(file, new TypeReference<List<Task>>() {
             });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
 
+    public List<Link> loadLinks(File file) {
+        try {
+            return mapper.readValue(file, new TypeReference<List<Link>>() {
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Constraint> loadConstraints(File file) {
+        try {
+            return mapper.readValue(file, new TypeReference<List<Constraint>>() {
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -236,39 +254,39 @@ public class Helper {
     }
 
     public void displayTasks() {
-        for (Task wt : workingSet) {
-
+        String greenCheck = "\u001B[32m\u2713\u001B[0m";
+        //Needs to be recursive right?
+        //for (Task wt : workingSet) {
+            Task wt = taskMap.get(currentTask.getId());
             String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
 
             NodeTask p = taskNodeMap.get(wt.getId());
-            String hierarchy = "";
+            List<String> hierarchy = new ArrayList<>();
             while (p.getParentId() != null) {
                 p = taskNodeMap.get(p.getParentId());
-                hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
+                hierarchy.add(taskMap.get(p.getId()).getName());
             }
 
-            System.out.println(suffix + " Task: " + hierarchy);
-            System.out.println(suffix + "   Name       : " + wt.getName());
-            System.out.println(suffix + "   Description: " + wt.getDescription());
+            String indent = "  ";
+            System.out.println(wt.getName() + " <- " + hierarchy + " " + suffix);
+            //System.out.println(suffix + "   Description: " + wt.getDescription());
             System.out.flush();
-            if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
+            /*if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
                 System.out.println(suffix + "   SubTasks: ");
-            }
+            }*/
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
-                suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
-                System.out.println("      - " + taskMap.get(subTask).getName() + suffix + " : " + taskMap.get(subTask).getDescription());
+                System.out.println(indent + "- " + taskMap.get(subTask).getName());
             }
             System.out.flush();
             if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
-                System.out.println(suffix + "  Dependencies: ");
+                System.out.print(indent + "  Dependencies: ");
             }
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
-                suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
-                System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
+                System.out.print(taskMap.get(dep).getName() + ", ");
             }
+
             System.out.flush();
-            System.out.println();
-        }
+        //}
     }
 
     public List<Task> getTasks() {
@@ -339,5 +357,17 @@ public class Helper {
     public void updateTask(Task current, String ename, String edesc) {
         current.setName(ename);
         current.setDescription(edesc);
+    }
+
+    public List<Constraint> getConstraints() {
+        return constraints;
+    }
+
+    public void find(String searchTerm) {
+        for (Task task : tasks) {
+            if (task.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                currentTask = taskNodeMap.get(task.getId());
+            }
+        }
     }
 }

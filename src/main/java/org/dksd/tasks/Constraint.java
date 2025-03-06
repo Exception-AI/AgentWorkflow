@@ -1,8 +1,18 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.Concentration;
+import org.dksd.tasks.model.DeadlineType;
+import org.dksd.tasks.model.Difficulty;
+import org.dksd.tasks.model.Effort;
+import org.dksd.tasks.model.Importance;
+import org.dksd.tasks.model.LeadTime;
+
 public class Constraint {
 
+    private long constraintId;
+    private long taskId;
     private String schedule; // "* * * etc
+    private LeadTime leadTime; //How much time needed before deadlines in seconds etc
     private Effort effort;
     private double cost;
     private Difficulty difficulty;
@@ -39,6 +49,34 @@ A library for parsing crontab expressions and calculating the next run time base
 
     public Constraint() {
 
+    }
+
+    public long getConstraintId() {
+        return constraintId;
+    }
+
+    public void setConstraintId(long constraintId) {
+        this.constraintId = constraintId;
+    }
+
+    public long getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(long taskId) {
+        this.taskId = taskId;
+    }
+
+    public void defaultConfig() {
+        this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
+        this.leadTime = LeadTime.ONE_DAY;
+        this.effort = Effort.MEDIUM;
+        this.cost = 0;
+        this.difficulty = Difficulty.MEDIUM;
+        this.importance = Importance.NOT_URGENT_IMPORTANT;
+        this.concentration = Concentration.PARTIAL;
+        this.deadlineType = DeadlineType.SOFT;
+        this.completed = 0;
     }
 
     public String getSchedule() {
@@ -103,6 +141,14 @@ A library for parsing crontab expressions and calculating the next run time base
 
     public void setCompleted(double completed) {
         this.completed = completed;
+    }
+
+    public LeadTime getLeadTime() {
+        return leadTime;
+    }
+
+    public void setLeadTime(LeadTime leadTime) {
+        this.leadTime = leadTime;
     }
 
     @Override

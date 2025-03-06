@@ -1,5 +1,7 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.LinkType;
+
 import java.util.Objects;
 
 public class Link {

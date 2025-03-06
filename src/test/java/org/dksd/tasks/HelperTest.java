@@ -1,5 +1,6 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.LinkType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +14,15 @@ class HelperTest {
 
     @BeforeEach
     void setUp() {
-        loadFiles("test_tasks.json", "test_links.json");
+        loadFiles("test_tasks.json", "test_links.json", "test_constraints.json");
     }
 
-    private void loadFiles(String tasks, String links) {
+    private void loadFiles(String tasks, String links, String constraints) {
         ClassLoader classLoader = getClass().getClassLoader();
         File tasksFile = new File(classLoader.getResource(tasks).getFile());
         File linksFile = new File(classLoader.getResource(links).getFile());
-        helper = new Helper(tasksFile, linksFile);
+        File constraintsFile = new File(classLoader.getResource(constraints).getFile());
+        helper = new Helper(tasksFile, linksFile, constraintsFile);
     }
 
     @Test
