@@ -362,4 +362,12 @@ public class Helper {
     public List<Constraint> getConstraints() {
         return constraints;
     }
+
+    public void find(String searchTerm) {
+        for (Task task : tasks) {
+            if (task.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                currentTask = taskNodeMap.get(task.getId());
+            }
+        }
+    }
 }

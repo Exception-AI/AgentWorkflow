@@ -19,6 +19,10 @@ public class Main {
                 line = reader.readLine();
 
                 switch (line) {
+                    case "/": // Search
+                        System.out.print("Find: ");
+                        helper.find(reader.readLine());
+                        break;
                     case "k": // Move up
                         helper.setCurrentTask(helper.moveUp(helper.getCurrentTask()));
                         break;
