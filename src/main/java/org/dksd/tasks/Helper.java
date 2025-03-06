@@ -40,9 +40,9 @@ public class Helper {
     private void load(File taskFile, File linksFile, File constraintsFile) {
         taskMap = new HashMap<>();
         workingSet = new ArrayList<>();
-        tasks = loadTasks(taskFile);
-        links = loadLinks(linksFile);
-        constraints = loadConstraints(constraintsFile);
+        tasks = loadFile(taskFile);
+        links = loadFile(linksFile);
+        constraints = loadFile(constraintsFile);
         taskMap.put(ROOT.getId(), ROOT);
         taskNodeMap.put(ROOT.getId(), new NodeTask(0));
         tasks.forEach(task -> taskMap.put(task.getId(), task));
@@ -194,33 +194,15 @@ public class Helper {
         return null;
     }
 
-    public List<Task> loadTasks(File file) {
-        // Create an ObjectMapper instance.
-        ObjectMapper mapper = new ObjectMapper();
-
-        try {
-
-            // Deserialize JSON into a Task object.
-            List<Task> loadedTasks = mapper.readValue(file, new TypeReference<>() {
-            });
-
-            return loadedTasks;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<>();
-    }
-
-    public List<Link> loadLinks(File file) {
+    public <T> List<T> loadFile(File file) {
         // Create an ObjectMapper instance.
         ObjectMapper mapper = new ObjectMapper();
 
         try {
             // Deserialize JSON into a Task object.
-            List<Link> loadedTasks = mapper.readValue(file, new TypeReference<>() {
+            return mapper.readValue(file, new TypeReference<>() {
             });
 
-            return loadedTasks;
         } catch (Exception e) {
             e.printStackTrace();
         }

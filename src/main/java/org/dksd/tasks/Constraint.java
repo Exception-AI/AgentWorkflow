@@ -40,4 +40,82 @@ A library for parsing crontab expressions and calculating the next run time base
     public Constraint() {
 
     }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    public Effort getEffort() {
+        return effort;
+    }
+
+    public void setEffort(Effort effort) {
+        this.effort = effort;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Importance getImportance() {
+        return importance;
+    }
+
+    public void setImportance(Importance importance) {
+        this.importance = importance;
+    }
+
+    public Concentration getConcentration() {
+        return concentration;
+    }
+
+    public void setConcentration(Concentration concentration) {
+        this.concentration = concentration;
+    }
+
+    public DeadlineType getDeadlineType() {
+        return deadlineType;
+    }
+
+    public void setDeadlineType(DeadlineType deadlineType) {
+        this.deadlineType = deadlineType;
+    }
+
+    public double getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(double completed) {
+        this.completed = completed;
+    }
+
+    @Override
+    public String toString() {
+        return "Constraint{" +
+                "schedule='" + schedule + '\'' +
+                ", effort=" + effort +
+                ", cost=" + cost +
+                ", difficulty=" + difficulty +
+                ", importance=" + importance +
+                ", concentration=" + concentration +
+                ", deadlineType=" + deadlineType +
+                ", completed=" + completed +
+                '}';
+    }
 }
