@@ -22,4 +22,8 @@
   "id" : 6,
   "name" : "Testing completed end-to-end",
   "description" : "Did you ensure all outcomes listed in the ticket are ticked off? Verify verify and get help"
+}, {
+  "id" : 7,
+  "name" : "External Dependencies checked",
+  "description" : "Database indexes? Offline pipelines tested? Online path? Focus on interfaces here"
 } ]

@@ -70,4 +70,16 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "SOFT",
   "completed" : 0.0
+}, {
+  "constraintId" : 0,
+  "taskId" : 0,
+  "schedule" : "30 22 * * 1",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : 0.0,
+  "difficulty" : "MEDIUM",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT",
+  "completed" : 0.0
 } ]

@@ -46,4 +46,12 @@
   "left" : 1,
   "right" : 6,
   "linkType" : "SUBTASK"
+}, {
+  "left" : 1,
+  "right" : 7,
+  "linkType" : "PARENT"
+}, {
+  "left" : 1,
+  "right" : 7,
+  "linkType" : "SUBTASK"
 } ]

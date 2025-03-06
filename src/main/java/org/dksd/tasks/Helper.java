@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -253,37 +254,35 @@ public class Helper {
     }
 
     public void displayTasks() {
+        //Needs to be recursive right?
         //for (Task wt : workingSet) {
             Task wt = taskMap.get(currentTask.getId());
             String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
 
             NodeTask p = taskNodeMap.get(wt.getId());
-            String hierarchy = "";
+            List<String> hierarchy = new ArrayList<>();
             while (p.getParentId() != null) {
                 p = taskNodeMap.get(p.getParentId());
-                hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
+                hierarchy.add(taskMap.get(p.getId()).getName());
             }
 
-            System.out.println(suffix + " Task: " + hierarchy);
-            System.out.println(suffix + "   Name       : " + wt.getName());
-            System.out.println(suffix + "   Description: " + wt.getDescription());
+            String indent = "  ";
+            System.out.println(wt.getName() + " <- " + hierarchy + " " + suffix);
+            //System.out.println(suffix + "   Description: " + wt.getDescription());
             System.out.flush();
-            if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
+            /*if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
                 System.out.println(suffix + "   SubTasks: ");
-            }
+            }*/
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
-                suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
-                System.out.println("      - " + taskMap.get(subTask).getName() + suffix + " : " + taskMap.get(subTask).getDescription());
+                System.out.println(indent + "- " + taskMap.get(subTask).getName());
             }
             System.out.flush();
             if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
-                System.out.println(suffix + "  Dependencies: ");
+                System.out.print(indent + "  Dependencies: ");
             }
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
-                suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
-                System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
+                System.out.print(taskMap.get(dep).getName() + ", ");
             }
-
 
             System.out.flush();
         //}
