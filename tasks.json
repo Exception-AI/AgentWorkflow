@@ -1,5 +1,25 @@
 [ {
   "id" : 1,
-  "name" : "first prog",
-  "description" : "first dezcrip"
+  "name" : "Create Pull Request PR",
+  "description" : "Process for creating a pull request"
+}, {
+  "id" : 2,
+  "name" : "Create Unit Tests",
+  "description" : "All unit tests needed should be created"
+}, {
+  "id" : 3,
+  "name" : "Checkstyles have been run on all changed files",
+  "description" : "Run checkstyle or linting or whatever style guide there is"
+}, {
+  "id" : 4,
+  "name" : "Run integration tests",
+  "description" : "Could be eval or integration or behavioural tests"
+}, {
+  "id" : 5,
+  "name" : "Identify reviewers to add to PR",
+  "description" : "Can be important to reach out ahead of time that this is going to happen"
+}, {
+  "id" : 6,
+  "name" : "Testing completed end-to-end",
+  "description" : "Did you ensure all outcomes listed in the ticket are ticked off? Verify verify and get help"
 } ]

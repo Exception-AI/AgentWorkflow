@@ -253,8 +253,8 @@ public class Helper {
     }
 
     public void displayTasks() {
-        for (Task wt : workingSet) {
-
+        //for (Task wt : workingSet) {
+            Task wt = taskMap.get(currentTask.getId());
             String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
 
             NodeTask p = taskNodeMap.get(wt.getId());
@@ -286,8 +286,7 @@ public class Helper {
 
 
             System.out.flush();
-            System.out.println();
-        }
+        //}
     }
 
     public List<Task> getTasks() {
