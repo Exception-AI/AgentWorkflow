@@ -3,7 +3,7 @@ package org.dksd.tasks;
 public class Constraint {
 
     private String schedule; // "* * * etc
-    private float leadTime; //How much time needed before deadlines in secondsetc
+    private LeadTime leadTime; //How much time needed before deadlines in secondsetc
     private Effort effort;
     private double cost;
     private Difficulty difficulty;
@@ -40,6 +40,18 @@ A library for parsing crontab expressions and calculating the next run time base
 
     public Constraint() {
 
+    }
+
+    public void defaultConfig() {
+        this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
+        this.leadTime = LeadTime.ONE_DAY;
+        this.effort = Effort.MEDIUM;
+        this.cost = 0;
+        this.difficulty = Difficulty.MEDIUM;
+        this.importance = Importance.NOT_URGENT_IMPORTANT;
+        this.concentration = Concentration.PARTIAL;
+        this.deadlineType = DeadlineType.SOFT;
+        this.completed = 0;
     }
 
     public String getSchedule() {
@@ -106,11 +118,11 @@ A library for parsing crontab expressions and calculating the next run time base
         this.completed = completed;
     }
 
-    public float getLeadTime() {
+    public LeadTime getLeadTime() {
         return leadTime;
     }
 
-    public void setLeadTime(float leadTime) {
+    public void setLeadTime(LeadTime leadTime) {
         this.leadTime = leadTime;
     }
 
