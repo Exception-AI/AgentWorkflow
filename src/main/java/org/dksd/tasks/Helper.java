@@ -24,23 +24,25 @@ public class Helper {
     private List<Task> workingSet = new ArrayList<>();
     private List<Task> tasks = null;
     private List<Link> links = null;
+    private List<Constraint> constraints = null;
     private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
 
-    public Helper(File taskFile, File linksFile) {
-        load(taskFile, linksFile);
+    public Helper(File taskFile, File linksFile, File constraintsFile) {
+        load(taskFile, linksFile, constraintsFile);
     }
 
-    public Helper(String taskFilename, String linksFilename) {
-        load(new File(taskFilename), new File(linksFilename));
+    public Helper(String taskFilename, String linksFilename, String constraintsFilename) {
+        load(new File(taskFilename), new File(linksFilename), new File(constraintsFilename));
     }
 
-    private void load(File taskFile, File linksFile) {
+    private void load(File taskFile, File linksFile, File constraintsFile) {
         taskMap = new HashMap<>();
         workingSet = new ArrayList<>();
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
+        constraints = loadConstraints(constraintsFile);
         taskMap.put(ROOT.getId(), ROOT);
         taskNodeMap.put(ROOT.getId(), new NodeTask(0));
         tasks.forEach(task -> taskMap.put(task.getId(), task));
