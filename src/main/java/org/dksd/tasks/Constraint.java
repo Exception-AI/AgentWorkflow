@@ -3,6 +3,7 @@ package org.dksd.tasks;
 public class Constraint {
 
     private String schedule; // "* * * etc
+    private float leadTime; //How much time needed before deadlines in secondsetc
     private Effort effort;
     private double cost;
     private Difficulty difficulty;
@@ -103,6 +104,14 @@ A library for parsing crontab expressions and calculating the next run time base
 
     public void setCompleted(double completed) {
         this.completed = completed;
+    }
+
+    public float getLeadTime() {
+        return leadTime;
+    }
+
+    public void setLeadTime(float leadTime) {
+        this.leadTime = leadTime;
     }
 
     @Override
