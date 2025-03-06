@@ -3,7 +3,9 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.jline.reader.LineReader;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.function.BiConsumer;
 
 public class Helper {
 
@@ -260,12 +263,12 @@ public class Helper {
                 hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
             }
 
-            System.out.println("Task: " + hierarchy);
-            System.out.println("  Name       : " + wt.getName() + suffix);
-            System.out.println("  Description: " + wt.getDescription());
+            System.out.println(suffix + " Task: " + hierarchy);
+            System.out.println(suffix + "   Name       : " + wt.getName());
+            System.out.println(suffix + "   Description: " + wt.getDescription());
             System.out.flush();
             if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
-                System.out.println("  SubTasks: ");
+                System.out.println(suffix + "   SubTasks: ");
             }
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
                 suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
@@ -273,7 +276,7 @@ public class Helper {
             }
             System.out.flush();
             if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
-                System.out.println("  Dependencies: ");
+                System.out.println(suffix + "  Dependencies: ");
             }
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
                 suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
@@ -334,5 +337,23 @@ public class Helper {
         } else {
             return currentTask; // or handle the case differently
         }
+    }
+
+    public void setCurrentTaskToParent() {
+        currentTask = taskNodeMap.get(currentTask.getParentId());
+    }
+
+    public void multiInput(BufferedReader reader, BiConsumer<String, String> updateFunction) throws IOException {
+        System.out.print("Edit name: ");
+        String name = reader.readLine();
+        System.out.print("Edit description: ");
+        String desc = reader.readLine();
+
+        updateFunction.accept(name, desc);
+    }
+
+    public void updateTask(Task current, String ename, String edesc) {
+        current.setName(ename);
+        current.setDescription(edesc);
     }
 }

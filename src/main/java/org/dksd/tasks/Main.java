@@ -31,29 +31,24 @@ public class Main {
                     case "p": // Next
                         helper.setCurrentTask(helper.prevTask(helper.getCurrentTask()));
                         break;
-                    case "\r": // Enter key
+                    case "o": // Next
+                        helper.setCurrentTaskToParent();
+                        break;
+                    case "": // Enter key
                         //selectTask();
+                        System.out.println("Enter pressed");
                         break;
                     case "cproject":
-                        System.out.print("Enter project name: ");
-                        String tname = reader.readLine();
-                        System.out.print("Enter project description: ");
-                        String tdesc = reader.readLine();
-                        helper.createProjectTask(tname, tdesc);
+                        helper.multiInput(reader, helper::createProjectTask);
                         break;
                     case "cs":
-                        System.out.print("Enter sub name: ");
-                        String name = reader.readLine();
-                        System.out.print("Enter description: ");
-                        String desc = reader.readLine();
-                        helper.createSubTask(helper.getCurrent(), name, desc);
+                        helper.multiInput(reader, (name, desc) -> helper.createSubTask(helper.getCurrent(), name, desc));
                         break;
                     case "cd":
-                        System.out.print("Enter dep name: ");
-                        String dname = reader.readLine();
-                        System.out.print("Enter description: ");
-                        String ddesc = reader.readLine();
-                        helper.createDepTask(helper.getCurrent(), dname, ddesc);
+                        helper.multiInput(reader, (name, desc) -> helper.createDepTask(helper.getCurrent(), name, desc));
+                        break;
+                    case "e":
+                        helper.multiInput(reader, (name, desc) -> helper.updateTask(helper.getCurrent(), name, desc));
                         break;
                     case "q": // Quit
                         break;
