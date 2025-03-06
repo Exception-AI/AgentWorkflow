@@ -3,7 +3,7 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.jline.reader.LineReader;
+import org.dksd.tasks.model.LinkType;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,6 +28,7 @@ public class Helper {
     private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
+    private ObjectMapper mapper = new ObjectMapper();
 
     public Helper(File taskFile, File linksFile, File constraintsFile) {
         load(taskFile, linksFile, constraintsFile);
@@ -40,12 +41,14 @@ public class Helper {
     private void load(File taskFile, File linksFile, File constraintsFile) {
         taskMap = new HashMap<>();
         workingSet = new ArrayList<>();
-        tasks = loadFile(taskFile);
-        links = loadFile(linksFile);
-        constraints = loadFile(constraintsFile);
+        tasks = loadTasks(taskFile);
+        links = loadLinks(linksFile);
+        constraints = loadConstraints(constraintsFile);
         taskMap.put(ROOT.getId(), ROOT);
         taskNodeMap.put(ROOT.getId(), new NodeTask(0));
-        tasks.forEach(task -> taskMap.put(task.getId(), task));
+        for (Task task : tasks) {
+            taskMap.put(task.getId(), task);
+        }
         buildTree();
         selectTasks();
         currentTask = (!workingSet.isEmpty()) ? taskNodeMap.get(workingSet.stream().findFirst().get().getId()) : null;
@@ -194,15 +197,30 @@ public class Helper {
         return null;
     }
 
-    public <T> List<T> loadFile(File file) {
-        // Create an ObjectMapper instance.
-        ObjectMapper mapper = new ObjectMapper();
-
+    public List<Task> loadTasks(File file) {
         try {
-            // Deserialize JSON into a Task object.
-            return mapper.readValue(file, new TypeReference<>() {
+            return mapper.readValue(file, new TypeReference<List<Task>>() {
             });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
 
+    public List<Link> loadLinks(File file) {
+        try {
+            return mapper.readValue(file, new TypeReference<List<Link>>() {
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Constraint> loadConstraints(File file) {
+        try {
+            return mapper.readValue(file, new TypeReference<List<Constraint>>() {
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

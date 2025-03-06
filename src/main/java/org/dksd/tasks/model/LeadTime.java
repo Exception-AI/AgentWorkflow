@@ -1,4 +1,4 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
 
 public enum LeadTime {
     ONE_DAY,

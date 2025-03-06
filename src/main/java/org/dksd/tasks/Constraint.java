@@ -1,5 +1,12 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.Concentration;
+import org.dksd.tasks.model.DeadlineType;
+import org.dksd.tasks.model.Difficulty;
+import org.dksd.tasks.model.Effort;
+import org.dksd.tasks.model.Importance;
+import org.dksd.tasks.model.LeadTime;
+
 public class Constraint {
 
     private String schedule; // "* * * etc

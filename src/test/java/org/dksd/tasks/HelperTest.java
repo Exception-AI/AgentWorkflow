@@ -1,5 +1,6 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.LinkType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
