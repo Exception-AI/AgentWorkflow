@@ -10,6 +10,7 @@ public class NodeTask {
     private final long id;
     private final List<Long> subTasks = new ArrayList<>();
     private final List<Long> dependencies = new ArrayList<>();
+    private final List<Long> constraints = new ArrayList<>();
 
     public NodeTask(long id) {
         this.id = id;
@@ -33,6 +34,10 @@ public class NodeTask {
 
     public List<Long> getDependencies() {
         return dependencies;
+    }
+
+    public List<Long> getConstraints() {
+        return constraints;
     }
 
     @Override

@@ -126,13 +126,17 @@ public class Helper {
         long nKey = (taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         tasks.add(task);
-        NodeTask t = new NodeTask(task.getId());
-        addTaskToTree(task);
         taskMap.put(task.getId(), task);
+        NodeTask t = new NodeTask(task.getId());
+        taskNodeMap.put(task.getId(), t);
         t.setParentId(parent.getId());
         Link link = new Link(parent.getId(), LinkType.PARENT, task.getId());
         links.add(link);
         addLinkToTree(link);
+        Constraint constraint = new Constraint();
+        constraint.defaultConfig();
+        constraints.add(constraint);
+        t.getConstraints().add(task.getId());
         return task;
     }
 
@@ -156,12 +160,6 @@ public class Helper {
         return task;
     }
 
-    private NodeTask addTaskToTree(Task task) {
-        NodeTask t = new NodeTask(task.getId());
-        taskNodeMap.put(task.getId(), t);
-        return t;
-    }
-
     private void addLinkToTree(Link link) {
         if (LinkType.PARENT.equals(link.getLinkType())) {
             taskNodeMap.get(link.getRight()).setParentId(link.getLeft());
@@ -179,7 +177,8 @@ public class Helper {
 
     public void buildTree() {
         for (Task task : tasks) {
-            addTaskToTree(task);
+            NodeTask t = new NodeTask(task.getId());
+            taskNodeMap.put(task.getId(), t);
         }
         for (Link link : links) {
             addLinkToTree(link);
@@ -284,6 +283,8 @@ public class Helper {
                 suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
                 System.out.println("      - " + taskMap.get(dep).getName() + suffix + " : " + taskMap.get(dep).getDescription());
             }
+
+
             System.out.flush();
             System.out.println();
         }
@@ -357,5 +358,9 @@ public class Helper {
     public void updateTask(Task current, String ename, String edesc) {
         current.setName(ename);
         current.setDescription(edesc);
+    }
+
+    public List<Constraint> getConstraints() {
+        return constraints;
     }
 }

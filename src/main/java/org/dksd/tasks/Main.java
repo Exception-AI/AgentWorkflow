@@ -63,6 +63,7 @@ public class Main {
 
         helper.writeJson("tasks.json", helper.toJson(helper.getTasks()));
         helper.writeJson("links.json", helper.toJson(helper.getLinks()));
+        helper.writeJson("constraints.json", helper.toJson(helper.getConstraints()));
     }
 
 }
