@@ -3,7 +3,9 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.jline.reader.LineReader;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.function.BiConsumer;
 
 public class Helper {
 
@@ -21,23 +24,25 @@ public class Helper {
     private List<Task> workingSet = new ArrayList<>();
     private List<Task> tasks = null;
     private List<Link> links = null;
+    private List<Constraint> constraints = null;
     private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
 
-    public Helper(File taskFile, File linksFile) {
-        load(taskFile, linksFile);
+    public Helper(File taskFile, File linksFile, File constraintsFile) {
+        load(taskFile, linksFile, constraintsFile);
     }
 
-    public Helper(String taskFilename, String linksFilename) {
-        load(new File(taskFilename), new File(linksFilename));
+    public Helper(String taskFilename, String linksFilename, String constraintsFilename) {
+        load(new File(taskFilename), new File(linksFilename), new File(constraintsFilename));
     }
 
-    private void load(File taskFile, File linksFile) {
+    private void load(File taskFile, File linksFile, File constraintsFile) {
         taskMap = new HashMap<>();
         workingSet = new ArrayList<>();
-        tasks = loadTasks(taskFile);
-        links = loadLinks(linksFile);
+        tasks = loadFile(taskFile);
+        links = loadFile(linksFile);
+        constraints = loadFile(constraintsFile);
         taskMap.put(ROOT.getId(), ROOT);
         taskNodeMap.put(ROOT.getId(), new NodeTask(0));
         tasks.forEach(task -> taskMap.put(task.getId(), task));
@@ -189,33 +194,15 @@ public class Helper {
         return null;
     }
 
-    public List<Task> loadTasks(File file) {
-        // Create an ObjectMapper instance.
-        ObjectMapper mapper = new ObjectMapper();
-
-        try {
-
-            // Deserialize JSON into a Task object.
-            List<Task> loadedTasks = mapper.readValue(file, new TypeReference<>() {
-            });
-
-            return loadedTasks;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<>();
-    }
-
-    public List<Link> loadLinks(File file) {
+    public <T> List<T> loadFile(File file) {
         // Create an ObjectMapper instance.
         ObjectMapper mapper = new ObjectMapper();
 
         try {
             // Deserialize JSON into a Task object.
-            List<Link> loadedTasks = mapper.readValue(file, new TypeReference<>() {
+            return mapper.readValue(file, new TypeReference<>() {
             });
 
-            return loadedTasks;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -260,12 +247,12 @@ public class Helper {
                 hierarchy = taskMap.get(p.getId()).getName() + " -> " + hierarchy;
             }
 
-            System.out.println("Task: " + hierarchy);
-            System.out.println("  Name       : " + wt.getName() + suffix);
-            System.out.println("  Description: " + wt.getDescription());
+            System.out.println(suffix + " Task: " + hierarchy);
+            System.out.println(suffix + "   Name       : " + wt.getName());
+            System.out.println(suffix + "   Description: " + wt.getDescription());
             System.out.flush();
             if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
-                System.out.println("  SubTasks: ");
+                System.out.println(suffix + "   SubTasks: ");
             }
             for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
                 suffix = currentTask != null && currentTask.getId() == subTask ? " (*) " : "";
@@ -273,7 +260,7 @@ public class Helper {
             }
             System.out.flush();
             if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
-                System.out.println("  Dependencies: ");
+                System.out.println(suffix + "  Dependencies: ");
             }
             for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
                 suffix = currentTask != null && currentTask.getId() == dep ? " (*) " : "";
@@ -334,5 +321,23 @@ public class Helper {
         } else {
             return currentTask; // or handle the case differently
         }
+    }
+
+    public void setCurrentTaskToParent() {
+        currentTask = taskNodeMap.get(currentTask.getParentId());
+    }
+
+    public void multiInput(BufferedReader reader, BiConsumer<String, String> updateFunction) throws IOException {
+        System.out.print("Edit name: ");
+        String name = reader.readLine();
+        System.out.print("Edit description: ");
+        String desc = reader.readLine();
+
+        updateFunction.accept(name, desc);
+    }
+
+    public void updateTask(Task current, String ename, String edesc) {
+        current.setName(ename);
+        current.setDescription(edesc);
     }
 }
