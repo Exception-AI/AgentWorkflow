@@ -3,40 +3,41 @@ package org.dksd.tasks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class NodeTask {
 
-    private Long parentId;
-    private final long id;
-    private final List<Long> subTasks = new ArrayList<>();
-    private final List<Long> dependencies = new ArrayList<>();
-    private final List<Long> constraints = new ArrayList<>();
+    private UUID parentId;
+    private final UUID id;
+    private final List<UUID> subTasks = new ArrayList<>();
+    private final List<UUID> dependencies = new ArrayList<>();
+    private final List<UUID> constraints = new ArrayList<>();
 
-    public NodeTask(long id) {
+    public NodeTask(UUID id) {
         this.id = id;
     }
 
-    public Long getParentId() {
+    public UUID getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    public void setParentId(UUID parentId) {
         this.parentId = parentId;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public List<Long> getSubTasks() {
+    public List<UUID> getSubTasks() {
         return subTasks;
     }
 
-    public List<Long> getDependencies() {
+    public List<UUID> getDependencies() {
         return dependencies;
     }
 
-    public List<Long> getConstraints() {
+    public List<UUID> getConstraints() {
         return constraints;
     }
 

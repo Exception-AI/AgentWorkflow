@@ -28,12 +28,6 @@ public class Main {
                         System.out.print("Find: ");
                         helper.find(reader.readLine());
                         break;
-                    case "k": // Move up
-                        helper.setCurrentTask(helper.moveUp(helper.getCurrentTask()));
-                        break;
-                    case "j": // Move down
-                        helper.setCurrentTask(helper.moveDown(helper.getCurrentTask()));
-                        break;
                     case "n": // Next
                         helper.setCurrentTask(helper.nextTask(helper.getCurrentTask()));
                         break;
@@ -47,7 +41,7 @@ public class Main {
                         //selectTask();
                         System.out.println("Enter pressed");
                         break;
-                    case "cproject":
+                    case "cp":
                         helper.multiInput(reader, helper::createProjectTask);
                         break;
                     case "cs":

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Task {
 
-    private long id;
+    private UUID id;
     private String name;
     private String description;
 
@@ -12,7 +12,7 @@ public class Task {
 
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -32,7 +32,7 @@ public class Task {
         return description;
     }
 
-    public Task(long id, String name, String description) {
+    public Task(UUID id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -60,7 +60,7 @@ public class Task {
         return Objects.hash(id, name, description);
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 

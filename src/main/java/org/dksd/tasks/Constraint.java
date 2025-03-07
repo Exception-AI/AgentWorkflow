@@ -7,10 +7,12 @@ import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 
+import java.util.UUID;
+
 public class Constraint {
 
-    private long constraintId;
-    private long taskId;
+    private UUID constraintId;
+    private UUID taskId;
     private String schedule; // "* * * etc
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
     private Effort effort;
@@ -50,19 +52,19 @@ A library for parsing crontab expressions and calculating the next run time base
 
     }
 
-    public long getConstraintId() {
+    public UUID getConstraintId() {
         return constraintId;
     }
 
-    public void setConstraintId(long constraintId) {
+    public void setConstraintId(UUID constraintId) {
         this.constraintId = constraintId;
     }
 
-    public long getTaskId() {
+    public UUID getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(long taskId) {
+    public void setTaskId(UUID taskId) {
         this.taskId = taskId;
     }
 
