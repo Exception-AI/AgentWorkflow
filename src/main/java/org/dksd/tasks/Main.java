@@ -3,13 +3,18 @@ package org.dksd.tasks;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
 
-        Helper helper = new Helper("tasks.json", "links.json", "constraints.json");
+        Map<Instance, Helper> helpers = new HashMap<>();
+        Instance instance = new Instance();
+        helpers.put(instance, new Helper("tasks.json", "links.json", "constraints.json"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
+        Helper helper = helpers.get(instance);
 
         while (!"q".equals(line)) {
             try {

@@ -1,8 +1,8 @@
 package org.dksd.tasks;
 
 import org.dksd.tasks.model.Concentration;
+import org.dksd.tasks.model.Cost;
 import org.dksd.tasks.model.DeadlineType;
-import org.dksd.tasks.model.Difficulty;
 import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
@@ -14,8 +14,7 @@ public class Constraint {
     private String schedule; // "* * * etc
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
     private Effort effort;
-    private double cost;
-    private Difficulty difficulty;
+    private Cost cost;
     private Importance importance;
     private Concentration concentration;
     private DeadlineType deadlineType;
@@ -71,8 +70,7 @@ A library for parsing crontab expressions and calculating the next run time base
         this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
         this.leadTime = LeadTime.ONE_DAY;
         this.effort = Effort.MEDIUM;
-        this.cost = 0;
-        this.difficulty = Difficulty.MEDIUM;
+        this.cost = Cost.CHEAP;
         this.importance = Importance.NOT_URGENT_IMPORTANT;
         this.concentration = Concentration.PARTIAL;
         this.deadlineType = DeadlineType.SOFT;
@@ -95,20 +93,12 @@ A library for parsing crontab expressions and calculating the next run time base
         this.effort = effort;
     }
 
-    public double getCost() {
+    public Cost getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(Cost cost) {
         this.cost = cost;
-    }
-
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
     }
 
     public Importance getImportance() {
@@ -151,13 +141,17 @@ A library for parsing crontab expressions and calculating the next run time base
         this.leadTime = leadTime;
     }
 
+    public String toCompactString() {
+        return importance.getValue() + ":" + effort.getValue() + ":" + cost.getValue() + ":" +
+                concentration.getValue() + ":" + deadlineType.getValue() + ":" + completed;
+    }
+
     @Override
     public String toString() {
         return "Constraint{" +
                 "schedule='" + schedule + '\'' +
                 ", effort=" + effort +
                 ", cost=" + cost +
-                ", difficulty=" + difficulty +
                 ", importance=" + importance +
                 ", concentration=" + concentration +
                 ", deadlineType=" + deadlineType +

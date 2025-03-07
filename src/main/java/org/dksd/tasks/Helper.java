@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,11 +20,13 @@ import java.util.function.BiConsumer;
 
 public class Helper {
 
+    private Instance instance;
     private Map<Long, Task> taskMap = new HashMap<>();
     private List<Task> workingSet = new ArrayList<>();
     private List<Task> tasks = null;
     private List<Link> links = null;
     private List<Constraint> constraints = null;
+    private Map<Long, Constraint> constraintMap = new HashMap<>();
     private TreeMap<Long, NodeTask> taskNodeMap = new TreeMap<>();
     private NodeTask currentTask = null;
     private Task ROOT = new Task(0L, "ROOT", "ROOT");
@@ -45,6 +46,16 @@ public class Helper {
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
         constraints = loadConstraints(constraintsFile);
+        if (constraints.isEmpty()) {
+            for (Task task : tasks) {
+                Constraint constraint = new Constraint();
+                constraint.defaultConfig();
+                constraint.setTaskId(task.getId());
+                constraint.setConstraintId(task.getId());
+                constraints.add(constraint);
+                constraintMap.put(constraint.getConstraintId(), constraint);
+            }
+        }
         taskMap.put(ROOT.getId(), ROOT);
         taskNodeMap.put(ROOT.getId(), new NodeTask(0));
         for (Task task : tasks) {
@@ -125,6 +136,7 @@ public class Helper {
     public Task createCommonTask(Task parent, String name, String desc) {
         assert parent != null;
         long nKey = (taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
+        long cKey = (constraintMap.isEmpty()) ? 1 : Collections.max(constraintMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         tasks.add(task);
         taskMap.put(task.getId(), task);
@@ -135,8 +147,11 @@ public class Helper {
         links.add(link);
         addLinkToTree(link);
         Constraint constraint = new Constraint();
+        constraint.setTaskId(t.getId());
+        constraint.setConstraintId(cKey);
         constraint.defaultConfig();
         constraints.add(constraint);
+        constraintMap.put(constraint.getConstraintId(), constraint);
         t.getConstraints().add(task.getId());
         return task;
     }
@@ -257,35 +272,42 @@ public class Helper {
         String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //Needs to be recursive right?
         //for (Task wt : workingSet) {
-            Task wt = taskMap.get(currentTask.getId());
-            String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
+        Task wt = taskMap.get(currentTask.getId());
+        String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
 
-            NodeTask p = taskNodeMap.get(wt.getId());
-            List<String> hierarchy = new ArrayList<>();
-            while (p.getParentId() != null) {
-                p = taskNodeMap.get(p.getParentId());
-                hierarchy.add(taskMap.get(p.getId()).getName());
-            }
+        NodeTask p = taskNodeMap.get(wt.getId());
+        List<String> hierarchy = new ArrayList<>();
+        while (p.getParentId() != null) {
+            p = taskNodeMap.get(p.getParentId());
+            hierarchy.add(taskMap.get(p.getId()).getName());
+        }
 
-            String indent = "  ";
-            System.out.println(wt.getName() + " <- " + hierarchy + " " + suffix);
-            //System.out.println(suffix + "   Description: " + wt.getDescription());
-            System.out.flush();
+        String indent = "  ";
+        System.out.println(wt.getName() + " <- " + hierarchy + " " + suffix);
+        //System.out.println(suffix + "   Description: " + wt.getDescription());
+        System.out.flush();
             /*if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
                 System.out.println(suffix + "   SubTasks: ");
             }*/
-            for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
-                System.out.println(indent + "- " + taskMap.get(subTask).getName());
-            }
-            System.out.flush();
-            if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
-                System.out.print(indent + "  Dependencies: ");
-            }
-            for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
-                System.out.print(taskMap.get(dep).getName() + ", ");
-            }
 
-            System.out.flush();
+        for (Long subTask : taskNodeMap.get(wt.getId()).getSubTasks()) {
+            for (Constraint constraint : constraints) {
+                if (constraint.getTaskId() == subTask) {
+                    System.out.print(constraint.toCompactString());
+                    break;
+                }
+            }
+            System.out.println(indent + "- " + taskMap.get(subTask).getName());
+        }
+        System.out.flush();
+        if (!taskNodeMap.get(wt.getId()).getDependencies().isEmpty()) {
+            System.out.print(indent + "  Dependencies: ");
+        }
+        for (Long dep : taskNodeMap.get(wt.getId()).getDependencies()) {
+            System.out.print(taskMap.get(dep).getName() + ", ");
+        }
+
+        System.out.flush();
         //}
     }
 
