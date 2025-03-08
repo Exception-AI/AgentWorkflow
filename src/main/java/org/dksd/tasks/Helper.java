@@ -125,6 +125,25 @@ public class Helper {
         }
     }
 
+    public NodeTask setCurrentTaskToNext(UUID id) {
+        if (instance.getTaskNode(id).getSubTasks().contains(id)) {
+            int indx = instance.getTaskNode(id).getSubTasks().indexOf(id);
+            if (indx < instance.getTaskNode(id).getSubTasks().size() - 1) {
+                return instance.getTaskNode(instance.getTaskNode(id).getSubTasks().get(indx + 1));
+            }
+        }
+        if (instance.getTaskNode(id).getDependencies().contains(id)) {
+            int indx = instance.getTaskNode(id).getDependencies().indexOf(id);
+            if (indx < instance.getTaskNode(id).getDependencies().size() - 1) {
+                return instance.getTaskNode(instance.getTaskNode(id).getDependencies().get(indx + 1));
+            }
+        }
+        if (instance.getTaskNode(id).getParentId() != null) {
+            setCurrentTaskToNext(instance.getTaskNode(id).getParentId());
+        }
+        return currentTask;
+    }
+
     public void multiInput(BufferedReader reader, BiConsumer<String, String> updateFunction) throws IOException {
         System.out.print("Edit name: ");
         String name = reader.readLine();

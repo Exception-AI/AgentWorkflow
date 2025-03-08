@@ -35,8 +35,11 @@ public class Main {
                         System.out.print("Find: ");
                         helper.find(reader.readLine());
                         break;
-                    case "o": // Next
+                    case "o":
                         helper.setCurrentTaskToParent();
+                        break;
+                    case "n":
+                        helper.setCurrentTaskToSibling();
                         break;
                     case "": // Enter key
                         //selectTask();
