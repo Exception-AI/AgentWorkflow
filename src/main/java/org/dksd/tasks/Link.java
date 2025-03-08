@@ -3,36 +3,37 @@ package org.dksd.tasks;
 import org.dksd.tasks.model.LinkType;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Link {
 
-    private long left;
-    private long right;
+    private UUID left;
     private LinkType linkType;
+    private UUID right;
 
     public Link() {
 
     }
 
-    public Link(long left, LinkType linkType, long right) {
+    public Link(UUID left, LinkType linkType, UUID right) {
         this.left = left;
         this.right = right;
         this.linkType = linkType;
     }
 
-    public long getLeft() {
+    public UUID getLeft() {
         return left;
     }
 
-    public void setLeft(long left) {
+    public void setLeft(UUID left) {
         this.left = left;
     }
 
-    public long getRight() {
+    public UUID getRight() {
         return right;
     }
 
-    public void setRight(long right) {
+    public void setRight(UUID right) {
         this.right = right;
     }
 

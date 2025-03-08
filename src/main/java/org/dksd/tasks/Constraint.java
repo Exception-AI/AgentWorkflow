@@ -7,10 +7,11 @@ import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 
+import java.util.UUID;
+
 public class Constraint {
 
-    private long constraintId;
-    private long taskId;
+    private UUID constraintId;
     private String schedule; // "* * * etc
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
     private Effort effort;
@@ -18,7 +19,8 @@ public class Constraint {
     private Importance importance;
     private Concentration concentration;
     private DeadlineType deadlineType;
-    private double completed; //0 - 1 range
+    //type of activity... e.g. no point sweeping patio twice in a row.
+
     /*
     Character	Meaning	Example
 *	All. Represents that the schedule should run for every time unit	A “*” in the minute field indicates that the schedule runs every minute
@@ -47,26 +49,7 @@ A library for parsing crontab expressions and calculating the next run time base
     //   Not Urgent + Not Important: Delete it, eg Social Media
 
     public Constraint() {
-
-    }
-
-    public long getConstraintId() {
-        return constraintId;
-    }
-
-    public void setConstraintId(long constraintId) {
-        this.constraintId = constraintId;
-    }
-
-    public long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(long taskId) {
-        this.taskId = taskId;
-    }
-
-    public void defaultConfig() {
+        this.constraintId = UUID.randomUUID();
         this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
         this.leadTime = LeadTime.ONE_DAY;
         this.effort = Effort.MEDIUM;
@@ -74,7 +57,14 @@ A library for parsing crontab expressions and calculating the next run time base
         this.importance = Importance.NOT_URGENT_IMPORTANT;
         this.concentration = Concentration.PARTIAL;
         this.deadlineType = DeadlineType.SOFT;
-        this.completed = 0;
+    }
+
+    public UUID getConstraintId() {
+        return constraintId;
+    }
+
+    public void setConstraintId(UUID constraintId) {
+        this.constraintId = constraintId;
     }
 
     public String getSchedule() {
@@ -125,14 +115,6 @@ A library for parsing crontab expressions and calculating the next run time base
         this.deadlineType = deadlineType;
     }
 
-    public double getCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(double completed) {
-        this.completed = completed;
-    }
-
     public LeadTime getLeadTime() {
         return leadTime;
     }
@@ -143,7 +125,7 @@ A library for parsing crontab expressions and calculating the next run time base
 
     public String toCompactString() {
         return importance.getValue() + ":" + effort.getValue() + ":" + cost.getValue() + ":" +
-                concentration.getValue() + ":" + deadlineType.getValue() + ":" + completed;
+                concentration.getValue() + ":" + deadlineType.getValue();
     }
 
     @Override
@@ -155,7 +137,6 @@ A library for parsing crontab expressions and calculating the next run time base
                 ", importance=" + importance +
                 ", concentration=" + concentration +
                 ", deadlineType=" + deadlineType +
-                ", completed=" + completed +
                 '}';
     }
 }

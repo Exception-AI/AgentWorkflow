@@ -4,6 +4,7 @@ public enum LinkType {
     PARENT,
     CHILD,
     SUBTASK,
+    CONSTRAINT,
     DEPENDENCY
 
 }
