@@ -75,6 +75,6 @@ public class Link implements Identifier {
 
     @Override
     public UUID getId() {
-        return left;
+        return id;
     }
 }

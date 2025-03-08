@@ -16,7 +16,7 @@ import java.util.TreeMap;
 public class Main {
     public static void main(String[] args) {
 
-        Instance instance = new Instance("tasks.json", "links.json", "constraints.json");
+        Instance instance = new Instance("school_diary");
         Map<Instance, Helper> helpers = new HashMap<>();
         helpers.put(instance, new Helper(instance));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -34,12 +34,6 @@ public class Main {
                     case "/": // Search
                         System.out.print("Find: ");
                         helper.find(reader.readLine());
-                        break;
-                    case "n": // Next
-                        helper.setCurrentTask(helper.nextTask(helper.getCurrentTask()));
-                        break;
-                    case "p": // Next
-                        helper.setCurrentTask(helper.prevTask(helper.getCurrentTask()));
                         break;
                     case "o": // Next
                         helper.setCurrentTaskToParent();

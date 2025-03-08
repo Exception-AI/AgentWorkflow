@@ -11,8 +11,8 @@ import java.util.UUID;
 
 public class Instance {
 
-    private UUID instanceId;
-    private String instanceName;
+    private final UUID id;
+    private final String instanceName;
     private String instanceDescription;
     private List<Task> tasks = null;
     private List<Link> links = null;
@@ -23,17 +23,18 @@ public class Instance {
     private final ObjectMapper mapper = new ObjectMapper();
     public static final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
 
-    public Instance(File taskFile, File linksFile, File constraintsFile) {
+    public Instance(String instanceName) {
+        this.id = UUID.randomUUID();
+        this.instanceName = instanceName;
+        File taskFile = new File("data/" + instanceName + "_tasks.json");
+        File linksFile = new File("data/" + instanceName + "_links.json");
+        File constraintsFile = new File("data/" + instanceName + "_constraints.json");
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
         constraints = loadConstraints(constraintsFile);
         if (!tasks.contains(ROOT)) {
             tasks.add(ROOT);
         }
-    }
-
-    public Instance(String tasks, String links, String constraints) {
-        this(new File(tasks), new File(links), new File(constraints));
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
@@ -93,7 +94,7 @@ public class Instance {
     }
 
     public UUID getInstanceId() {
-        return instanceId;
+        return id;
     }
 
     public String getInstanceName() {
