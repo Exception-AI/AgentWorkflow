@@ -1,0 +1,184 @@
+package org.dksd.tasks;
+
+import org.dksd.tasks.model.LinkType;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CollectionTest {
+
+    private Collection collection;
+
+    @BeforeEach
+    void setUp() {
+        loadFiles("test_tasks.json", "test_links.json", "test_constraints.json");
+    }
+
+    private void loadFiles(String tasks, String links, String constraints) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File tasksFile = new File(classLoader.getResource(tasks).getFile());
+        File linksFile = new File(classLoader.getResource(links).getFile());
+        File constraintsFile = new File(classLoader.getResource(constraints).getFile());
+        collection = new Collection(tasksFile, linksFile, constraintsFile);
+    }
+
+    @Test
+    void createTaskTest() {
+        Task task = collection.createProjectTask("First Task", "first description");
+        System.out.println("Task:" + task);
+        System.out.println("Tasks:" + collection.getTasks());
+        System.out.println("Links:" + collection.getLinks());
+        System.out.println("Tree:" + collection.getTaskNodeMap());
+        System.out.println("Full:" + collection.getTaskMap());
+        System.out.println("CurrentTask:" + collection.getCurrentTask());
+        assertTrue(collection.getLinks().isEmpty());
+        assertEquals("First Task", task.getName());
+        assertEquals(1, collection.getTasks().size());
+        assertEquals(1, collection.getTaskMap().size());
+        assertEquals(1, collection.getTaskNodeMap().get(1L).getId());
+        assertEquals(0, collection.getTaskNodeMap().get(1L).getSubTasks().size());
+        assertEquals(0, collection.getTaskNodeMap().get(1L).getDependencies().size());
+        assertEquals(0, collection.getWorkingSet().size());
+    }
+
+    @Test
+    void createProjectTasksTest() {
+        Task task = collection.createProjectTask("Parent Task", "first description");
+        collection.createProjectTask( "Second Task", "first description");
+        collection.createProjectTask( "Third Task", "first description");
+        System.out.println("Tasks:" + collection.getTasks());
+        System.out.println("Links:" + collection.getLinks());
+        System.out.println("Tree:" + collection.getTaskNodeMap());
+        System.out.println("Full:" + collection.getTaskMap());
+        System.out.println("CurrentTask:" + collection.getCurrentTask());
+        assertEquals("Parent Task", task.getName());
+        assertEquals(3, collection.getTasks().size());
+        assertEquals(3, collection.getTaskMap().size());
+        assertEquals(1, collection.getTaskNodeMap().get(1L).getId());
+        assertEquals(0, collection.getTaskNodeMap().get(1L).getSubTasks().size());
+        assertEquals(0, collection.getTaskNodeMap().get(1L).getDependencies().size());
+        assertEquals(0, collection.getWorkingSet().size());
+    }
+
+    @Test
+    void createSubTaskTest() {
+        Task task = collection.createProjectTask("First Task", "first description");
+        Task subTask = collection.createSubTask(task, "First Sub Task", "first sub description");
+        System.out.println("Tasks:" + collection.getTasks());
+        System.out.println("Links:" + collection.getLinks());
+        System.out.println("Tree:" + collection.getTaskNodeMap());
+        System.out.println("Full:" + collection.getTaskMap());
+        System.out.println("CurrentTask:" + collection.getCurrentTask());
+        assertFalse(collection.getLinks().isEmpty());
+        assertEquals(LinkType.PARENT, collection.getLinks().getFirst().getLinkType());
+        assertEquals(LinkType.SUBTASK, collection.getLinks().get(1).getLinkType());
+        assertEquals("First Task", task.getName());
+        assertEquals(2, collection.getTasks().size());
+        assertEquals(2, collection.getTaskMap().size());
+        assertEquals(1, collection.getTaskNodeMap().get(1L).getId());
+        assertEquals(1, collection.getTaskNodeMap().get(1L).getSubTasks().size());
+        assertEquals(0, collection.getTaskNodeMap().get(1L).getDependencies().size());
+        assertEquals(0, collection.getWorkingSet().size());
+    }
+
+    @Test
+    void createDepTaskTest() {
+        Task task = collection.createProjectTask("First Task", "first description");
+        Task depTask = collection.createDepTask(task, "First Dep Task", "first dep description");
+        System.out.println("Tasks:" + collection.getTasks());
+        System.out.println("Links:" + collection.getLinks());
+        System.out.println("Tree:" + collection.getTaskNodeMap());
+        System.out.println("Full:" + collection.getTaskMap());
+        System.out.println("CurrentTask:" + collection.getCurrentTask());
+        assertFalse(collection.getLinks().isEmpty());
+        assertEquals(LinkType.PARENT, collection.getLinks().getFirst().getLinkType());
+        assertEquals(LinkType.DEPENDENCY, collection.getLinks().get(1).getLinkType());
+        assertEquals("First Task", task.getName());
+        assertEquals(2, collection.getTasks().size());
+        assertEquals(2, collection.getTaskMap().size());
+        assertEquals(1, collection.getTaskNodeMap().get(1L).getId());
+        assertEquals(0, collection.getTaskNodeMap().get(1L).getSubTasks().size());
+        assertEquals(1, collection.getTaskNodeMap().get(1L).getDependencies().size());
+        assertEquals(0, collection.getWorkingSet().size());
+    }
+
+    @Test
+    void createSubTaskStress() {
+        Task task = collection.createProjectTask("First Task", "first description");
+        for (int i = 0; i < 10000; i++) {
+            collection.createSubTask(task, "First Sub Task", "first sub description");
+        }
+        System.out.println("Tasks:" + collection.getTasks());
+        System.out.println("Links:" + collection.getLinks());
+        System.out.println("Tree:" + collection.getTaskNodeMap());
+        System.out.println("Full:" + collection.getTaskMap());
+        System.out.println("CurrentTask:" + collection.getCurrentTask());
+    }
+
+    @Test
+    void moveUpTest() {
+        Task p1 = collection.createProjectTask("First Project", "first project description");
+        Task p2 = collection.createProjectTask("Second Project", "first project description");
+        Task p3 = collection.createProjectTask("Third Project", "first project description");
+        collection.createDepTask(p2, "Second Dep Task", "Second dep description");
+        Task p7 = collection.createSubTask(p3, "Third Dep Task", "Third dep description");
+        System.out.println(collection.getTaskNodeMap().get(p7.getId()));
+        NodeTask nt = collection.moveUp(collection.getTaskNodeMap().get(p7.getId()));
+        System.out.println(nt);
+        assertEquals(3L, nt.getId());
+        nt = collection.moveUp(nt);
+        assertEquals(2L, nt.getId());
+        nt = collection.moveUp(nt);
+        assertEquals(1L, nt.getId());
+        nt = collection.moveUp(nt);
+        assertEquals(0L, nt.getId());
+        nt = collection.moveUp(nt);
+        assertEquals(0L, nt.getId());
+    }
+
+    @Test
+    void moveDownTest() {
+        Task p1 = collection.createProjectTask("First Project", "first project description");
+        Task p2 = collection.createProjectTask("Second Project", "first project description");
+        Task p3 = collection.createProjectTask("Third Project", "first project description");
+        collection.createDepTask(p2, "Second Dep Task", "Second dep description");
+        Task p7 = collection.createSubTask(p3, "Third Dep Task", "Third dep description");
+        System.out.println(collection.getTaskNodeMap().get(p7.getId()));
+        NodeTask nt = collection.moveDown(collection.getTaskNodeMap().get(p1.getId()));
+        System.out.println(nt);
+        assertEquals(2L, nt.getId());
+        nt = collection.moveDown(nt);
+        assertEquals(3L, nt.getId());
+        nt = collection.moveDown(nt);
+        assertEquals(3L, nt.getId());
+        String tasks = collection.toJson(collection.getTasks());
+        System.out.println(tasks);
+    }
+
+    @Test
+    void buildTree() {
+    }
+
+    @Test
+    void toJson() {
+    }
+
+    @Test
+    void loadTasks() {
+    }
+
+    @Test
+    void loadLinks() {
+    }
+
+    @Test
+    void writeJson() {
+    }
+
+    @Test
+    void selectTasks() {
+    }
+}

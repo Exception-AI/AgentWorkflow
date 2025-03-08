@@ -12,6 +12,11 @@ public class Task implements Identifier {
 
     }
 
+    public void updateTask(String ename, String edesc) {
+        setName(ename);
+        setDescription(edesc);
+    }
+
     public void setId(UUID id) {
         this.id = id;
     }

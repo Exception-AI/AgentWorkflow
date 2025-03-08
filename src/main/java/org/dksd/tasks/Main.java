@@ -17,15 +17,15 @@ public class Main {
     public static void main(String[] args) {
 
         Instance instance = new Instance("school_diary");
-        Map<Instance, Helper> helpers = new HashMap<>();
-        helpers.put(instance, new Helper(instance));
+        Map<Instance, Collection> collections = new HashMap<>();
+        collections.put(instance, new Collection());
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
-        Helper helper = helpers.get(instance);
+        Collection collection = collections.get(instance);
 
         while (!"q".equals(line)) {
             try {
-                helper.displayTasks();
+                collection.displayTasks();
 
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
@@ -33,32 +33,32 @@ public class Main {
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
-                        helper.find(reader.readLine());
+                        collection.find(reader.readLine());
                         break;
                     case "o":
-                        helper.setCurrentTaskToParent();
+                        instance.setCurrentTaskToParent();
                         break;
                     case "n":
-                        helper.setCurrentTaskToSibling();
+                        instance.setCurrentTaskToNext(instance.getCurrentNodeTask().getId());
                         break;
                     case "": // Enter key
                         //selectTask();
                         System.out.println("Enter pressed");
                         break;
                     case "cp":
-                        helper.multiInput(reader, helper::createProjectTask);
+                        collection.multiInput(reader, instance::createProjectTask);
                         break;
                     case "cs":
-                        helper.multiInput(reader, (name, desc) -> helper.getInstance().createSubTask(helper.getCurrent(), name, desc));
+                        collection.multiInput(reader, (name, desc) -> instance.createSubTask(instance.getCurrentTask(), name, desc));
                         break;
                     case "cd":
-                        helper.multiInput(reader, (name, desc) -> helper.getInstance().createDepTask(helper.getCurrent(), name, desc));
+                        collection.multiInput(reader, (name, desc) -> instance.createDepTask(instance.getCurrentTask(), name, desc));
                         break;
                     case "e":
-                        helper.multiInput(reader, (name, desc) -> helper.updateTask(helper.getCurrent(), name, desc));
+                        collection.multiInput(reader, (name, desc) -> instance.getCurrentTask().updateTask(name, desc));
                         break;
                     case ":w": // Write
-                        instance.write(helper);
+                        instance.write(collection);
                         break;
                     case "q": // Quit
                         break;
@@ -69,7 +69,7 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
-        instance.write(helper);
+        instance.write(collection);
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
@@ -82,7 +82,7 @@ public class Main {
                     sorted.put(p.getGene().getValue(i), i);
                 }
                 for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    Task task = helper.getTasks().get(entry.getValue());
+                    Task task = instance.getTasks().get(entry.getValue());
                     System.out.println("Task ordering: " + task);
                     //Weighted by importance, effort, cost
                     //get next execution time of task.
@@ -93,13 +93,13 @@ public class Main {
 
             @Override
             public int getDimension() {
-                return helper.getTasks().size();
+                return instance.getTasks().size();
             }
 
             @Override
             public double[] getDomain() {
-                double[] dm = new double[helper.getTasks().size()];
-                for (int i = 0; i < helper.getTasks().size(); i++) {
+                double[] dm = new double[instance.getTasks().size()];
+                for (int i = 0; i < instance.getTasks().size(); i++) {
                     dm[i] = 1.0;
                 }
                 return dm;

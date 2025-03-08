@@ -24,6 +24,7 @@ public class Instance {
     private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
     public static final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
+    private NodeTask currentNodeTask = null;
 
     public Instance(String instanceName) {
         this.id = UUID.randomUUID();
@@ -40,6 +41,7 @@ public class Instance {
         taskMap = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);
+        currentNodeTask = getRoot();
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
@@ -109,10 +111,10 @@ public class Instance {
         }
     }
 
-    public void write(Helper helper) {
-        writeJson("data/" + instanceName + "_tasks.json", helper.toJson(helper.getTasks()));
-        writeJson("data/" + instanceName + "_links.json", helper.toJson(helper.getLinks()));
-        writeJson("data/" + instanceName + "_constraints.json", helper.toJson(helper.getConstraints()));
+    public void write(Collection collection) {
+        writeJson("data/" + instanceName + "_tasks.json", collection.toJson(getTasks()));
+        writeJson("data/" + instanceName + "_links.json", collection.toJson(getLinks()));
+        writeJson("data/" + instanceName + "_constraints.json", collection.toJson(getConstraints()));
     }
 
     public UUID getInstanceId() {
@@ -170,5 +172,58 @@ public class Instance {
 
     public NodeTask getTaskNode(UUID id) {
         return nodeTaskCache.get(id);
+    }
+
+    private List<UUID> getParentSubTasks(NodeTask node) {
+        return getTaskNode(node.getParentId()).getSubTasks();
+    }
+
+    private List<UUID> getParentDepTasks(NodeTask node) {
+        return getTaskNode(node.getParentId()).getDependencies();
+    }
+
+    private boolean isSubTask(NodeTask node) {
+        return getParentSubTasks(node).contains(node.getId());
+    }
+
+    private boolean isDepTask(NodeTask node) {
+        return getParentDepTasks(node).contains(node.getId());
+    }
+
+    public NodeTask getCurrentNodeTask() {
+        return currentNodeTask;
+    }
+
+    public Task getCurrentTask() {
+        return taskMap.get(currentNodeTask.getId());
+    }
+
+    public void setCurrentTaskToParent() {
+        if (currentNodeTask.getParentId() != null) {
+            currentNodeTask = getTaskNode(currentNodeTask.getParentId());
+        }
+    }
+
+    public NodeTask setCurrentTaskToNext(UUID id) {
+        if (getTaskNode(id).getSubTasks().contains(id)) {
+            int indx = getTaskNode(id).getSubTasks().indexOf(id);
+            if (indx < getTaskNode(id).getSubTasks().size() - 1) {
+                return getTaskNode(getTaskNode(id).getSubTasks().get(indx + 1));
+            }
+        }
+        if (getTaskNode(id).getDependencies().contains(id)) {
+            int indx = getTaskNode(id).getDependencies().indexOf(id);
+            if (indx < getTaskNode(id).getDependencies().size() - 1) {
+                return getTaskNode(getTaskNode(id).getDependencies().get(indx + 1));
+            }
+        }
+        if (getTaskNode(id).getParentId() != null) {
+            setCurrentTaskToNext(getTaskNode(id).getParentId());
+        }
+        return currentNodeTask;
+    }
+
+    public void setCurrentTaskNode(NodeTask taskNode) {
+        currentNodeTask = taskNode;
     }
 }
