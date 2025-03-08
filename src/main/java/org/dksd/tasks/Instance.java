@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dksd.tasks.model.LinkType;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,9 +19,9 @@ public class Instance {
     private List<Task> tasks = null;
     private List<Link> links = null;
     private List<Constraint> constraints = null;
-    private Cache<Task> taskMap = new Cache<>(tasks);
-    private Cache<Constraint> constraintMap = new Cache<>(constraints);
-    private NodeTaskCache nodeTaskCache = new NodeTaskCache(tasks, links);
+    private Cache<Task> taskMap= null;
+    private Cache<Constraint> constraintMap = null;
+    private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
     public static final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
 
@@ -35,6 +37,9 @@ public class Instance {
         if (!tasks.contains(ROOT)) {
             tasks.add(ROOT);
         }
+        taskMap = new Cache<>(tasks);
+        constraintMap = new Cache<>(constraints);
+        nodeTaskCache = new NodeTaskCache(tasks, links);
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
@@ -91,6 +96,23 @@ public class Instance {
             e.printStackTrace();
         }
         return new ArrayList<>();
+    }
+
+    public void writeJson(String fileName, String json) {
+        try (FileWriter fileWriter = new FileWriter(fileName)) {
+            fileWriter.write(json);
+            fileWriter.flush();
+            System.out.println("Successfully saved JSON to " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error writing JSON to file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void write(Helper helper) {
+        writeJson("data/" + instanceName + "_tasks.json", helper.toJson(helper.getTasks()));
+        writeJson("data/" + instanceName + "_links.json", helper.toJson(helper.getLinks()));
+        writeJson("data/" + instanceName + "_constraints.json", helper.toJson(helper.getConstraints()));
     }
 
     public UUID getInstanceId() {

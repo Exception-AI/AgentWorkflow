@@ -55,7 +55,7 @@ public class Main {
                         helper.multiInput(reader, (name, desc) -> helper.updateTask(helper.getCurrent(), name, desc));
                         break;
                     case ":w": // Write
-                        write(helper);
+                        instance.write(helper);
                         break;
                     case "q": // Quit
                         break;
@@ -66,7 +66,7 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
-        write(helper);
+        instance.write(helper);
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
@@ -109,11 +109,5 @@ public class Main {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void write(Helper helper) {
-        helper.writeJson("tasks.json", helper.toJson(helper.getTasks()));
-        helper.writeJson("links.json", helper.toJson(helper.getLinks()));
-        helper.writeJson("constraints.json", helper.toJson(helper.getConstraints()));
     }
 }

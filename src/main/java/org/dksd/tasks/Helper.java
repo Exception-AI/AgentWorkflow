@@ -67,17 +67,6 @@ public class Helper {
         return null;
     }
 
-    public void writeJson(String fileName, String json) {
-        try (FileWriter fileWriter = new FileWriter(fileName)) {
-            fileWriter.write(json);
-            fileWriter.flush();
-            System.out.println("Successfully saved JSON to " + fileName);
-        } catch (IOException e) {
-            System.err.println("Error writing JSON to file: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     public void displayTasks() {
         String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //Needs to be recursive right?
