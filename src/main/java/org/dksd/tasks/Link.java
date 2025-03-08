@@ -8,8 +8,8 @@ import java.util.UUID;
 public class Link {
 
     private UUID left;
-    private UUID right;
     private LinkType linkType;
+    private UUID right;
 
     public Link() {
 

@@ -1,1 +1,12 @@
-[ ]
+[ {
+  "constraintId" : "13523495-f4bd-3dd3-86a9-22f207c20b0a",
+  "taskId" : "13523495-f4bd-3dd3-86a9-22f207c20b0a",
+  "schedule" : "30 22 * * 1",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT",
+  "completed" : 0.0
+} ]
