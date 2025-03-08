@@ -5,17 +5,19 @@ import org.dksd.tasks.model.LinkType;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Link {
+public class Link implements Identifier {
 
+    private UUID id;
     private UUID left;
     private LinkType linkType;
     private UUID right;
 
     public Link() {
-
+        this.id = UUID.randomUUID();
     }
 
     public Link(UUID left, LinkType linkType, UUID right) {
+        this.id = UUID.randomUUID();
         this.left = left;
         this.right = right;
         this.linkType = linkType;
@@ -69,5 +71,10 @@ public class Link {
     @Override
     public int hashCode() {
         return Objects.hash(left, right, linkType);
+    }
+
+    @Override
+    public UUID getId() {
+        return left;
     }
 }

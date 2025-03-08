@@ -2,7 +2,7 @@ package org.dksd.tasks;
 
 import java.util.*;
 
-public class Task {
+public class Task implements Identifier {
 
     private UUID id;
     private String name;

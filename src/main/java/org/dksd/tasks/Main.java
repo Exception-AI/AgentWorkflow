@@ -68,7 +68,6 @@ public class Main {
                     default:
                         break;
                 }
-                helper.selectTasks();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

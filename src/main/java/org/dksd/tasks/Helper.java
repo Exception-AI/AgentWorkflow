@@ -9,30 +9,25 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
 public class Helper {
 
     private final Instance instance;
-    private List<Task> workingSet = new ArrayList<>();
     private NodeTask currentTask = null;
 
     public Helper(Instance instance) {
         this.instance = instance;
-        workingSet = new ArrayList<>();
-        selectTasks();
-        currentTask = (!workingSet.isEmpty()) ? instance.getTaskNodeMap().get(workingSet.stream().findFirst().get().getId()) : null;
+        currentTask = instance.getRoot();
     }
 
     private List<UUID> getParentSubTasks(NodeTask node) {
-        return instance.getTaskNodeMap().get(node.getParentId()).getSubTasks();
+        return instance.getTaskNode(node.getParentId()).getSubTasks();
     }
 
     private List<UUID> getParentDepTasks(NodeTask node) {
-        return instance.getTaskNodeMap().get(node.getParentId()).getDependencies();
+        return instance.getTaskNode(node.getParentId()).getDependencies();
     }
 
     private boolean isSubTask(NodeTask node) {
@@ -83,33 +78,18 @@ public class Helper {
         }
     }
 
-    public void selectTasks() {
-        //TODO this is where it can get more fancy
-        if (instance.getTaskMap().isEmpty()) {
-            return;
-        }
-        Random rand = new Random();
-        List<UUID> indexes = new ArrayList<>(instance.getTaskMap().keySet());
-        for (int i = 0; i < 10 && workingSet.size() < 10; i++) {
-            int ii = rand.nextInt(indexes.size());
-            if (!workingSet.contains(instance.getTaskMap().get(indexes.get(ii)))) {
-                workingSet.add(instance.getTaskMap().get(indexes.get(ii)));
-            }
-        }
-    }
-
     public void displayTasks() {
         String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //Needs to be recursive right?
         //for (Task wt : workingSet) {
-        Task wt = instance.getTaskMap().get(currentTask.getId());
+        Task wt = instance.getTask(currentTask.getId());
         String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
 
-        NodeTask p = instance.getTaskNodeMap().get(wt.getId());
+        NodeTask p = instance.getTaskNode(wt.getId());
         List<String> hierarchy = new ArrayList<>();
         while (p.getParentId() != null) {
-            p = instance.getTaskNodeMap().get(p.getParentId());
-            hierarchy.add(instance.getTaskMap().get(p.getId()).getName());
+            p = instance.getTaskNode(p.getParentId());
+            hierarchy.add(instance.getTask(p.getId()).getName());
         }
 
         String indent = "  ";
@@ -122,16 +102,16 @@ public class Helper {
 
         for (UUID subTask : p.getSubTasks()) {
             for (UUID constraint : p.getConstraints()) {
-                System.out.print(instance.getConstraintMap().get(constraint).toCompactString());
+                System.out.print(instance.getConstraint(constraint).toCompactString());
             }
-            System.out.println(indent + "- " + instance.getTaskMap().get(subTask).getName());
+            System.out.println(indent + "- " + instance.getTask(subTask).getName());
         }
         System.out.flush();
         if (!p.getDependencies().isEmpty()) {
             System.out.print(indent + "  Dependencies: ");
         }
         for (UUID dep : p.getDependencies()) {
-            System.out.print(instance.getTaskMap().get(dep).getName() + ", ");
+            System.out.print(instance.getTask(dep).getName() + ", ");
         }
 
         System.out.flush();
@@ -143,40 +123,16 @@ public class Helper {
     }
 
     public Task getCurrent() {
-        return instance.getTaskMap().get(currentTask.getId());
-    }
-
-    public List<Task> getWorkingSet() {
-        return workingSet;
+        return instance.getTask(currentTask.getId());
     }
 
     public void setCurrentTask(NodeTask nodeTask) {
         this.currentTask = nodeTask;
     }
 
-    public NodeTask nextTask(NodeTask currentTask) {
-        Map.Entry<UUID, NodeTask> nextEntry = instance.getTaskNodeMap().higherEntry(currentTask.getId());
-
-        if (nextEntry != null) {
-            return nextEntry.getValue();
-        } else {
-            return currentTask; // or handle the case differently
-        }
-    }
-
-    public NodeTask prevTask(NodeTask currentTask) {
-        Map.Entry<UUID, NodeTask> nextEntry = instance.getTaskNodeMap().lowerEntry(currentTask.getId());
-
-        if (nextEntry != null) {
-            return nextEntry.getValue();
-        } else {
-            return currentTask; // or handle the case differently
-        }
-    }
-
     public void setCurrentTaskToParent() {
         if (currentTask.getParentId() != null) {
-            currentTask = instance.getTaskNodeMap().get(currentTask.getParentId());
+            currentTask = instance.getTaskNode(currentTask.getParentId());
         }
     }
 
@@ -197,7 +153,7 @@ public class Helper {
     public void find(String searchTerm) {
         for (Task task : instance.getTasks()) {
             if (task.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
-                currentTask = instance.getTaskNodeMap().get(task.getId());
+                currentTask = instance.getTaskNode(task.getId());
             }
         }
     }
