@@ -23,19 +23,22 @@ public class Instance implements Identifier {
     private Cache<Constraint> constraintMap = null;
     private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
-    public static final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
 
     public Instance(String instanceName) {
         this.id = UUID.randomUUID();
         this.instanceName = instanceName;
-        File taskFile = new File("data/" + instanceName + "_tasks.json");
-        File linksFile = new File("data/" + instanceName + "_links.json");
-        File constraintsFile = new File("data/" + instanceName + "_constraints.json");
+        File instanceDir = new File("data/" + instanceName);
+        if (!instanceDir.exists()) {
+            instanceDir.mkdirs();
+        }
+        File taskFile = new File(instanceDir, "tasks.json");
+        File linksFile = new File(instanceDir, "links.json");
+        File constraintsFile = new File(instanceDir, "constraints.json");
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
         constraints = loadConstraints(constraintsFile);
-        if (!tasks.contains(ROOT)) {
-            tasks.add(ROOT);
+        if (tasks.isEmpty()) {
+            tasks.add(new Task(UUID.randomUUID(), "ROOT:" + instanceName, "ROOT:" + instanceName));
         }
         taskMap = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
@@ -106,9 +109,14 @@ public class Instance implements Identifier {
     }
 
     public void write(Collection collection) {
-        writeJson("data/" + instanceName + "_tasks.json", collection.toJson(getTasks()));
-        writeJson("data/" + instanceName + "_links.json", collection.toJson(getLinks()));
-        writeJson("data/" + instanceName + "_constraints.json", collection.toJson(getConstraints()));
+        File instanceDir = new File("data/" + instanceName);
+        if (!instanceDir.exists()) {
+            instanceDir.mkdirs();
+        }
+
+        writeJson("data/" + instanceName + "/tasks.json", collection.toJson(getTasks()));
+        writeJson("data/" + instanceName + "/links.json", collection.toJson(getLinks()));
+        writeJson("data/" + instanceName + "/constraints.json", collection.toJson(getConstraints()));
     }
 
     public List<Task> getTasks() {
@@ -144,20 +152,8 @@ public class Instance implements Identifier {
         return constraintMap.get(id);
     }
 
-    public NodeTask getRoot() {
-        return nodeTaskCache.get(ROOT.getId());
-    }
-
     public NodeTask getTaskNode(UUID id) {
         return nodeTaskCache.get(id);
-    }
-
-    private List<UUID> getParentSubTasks(NodeTask node) {
-        return getTaskNode(node.getParentId()).getSubTasks();
-    }
-
-    private List<UUID> getParentDepTasks(NodeTask node) {
-        return getTaskNode(node.getParentId()).getDependencies();
     }
 
     @Override

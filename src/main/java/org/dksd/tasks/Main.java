@@ -16,7 +16,7 @@ import java.util.function.BiConsumer;
 public class Main {
     public static void main(String[] args) {
 
-        Collection coll = new Collection(new Instance("school_diary"));
+        Collection coll = new Collection(new Instance("schoolDiary"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
