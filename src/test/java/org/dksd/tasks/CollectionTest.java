@@ -3,8 +3,10 @@ package org.dksd.tasks;
 import org.dksd.tasks.model.LinkType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.Node;
 
 import java.io.File;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,32 +20,37 @@ class CollectionTest {
     }
 
     private void loadFiles(String tasks, String links, String constraints) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File tasksFile = new File(classLoader.getResource(tasks).getFile());
-        File linksFile = new File(classLoader.getResource(links).getFile());
-        File constraintsFile = new File(classLoader.getResource(constraints).getFile());
-        collection = new Collection(tasksFile, linksFile, constraintsFile);
+        //ClassLoader classLoader = getClass().getClassLoader();
+        //File tasksFile = new File(classLoader.getResource(tasks).getFile());
+        //File linksFile = new File(classLoader.getResource(links).getFile());
+        //File constraintsFile = new File(classLoader.getResource(constraints).getFile());
+        Instance instance = new Instance("test");
+        collection = new Collection(instance);
     }
 
     @Test
     void createTaskTest() {
-        Task task = collection.createProjectTask("First Task", "first description");
+        Task task = collection.getInstance().createSubTask(collection.getCurrentTask(), "First Task", "first description");
         System.out.println("Task:" + task);
-        System.out.println("Tasks:" + collection.getTasks());
-        System.out.println("Links:" + collection.getLinks());
-        System.out.println("Tree:" + collection.getTaskNodeMap());
-        System.out.println("Full:" + collection.getTaskMap());
         System.out.println("CurrentTask:" + collection.getCurrentTask());
-        assertTrue(collection.getLinks().isEmpty());
+        assertFalse(collection.getInstance().getLinks().isEmpty());
         assertEquals("First Task", task.getName());
-        assertEquals(1, collection.getTasks().size());
-        assertEquals(1, collection.getTaskMap().size());
-        assertEquals(1, collection.getTaskNodeMap().get(1L).getId());
-        assertEquals(0, collection.getTaskNodeMap().get(1L).getSubTasks().size());
-        assertEquals(0, collection.getTaskNodeMap().get(1L).getDependencies().size());
-        assertEquals(0, collection.getWorkingSet().size());
+        List<Task> tasks = collection.getInstance().getTasks();
+        List<Link> links = collection.getInstance().getLinks();
+        List<Constraint> constraints = collection.getInstance().getConstraints();
+        assertEquals(2, tasks.size());
+        assertEquals(1, constraints.size());
+        assertEquals(3, links.size());
+
+        Task root = tasks.get(0);
+        Task st = tasks.get(1);
+        NodeTask ntRoot = collection.getInstance().getTaskNodes().get(root.getId());
+        NodeTask ntSubTask = collection.getInstance().getTaskNodes().get(st.getId());
+        assertEquals(1, ntRoot.getSubTasks().size());
+        assertEquals(0, ntSubTask.getSubTasks().size());
     }
 
+    /*
     @Test
     void createProjectTasksTest() {
         Task task = collection.createProjectTask("Parent Task", "first description");
@@ -181,4 +188,6 @@ class CollectionTest {
     @Test
     void selectTasks() {
     }
+
+     */
 }

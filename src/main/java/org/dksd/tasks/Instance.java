@@ -72,7 +72,7 @@ public class Instance implements Identifier {
             return mapper.readValue(file, new TypeReference<List<Task>>() {
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return new ArrayList<>();
     }
@@ -82,7 +82,7 @@ public class Instance implements Identifier {
             return mapper.readValue(file, new TypeReference<List<Link>>() {
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return new ArrayList<>();
     }
@@ -92,7 +92,7 @@ public class Instance implements Identifier {
             return mapper.readValue(file, new TypeReference<List<Constraint>>() {
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return new ArrayList<>();
     }
