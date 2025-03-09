@@ -1,5 +1,9 @@
 [ {
-  "id" : "544e4b03-4db7-438c-8394-d3d22cab15e9",
+  "id" : "1a0576ed-0e4c-4815-add2-c206e8c9cbc3",
   "name" : "ROOT:schoolDiary",
   "description" : "ROOT:schoolDiary"
+}, {
+  "id" : "3b5a1eba-f508-4c12-84f3-e6d56ecce70a",
+  "name" : "Drop Off",
+  "description" : "Drop off for school"
 } ]

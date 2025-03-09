@@ -140,7 +140,7 @@ public class Instance implements Identifier {
     public Constraint addConstraint(Task task) {
         Constraint constraint = new Constraint();
         constraints.add(constraint);
-        addLink(task.getId(), LinkType.CONSTRAINT, constraint.getConstraintId());
+        addLink(task.getId(), LinkType.CONSTRAINT, constraint.getId());
         return constraint;
     }
 
