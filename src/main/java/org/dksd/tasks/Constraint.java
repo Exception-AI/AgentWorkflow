@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class Constraint implements Identifier {
 
-    private UUID constraintId;
+    private UUID id;
     private String schedule; // "* * * etc
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
     private Effort effort;
@@ -49,7 +49,7 @@ A library for parsing crontab expressions and calculating the next run time base
     //   Not Urgent + Not Important: Delete it, eg Social Media
 
     public Constraint() {
-        this.constraintId = UUID.randomUUID();
+        this.id = UUID.randomUUID();
         this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
         this.leadTime = LeadTime.ONE_DAY;
         this.effort = Effort.MEDIUM;
@@ -59,12 +59,8 @@ A library for parsing crontab expressions and calculating the next run time base
         this.deadlineType = DeadlineType.SOFT;
     }
 
-    public UUID getConstraintId() {
-        return constraintId;
-    }
-
-    public void setConstraintId(UUID constraintId) {
-        this.constraintId = constraintId;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getSchedule() {
@@ -142,6 +138,6 @@ A library for parsing crontab expressions and calculating the next run time base
 
     @Override
     public UUID getId() {
-        return constraintId;
+        return id;
     }
 }

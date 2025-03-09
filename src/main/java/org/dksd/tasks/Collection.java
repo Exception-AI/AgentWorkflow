@@ -61,7 +61,7 @@ public class Collection {
             }*/
 
         for (UUID subTask : p.getSubTasks()) {
-            for (UUID constraint : p.getConstraints()) {
+            for (UUID constraint : getInstance().getTaskNode(subTask).getConstraints()) {
                 System.out.print(getInstance().getConstraint(constraint).toCompactString());
             }
             System.out.println(indent + "- " + getInstance().getTask(subTask).getName());

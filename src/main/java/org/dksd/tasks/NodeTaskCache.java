@@ -31,15 +31,20 @@ public class NodeTaskCache {
         if (LinkType.DEPENDENCY.equals(link.getLinkType())) {
             taskNodeMap.get(link.getLeft()).getDependencies().add(link.getRight());
         }
+        if (LinkType.CONSTRAINT.equals(link.getLinkType())) {
+            taskNodeMap.get(link.getLeft()).getConstraints().add(link.getRight());
+        }
     }
 
     public NodeTask get(UUID id) {
-        for (Task task : tasks) {
-            NodeTask t = new NodeTask(task.getId());
-            taskNodeMap.put(task.getId(), t);
-        }
-        for (Link link : links) {
-            addLinkToTree(link);
+        if (!taskNodeMap.containsKey(id)) {
+            for (Task task : tasks) {
+                NodeTask t = new NodeTask(task.getId());
+                taskNodeMap.put(task.getId(), t);
+            }
+            for (Link link : links) {
+                addLinkToTree(link);
+            }
         }
         return taskNodeMap.get(id);
     }
