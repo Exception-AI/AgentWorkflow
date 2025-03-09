@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Instance {
+public class Instance implements Identifier {
 
     private final UUID id;
     private final String instanceName;
@@ -24,7 +24,6 @@ public class Instance {
     private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
     public static final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
-    private NodeTask currentNodeTask = null;
 
     public Instance(String instanceName) {
         this.id = UUID.randomUUID();
@@ -41,7 +40,6 @@ public class Instance {
         taskMap = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);
-        currentNodeTask = getRoot();
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
@@ -190,40 +188,12 @@ public class Instance {
         return getParentDepTasks(node).contains(node.getId());
     }
 
-    public NodeTask getCurrentNodeTask() {
-        return currentNodeTask;
+    @Override
+    public UUID getId() {
+        return id;
     }
 
-    public Task getCurrentTask() {
-        return taskMap.get(currentNodeTask.getId());
-    }
-
-    public void setCurrentTaskToParent() {
-        if (currentNodeTask.getParentId() != null) {
-            currentNodeTask = getTaskNode(currentNodeTask.getParentId());
-        }
-    }
-
-    public NodeTask setCurrentTaskToNext(UUID id) {
-        if (getTaskNode(id).getSubTasks().contains(id)) {
-            int indx = getTaskNode(id).getSubTasks().indexOf(id);
-            if (indx < getTaskNode(id).getSubTasks().size() - 1) {
-                return getTaskNode(getTaskNode(id).getSubTasks().get(indx + 1));
-            }
-        }
-        if (getTaskNode(id).getDependencies().contains(id)) {
-            int indx = getTaskNode(id).getDependencies().indexOf(id);
-            if (indx < getTaskNode(id).getDependencies().size() - 1) {
-                return getTaskNode(getTaskNode(id).getDependencies().get(indx + 1));
-            }
-        }
-        if (getTaskNode(id).getParentId() != null) {
-            setCurrentTaskToNext(getTaskNode(id).getParentId());
-        }
-        return currentNodeTask;
-    }
-
-    public void setCurrentTaskNode(NodeTask taskNode) {
-        currentNodeTask = taskNode;
+    public NodeTaskCache getTaskNodes() {
+        return nodeTaskCache;
     }
 }

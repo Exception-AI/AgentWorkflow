@@ -3,27 +3,34 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.function.BiConsumer;
 
 public class Collection {
 
-    private List<Instance> instances = new ArrayList<>();
-    private ObjectMapper mapper = new ObjectMapper();
+    private final List<Instance> instances = new ArrayList<>(); // save these
+    //private Cache<Instance> instCache = new Cache<Instance>(instances);
+    private final ObjectMapper mapper = new ObjectMapper();
+    private NodeTask curr;
 
-    public Collection() {
+    public Collection(Instance... instances) {
+        this.instances.addAll(Arrays.stream(instances).toList());
+        curr = this.instances.getFirst().getRoot();
     }
 
-    public String toJson(List<?> tasks) {
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        try {
-            return mapper.writeValueAsString(tasks);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void setCurrentTaskToParent() {
+        if (curr.getParentId() != null) {
+            curr = getInstance().getTaskNodes().get(curr.getParentId());
+        }
+    }
+
+    public Instance getInstance() {
+        for (Instance instance : instances) {
+            if (instance.getTaskNodes().get(curr.getId()) != null) {
+                return instance;
+            }
         }
         return null;
     }
@@ -32,16 +39,15 @@ public class Collection {
         String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //Needs to be recursive right?
         //for (Task wt : workingSet) {
-        for (Instance instance : instances) {
-        NodeTask currentTask = instance.getCurrentNodeTask();
-        Task wt = instance.getTask(currentTask.getId());
-        String suffix = currentTask != null && currentTask.getId() == wt.getId() ? " (*) " : "";
 
-        NodeTask p = instance.getTaskNode(wt.getId());
+        Task wt = getInstance().getTask(curr.getId());
+        String suffix = curr.getId() == wt.getId() ? " (*) " : "";
+
+        NodeTask p = getInstance().getTaskNode(wt.getId());
         List<String> hierarchy = new ArrayList<>();
         while (p.getParentId() != null) {
-            p = instance.getTaskNode(p.getParentId());
-            hierarchy.add(instance.getTask(p.getId()).getName());
+            p = getInstance().getTaskNode(p.getParentId());
+            hierarchy.add(getInstance().getTask(p.getId()).getName());
         }
 
         String indent = "  ";
@@ -54,40 +60,55 @@ public class Collection {
 
         for (UUID subTask : p.getSubTasks()) {
             for (UUID constraint : p.getConstraints()) {
-                System.out.print(instance.getConstraint(constraint).toCompactString());
+                System.out.print(getInstance().getConstraint(constraint).toCompactString());
             }
-            System.out.println(indent + "- " + instance.getTask(subTask).getName());
+            System.out.println(indent + "- " + getInstance().getTask(subTask).getName());
         }
         System.out.flush();
         if (!p.getDependencies().isEmpty()) {
             System.out.print(indent + "  Dependencies: ");
         }
         for (UUID dep : p.getDependencies()) {
-            System.out.print(instance.getTask(dep).getName() + ", ");
+            System.out.print(getInstance().getTask(dep).getName() + ", ");
         }
-
         System.out.flush();
-        }
     }
 
-    public void multiInput(BufferedReader reader, BiConsumer<String, String> updateFunction) throws IOException {
-        System.out.print("Edit name: ");
-        String name = reader.readLine();
-        System.out.print("Edit description: ");
-        String desc = reader.readLine();
-        updateFunction.accept(name, desc);
+    public String toJson(List<?> tasks) {
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            return mapper.writeValueAsString(tasks);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void find(String searchTerm) {
-        for (Instance instance : instances) {
-            for (Task task : instance.getTasks()) {
-                if (task.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
-                    instance.setCurrentTaskNode(instance.getTaskNode(task.getId()));
-                }
+        for (Task task : getInstance().getTasks()) {
+            if (task.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                curr = getInstance().getTaskNode(task.getId());
             }
         }
     }
 
+    public NodeTask setCurrentTaskToNext() {
+        if (getInstance().getTaskNode(curr.getId()).getSubTasks().contains(curr.getId())) {
+            int indx = getInstance().getTaskNode(curr.getId()).getSubTasks().indexOf(curr.getId());
+            if (indx < getInstance().getTaskNode(curr.getId()).getSubTasks().size() - 1) {
+                return getInstance().getTaskNode(getInstance().getTaskNode(curr.getId()).getSubTasks().get(indx + 1));
+            }
+        }
+        if (getInstance().getTaskNode(curr.getId()).getDependencies().contains(curr.getId())) {
+            int indx = getInstance().getTaskNode(curr.getId()).getDependencies().indexOf(curr.getId());
+            if (indx < getInstance().getTaskNode(curr.getId()).getDependencies().size() - 1) {
+                return getInstance().getTaskNode(getInstance().getTaskNode(curr.getId()).getDependencies().get(indx + 1));
+            }
+        }
+        return curr;
+    }
 
-
+    public Task getCurrentTask() {
+        return getInstance().getTask(curr.getId());
+    }
 }

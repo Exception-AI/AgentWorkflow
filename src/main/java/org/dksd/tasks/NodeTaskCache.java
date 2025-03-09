@@ -2,15 +2,16 @@ package org.dksd.tasks;
 
 import org.dksd.tasks.model.LinkType;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class NodeTaskCache {
 
     private final List<Task> tasks;
     private final List<Link> links;
-    private final TreeMap<UUID, NodeTask> taskNodeMap = new TreeMap<>();
+    private final Map<UUID, NodeTask> taskNodeMap = new HashMap<>();
 
     public NodeTaskCache(List<Task> tasks, List<Link> links) {
         this.tasks = tasks;

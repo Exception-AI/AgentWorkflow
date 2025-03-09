@@ -7,58 +7,52 @@ import org.dksd.tasks.pso.StandardConcurrentSwarm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.BiConsumer;
 
 public class Main {
     public static void main(String[] args) {
 
-        Instance instance = new Instance("school_diary");
-        Map<Instance, Collection> collections = new HashMap<>();
-        collections.put(instance, new Collection());
+        Collection coll = new Collection(new Instance("school_diary"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
-        Collection collection = collections.get(instance);
+
 
         while (!"q".equals(line)) {
             try {
-                collection.displayTasks();
-
+                coll.displayTasks();
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
 
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
-                        collection.find(reader.readLine());
+                        coll.find(reader.readLine());
                         break;
                     case "o":
-                        instance.setCurrentTaskToParent();
+                        coll.setCurrentTaskToParent();
                         break;
                     case "n":
-                        instance.setCurrentTaskToNext(instance.getCurrentNodeTask().getId());
+                        coll.setCurrentTaskToNext();
                         break;
                     case "": // Enter key
                         //selectTask();
                         System.out.println("Enter pressed");
                         break;
-                    case "cp":
-                        collection.multiInput(reader, instance::createProjectTask);
-                        break;
                     case "cs":
-                        collection.multiInput(reader, (name, desc) -> instance.createSubTask(instance.getCurrentTask(), name, desc));
+                        multiInput(reader, (name, desc) -> coll.getInstance().createSubTask(coll.getCurrentTask(), name, desc));
                         break;
                     case "cd":
-                        collection.multiInput(reader, (name, desc) -> instance.createDepTask(instance.getCurrentTask(), name, desc));
+                        multiInput(reader, (name, desc) -> coll.getInstance().createDepTask(coll.getCurrentTask(), name, desc));
                         break;
                     case "e":
-                        collection.multiInput(reader, (name, desc) -> instance.getCurrentTask().updateTask(name, desc));
+                        multiInput(reader, (name, desc) -> coll.getCurrentTask().updateTask(name, desc));
                         break;
                     case ":w": // Write
-                        instance.write(collection);
+                        coll.getInstance().write(coll);
                         break;
                     case "q": // Quit
                         break;
@@ -69,7 +63,7 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
-        instance.write(collection);
+        coll.getInstance().write(coll);
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
@@ -82,8 +76,8 @@ public class Main {
                     sorted.put(p.getGene().getValue(i), i);
                 }
                 for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    Task task = instance.getTasks().get(entry.getValue());
-                    System.out.println("Task ordering: " + task);
+                    //Task task = instance.getTasks().get(entry.getValue());
+                    //System.out.println("Task ordering: " + task);
                     //Weighted by importance, effort, cost
                     //get next execution time of task.
                     //Deadline calc
@@ -93,16 +87,17 @@ public class Main {
 
             @Override
             public int getDimension() {
-                return instance.getTasks().size();
+                return 0;//instance.getTasks().size();
             }
 
             @Override
             public double[] getDomain() {
-                double[] dm = new double[instance.getTasks().size()];
+                /*double[] dm = new double[instance.getTasks().size()];
                 for (int i = 0; i < instance.getTasks().size(); i++) {
                     dm[i] = 1.0;
                 }
-                return dm;
+                return dm;*/
+                return new double[0];
             }
         }, 10);
         try {
@@ -112,5 +107,13 @@ public class Main {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void multiInput(BufferedReader reader, BiConsumer<String, String> updateFunction) throws IOException {
+        System.out.print("Edit name: ");
+        String name = reader.readLine();
+        System.out.print("Edit description: ");
+        String desc = reader.readLine();
+        updateFunction.accept(name, desc);
     }
 }
