@@ -64,10 +64,6 @@ public class Instance implements Identifier {
         return task;
     }
 
-    public Task createProjectTask(String name, String desc) {
-        return createSubTask(ROOT, name, desc);
-    }
-
     public List<Task> loadTasks(File file) {
         try {
             return mapper.readValue(file, new TypeReference<List<Task>>() {
@@ -115,18 +111,6 @@ public class Instance implements Identifier {
         writeJson("data/" + instanceName + "_constraints.json", collection.toJson(getConstraints()));
     }
 
-    public UUID getInstanceId() {
-        return id;
-    }
-
-    public String getInstanceName() {
-        return instanceName;
-    }
-
-    public String getInstanceDescription() {
-        return instanceDescription;
-    }
-
     public List<Task> getTasks() {
         return tasks;
     }
@@ -137,10 +121,6 @@ public class Instance implements Identifier {
 
     public List<Constraint> getConstraints() {
         return constraints;
-    }
-
-    public ObjectMapper getMapper() {
-        return mapper;
     }
 
     public Link addLink(UUID left, LinkType linkType, UUID right) {
@@ -178,14 +158,6 @@ public class Instance implements Identifier {
 
     private List<UUID> getParentDepTasks(NodeTask node) {
         return getTaskNode(node.getParentId()).getDependencies();
-    }
-
-    private boolean isSubTask(NodeTask node) {
-        return getParentSubTasks(node).contains(node.getId());
-    }
-
-    private boolean isDepTask(NodeTask node) {
-        return getParentDepTasks(node).contains(node.getId());
     }
 
     @Override
