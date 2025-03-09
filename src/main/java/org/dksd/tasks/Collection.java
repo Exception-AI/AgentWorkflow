@@ -45,11 +45,11 @@ public class Collection {
         Task wt = getInstance().getTask(curr.getId());
         String suffix = curr.getId() == wt.getId() ? " (*) " : "";
 
-        NodeTask p = getInstance().getTaskNode(wt.getId());
+        NodeTask wtn = getInstance().getTaskNode(wt.getId());
         List<String> hierarchy = new ArrayList<>();
-        while (p.getParentId() != null) {
-            p = getInstance().getTaskNode(p.getParentId());
-            hierarchy.add(getInstance().getTask(p.getId()).getName());
+        while (wtn.getParentId() != null) {
+            wtn = getInstance().getTaskNode(wtn.getParentId());
+            hierarchy.add(getInstance().getTask(wtn.getId()).getName());
         }
 
         String indent = "  ";
@@ -60,17 +60,17 @@ public class Collection {
                 System.out.println(suffix + "   SubTasks: ");
             }*/
 
-        for (UUID subTask : p.getSubTasks()) {
+        for (UUID subTask : wtn.getSubTasks()) {
             for (UUID constraint : getInstance().getTaskNode(subTask).getConstraints()) {
                 System.out.print(getInstance().getConstraint(constraint).toCompactString());
             }
             System.out.println(indent + "- " + getInstance().getTask(subTask).getName());
         }
         System.out.flush();
-        if (!p.getDependencies().isEmpty()) {
+        if (!wtn.getDependencies().isEmpty()) {
             System.out.print(indent + "  Dependencies: ");
         }
-        for (UUID dep : p.getDependencies()) {
+        for (UUID dep : wtn.getDependencies()) {
             System.out.print(getInstance().getTask(dep).getName() + ", ");
         }
         System.out.flush();
@@ -98,13 +98,16 @@ public class Collection {
         NodeTask prev = null;
         for (Instance instance : instances) {
             for (Map.Entry<UUID, NodeTask> entry : instance.getTaskNodes().getTaskNodeMap().entrySet()) {
-                if (prev != null) {
-                    nextPrevMap.put(prev.getId(), entry.getValue().getId());
+                if (prev != null && prev.getId().equals(curr.getId())) {
+                    return entry.getValue();
                 }
-                prev = entry.getValue();
+                if (!entry.getValue().getId().equals(curr.getId())) {
+                    prev = entry.getValue();
+                }
             }
         }
-        return getInstance().getTaskNode(nextPrevMap.get(curr.getId()));
+        curr = prev;
+        return prev;
     }
 
     public Task getCurrentTask() {

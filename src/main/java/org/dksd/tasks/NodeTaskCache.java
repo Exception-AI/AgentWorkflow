@@ -12,6 +12,7 @@ public class NodeTaskCache {
     private final List<Task> tasks;
     private final List<Link> links;
     private final Map<UUID, NodeTask> taskNodeMap = new HashMap<>();
+    private int prevHash = 0;
 
     public NodeTaskCache(List<Task> tasks, List<Link> links) {
         this.tasks = tasks;
@@ -37,7 +38,9 @@ public class NodeTaskCache {
     }
 
     public NodeTask get(UUID id) {
-        if (!taskNodeMap.containsKey(id)) {
+        int nHash = tasks.hashCode() + links.hashCode();
+        if (nHash != prevHash) {
+            prevHash = nHash;
             for (Task task : tasks) {
                 NodeTask t = new NodeTask(task.getId());
                 taskNodeMap.put(task.getId(), t);
