@@ -5,19 +5,21 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class Collection {
 
     private final List<Instance> instances = new ArrayList<>(); // save these
-    //private Cache<Instance> instCache = new Cache<Instance>(instances);
     private final ObjectMapper mapper = new ObjectMapper();
     private NodeTask curr;
+    private final Map<UUID, UUID> nextPrevMap = new HashMap<>();
 
     public Collection(Instance... instances) {
         this.instances.addAll(Arrays.stream(instances).toList());
-        curr = this.instances.getFirst().getRoot();
+        curr = this.instances.getFirst().getTaskNodes().getFirst();
     }
 
     public void setCurrentTaskToParent() {
@@ -93,19 +95,16 @@ public class Collection {
     }
 
     public NodeTask setCurrentTaskToNext() {
-        if (getInstance().getTaskNode(curr.getId()).getSubTasks().contains(curr.getId())) {
-            int indx = getInstance().getTaskNode(curr.getId()).getSubTasks().indexOf(curr.getId());
-            if (indx < getInstance().getTaskNode(curr.getId()).getSubTasks().size() - 1) {
-                return getInstance().getTaskNode(getInstance().getTaskNode(curr.getId()).getSubTasks().get(indx + 1));
+        NodeTask prev = null;
+        for (Instance instance : instances) {
+            for (Map.Entry<UUID, NodeTask> entry : instance.getTaskNodes().getTaskNodeMap().entrySet()) {
+                if (prev != null) {
+                    nextPrevMap.put(prev.getId(), entry.getValue().getId());
+                }
+                prev = entry.getValue();
             }
         }
-        if (getInstance().getTaskNode(curr.getId()).getDependencies().contains(curr.getId())) {
-            int indx = getInstance().getTaskNode(curr.getId()).getDependencies().indexOf(curr.getId());
-            if (indx < getInstance().getTaskNode(curr.getId()).getDependencies().size() - 1) {
-                return getInstance().getTaskNode(getInstance().getTaskNode(curr.getId()).getDependencies().get(indx + 1));
-            }
-        }
-        return curr;
+        return getInstance().getTaskNode(nextPrevMap.get(curr.getId()));
     }
 
     public Task getCurrentTask() {

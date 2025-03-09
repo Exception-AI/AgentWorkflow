@@ -36,11 +36,20 @@ public class NodeTaskCache {
     public NodeTask get(UUID id) {
         for (Task task : tasks) {
             NodeTask t = new NodeTask(task.getId());
-            taskNodeMap.put(id, t);
+            taskNodeMap.put(task.getId(), t);
         }
         for (Link link : links) {
             addLinkToTree(link);
         }
         return taskNodeMap.get(id);
     }
+
+    public Map<UUID, NodeTask> getTaskNodeMap() {
+        return taskNodeMap;
+    }
+
+    public NodeTask getFirst() {
+        return get(tasks.getFirst().getId());
+    }
+
 }
