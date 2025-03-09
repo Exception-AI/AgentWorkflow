@@ -5,49 +5,41 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dksd.tasks.model.LinkType;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.UUID;
 
-public class Instance {
+public class Instance implements Identifier {
 
-    private UUID instanceId;
-    private String instanceName;
+    private final UUID id;
+    private final String instanceName;
     private String instanceDescription;
     private List<Task> tasks = null;
-    private Map<UUID, Task> taskMap = new HashMap<>();
     private List<Link> links = null;
     private List<Constraint> constraints = null;
-    private final Map<UUID, Constraint> constraintMap = new HashMap<>();
-    private final TreeMap<UUID, NodeTask> taskNodeMap = new TreeMap<>();
+    private Cache<Task> taskMap= null;
+    private Cache<Constraint> constraintMap = null;
+    private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
-    private final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
+    public static final Task ROOT = new Task(UUID.nameUUIDFromBytes("0L".getBytes()), "ROOT", "ROOT");
 
-    public Instance(File taskFile, File linksFile, File constraintsFile) {
-        taskMap = new HashMap<>();
+    public Instance(String instanceName) {
+        this.id = UUID.randomUUID();
+        this.instanceName = instanceName;
+        File taskFile = new File("data/" + instanceName + "_tasks.json");
+        File linksFile = new File("data/" + instanceName + "_links.json");
+        File constraintsFile = new File("data/" + instanceName + "_constraints.json");
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
         constraints = loadConstraints(constraintsFile);
-        taskMap.put(ROOT.getId(), ROOT);
         if (!tasks.contains(ROOT)) {
             tasks.add(ROOT);
         }
-        taskNodeMap.put(ROOT.getId(), new NodeTask(ROOT.getId()));
-        for (Task task : tasks) {
-            taskMap.put(task.getId(), task);
-            NodeTask t = new NodeTask(task.getId());
-            taskNodeMap.put(task.getId(), t);
-        }
-        for (Link link : links) {
-            addLinkToTree(link);
-        }
-    }
-
-    public Instance(String tasks, String links, String constraints) {
-        this(new File(tasks), new File(links), new File(constraints));
+        taskMap = new Cache<>(tasks);
+        constraintMap = new Cache<>(constraints);
+        nodeTaskCache = new NodeTaskCache(tasks, links);
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
@@ -55,10 +47,6 @@ public class Instance {
         UUID nKey = UUID.randomUUID();//(taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         getTasks().add(task);
-        getTaskMap().put(task.getId(), task);
-        NodeTask t = new NodeTask(task.getId());
-        getTaskNodeMap().put(task.getId(), t);
-        t.setParentId(parent.getId());
         addLink(parent.getId(), LinkType.PARENT, task.getId());
         addConstraint(task);
         return task;
@@ -78,21 +66,6 @@ public class Instance {
 
     public Task createProjectTask(String name, String desc) {
         return createSubTask(ROOT, name, desc);
-    }
-
-    public void addLinkToTree(Link link) {
-        if (LinkType.PARENT.equals(link.getLinkType())) {
-            taskNodeMap.get(link.getRight()).setParentId(link.getLeft());
-        }
-        if (LinkType.CHILD.equals(link.getLinkType())) {
-            taskNodeMap.get(link.getLeft()).setParentId(link.getRight());
-        }
-        if (LinkType.SUBTASK.equals(link.getLinkType())) {
-            taskNodeMap.get(link.getLeft()).getSubTasks().add(link.getRight());
-        }
-        if (LinkType.DEPENDENCY.equals(link.getLinkType())) {
-            taskNodeMap.get(link.getLeft()).getDependencies().add(link.getRight());
-        }
     }
 
     public List<Task> loadTasks(File file) {
@@ -125,8 +98,25 @@ public class Instance {
         return new ArrayList<>();
     }
 
+    public void writeJson(String fileName, String json) {
+        try (FileWriter fileWriter = new FileWriter(fileName)) {
+            fileWriter.write(json);
+            fileWriter.flush();
+            System.out.println("Successfully saved JSON to " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error writing JSON to file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void write(Collection collection) {
+        writeJson("data/" + instanceName + "_tasks.json", collection.toJson(getTasks()));
+        writeJson("data/" + instanceName + "_links.json", collection.toJson(getLinks()));
+        writeJson("data/" + instanceName + "_constraints.json", collection.toJson(getConstraints()));
+    }
+
     public UUID getInstanceId() {
-        return instanceId;
+        return id;
     }
 
     public String getInstanceName() {
@@ -141,24 +131,12 @@ public class Instance {
         return tasks;
     }
 
-    public Map<UUID, Task> getTaskMap() {
-        return taskMap;
-    }
-
     public List<Link> getLinks() {
         return links;
     }
 
     public List<Constraint> getConstraints() {
         return constraints;
-    }
-
-    public Map<UUID, Constraint> getConstraintMap() {
-        return constraintMap;
-    }
-
-    public TreeMap<UUID, NodeTask> getTaskNodeMap() {
-        return taskNodeMap;
     }
 
     public ObjectMapper getMapper() {
@@ -168,15 +146,54 @@ public class Instance {
     public Link addLink(UUID left, LinkType linkType, UUID right) {
         Link link = new Link(left, linkType, right);
         links.add(link);
-        addLinkToTree(link);
         return link;
     }
 
     public Constraint addConstraint(Task task) {
         Constraint constraint = new Constraint();
         constraints.add(constraint);
-        constraintMap.put(constraint.getConstraintId(), constraint);
         addLink(task.getId(), LinkType.CONSTRAINT, constraint.getConstraintId());
         return constraint;
+    }
+
+    public Task getTask(UUID id) {
+        return taskMap.get(id);
+    }
+
+    public Constraint getConstraint(UUID id) {
+        return constraintMap.get(id);
+    }
+
+    public NodeTask getRoot() {
+        return nodeTaskCache.get(ROOT.getId());
+    }
+
+    public NodeTask getTaskNode(UUID id) {
+        return nodeTaskCache.get(id);
+    }
+
+    private List<UUID> getParentSubTasks(NodeTask node) {
+        return getTaskNode(node.getParentId()).getSubTasks();
+    }
+
+    private List<UUID> getParentDepTasks(NodeTask node) {
+        return getTaskNode(node.getParentId()).getDependencies();
+    }
+
+    private boolean isSubTask(NodeTask node) {
+        return getParentSubTasks(node).contains(node.getId());
+    }
+
+    private boolean isDepTask(NodeTask node) {
+        return getParentDepTasks(node).contains(node.getId());
+    }
+
+    @Override
+    public UUID getId() {
+        return id;
+    }
+
+    public NodeTaskCache getTaskNodes() {
+        return nodeTaskCache;
     }
 }

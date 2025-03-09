@@ -9,7 +9,7 @@ import org.dksd.tasks.model.LeadTime;
 
 import java.util.UUID;
 
-public class Constraint {
+public class Constraint implements Identifier {
 
     private UUID constraintId;
     private String schedule; // "* * * etc
@@ -138,5 +138,10 @@ A library for parsing crontab expressions and calculating the next run time base
                 ", concentration=" + concentration +
                 ", deadlineType=" + deadlineType +
                 '}';
+    }
+
+    @Override
+    public UUID getId() {
+        return constraintId;
     }
 }

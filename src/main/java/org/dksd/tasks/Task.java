@@ -2,7 +2,7 @@ package org.dksd.tasks;
 
 import java.util.*;
 
-public class Task {
+public class Task implements Identifier {
 
     private UUID id;
     private String name;
@@ -10,6 +10,11 @@ public class Task {
 
     public Task() {
 
+    }
+
+    public void updateTask(String ename, String edesc) {
+        setName(ename);
+        setDescription(edesc);
     }
 
     public void setId(UUID id) {

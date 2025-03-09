@@ -7,73 +7,63 @@ import org.dksd.tasks.pso.StandardConcurrentSwarm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.BiConsumer;
 
 public class Main {
     public static void main(String[] args) {
 
-        Instance instance = new Instance("tasks.json", "links.json", "constraints.json");
-        Map<Instance, Helper> helpers = new HashMap<>();
-        helpers.put(instance, new Helper(instance));
+        Collection coll = new Collection(new Instance("school_diary"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
-        Helper helper = helpers.get(instance);
+
 
         while (!"q".equals(line)) {
             try {
-                helper.displayTasks();
-
+                coll.displayTasks();
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
 
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
-                        helper.find(reader.readLine());
+                        coll.find(reader.readLine());
                         break;
-                    case "n": // Next
-                        helper.setCurrentTask(helper.nextTask(helper.getCurrentTask()));
+                    case "o":
+                        coll.setCurrentTaskToParent();
                         break;
-                    case "p": // Next
-                        helper.setCurrentTask(helper.prevTask(helper.getCurrentTask()));
-                        break;
-                    case "o": // Next
-                        helper.setCurrentTaskToParent();
+                    case "n":
+                        coll.setCurrentTaskToNext();
                         break;
                     case "": // Enter key
                         //selectTask();
                         System.out.println("Enter pressed");
                         break;
-                    case "cp":
-                        helper.multiInput(reader, helper::createProjectTask);
-                        break;
                     case "cs":
-                        helper.multiInput(reader, (name, desc) -> helper.getInstance().createSubTask(helper.getCurrent(), name, desc));
+                        multiInput(reader, (name, desc) -> coll.getInstance().createSubTask(coll.getCurrentTask(), name, desc));
                         break;
                     case "cd":
-                        helper.multiInput(reader, (name, desc) -> helper.getInstance().createDepTask(helper.getCurrent(), name, desc));
+                        multiInput(reader, (name, desc) -> coll.getInstance().createDepTask(coll.getCurrentTask(), name, desc));
                         break;
                     case "e":
-                        helper.multiInput(reader, (name, desc) -> helper.updateTask(helper.getCurrent(), name, desc));
+                        multiInput(reader, (name, desc) -> coll.getCurrentTask().updateTask(name, desc));
                         break;
                     case ":w": // Write
-                        write(helper);
+                        coll.getInstance().write(coll);
                         break;
                     case "q": // Quit
                         break;
                     default:
                         break;
                 }
-                helper.selectTasks();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        write(helper);
+        coll.getInstance().write(coll);
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
@@ -86,8 +76,8 @@ public class Main {
                     sorted.put(p.getGene().getValue(i), i);
                 }
                 for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    Task task = helper.getTasks().get(entry.getValue());
-                    System.out.println("Task ordering: " + task);
+                    //Task task = instance.getTasks().get(entry.getValue());
+                    //System.out.println("Task ordering: " + task);
                     //Weighted by importance, effort, cost
                     //get next execution time of task.
                     //Deadline calc
@@ -97,16 +87,17 @@ public class Main {
 
             @Override
             public int getDimension() {
-                return helper.getTasks().size();
+                return 0;//instance.getTasks().size();
             }
 
             @Override
             public double[] getDomain() {
-                double[] dm = new double[helper.getTasks().size()];
-                for (int i = 0; i < helper.getTasks().size(); i++) {
+                /*double[] dm = new double[instance.getTasks().size()];
+                for (int i = 0; i < instance.getTasks().size(); i++) {
                     dm[i] = 1.0;
                 }
-                return dm;
+                return dm;*/
+                return new double[0];
             }
         }, 10);
         try {
@@ -118,9 +109,11 @@ public class Main {
         }
     }
 
-    public static void write(Helper helper) {
-        helper.writeJson("tasks.json", helper.toJson(helper.getTasks()));
-        helper.writeJson("links.json", helper.toJson(helper.getLinks()));
-        helper.writeJson("constraints.json", helper.toJson(helper.getConstraints()));
+    public static void multiInput(BufferedReader reader, BiConsumer<String, String> updateFunction) throws IOException {
+        System.out.print("Edit name: ");
+        String name = reader.readLine();
+        System.out.print("Edit description: ");
+        String desc = reader.readLine();
+        updateFunction.accept(name, desc);
     }
 }
