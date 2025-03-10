@@ -56,6 +56,7 @@ public class Main {
                     - Organize Driving school docs so I can drive
                   - After school activities, like cabaret
                   - After school play dates
+                  - After school unpack snacks and lunch
                   - Odyssey of the Mind on Monday mornings
                   - Any birthday parties?
                   - Bike to school on Wednesday mornings
@@ -82,8 +83,10 @@ public class Main {
             Task task = new Task(stask.taskName, stask.description);
             realtmap.put(stask.taskName, task);
         }
-        
-
+        for (Map.Entry<String, Task> entry : realtmap.entrySet()) {
+            Task ptask = realtmap.get(tmap.get(entry.getKey()).parentTask);
+            coll.getInstance().createSubTask(ptask, entry.getValue());
+        }
 
         while (!"q".equals(line)) {
             try {
