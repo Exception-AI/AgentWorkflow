@@ -1,5 +1,9 @@
 package org.dksd.tasks;
 
+import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.ollama.OllamaChatModel;
+import dev.langchain4j.model.output.structured.Description;
+import dev.langchain4j.service.AiServices;
 import org.dksd.tasks.pso.FitnessFunction;
 import org.dksd.tasks.pso.Particle;
 import org.dksd.tasks.pso.StandardConcurrentSwarm;
@@ -7,18 +11,78 @@ import org.dksd.tasks.pso.StandardConcurrentSwarm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 
+import static dev.langchain4j.model.chat.request.ResponseFormat.JSON;
+
 public class Main {
+
+
     public static void main(String[] args) {
 
+        ChatLanguageModel model = OllamaChatModel.builder()
+                .baseUrl("http://localhost:11434")
+                .responseFormat(JSON)
+                .modelName("deepseek-r1:latest")
+                .build();
+
+        TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
+        List<SimpleTask> stasks = parseTasks(taskExtractor, """
+                School Kids
+                  - Calendar
+                    - April: 7th - 11th Holiday/Recess no school
+                    - May: 26th Is a holiday so no school
+                    - June: 13th Minimum day Last day of school, 16th, 17th, 18th, 19th Teacher work day and holidays no school.
+                    - July: 4th Holiday
+                    - August: 19th-21st Teacher days no school. First day of school is 22nd August
+                    - September: 2nd Holiday (Labor day)
+                    - October: 3rd Holiday
+                    - November: 1st,11,25th - 29th Holidays.
+                    - December: 23rd - 31st Holidays
+                  - Homework due Monday
+                    - Reading homework every night
+                    - Extra Spelling and Math practice every two days
+                  - Clothes washed
+                  - Bath every two nights
+                  - Field Trips
+                    - Organize Driving school docs so I can drive
+                  - After school activities, like cabaret
+                  - After school play dates
+                  - Odyssey of the Mind on Monday mornings
+                  - Any birthday parties?
+                  - Bike to school on Wednesday mornings
+                  - School starts at 8:15am but usually leave the house at 7:45am
+                  - School pickup is on 2:35pm on Mon, Tue, Thur, Fri. On Wednesday it is early pickup at 1:45pm
+                    - 9:55am - 10:10am recess
+                    - 11:40am - 12:20pm Lunch
+                    - 1:45pm - 1:55pm Recess
+                  - Tamalpais Valley School website is: 415-389-7731 and email is: atrapp@mvschools.org and address is: 350 Bell Lane, Mill Valley, CA 94941
+                  - Update schedule for when there is no school etc. see: www.mvschools.org/Page/8920
+                """);
+
+        System.out.println(stasks);
         Collection coll = new Collection(new Instance("schoolDiary"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
+
+        Map<String, SimpleTask> tmap = new HashMap<>();
+        for (SimpleTask stask : stasks) {
+            tmap.put(stask.taskName, stask);
+        }
+        Map<String, Task> realtmap = new HashMap<>();
+        for (SimpleTask stask : stasks) {
+            Task task = new Task(stask.taskName, stask.description);
+            realtmap.put(stask.taskName, task);
+        }
+        
 
 
         while (!"q".equals(line)) {
@@ -116,4 +180,73 @@ public class Main {
         String desc = reader.readLine();
         updateFunction.accept(name, desc);
     }
+
+    public static List<SimpleTask> parseTasks(TaskExtractor taskExtractor, String text) {
+        List<SimpleTask> tasks = new ArrayList<>();
+        Stack<SimpleTask> stack = new Stack<>();
+        String[] lines = text.split("\\r?\\n");
+
+        for (String line : lines) {
+            if (line.trim().isEmpty()) {
+                continue;
+            }
+
+            // Count leading spaces to determine the indentation level.
+            int indent = countLeadingSpaces(line);
+            String trimmed = line.trim();
+
+            // Remove a leading dash, if present.
+            if (trimmed.startsWith("-")) {
+                trimmed = trimmed.substring(1).trim();
+            }
+
+            // Split on the first colon, if present, to separate the task name from its schedule.
+            String name;
+            String schedule = null;
+            int colonIndex = trimmed.indexOf(":");
+            if (colonIndex > 0) {
+                name = trimmed.substring(0, colonIndex).trim();
+                schedule = trimmed.substring(colonIndex + 1).trim();
+            } else {
+                name = trimmed;
+            }
+
+            // Pop from the stack until we find a task with a lower indentation level.
+            while (!stack.isEmpty() && stack.peek().indent >= indent) {
+                stack.pop();
+            }
+            // The parent is the task on top of the stack (if any).
+            String parentName = stack.isEmpty() ? null : stack.peek().taskName;
+
+            SimpleTask parsedTask = null;
+            try {
+                parsedTask = taskExtractor.extractTaskFrom(trimmed);
+            }
+            catch (Exception ep) {
+                //NOOP
+                parsedTask = new SimpleTask();
+                parsedTask.taskName = trimmed;
+            }
+            parsedTask.indent = indent;
+            parsedTask.parentTask = parentName;
+            tasks.add(parsedTask);
+            stack.push(parsedTask);
+        }
+
+        return tasks;
+    }
+
+    // Utility method to count leading spaces in a string.
+    private static int countLeadingSpaces(String line) {
+        int count = 0;
+        for (char c : line.toCharArray()) {
+            if (c == ' ') {
+                count++;
+            } else {
+                break;
+            }
+        }
+        return count;
+    }
+
 }
