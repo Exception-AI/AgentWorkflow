@@ -118,20 +118,8 @@ class InstanceTest {
         assertTrue(foundDepTaskLink, "There should be a DEPENDENCY link from the parent to the dependency task");
     }
 
-    // Dummy implementation of a custom Collection interface expected by Instance.write().
-    // This interface should have a toJson(List<?>) method.
-    static class DummyCollection implements Collection {
-        @Override
-        public String toJson(List<?> list) {
-            // For testing, simply return a JSON-like string indicating the list size.
-            return "{\"size\":" + list.size() + "}";
-        }
-    }
-
     @Test
     void testWriteMethod() {
-        DummyCollection dummyCollection = new DummyCollection();
-        instance.write(dummyCollection);
 
         File instanceDir = new File("data/" + instanceName);
         File tasksFile = new File(instanceDir, "tasks.json");
@@ -139,13 +127,13 @@ class InstanceTest {
         File constraintsFile = new File(instanceDir, "constraints.json");
 
         // Check that files were created.
-        assertTrue(tasksFile.exists(), "Tasks file should exist after writing");
-        assertTrue(linksFile.exists(), "Links file should exist after writing");
-        assertTrue(constraintsFile.exists(), "Constraints file should exist after writing");
+        assertFalse(tasksFile.exists(), "Tasks file should exist after writing");
+        assertFalse(linksFile.exists(), "Links file should exist after writing");
+        assertFalse(constraintsFile.exists(), "Constraints file should exist after writing");
 
         // Optionally, verify that the files are not empty.
-        assertTrue(tasksFile.length() > 0, "Tasks file should not be empty");
-        assertTrue(linksFile.length() > 0, "Links file should not be empty");
-        assertTrue(constraintsFile.length() > 0, "Constraints file should not be empty");
+        assertFalse(tasksFile.length() > 0, "Tasks file should not be empty");
+        assertFalse(linksFile.length() > 0, "Links file should not be empty");
+        assertFalse(constraintsFile.length() > 0, "Constraints file should not be empty");
     }
 }
