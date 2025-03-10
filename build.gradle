@@ -14,6 +14,14 @@ dependencies {
     implementation 'org.jline:jline:3.21.0'
     implementation group: 'net.redhogs.cronparser', name: 'cron-parser', version: '3.5'
     implementation group: 'net.redhogs.cronparser', name: 'cron-parser-core', version: '3.5'
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-ollama
+    implementation group: 'dev.langchain4j', name: 'langchain4j-ollama', version: '1.0.0-beta1'
+// https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-core
+    implementation group: 'dev.langchain4j', name: 'langchain4j-core', version: '1.0.0-beta1'
+
+
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j
+    implementation group: 'dev.langchain4j', name: 'langchain4j', version: '1.0.0-beta1'
 
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'

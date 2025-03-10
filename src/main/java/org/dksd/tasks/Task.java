@@ -12,6 +12,12 @@ public class Task implements Identifier {
 
     }
 
+    public Task(String name, String description) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.description = description;
+    }
+
     public Task(UUID id, String name, String description) {
         this.id = id;
         this.name = name;
