@@ -1,129 +1,249 @@
 [ {
-  "id" : "f34f657d-1f6d-4ccc-a45c-e4b6fd8baf2c",
-  "name" : "ROOT:schoolDiary",
-  "description" : "ROOT:schoolDiary"
-}, {
-  "id" : "3081ef04-074d-48a8-8ee8-c746875dc9a1",
+  "id" : "831f131c-f6f0-49f9-8d03-f42ebb8cba89",
   "name" : "School Kids",
-  "description" : null
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 0
+  }
 }, {
-  "id" : "9465829b-1208-4158-9128-ba756bc1bb4e",
+  "id" : "f4eb2da9-71ee-4a78-a259-64bc4c56aeba",
   "name" : "Calendar",
-  "description" : "A Calendar task that manages a schedule and events. It helps track important dates, appointments, and deadlines."
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 1
+  }
 }, {
-  "id" : "cca47e2d-7e8c-4e84-ad9b-a6dc5cf2c75b",
-  "name" : "April Recess",
-  "description" : "Take a break from school work during April."
+  "id" : "5e2d9291-91cc-4706-adee-f7f6253b2834",
+  "name" : "April: 7th - 11th Holiday/Recess no school",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 2
+  }
 }, {
-  "id" : "44618b91-67db-4661-b96d-d288ea1277c8",
-  "name" : "Return the task from May",
-  "description" : "Return the task from May: 26th Is a holiday so no school there may be a name and a schedule component, also explain why"
+  "id" : "09b6058d-362b-4e16-a3e5-6dfd520566b3",
+  "name" : "May: 26th Is a holiday so no school",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 3
+  }
 }, {
-  "id" : "9f48c7d4-4e6b-4f1a-afa7-e1295a6f57cd",
-  "name" : "13th Minimum day Last day of school",
-  "description" : "The 13th Minimum day marks the last full day of school, with subsequent days as holidays. Teacher work days are interspersed throughout these days."
+  "id" : "2509c2ef-38f6-4c59-879d-9517adeb3db4",
+  "name" : "June: 13th Minimum day Last day of school, 16th, 17th, 18th, 19th Teacher work day and holidays no school.",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 4
+  }
 }, {
-  "id" : "ff52c60e-ebfb-4526-b6b8-9a77eac07d99",
-  "name" : "4th Holiday",
-  "description" : "A special occasion that occurs every 4 years, typically on January 4th. This task involves planning and organizing a small celebration with family and friends."
+  "id" : "01e83c5b-2d06-45a0-8662-77a3500feab6",
+  "name" : "July: 4th Holiday",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 5
+  }
 }, {
-  "id" : "f437b361-1970-49ec-87da-dbf07d704a19",
-  "name" : "August Teacher Days",
-  "description" : "Teacher's Day is a day dedicated to teachers, celebrated in many countries around the world on various dates. In our institution, it falls on 19th-21st August."
+  "id" : "eab4aab1-17d4-4f09-8993-d7877fc153ef",
+  "name" : "August: 19th-21st Teacher days no school. First day of school is 22nd August",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 6
+  }
 }, {
-  "id" : "eefb9559-3330-4e6c-9997-a86c0560d91d",
-  "name" : "Labor Day",
-  "description" : "To take a day off work to honor the holiday."
+  "id" : "dc9f9e76-7df6-41c9-840f-bafb9c72b6ae",
+  "name" : "September: 2nd Holiday (Labor day)",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 7
+  }
 }, {
-  "id" : "fe8504b7-25ea-4b1a-91eb-456515b7743c",
+  "id" : "7e24e874-5b9f-49ef-91db-5bf590e7121f",
   "name" : "October: 3rd Holiday",
-  "description" : null
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 8
+  }
 }, {
-  "id" : "2b8f8335-a172-4f03-ae3d-4ca5c91922d2",
-  "name" : "Holidays",
-  "description" : "Return tasks for November including 1st, 11th, 25th-29th Holidays."
+  "id" : "d2061a1d-9532-42fd-aecd-db8633e0861a",
+  "name" : "November: 1st,11,25th - 29th Holidays.",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 9
+  }
 }, {
-  "id" : "b74d1f62-30a5-4633-95f0-5b50bad200ac",
-  "name" : "Holidays Task",
-  "description" : "Return the task from December 23rd to 31st. This task may involve both a name and schedule component, explaining why it is necessary."
+  "id" : "c77bc8f5-c0f3-4da6-830d-4f0875805ca3",
+  "name" : "December: 23rd - 31st Holidays",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 10
+  }
 }, {
-  "id" : "9a91fc2c-9886-4baf-8083-32379ee45121",
-  "name" : "Monday Homework Assignment",
-  "description" : "Complete your Monday homework assignment including reading and writing tasks. Ensure that all components are included as per schedule."
+  "id" : "98c64798-a7e5-443d-b0e7-44e45afb8da7",
+  "name" : "Homework due Monday",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 11
+  }
 }, {
-  "id" : "c0b55e3c-8b84-4084-b473-02929462b071",
-  "name" : "Homework Review",
-  "description" : "Every night, I need to review my reading homework by setting aside time each evening to go through the book and highlight key points. This helps reinforce what I’ve learned during class and prepares me for upcoming lessons."
+  "id" : "6cd90e37-a6b7-4498-842b-e0835e045821",
+  "name" : "Reading homework every night",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 12
+  }
 }, {
-  "id" : "d59c8909-1eab-47df-a97d-87acd9c1285f",
-  "name" : "Extra Spelling and Math practice",
-  "description" : "Every two days, students are required to complete an extra spelling and math practice session. This involves practicing their spelling skills by creating a list of words from a given list or generating sentences using the words, as well as solving math problems focusing on basic arithmetic operations such as addition, subtraction, multiplication, and division."
+  "id" : "fae7704c-b3c0-4726-8fec-bd38112f0612",
+  "name" : "Extra Spelling and Math practice every two days",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 13
+  }
 }, {
-  "id" : "cc95d22b-4c4e-47d3-80a1-13552ba61b38",
+  "id" : "5be8e2f1-d5c3-4eee-840c-96324019e97c",
   "name" : "Clothes washed",
-  "description" : "It's essential to maintain a balanced diet by washing clothes regularly to prevent pilling and odors. This task ensures that all items are cleaned in time."
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 14
+  }
 }, {
-  "id" : "83a8aeae-e346-44e4-9f1b-0898e498526e",
+  "id" : "e9932840-6c94-4a23-981a-c649ed5a445c",
   "name" : "Bath every two nights",
-  "description" : null
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 15
+  }
 }, {
-  "id" : "b69f6d02-59ce-4423-aa9c-9934a1aa915b",
+  "id" : "8189fb8f-f1ad-4f33-9414-7a06aff5690a",
   "name" : "Field Trips",
-  "description" : "Plan and organize field trips for students, ensuring educational value while keeping them engaged."
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 16
+  }
 }, {
-  "id" : "bf51ed43-38b3-4741-85e6-2aaeb5d4b67c",
-  "name" : "Organize Driving School Docs",
-  "description" : "Organize driving school documentation to ensure all necessary materials are readily available for a smooth drive."
+  "id" : "ec7e1496-19f3-4790-a63d-552f48e8e104",
+  "name" : "Organize Driving school docs so I can drive",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 17
+  }
 }, {
-  "id" : "9bdbef23-39a9-4418-9fcd-9e9e72eb091f",
-  "name" : " Cabaret Rehearsal",
-  "description" : "Organizing and performing in a cabaret setting, including song selection, stage setup, and audience interaction."
+  "id" : "80f9f077-8b6b-4b02-810f-942912020ddb",
+  "name" : "After school activities, like cabaret",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 18
+  }
 }, {
-  "id" : "e90826c7-b1b9-4f58-a625-911d80883cb7",
+  "id" : "de20333a-23eb-4540-a3bb-12c5340bf70f",
   "name" : "After school play dates",
-  "description" : null
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 19
+  }
 }, {
-  "id" : "e7a86549-adac-4092-a75d-cc7c5080681d",
-  "name" : "Snack and Lunch Preparation",
-  "description" : "Prepare snacks and lunch, ensuring a healthy and balanced meal plan."
+  "id" : "7e81a1f4-64d2-464a-8415-f68db4875e6d",
+  "name" : "After school unpack snacks and lunch",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 20
+  }
 }, {
-  "id" : "831e5121-5141-4e5b-90fe-aabbf9aa4adb",
-  "name" : "Monday Morning Mind Quiz",
-  "description" : "A weekly quiz aimed at starting the workday with a quick, engaging mental challenge. It can be incorporated into the daily routine either as an icebreaker or a brain teaser to kickstart productivity and focus."
+  "id" : "a54e1345-2f0a-4769-9bd6-7692c91033e8",
+  "name" : "Odyssey of the Mind on Monday mornings",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 21
+  }
 }, {
-  "id" : "ba1dd3dc-d02f-4615-beb1-beef2842f5f6",
-  "name" : "Birthday Party",
-  "description" : "A birthday party is an event where someone celebrates their birthday with friends, family, and well-wishes. It can include games, food, gifts, and decorations."
+  "id" : "e24b3672-1bb8-4095-a09d-6c221a3b4f94",
+  "name" : "Any birthday parties?",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 22
+  }
 }, {
-  "id" : "0982329a-6613-44f8-82d1-e6b184807c0e",
-  "name" : "Bike to School",
-  "description" : "Go to school on Wednesday mornings by bike. The task involves bringing a name tag and uniform. It also has a schedule component, ensuring that the task happens consistently every week at the same time."
+  "id" : "0fb38afe-fa5f-4094-af34-1635dba1c7d6",
+  "name" : "Bike to school on Wednesday mornings",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 23
+  }
 }, {
-  "id" : "a8f93cfe-a068-4b19-858d-8ac71fff5d53",
-  "name" : "School Start Preparation",
-  "description" : "Needs to leave house at 7:45am and school starts at 8:15am."
+  "id" : "3af3f403-3977-4f93-8f60-78edfcb62892",
+  "name" : "School starts at 8:15am but usually leave the house at 7:45am",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 24
+  }
 }, {
-  "id" : "e8c2ba91-15fc-41fd-b1c3-529b444522bd",
-  "name" : "School Pickup",
-  "description" : "Return the task from School pickup on Mon, Tue, Thur, Fri at 2:35pm. On Wednesday it's early pickup at 1:45pm with a name and schedule component."
+  "id" : "0aec26a5-bd27-42dd-96c0-e9e030c873b6",
+  "name" : "School pickup is on 2:35pm on Mon, Tue, Thur, Fri. On Wednesday it is early pickup at 1:45pm",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 25
+  }
 }, {
-  "id" : "15e845b3-bd3c-462e-a276-0c7e4e5c5c40",
-  "name" : "Reviewing Schedule",
-  "description" : "The task involves reviewing a schedule to ensure all events are coordinated and on time."
+  "id" : "97ec5676-6ad4-484e-8433-d350716db047",
+  "name" : "9:55am - 10:10am recess",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 26
+  }
 }, {
-  "id" : "99b1929b-3b8b-4aec-92b7-aad41c72f4d5",
-  "name" : "Lunch Break",
-  "description" : "A scheduled break period where individuals can take a 20-minute lunch and engage in other work or personal activities."
+  "id" : "e6062ed9-e91a-4929-8751-cf5e8017e78a",
+  "name" : "11:40am - 12:20pm Lunch",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 27
+  }
 }, {
-  "id" : "76724f23-670e-40a2-be66-f35aecb1be92",
-  "name" : "Recess",
-  "description" : "Take a short break from work to relax and recharge."
+  "id" : "b99b43a6-d7de-45e3-93f3-2dc0aa97f50b",
+  "name" : "1:45pm - 1:55pm Recess",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 28
+  }
 }, {
-  "id" : "f4eaf7c2-8bc7-491e-9185-0068b564f324",
-  "name" : "Contact Information",
-  "description" : "Retrieving contact information from Tamalpais Valley School website includes phone number, email address, and physical address. This task may also involve additional components such as the name of the person and schedule."
+  "id" : "519bceba-211d-4e76-b1f5-026a0c48575e",
+  "name" : "Tamalpais Valley School website is: 415-389-7731 and email is: atrapp@mvschools.org and address is: 350 Bell Lane, Mill Valley, CA 94941",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 29
+  }
 }, {
-  "id" : "0b4f5e80-3830-4a9f-8a79-cf64259b5d5c",
-  "name" : "Update school schedule",
-  "description" : "Needs to be updated regularly in case there's no school."
+  "id" : "fd33b226-99db-4c1f-bd87-24fa5493348e",
+  "name" : "Update schedule for when there is no school etc. see: www.mvschools.org/Page/8920",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "school.todo",
+    "lineNumber" : 30
+  }
 } ]

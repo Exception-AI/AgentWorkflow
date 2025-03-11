@@ -37,9 +37,6 @@ public class Instance implements Identifier {
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
         constraints = loadConstraints(constraintsFile);
-        if (tasks.isEmpty()) {
-            tasks.add(new Task(UUID.randomUUID(), "ROOT:" + instanceName, "ROOT:" + instanceName));
-        }
         taskMap = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);

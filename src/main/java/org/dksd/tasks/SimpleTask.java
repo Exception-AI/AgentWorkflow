@@ -12,4 +12,5 @@ public class SimpleTask {
     @Description("The name of the parent task which is usually one level of indentation less")
     String parentTask;
     int indent;
+    int line;
 }

@@ -7,6 +7,7 @@ public class Task implements Identifier {
     private UUID id;
     private String name;
     private String description;
+    private Map<String, Object> metadata = new HashMap<>();
 
     public Task() {
 
@@ -60,6 +61,14 @@ public class Task implements Identifier {
 
     public UUID getId() {
         return id;
+    }
+
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
     }
 
     @Override

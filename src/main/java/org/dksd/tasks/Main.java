@@ -27,15 +27,15 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        Collection coll = new Collection(new Instance("schoolDiary"));
         ChatLanguageModel model = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
                 .responseFormat(JSON)
-                .modelName("deepseek-r1:latest")
+                .modelName("qwen2.5:0.5b")
                 .build();
 
         TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
-        List<SimpleTask> stasks = parseTasks(taskExtractor, """
+        List<SimpleTask> stasks = parseTasks(coll, taskExtractor, """
                 School Kids
                   - Calendar
                     - April: 7th - 11th Holiday/Recess no school
@@ -69,13 +69,15 @@ public class Main {
                   - Update schedule for when there is no school etc. see: www.mvschools.org/Page/8920
                 """);
 
-        Collection coll = new Collection(new Instance("schoolDiary"));
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
         Map<String, Task> amp = new HashMap<>();
         for (SimpleTask stask : stasks) {
             Task task = new Task(stask.taskName, stask.description);
+            task.getMetadata().put("fileName", "school.todo");
+            task.getMetadata().put("lineNumber", stask.line);
             coll.getInstance().addTask(task);
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
             amp.put(task.getName(), task);
@@ -83,6 +85,9 @@ public class Main {
         for (SimpleTask stask : stasks) {
             Task parent = amp.get(stask.parentTask);
             Task child = amp.get(stask.taskName);
+            if (parent == null && child != null) {
+                coll.getInstance().addLink(null, LinkType.PARENT, child.getId());
+            }
             if (parent != null && child != null) {
                 coll.getInstance().addLink(parent.getId(), LinkType.PARENT, child.getId());
                 coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, child.getId());
@@ -187,12 +192,28 @@ public class Main {
         updateFunction.accept(name, desc);
     }
 
-    public static List<SimpleTask> parseTasks(TaskExtractor taskExtractor, String text) {
+    public static List<SimpleTask> parseTasks(Collection coll, TaskExtractor taskExtractor, String text) {
         List<SimpleTask> tasks = new ArrayList<>();
         Stack<SimpleTask> stack = new Stack<>();
         String[] lines = text.split("\\r?\\n");
 
-        for (String line : lines) {
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i];
+
+            boolean exists = false;
+            for (Task task : coll.getInstance().getTasks()) {
+                if (task.getMetadata().isEmpty()) {
+                    continue;
+                }
+                if (task.getMetadata().get("fileName").equals("school.todo") && task.getMetadata().get("lineNumber").equals(i)) {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (exists) {
+                continue;
+            }
             if (line.trim().isEmpty()) {
                 continue;
             }
@@ -213,13 +234,13 @@ public class Main {
             // The parent is the task on top of the stack (if any).
             String parentName = stack.isEmpty() ? null : stack.peek().taskName;
 
-            SimpleTask parsedTask = null;
+            SimpleTask parsedTask = new SimpleTask();
             try {
-                parsedTask = taskExtractor.extractTaskFrom(trimmed);
+                parsedTask.taskName = trimmed.trim();
+                //parsedTask = taskExtractor.extractTaskFrom(trimmed);
             }
             catch (Exception ep) {
                 //NOOP
-                parsedTask = new SimpleTask();
                 parsedTask.taskName = trimmed.trim();
             }
             if (parsedTask.taskName == null) {
@@ -227,6 +248,7 @@ public class Main {
             }
             parsedTask.indent = indent;
             parsedTask.parentTask = parentName;
+            parsedTask.line = i;
             tasks.add(parsedTask);
             stack.push(parsedTask);
         }
