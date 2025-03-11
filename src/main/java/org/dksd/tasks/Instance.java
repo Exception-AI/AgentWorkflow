@@ -68,6 +68,7 @@ public class Instance implements Identifier {
     }
 
     public Task createSubTask(Task parent, Task child) {
+        //TODO add exception handling.
         Task task = createCommonTask(parent, child);
         addLink(parent.getId(), LinkType.SUBTASK, task.getId());
         return task;

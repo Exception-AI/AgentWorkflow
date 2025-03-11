@@ -69,7 +69,6 @@ public class Main {
                   - Update schedule for when there is no school etc. see: www.mvschools.org/Page/8920
                 """);
 
-        System.out.println(stasks);
         Collection coll = new Collection(new Instance("schoolDiary"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
@@ -77,16 +76,23 @@ public class Main {
         Map<String, SimpleTask> tmap = new HashMap<>();
         for (SimpleTask stask : stasks) {
             tmap.put(stask.taskName, stask);
+            System.out.println("SimpleTask: " + stask.taskName);
         }
         Map<String, Task> realtmap = new HashMap<>();
         for (SimpleTask stask : stasks) {
             Task task = new Task(stask.taskName, stask.description);
             realtmap.put(stask.taskName, task);
+            System.out.println("Task: " + task.getName() + " id: " + task.getId());
+        }
+        for (Map.Entry<String, Task> entry : realtmap.entrySet()) {
+            System.out.println("Gewtting" + coll.getInstance().getTaskNode(entry.getValue().getId()));
         }
         for (Map.Entry<String, Task> entry : realtmap.entrySet()) {
             Task ptask = realtmap.get(tmap.get(entry.getKey()).parentTask);
+            System.out.println("Parent: " + ptask + " child: " + entry.getValue());
             coll.getInstance().createSubTask(ptask, entry.getValue());
         }
+        System.out.println(coll.getInstance().getTasks());
 
         while (!"q".equals(line)) {
             try {
@@ -203,17 +209,6 @@ public class Main {
                 trimmed = trimmed.substring(1).trim();
             }
 
-            // Split on the first colon, if present, to separate the task name from its schedule.
-            String name;
-            String schedule = null;
-            int colonIndex = trimmed.indexOf(":");
-            if (colonIndex > 0) {
-                name = trimmed.substring(0, colonIndex).trim();
-                schedule = trimmed.substring(colonIndex + 1).trim();
-            } else {
-                name = trimmed;
-            }
-
             // Pop from the stack until we find a task with a lower indentation level.
             while (!stack.isEmpty() && stack.peek().indent >= indent) {
                 stack.pop();
@@ -228,6 +223,9 @@ public class Main {
             catch (Exception ep) {
                 //NOOP
                 parsedTask = new SimpleTask();
+                parsedTask.taskName = trimmed;
+            }
+            if (parsedTask.taskName == null) {
                 parsedTask.taskName = trimmed;
             }
             parsedTask.indent = indent;
