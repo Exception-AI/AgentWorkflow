@@ -85,6 +85,7 @@ public class Main {
             Task child = amp.get(stask.taskName);
             if (parent != null && child != null) {
                 coll.getInstance().addLink(parent.getId(), LinkType.PARENT, child.getId());
+                coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, child.getId());
             }
         }
 

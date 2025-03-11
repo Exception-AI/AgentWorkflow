@@ -1,0 +1,129 @@
+[ {
+  "id" : "a9d44600-fcde-432b-a786-b9114496d97a",
+  "name" : "ROOT:schoolDiary",
+  "description" : "ROOT:schoolDiary"
+}, {
+  "id" : "33fd6641-cae7-484d-8000-d54fe5f543b2",
+  "name" : "School Kids",
+  "description" : "Explore the life and contributions of notable figures who have significantly impacted children's education through their innovative teaching methods or groundbreaking discoveries."
+}, {
+  "id" : "b0f0af10-6d06-403a-b071-1bbdafa62503",
+  "name" : "Calendar",
+  "description" : "Used to track important dates and events, including scheduled meetings or recurring tasks. It can be customized with different views such as daily, weekly, monthly views."
+}, {
+  "id" : "815d5a45-0600-479b-b3b4-1dce6602de16",
+  "name" : "April Recess",
+  "description" : "The student's holiday/parental leave period from April 7th to 11th."
+}, {
+  "id" : "833ac0dc-184f-4d53-8a81-5b9ad4efe772",
+  "name" : "26th Is a holiday",
+  "description" : "Return the task from May: 26th Is a holiday so no school there may be a name and a schedule component, also explain why."
+}, {
+  "id" : "5b78cd5b-3d63-4bdd-8f77-0cad5ff58d34",
+  "name" : "13th Minimum day Last day of school",
+  "description" : "Return the task from June: 13th Minimum day Last day of school, 16th, 17th, 18th, 19th Teacher work day and holidays no school. there may be a name and a schedule component, also explain why"
+}, {
+  "id" : "fa627531-d82b-4edd-ac3f-caddd149be98",
+  "name" : "4th Holiday",
+  "description" : "Holidays are a great time to relax, take breaks from work, and enjoy time with family and friends. They also provide an opportunity to reflect on goals and priorities."
+}, {
+  "id" : "cc5f5574-78f6-466b-92c0-594927fa5e61",
+  "name" : "August Teacher Days",
+  "description" : "19th-21st August: No school for Teacher days. The first day of school is 22nd August, which may include a name component and schedule."
+}, {
+  "id" : "45e4fade-ff65-4603-b6af-7a885bd26a9e",
+  "name" : "Labor Day",
+  "description" : "It's a day to celebrate American workers and enjoy picnics, parades, and family gatherings. The schedule may vary each year depending on the local observance, but it is usually observed as a one-day holiday."
+}, {
+  "id" : "8666a83a-fd4b-4483-9717-a5367024d29f",
+  "name" : "October: 3rd Holiday",
+  "description" : null
+}, {
+  "id" : "32983175-4d72-493b-abf9-b4cf82545f6f",
+  "name" : "Holidays",
+  "description" : "Wishing a happy New Year with best wishes for the new year ahead! Wishing you and your family a safe, healthy, and prosperous year. May all your efforts be rewarded with success."
+}, {
+  "id" : "4c34bc69-7ce8-4c7f-b8b3-2406134936f5",
+  "name" : "Holidays",
+  "description" : "23rd - 31st December, with possible name and schedule components."
+}, {
+  "id" : "74b81c97-fae6-4a52-98d5-fd51a5cb1367",
+  "name" : "Homework Assignment",
+  "description" : "Complete all homework assignments given throughout the week."
+}, {
+  "id" : "18a6d88a-ffb3-428e-8df9-342fef10380d",
+  "name" : "Reading homework every night",
+  "description" : null
+}, {
+  "id" : "135830c4-ca6a-4dcf-9990-2425adee0ec8",
+  "name" : "Extra Spelling and Math practice",
+  "description" : "Every two days, you need to complete this task. Each day should have a component where you practice spelling words and another component where you do math problems. The spelling should involve creating sentences for each word, while the math component can be anything from addition to more complex equations depending on your current level."
+}, {
+  "id" : "967a835f-337b-46e9-ab70-9a57fa4a60cf",
+  "name" : "Clothes Washed",
+  "description" : "It involves regularly washing and cleaning clothes to maintain hygiene, personal comfort, and prevent clutter."
+}, {
+  "id" : "3bc3951d-92b1-4031-bd4a-3169db6181cb",
+  "name" : "Return the bath every two nights",
+  "description" : "I need to ensure that I take a bath every two nights. This helps with relaxation and maintaining a routine."
+}, {
+  "id" : "6a25e7d9-6a17-4c95-8f18-daaf6446077f",
+  "name" : "fieldTrips",
+  "description" : "Field Trips involves organizing and participating in educational or recreational trips, including planning schedules and managing logistics."
+}, {
+  "id" : "f474edd7-e15f-416d-8449-e8a5d67e869c",
+  "name" : "Organize Driving School Docs",
+  "description" : "Need to gather and organize documents required for a driving school permit or license application."
+}, {
+  "id" : "d2c4c058-ca86-41b1-b634-ed61f7e91318",
+  "name" : " Cabaret Practice",
+  "description" : "Practice sessions for a cabaret performance, including vocal exercises, dance warm-ups, and stage presence preparation."
+}, {
+  "id" : "a1ac309e-0ef0-4bfe-bbe5-ef9f6e6d525d",
+  "name" : "After school play dates",
+  "description" : null
+}, {
+  "id" : "b932a2ec-84c0-4a2f-aeb8-5f508bfe1a5b",
+  "name" : "After school unpack snacks and lunch",
+  "description" : null
+}, {
+  "id" : "ce9560a4-1cdc-4240-99ff-fdbe80b60b26",
+  "name" : "Monday Mornings Odyssey",
+  "description" : "Participate in the Monday mornings task from Odyssey of the Mind. This involves both engaging with a specific task and following a schedule to ensure timely completion."
+}, {
+  "id" : "dbeeadda-1891-4321-919c-eb3dad17d6fc",
+  "name" : "Birthday Party Planning",
+  "description" : "Plan a birthday party with a scheduled date and time, including details like venue, menu, activities, and budget. This helps organize the celebration effectively."
+}, {
+  "id" : "14ae123a-c6d2-4189-8242-2dc9d306c4df",
+  "name" : "Bike to School",
+  "description" : "Every Wednesday morning, students are asked to bike to school instead of using their personal vehicles."
+}, {
+  "id" : "4adbcc09-3821-4594-89ae-b1d171f2aa74",
+  "name" : "School starts at 8:15am but usually leave the house at 7:45am",
+  "description" : null
+}, {
+  "id" : "a3c177cb-e19b-4da1-9df6-60d71ebd8bb4",
+  "name" : "School pickup",
+  "description" : "Return the task from School pickup is on 2:35pm on Mon, Tue, Thur, Fri. On Wednesday it is early pickup at 1:45pm there may be a name and a schedule component, also explain why."
+}, {
+  "id" : "825028c1-41e6-4bd8-81bf-0c3ea74e8390",
+  "name" : "Recess Preparation",
+  "description" : "Organizing and setting up the necessary equipment for the school recess, ensuring that all students have access to the required materials."
+}, {
+  "id" : "6b6d7dc9-b14d-4eb3-908e-f16d48dc1ebc",
+  "name" : "Breakfast Preparation",
+  "description" : "Prepare a nutritious breakfast consisting of eggs, toast, and fruits."
+}, {
+  "id" : "79086b2c-1f21-4a52-b07a-1aea03d84268",
+  "name" : "Recess",
+  "description" : "A short break for rest and recreation, typically 10 minutes."
+}, {
+  "id" : "1c8f7d51-de44-4f1d-a4db-5f20955c9a10",
+  "name" : "Contact Information",
+  "description" : "The contact information for Tamalpais Valley School includes phone number, email, and address. The phone number is 415-389-7731, the email is atrapp@mvschools.org, and the address is 350 Bell Lane, Mill Valley, CA 94941."
+}, {
+  "id" : "f371702d-2a5f-41b5-8d20-ecdab58165ec",
+  "name" : "Update schedule for no school",
+  "description" : "To ensure that there's an updated schedule in place when there is no school, I need to review and adjust any current schedules or add new ones as necessary."
+} ]
