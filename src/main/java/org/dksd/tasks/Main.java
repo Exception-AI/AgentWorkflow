@@ -45,7 +45,7 @@ public class Main {
         Map<String, Task> amp = new HashMap<>();
         for (SimpleTask stask : stasks) {
             Task task = new Task(stask.taskName, stask.description);
-            task.getMetadata().put("fileName", "school.todo");
+            task.getMetadata().put("fileName", coll.getInstance().getPath().toString());
             task.getMetadata().put("lineNumber", stask.line);
             coll.getInstance().addTask(task);
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
@@ -163,7 +163,6 @@ public class Main {
 
     public static List<SimpleTask> parseTasks(Instance instance, TaskExtractor taskExtractor, List<String> lines) {
         List<SimpleTask> tasks = new ArrayList<>();
-
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
 
@@ -172,7 +171,7 @@ public class Main {
                 if (task.getMetadata().isEmpty()) {
                     continue;
                 }
-                if (task.getMetadata().get("fileName").equals("school.todo") && task.getMetadata().get("lineNumber").equals(i)) {
+                if (task.getMetadata().get("fileName").equals(instance.getPath().toString()) && task.getMetadata().get("lineNumber").equals(i)) {
                     exists = true;
                     break;
                 }
