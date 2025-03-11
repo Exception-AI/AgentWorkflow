@@ -11,6 +11,7 @@ import org.dksd.tasks.pso.StandardConcurrentSwarm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,57 +27,29 @@ import static dev.langchain4j.model.chat.request.ResponseFormat.JSON;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Collection coll = new Collection(new Instance("schoolDiary"));
         ChatLanguageModel model = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
-                .responseFormat(JSON)
-                .modelName("qwen2.5:0.5b")
+                //.responseFormat(JSON)
+                .modelName("llama3.3:latest")
                 .build();
 
-        TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
-        List<SimpleTask> stasks = parseTasks(coll, taskExtractor, """
-                School Kids
-                  - Calendar
-                    - April: 7th - 11th Holiday/Recess no school
-                    - May: 26th Is a holiday so no school
-                    - June: 13th Minimum day Last day of school, 16th, 17th, 18th, 19th Teacher work day and holidays no school.
-                    - July: 4th Holiday
-                    - August: 19th-21st Teacher days no school. First day of school is 22nd August
-                    - September: 2nd Holiday (Labor day)
-                    - October: 3rd Holiday
-                    - November: 1st,11,25th - 29th Holidays.
-                    - December: 23rd - 31st Holidays
-                  - Homework due Monday
-                    - Reading homework every night
-                    - Extra Spelling and Math practice every two days
-                  - Clothes washed
-                  - Bath every two nights
-                  - Field Trips
-                    - Organize Driving school docs so I can drive
-                  - After school activities, like cabaret
-                  - After school play dates
-                  - After school unpack snacks and lunch
-                  - Odyssey of the Mind on Monday mornings
-                  - Any birthday parties?
-                  - Bike to school on Wednesday mornings
-                  - School starts at 8:15am but usually leave the house at 7:45am
-                  - School pickup is on 2:35pm on Mon, Tue, Thur, Fri. On Wednesday it is early pickup at 1:45pm
-                    - 9:55am - 10:10am recess
-                    - 11:40am - 12:20pm Lunch
-                    - 1:45pm - 1:55pm Recess
-                  - Tamalpais Valley School website is: 415-389-7731 and email is: atrapp@mvschools.org and address is: 350 Bell Lane, Mill Valley, CA 94941
-                  - Update schedule for when there is no school etc. see: www.mvschools.org/Page/8920
-                """);
-
+        List<String> lines = Files.readAllLines(coll.getInstance().getPath());
+        //TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
+        List<SimpleTask> stasks = parseTasks(coll.getInstance(), lines);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
         Map<String, Task> amp = new HashMap<>();
         for (SimpleTask stask : stasks) {
-            Task task = new Task(stask.taskName, stask.description);
-            task.getMetadata().put("fileName", "school.todo");
+            String description = model.chat("Can you provide a description of the task name: '" + stask.taskName + "' ?");
+            Task task = new Task(stask.taskName, description);
+            String schedule = model.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task + "' also please append a cron expression of the schedule?");
+            //Constraint constraint = new Constraint();
+            task.getMetadata().put("schedule", schedule);
+            task.getMetadata().put("fileName", coll.getInstance().getPath().toString());
             task.getMetadata().put("lineNumber", stask.line);
             coll.getInstance().addTask(task);
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
@@ -192,20 +165,17 @@ public class Main {
         updateFunction.accept(name, desc);
     }
 
-    public static List<SimpleTask> parseTasks(Collection coll, TaskExtractor taskExtractor, String text) {
+    public static List<SimpleTask> parseTasks(Instance instance, List<String> lines) {
         List<SimpleTask> tasks = new ArrayList<>();
-        Stack<SimpleTask> stack = new Stack<>();
-        String[] lines = text.split("\\r?\\n");
-
-        for (int i = 0; i < lines.length; i++) {
-            String line = lines[i];
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
 
             boolean exists = false;
-            for (Task task : coll.getInstance().getTasks()) {
+            for (Task task : instance.getTasks()) {
                 if (task.getMetadata().isEmpty()) {
                     continue;
                 }
-                if (task.getMetadata().get("fileName").equals("school.todo") && task.getMetadata().get("lineNumber").equals(i)) {
+                if (task.getMetadata().get("fileName").equals(instance.getPath().toString()) && task.getMetadata().get("lineNumber").equals(i)) {
                     exists = true;
                     break;
                 }
@@ -227,13 +197,6 @@ public class Main {
                 trimmed = trimmed.substring(1).trim();
             }
 
-            // Pop from the stack until we find a task with a lower indentation level.
-            while (!stack.isEmpty() && stack.peek().indent >= indent) {
-                stack.pop();
-            }
-            // The parent is the task on top of the stack (if any).
-            String parentName = stack.isEmpty() ? null : stack.peek().taskName;
-
             SimpleTask parsedTask = new SimpleTask();
             try {
                 parsedTask.taskName = trimmed.trim();
@@ -247,13 +210,21 @@ public class Main {
                 parsedTask.taskName = trimmed.trim();
             }
             parsedTask.indent = indent;
-            parsedTask.parentTask = parentName;
+            parsedTask.parentTask = getParent(lines, indent, i);
             parsedTask.line = i;
             tasks.add(parsedTask);
-            stack.push(parsedTask);
         }
 
         return tasks;
+    }
+
+    private static String getParent(List<String> lines, int indent, int i) {
+        for (int j = i - 1; j >= 0; j--) {
+            if (countLeadingSpaces(lines.get(j)) < indent) {
+                return lines.get(j);
+            }
+        }
+        return null;
     }
 
     // Utility method to count leading spaces in a string.

@@ -7,6 +7,8 @@ import org.dksd.tasks.model.LinkType;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -179,5 +181,9 @@ public class Instance implements Identifier {
         if (!tasks.contains(task)) {
             this.tasks.add(task);
         }
+    }
+
+    public Path getPath() {
+        return new File("data/" + instanceName + "/" + instanceName + ".todo").toPath();
     }
 }
