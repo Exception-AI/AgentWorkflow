@@ -31,20 +31,24 @@ public class Main {
         Collection coll = new Collection(new Instance("schoolDiary"));
         ChatLanguageModel model = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
-                .responseFormat(JSON)
-                .modelName("qwen2.5:0.5b")
+                //.responseFormat(JSON)
+                .modelName("llama3.3:latest")
                 .build();
 
         List<String> lines = Files.readAllLines(coll.getInstance().getPath());
-        TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
-        List<SimpleTask> stasks = parseTasks(coll.getInstance(), taskExtractor, lines);
+        //TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
+        List<SimpleTask> stasks = parseTasks(coll.getInstance(), lines);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
         Map<String, Task> amp = new HashMap<>();
         for (SimpleTask stask : stasks) {
-            Task task = new Task(stask.taskName, stask.description);
+            String description = model.chat("Can you provide a description of the task name: '" + stask.taskName + "' ?");
+            Task task = new Task(stask.taskName, description);
+            String schedule = model.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task + "' also please append a cron expression of the schedule?");
+            //Constraint constraint = new Constraint();
+            task.getMetadata().put("schedule", schedule);
             task.getMetadata().put("fileName", coll.getInstance().getPath().toString());
             task.getMetadata().put("lineNumber", stask.line);
             coll.getInstance().addTask(task);
@@ -161,7 +165,7 @@ public class Main {
         updateFunction.accept(name, desc);
     }
 
-    public static List<SimpleTask> parseTasks(Instance instance, TaskExtractor taskExtractor, List<String> lines) {
+    public static List<SimpleTask> parseTasks(Instance instance, List<String> lines) {
         List<SimpleTask> tasks = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
