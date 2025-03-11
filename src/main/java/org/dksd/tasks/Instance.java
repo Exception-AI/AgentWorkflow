@@ -177,4 +177,10 @@ public class Instance implements Identifier {
     public NodeTaskCache getTaskNodes() {
         return nodeTaskCache;
     }
+
+    public void addTask(Task task) {
+        if (!tasks.contains(task)) {
+            this.tasks.add(task);
+        }
+    }
 }

@@ -2,8 +2,8 @@ package org.dksd.tasks;
 
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
-import dev.langchain4j.model.output.structured.Description;
 import dev.langchain4j.service.AiServices;
+import org.dksd.tasks.model.LinkType;
 import org.dksd.tasks.pso.FitnessFunction;
 import org.dksd.tasks.pso.Particle;
 import org.dksd.tasks.pso.StandardConcurrentSwarm;
@@ -73,25 +73,21 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
-        Map<String, SimpleTask> tmap = new HashMap<>();
-        for (SimpleTask stask : stasks) {
-            tmap.put(stask.taskName, stask);
-            System.out.println("SimpleTask: " + stask.taskName);
-        }
-        Map<String, Task> realtmap = new HashMap<>();
+        Map<String, Task> amp = new HashMap<>();
         for (SimpleTask stask : stasks) {
             Task task = new Task(stask.taskName, stask.description);
-            realtmap.put(stask.taskName, task);
+            coll.getInstance().addTask(task);
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
+            amp.put(task.getName(), task);
         }
-        for (Map.Entry<String, Task> entry : realtmap.entrySet()) {
-            System.out.println("Gewtting" + coll.getInstance().getTaskNode(entry.getValue().getId()));
+        for (SimpleTask stask : stasks) {
+            Task parent = amp.get(stask.parentTask);
+            Task child = amp.get(stask.taskName);
+            if (parent != null && child != null) {
+                coll.getInstance().addLink(parent.getId(), LinkType.PARENT, child.getId());
+            }
         }
-        for (Map.Entry<String, Task> entry : realtmap.entrySet()) {
-            Task ptask = realtmap.get(tmap.get(entry.getKey()).parentTask);
-            System.out.println("Parent: " + ptask + " child: " + entry.getValue());
-            coll.getInstance().createSubTask(ptask, entry.getValue());
-        }
+
         System.out.println(coll.getInstance().getTasks());
 
         while (!"q".equals(line)) {
@@ -223,10 +219,10 @@ public class Main {
             catch (Exception ep) {
                 //NOOP
                 parsedTask = new SimpleTask();
-                parsedTask.taskName = trimmed;
+                parsedTask.taskName = trimmed.trim();
             }
             if (parsedTask.taskName == null) {
-                parsedTask.taskName = trimmed;
+                parsedTask.taskName = trimmed.trim();
             }
             parsedTask.indent = indent;
             parsedTask.parentTask = parentName;
