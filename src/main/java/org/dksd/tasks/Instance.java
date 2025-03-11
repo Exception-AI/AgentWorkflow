@@ -37,9 +37,6 @@ public class Instance implements Identifier {
         tasks = loadTasks(taskFile);
         links = loadLinks(linksFile);
         constraints = loadConstraints(constraintsFile);
-        if (tasks.isEmpty()) {
-            tasks.add(new Task(UUID.randomUUID(), "ROOT:" + instanceName, "ROOT:" + instanceName));
-        }
         taskMap = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);
@@ -50,13 +47,26 @@ public class Instance implements Identifier {
         UUID nKey = UUID.randomUUID();//(taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
         getTasks().add(task);
-        addLink(parent.getId(), LinkType.PARENT, task.getId());
-        addConstraint(task);
+        createSubTask(parent, task);
         return task;
+    }
+
+    public Task createCommonTask(Task parent, Task child) {
+        assert parent != null;
+        addLink(parent.getId(), LinkType.PARENT, child.getId());
+        addConstraint(child);
+        return child;
     }
 
     public Task createSubTask(Task parent, String name, String desc) {
         Task task = createCommonTask(parent, name, desc);
+        addLink(parent.getId(), LinkType.SUBTASK, task.getId());
+        return task;
+    }
+
+    public Task createSubTask(Task parent, Task child) {
+        //TODO add exception handling.
+        Task task = createCommonTask(parent, child);
         addLink(parent.getId(), LinkType.SUBTASK, task.getId());
         return task;
     }
@@ -163,5 +173,11 @@ public class Instance implements Identifier {
 
     public NodeTaskCache getTaskNodes() {
         return nodeTaskCache;
+    }
+
+    public void addTask(Task task) {
+        if (!tasks.contains(task)) {
+            this.tasks.add(task);
+        }
     }
 }

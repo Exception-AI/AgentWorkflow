@@ -1,11 +1,1 @@
-[ {
-  "id" : "fa0b42bf-64ea-4fd9-85ec-9ba2621c6e7c",
-  "schedule" : "30 22 * * 1",
-  "scheduleDescription" : "At 10:30 pm, only on Monday",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "NOT_URGENT_IMPORTANT",
-  "concentration" : "PARTIAL",
-  "deadlineType" : "SOFT"
-} ]
+[ ]

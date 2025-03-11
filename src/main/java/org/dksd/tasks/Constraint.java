@@ -9,6 +9,7 @@ import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 
 import java.text.ParseException;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Constraint implements Identifier {
@@ -133,5 +134,22 @@ public class Constraint implements Identifier {
     @Override
     public UUID getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Constraint that = (Constraint) o;
+        return Objects.equals(id, that.id) && Objects.equals(schedule, that.schedule) && Objects.equals(scheduleDescription, that.scheduleDescription) && leadTime == that.leadTime && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, schedule, scheduleDescription, leadTime, effort, cost, importance, concentration, deadlineType);
     }
 }

@@ -19,18 +19,17 @@ public class Collection {
 
     public Collection(Instance... instances) {
         this.instances.addAll(Arrays.stream(instances).toList());
-        curr = this.instances.getFirst().getTaskNodes().getFirst();
     }
 
     public void setCurrentTaskToParent() {
-        if (curr.getParentId() != null) {
-            curr = getInstance().getTaskNodes().get(curr.getParentId());
+        if (getCurrentNodeTask() != null && getCurrentNodeTask().getParentId() != null) {
+            curr = getInstance().getTaskNodes().get(getCurrentNodeTask().getParentId());
         }
     }
 
     public Instance getInstance() {
         for (Instance instance : instances) {
-            if (instance.getTaskNodes().get(curr.getId()) != null) {
+            if (getCurrentNodeTask() == null || instance.getTaskNodes().get(getCurrentNodeTask().getId()) != null) {
                 return instance;
             }
         }
@@ -42,8 +41,7 @@ public class Collection {
         //Needs to be recursive right?
         //for (Task wt : workingSet) {
 
-        Task wt = getInstance().getTask(curr.getId());
-        String suffix = curr.getId() == wt.getId() ? " (*) " : "";
+        Task wt = getCurrentTask();
 
         NodeTask wtn = getInstance().getTaskNode(wt.getId());
         List<String> hierarchy = new ArrayList<>();
@@ -53,7 +51,7 @@ public class Collection {
         }
 
         String indent = "  ";
-        System.out.println(wt.getName() + " <- " + hierarchy + " " + suffix);
+        System.out.println(wt.getName() + " <- " + hierarchy);
         //System.out.println(suffix + "   Description: " + wt.getDescription());
         System.out.flush();
             /*if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
@@ -98,10 +96,10 @@ public class Collection {
         NodeTask prev = null;
         for (Instance instance : instances) {
             for (Map.Entry<UUID, NodeTask> entry : instance.getTaskNodes().getTaskNodeMap().entrySet()) {
-                if (prev != null && prev.getId().equals(curr.getId())) {
+                if (prev != null && prev.getId().equals(getCurrentNodeTask().getId())) {
                     return entry.getValue();
                 }
-                if (!entry.getValue().getId().equals(curr.getId())) {
+                if (!entry.getValue().getId().equals(getCurrentNodeTask().getId())) {
                     prev = entry.getValue();
                 }
             }
@@ -111,6 +109,19 @@ public class Collection {
     }
 
     public Task getCurrentTask() {
-        return getInstance().getTask(curr.getId());
+        if (getCurrentNodeTask() == null) {
+            return null;
+        }
+        return getInstance().getTask(getCurrentNodeTask().getId());
+    }
+
+    private NodeTask getCurrentNodeTask() {
+        if (curr != null) {
+            return curr;
+        }
+        if (!this.instances.getFirst().getTasks().isEmpty()) {
+            curr = this.instances.getFirst().getTaskNodes().getFirst();
+        }
+        return null;
     }
 }

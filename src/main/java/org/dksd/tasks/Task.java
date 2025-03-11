@@ -7,6 +7,7 @@ public class Task implements Identifier {
     private UUID id;
     private String name;
     private String description;
+    private Map<String, Object> metadata = new HashMap<>();
 
     public Task() {
 
@@ -62,6 +63,14 @@ public class Task implements Identifier {
         return id;
     }
 
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -71,11 +80,11 @@ public class Task implements Identifier {
             return false;
         }
         Task task = (Task) o;
-        return Objects.equals(name, task.name) && Objects.equals(description, task.description);
+        return Objects.equals(id, task.id) && Objects.equals(name, task.name) && Objects.equals(description, task.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description);
+        return Objects.hash(id, name, description);
     }
 }
