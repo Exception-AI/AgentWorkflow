@@ -27,6 +27,13 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
+
+        //Mostly avoid inference as much as possible.
+        //watchFiles(coll);
+        //onFilesChange(arethereHashDifferences?)->thenPersist;
+        //beforeEachLLmInference(checkHashCache);
+        //beforeEachLLmInference(checkEmbeddingCache);
+
         Collection coll = new Collection(new Instance("schoolDiary"));
         ChatLanguageModel model = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
