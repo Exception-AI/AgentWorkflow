@@ -56,7 +56,7 @@ public class Instance implements Identifier {
     public Task createCommonTask(Task parent, Task child) {
         assert parent != null;
         addLink(parent.getId(), LinkType.PARENT, child.getId());
-        addConstraint(child);
+        createConstraint(child);
         return child;
     }
 
@@ -149,8 +149,14 @@ public class Instance implements Identifier {
         return link;
     }
 
-    public Constraint addConstraint(Task task) {
+    public Constraint createConstraint(Task task) {
         Constraint constraint = new Constraint();
+        constraints.add(constraint);
+        addLink(task.getId(), LinkType.CONSTRAINT, constraint.getId());
+        return constraint;
+    }
+
+    public Constraint addConstraint(Task task, Constraint constraint) {
         constraints.add(constraint);
         addLink(task.getId(), LinkType.CONSTRAINT, constraint.getId());
         return constraint;

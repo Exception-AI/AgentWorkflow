@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 
@@ -32,11 +31,18 @@ public class Main {
         ChatLanguageModel model = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
                 //.responseFormat(JSON)
-                .modelName("llama3.3:latest")
+                .modelName("deepseek-r1:latest")
+                .build();
+
+        ChatLanguageModel pojoModel = OllamaChatModel.builder()
+                .baseUrl("http://localhost:11434")
+                .responseFormat(JSON)
+                .modelName("mistral:latest")
                 .build();
 
         List<String> lines = Files.readAllLines(coll.getInstance().getPath());
         //TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
+        ConstraintExtractor constraintExtractor = AiServices.create(ConstraintExtractor.class, pojoModel);
         List<SimpleTask> stasks = parseTasks(coll.getInstance(), lines);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -44,7 +50,7 @@ public class Main {
 
         Map<String, Task> amp = new HashMap<>();
         for (SimpleTask stask : stasks) {
-            String description = model.chat("Can you provide a description of the task name: '" + stask.taskName + "' ?");
+            String description = model.chat("Can you provide a description of the task name in 10-20 words: '" + stask.taskName + "' ?");
             Task task = new Task(stask.taskName, description);
             String schedule = model.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task + "' also please append a cron expression of the schedule?");
             //Constraint constraint = new Constraint();
@@ -54,6 +60,13 @@ public class Main {
             coll.getInstance().addTask(task);
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
             amp.put(task.getName(), task);
+            try {
+                Constraint constraint = constraintExtractor.extractConstraintFrom(task.toString());
+                coll.getInstance().addConstraint(task, constraint);
+                coll.getInstance().write(coll);
+            } catch (Exception ep) {
+                ep.printStackTrace();
+            }
         }
         for (SimpleTask stask : stasks) {
             Task parent = amp.get(stask.parentTask);
@@ -66,8 +79,6 @@ public class Main {
                 coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, child.getId());
             }
         }
-
-        System.out.println(coll.getInstance().getTasks());
 
         while (!"q".equals(line)) {
             try {
