@@ -1,5 +1,6 @@
 package org.dksd.tasks;
 
+import dev.langchain4j.model.output.structured.Description;
 import net.redhogs.cronparser.CronExpressionDescriptor;
 import org.dksd.tasks.model.Concentration;
 import org.dksd.tasks.model.Cost;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class Constraint implements Identifier {
 
     private UUID id;
+    @Description("The cron based schedule of how often or when it is run")
     private String schedule; // "* * * etc
     private String scheduleDescription;
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
