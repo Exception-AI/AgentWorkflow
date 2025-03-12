@@ -1,1 +1,161 @@
-[ ]
+[ {
+  "id" : "65c176d0-e3fd-41b9-86c8-8e2f9afebb59",
+  "schedule" : "ASAP",
+  "scheduleDescription" : "This task requires immediate attention due to its relevance and importance.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "f594f987-2e4d-4559-9e27-d1cc5f8d2617",
+  "schedule" : "Daily",
+  "scheduleDescription" : "Check and update the calendar each day for optimal planning and scheduling",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "535ce8f3-a011-43c0-b71a-797257ceeedb",
+  "schedule" : "From April 7th to 11th",
+  "scheduleDescription" : "Enjoy the holiday break with no school or recess",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "MINIMAL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "3bc7633c-b68b-4e79-a7a6-22e6b21cbf55",
+  "schedule" : "One-Time",
+  "scheduleDescription" : "Task is related to the specific date: May 26th",
+  "leadTime" : "ONE_DAY",
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "MINIMAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "759554c8-751f-405f-b889-3454938f4730",
+  "schedule" : "June",
+  "scheduleDescription" : "June features teacher workdays on the 16th, 17th, 18th, and 19th following a last school day on the 13th, with holidays concluding after these dates.",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "db74b2c7-2583-4661-b1a5-9f11cb9215f5",
+  "schedule" : "As soon as possible",
+  "scheduleDescription" : "Since the task is about describing a holiday, it's important to provide the information in a timely manner for users to plan their celebrations.",
+  "leadTime" : null,
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "c75de229-80e6-4178-ae28-5db1109334bb",
+  "schedule" : "August Teacher’s Days",
+  "scheduleDescription" : "No school from 19th to 21st August; first day is on 22nd August.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "6e0c910c-f884-4da7-9556-6102fafcabf8",
+  "schedule" : "Regular",
+  "scheduleDescription" : "Recurring annually on the first or second Monday in September",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "74dfe2f0-9f48-4117-beeb-fb06877fc871",
+  "schedule" : "Calendar",
+  "scheduleDescription" : "Plan and mark the special celebration on October 3rd",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "b6da150b-d2cd-40b1-9251-d5cfedc473ce",
+  "schedule" : "Daily",
+  "scheduleDescription" : "Prepare for the upcoming special holidays on November 1st, 11th, 25th-29th",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "44075823-85a5-4a6e-a31a-f3d9c70d1c52",
+  "schedule" : "Fixed",
+  "scheduleDescription" : "Specified dates from December 23rd to 31st",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "5a2e48ca-0d49-438f-bb00-c6374602ef8b",
+  "schedule" : "Daily",
+  "scheduleDescription" : "Assigned daily for continuous learning",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "b8b06456-4857-4530-b0bb-20adf85657c7",
+  "schedule" : "Daily",
+  "scheduleDescription" : "Reading homework",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "b1afec9b-0774-4357-b13a-59b8f5156966",
+  "schedule" : "Every other day",
+  "scheduleDescription" : "An extra routine of practicing spelling and math to enhance skills.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "3569dcc9-1840-4640-b362-b2a1e0aebd08",
+  "schedule" : "ASAP",
+  "scheduleDescription" : "Immediate attention required for handling the washed clothes to ensure they remain in good condition before they get wrinkled or dirty again.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "913010ef-c79a-4ede-9711-f226bcccfc6f",
+  "schedule" : "Alternate Night Bath",
+  "scheduleDescription" : "Specifies that the task is to bathe on alternate nights.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "MINIMAL",
+  "deadlineType" : "SOFT"
+} ]

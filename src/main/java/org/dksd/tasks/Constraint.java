@@ -16,7 +16,6 @@ import java.util.UUID;
 public class Constraint implements Identifier {
 
     private UUID id;
-    @Description("The cron based schedule of how often or when it is run")
     private String schedule; // "* * * etc
     private String scheduleDescription;
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
@@ -38,12 +37,27 @@ public class Constraint implements Identifier {
         this.deadlineType = DeadlineType.SOFT;
     }
 
+    public Constraint(Constr constr) {
+        this.id = UUID.randomUUID();
+        this.schedule = constr.schedule;
+        this.scheduleDescription = constr.scheduleDescription;
+        this.leadTime = constr.leadTime;
+        this.effort = constr.effort;
+        this.cost = constr.cost;
+        this.importance = constr.importance;
+        this.concentration = constr.concentration;
+        this.deadlineType = constr.deadlineType;
+    }
+
     private String setSchedDesc(String schedule) {
         try {
             return CronExpressionDescriptor.getDescription(schedule);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            //e.printStackTrace();
+            this.schedule = "30 22 * * 1";
         }
+        return setSchedDesc(this.schedule);
+
     }
 
     public void setId(UUID id) {
@@ -108,6 +122,18 @@ public class Constraint implements Identifier {
     }
 
     public String toCompactString() {
+        if (cost == null) {
+            cost = Cost.CHEAP;
+        }
+        if (importance == null) {
+            importance = Importance.NOT_URGENT_IMPORTANT;
+        }
+        if (concentration == null) {
+            concentration = Concentration.PARTIAL;
+        }
+        if (deadlineType == null) {
+            deadlineType = DeadlineType.SOFT;
+        }
         return importance.getValue() + ":" + effort.getValue() + ":" + cost.getValue() + ":" +
                 concentration.getValue() + ":" + deadlineType.getValue();
     }

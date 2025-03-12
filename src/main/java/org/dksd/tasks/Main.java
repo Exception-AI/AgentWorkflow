@@ -3,15 +3,23 @@ package org.dksd.tasks;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
 import dev.langchain4j.service.AiServices;
+import org.dksd.tasks.model.Concentration;
+import org.dksd.tasks.model.Cost;
+import org.dksd.tasks.model.DeadlineType;
+import org.dksd.tasks.model.Effort;
+import org.dksd.tasks.model.Importance;
+import org.dksd.tasks.model.LeadTime;
 import org.dksd.tasks.model.LinkType;
 import org.dksd.tasks.pso.FitnessFunction;
 import org.dksd.tasks.pso.Particle;
 import org.dksd.tasks.pso.StandardConcurrentSwarm;
 
+import javax.naming.ldap.Control;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,14 +27,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.UUID;
 import java.util.function.BiConsumer;
 
 import static dev.langchain4j.model.chat.request.ResponseFormat.JSON;
 
 public class Main {
 
-
     public static void main(String[] args) throws IOException {
+
+        //Need some logs...
+        //What was the last thing we inferenced on,
+        //When did we write the files to disk.
+        //Which is the latest version?
 
         //Mostly avoid inference as much as possible.
         //watchFiles(coll);
@@ -34,7 +47,7 @@ public class Main {
         //beforeEachLLmInference(checkHashCache);
         //beforeEachLLmInference(checkEmbeddingCache);
 
-        Collection coll = new Collection(new Instance("schoolDiary"));
+        Collection coll = new Collection(new Instance("asap"));
         ChatLanguageModel model = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
                 //.responseFormat(JSON)
@@ -47,44 +60,54 @@ public class Main {
                 .modelName("mistral:latest")
                 .build();
 
-        List<String> lines = Files.readAllLines(coll.getInstance().getPath());
+        List<String> listLines = Files.readAllLines(coll.getInstance().getPath());
+        FileTime lastModifiedTimeOfTodoList = Files.getLastModifiedTime(coll.getInstance().getPath());
         //TaskExtractor taskExtractor = AiServices.create(TaskExtractor.class, model);
         ConstraintExtractor constraintExtractor = AiServices.create(ConstraintExtractor.class, pojoModel);
-        List<SimpleTask> stasks = parseTasks(coll.getInstance(), lines);
+        List<SimpleTask> stasks = parseTasks(coll.getInstance(), listLines);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
-        Map<String, Task> amp = new HashMap<>();
-        for (SimpleTask stask : stasks) {
-            String description = model.chat("Can you provide a description of the task name in 10-20 words: '" + stask.taskName + "' ?");
-            Task task = new Task(stask.taskName, description);
-            String schedule = model.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task + "' also please append a cron expression of the schedule?");
-            //Constraint constraint = new Constraint();
-            task.getMetadata().put("schedule", schedule);
-            task.getMetadata().put("fileName", coll.getInstance().getPath().toString());
-            task.getMetadata().put("lineNumber", stask.line);
-            coll.getInstance().addTask(task);
-            System.out.println("Task: " + task.getName() + " id: " + task.getId());
-            amp.put(task.getName(), task);
-            try {
-                Constraint constraint = constraintExtractor.extractConstraintFrom(task.toString());
-                coll.getInstance().addConstraint(task, constraint);
-                coll.getInstance().write(coll);
-            } catch (Exception ep) {
-                ep.printStackTrace();
+        long latestTaskTime = 0;
+        for (Task task : coll.getInstance().getTasks()) {
+            if (task.getLastModifiedTime() > latestTaskTime) {
+                latestTaskTime = task.getLastModifiedTime();
             }
         }
-        for (SimpleTask stask : stasks) {
-            Task parent = amp.get(stask.parentTask);
-            Task child = amp.get(stask.taskName);
-            if (parent == null && child != null) {
-                coll.getInstance().addLink(null, LinkType.PARENT, child.getId());
+        if (lastModifiedTimeOfTodoList.toMillis() < latestTaskTime || latestTaskTime == 0L) {
+            Map<String, Task> amp = new HashMap<>();
+            for (SimpleTask stask : stasks) {
+                String description = model.chat("Can you provide a description of the task name in 10-20 words: '" + stask.taskName + "' ?");
+                Task task = new Task(stask.taskName, description);
+                String schedule = model.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task + "' also please append a cron expression of the schedule?");
+                //Constraint constraint = new Constraint();
+                task.getMetadata().put("schedule", schedule);
+                task.getMetadata().put("fileName", coll.getInstance().getPath().toString());
+                task.getMetadata().put("lineNumber", stask.line);
+                coll.getInstance().addTask(task);
+                System.out.println("Task: " + task.getName() + " id: " + task.getId());
+                amp.put(task.getName(), task);
+                try {
+                    Constr constr = constraintExtractor.extractConstraintFrom(task.toString());
+                    coll.getInstance().addConstraint(task, new Constraint(constr));
+                    coll.getInstance().write(coll);
+                } catch (Exception ep) {
+                    ep.printStackTrace();
+                }
             }
-            if (parent != null && child != null) {
-                coll.getInstance().addLink(parent.getId(), LinkType.PARENT, child.getId());
-                coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, child.getId());
+            for (SimpleTask stask : stasks) {
+                Task parent = amp.get(stask.parentTask);
+                Task child = amp.get(stask.taskName);
+                if (parent == null && child != null) {
+                    coll.getInstance().addLink(null, LinkType.PARENT, child.getId());
+                }
+                if (parent != null && child != null) {
+                    coll.getInstance().addLink(parent.getId(), LinkType.PARENT, child.getId());
+                    coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, child.getId());
+                }
             }
+            coll.getInstance().write(coll);
         }
 
         while (!"q".equals(line)) {
@@ -219,8 +242,7 @@ public class Main {
             try {
                 parsedTask.taskName = trimmed.trim();
                 //parsedTask = taskExtractor.extractTaskFrom(trimmed);
-            }
-            catch (Exception ep) {
+            } catch (Exception ep) {
                 //NOOP
                 parsedTask.taskName = trimmed.trim();
             }
