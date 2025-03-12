@@ -182,8 +182,18 @@ public class Instance implements Identifier {
         }
     }
 
-    public Path getPath() {
+    public Path getTodoFilePath() {
         return new File("data/" + instanceName + "/" + instanceName + ".todo").toPath();
+    }
+
+    public long getLatestModifiedTime() {
+        long lastTaskTime = 0;
+        for (Task task : getTasks()) {
+            if (task.getLastModifiedTime() > lastTaskTime) {
+                lastTaskTime = task.getLastModifiedTime();
+            }
+        }
+        return lastTaskTime;
     }
 
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
