@@ -1,5 +1,6 @@
 package org.dksd.tasks;
 
+import java.time.Instant;
 import java.util.*;
 
 public class Task implements Identifier {
@@ -8,26 +9,50 @@ public class Task implements Identifier {
     private String name;
     private String description;
     private Map<String, Object> metadata = new HashMap<>();
+    private Long createdTime;
+    private Long lastModifiedTime;
 
     public Task() {
-
+        this.createdTime = Instant.now().getEpochSecond();
+        this.lastModifiedTime = Instant.now().getEpochSecond();
     }
 
     public Task(String name, String description) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
+        this.createdTime = Instant.now().getEpochSecond();
+        this.lastModifiedTime = Instant.now().getEpochSecond();
     }
 
     public Task(UUID id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.createdTime = Instant.now().getEpochSecond();
+        this.lastModifiedTime = Instant.now().getEpochSecond();
     }
 
     public void updateTask(String ename, String edesc) {
         setName(ename);
         setDescription(edesc);
+        setLastModifiedTime(Instant.now().getEpochSecond());
+    }
+
+    public void setCreatedTime(Long createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Long getCreatedTime() {
+        return createdTime;
+    }
+
+    public Long getLastModifiedTime() {
+        return lastModifiedTime;
+    }
+
+    public void setLastModifiedTime(Long lastModifiedTime) {
+        this.lastModifiedTime = lastModifiedTime;
     }
 
     public void setId(UUID id) {
@@ -56,6 +81,8 @@ public class Task implements Identifier {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", createdTime=" + createdTime +
+                ", lastModifiedTime=" + lastModifiedTime +
                 '}';
     }
 

@@ -7,11 +7,19 @@ import org.dksd.tasks.model.LinkType;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class Instance implements Identifier {
 
@@ -26,7 +34,7 @@ public class Instance implements Identifier {
     private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public Instance(String instanceName) {
+    public Instance(String instanceName) throws IOException {
         this.id = UUID.randomUUID();
         this.instanceName = instanceName;
         File instanceDir = new File("data/" + instanceName);
@@ -79,34 +87,19 @@ public class Instance implements Identifier {
         return task;
     }
 
-    public List<Task> loadTasks(File file) {
-        try {
-            return mapper.readValue(file, new TypeReference<List<Task>>() {
+    public List<Task> loadTasks(File file) throws IOException {
+        return mapper.readValue(file, new TypeReference<List<Task>>() {
             });
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-        return new ArrayList<>();
     }
 
-    public List<Link> loadLinks(File file) {
-        try {
-            return mapper.readValue(file, new TypeReference<List<Link>>() {
+    public List<Link> loadLinks(File file) throws IOException {
+        return mapper.readValue(file, new TypeReference<List<Link>>() {
             });
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-        return new ArrayList<>();
     }
 
-    public List<Constraint> loadConstraints(File file) {
-        try {
-            return mapper.readValue(file, new TypeReference<List<Constraint>>() {
+    public List<Constraint> loadConstraints(File file) throws IOException {
+        return mapper.readValue(file, new TypeReference<List<Constraint>>() {
             });
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-        return new ArrayList<>();
     }
 
     public void writeJson(String fileName, String json) {
@@ -192,4 +185,51 @@ public class Instance implements Identifier {
     public Path getPath() {
         return new File("data/" + instanceName + "/" + instanceName + ".todo").toPath();
     }
+
+    /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+    private WatchService watchService;
+
+    public void pollEvents() {
+        try {
+            WatchKey key = watchService.take();
+
+            for (WatchEvent<?> event : key.pollEvents()) {
+                // Handle the specific event
+                if (event.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                    System.out.println("File created: " + event.context());
+                } else if (event.kind() == StandardWatchEventKinds.ENTRY_DELETE) {
+                    System.out.println("File deleted: " + event.context());
+                } else if (event.kind() == StandardWatchEventKinds.ENTRY_MODIFY) {
+                    System.out.println("File modified: " + event.context());
+                }
+            }
+
+            // To receive further events, reset the key
+            key.reset();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void watchDir() {
+        try {
+            // Specify the directory which supposed to be watched
+            Path directoryPath = Paths.get("data/" + instanceName);
+
+            // Create a WatchService
+            watchService = FileSystems.getDefault().newWatchService();
+
+            // Register the directory for specific events
+            directoryPath.register(watchService,
+                    StandardWatchEventKinds.ENTRY_CREATE,
+                    StandardWatchEventKinds.ENTRY_DELETE,
+                    StandardWatchEventKinds.ENTRY_MODIFY);
+
+            System.out.println("Watching directory: " + directoryPath);
+
+        } catch (Exception ep) {
+            ep.printStackTrace();
+        }
+
+    }*/
 }
