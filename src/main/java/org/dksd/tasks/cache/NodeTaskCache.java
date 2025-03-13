@@ -5,7 +5,6 @@ import org.dksd.tasks.NodeTask;
 import org.dksd.tasks.Task;
 import org.dksd.tasks.model.LinkType;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,16 +41,12 @@ public class NodeTaskCache {
     }
 
     public NodeTask get(UUID id) {
-        int nHash = tasks.hashCode() + links.hashCode();
-        if (nHash != prevHash) {
-            prevHash = nHash;
-            for (Task task : tasks) {
-                NodeTask t = new NodeTask(task.getId());
-                taskNodeMap.put(task.getId(), t);
-            }
-            for (Link link : links) {
-                addLinkToTree(link);
-            }
+        for (Task task : tasks) {
+            NodeTask t = new NodeTask(task.getId());
+            taskNodeMap.put(task.getId(), t);
+        }
+        for (Link link : links) {
+            addLinkToTree(link);
         }
         return taskNodeMap.get(id);
     }

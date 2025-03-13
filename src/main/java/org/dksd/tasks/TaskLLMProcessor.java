@@ -23,22 +23,30 @@ public class TaskLLMProcessor {
         this.modelCache = new ModelCache();
     }
 
-    public void createSimpleTask(String parent, String child) {
+    public boolean createSimpleTask(String parent, String child) {
         boolean taskExists = coll.getInstance().containsTaskName(child);
         if (parent == null && !taskExists) {
             createTask(null, child);
+            return true;
         } else {
             boolean parentExists = coll.getInstance().containsTaskName(parent);
             if (parentExists && !taskExists) {
-                createTask(null, child);
+                createTask(coll.getInstance().getTaskByName(parent), child);
+                return true;
             }
         }
+        return false;
     }
 
     public void processSimpleTasks(List<SimpleTask> stasks) throws IOException {
-        for (int i = 0; i < 5; i++) {
+        boolean bailOut = false;
+        while (!bailOut) {
+            bailOut = true;
             for (SimpleTask stask : stasks) {
-                createSimpleTask(stask.parentTask, stask.taskName);
+                boolean ans = createSimpleTask(stask.parentTask, stask.taskName);
+                if (bailOut && ans) {
+                    bailOut = false;
+                }
             }
         }
         System.out.println("Processed simple tasks: " + stasks.size());

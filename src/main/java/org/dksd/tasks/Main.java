@@ -33,8 +33,7 @@ public class Main {
 
         Collection coll = new Collection(new Instance("asap"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
-        taskLLMProcessor.processSimpleTasks(parseTasks(coll.getInstance(),
-                Files.readAllLines(coll.getInstance().getTodoFilePath())));
+        taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
@@ -138,25 +137,11 @@ public class Main {
         updateFunction.accept(name, desc);
     }
 
-    public static List<SimpleTask> parseTasks(Instance instance, List<String> lines) {
+    public static List<SimpleTask> parseTasks(List<String> lines) {
         List<SimpleTask> tasks = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
 
-            boolean exists = false;
-            for (Task task : instance.getTasks()) {
-                if (task.getMetadata().isEmpty()) {
-                    continue;
-                }
-                if (task.getMetadata().get("fileName").equals(instance.getTodoFilePath().toString()) && task.getMetadata().get("lineNumber").equals(i)) {
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (exists) {
-                continue;
-            }
             if (line.trim().isEmpty()) {
                 continue;
             }
