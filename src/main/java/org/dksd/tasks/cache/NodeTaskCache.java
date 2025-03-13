@@ -15,7 +15,6 @@ public class NodeTaskCache {
     private final List<Task> tasks;
     private final List<Link> links;
     private final Map<UUID, NodeTask> taskNodeMap = new HashMap<>();
-    private int prevHash = 0;
 
     public NodeTaskCache(List<Task> tasks, List<Link> links) {
         this.tasks = tasks;
