@@ -1,7 +1,5 @@
 package org.dksd.tasks;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import dev.langchain4j.model.output.structured.Description;
 import net.redhogs.cronparser.CronExpressionDescriptor;
 import org.dksd.tasks.model.Concentration;
 import org.dksd.tasks.model.Cost;
@@ -10,11 +8,10 @@ import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 
-import java.text.ParseException;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Constraint implements Identifier, NameIdentifier {
+public class Constraint implements Identifier {
 
     private UUID id;
     private String schedule; // "* * * etc
@@ -53,7 +50,7 @@ public class Constraint implements Identifier, NameIdentifier {
     private String setSchedDesc(String schedule) {
         try {
             return CronExpressionDescriptor.getDescription(schedule);
-        } catch (ParseException e) {
+        } catch (Exception e) {
             //e.printStackTrace();
             this.schedule = "30 22 * * 1";
         }
@@ -183,11 +180,5 @@ public class Constraint implements Identifier, NameIdentifier {
     @Override
     public int hashCode() {
         return Objects.hash(id, schedule, scheduleDescription, leadTime, effort, cost, importance, concentration, deadlineType);
-    }
-
-    @JsonIgnore
-    @Override
-    public String getName() {
-        return "";
     }
 }

@@ -1,0 +1,141 @@
+[ {
+  "id" : "1fb5273d-c496-41e3-a433-df3649634ac6",
+  "schedule" : "0 0 12 * * SUN",
+  "scheduleDescription" : "Occurs every Sunday at noon.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "6bdcaed7-fe3b-4f3e-b938-979f63afafcc",
+  "schedule" : "Fixed Start Date",
+  "scheduleDescription" : "The task must begin precisely on the designated start date without delay.",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "HIGH",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "3f63334a-e52c-4927-9c3d-a8bc93c100ae",
+  "schedule" : "The task must be completed by the 15th of every month.",
+  "scheduleDescription" : "Monthly submission deadline for project proposals",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "HIGH",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "a747ed74-c608-4962-a89a-f7e4880d4c44",
+  "schedule" : "Regularly scheduled",
+  "scheduleDescription" : "The task is to be performed on a regular basis at a fixed time",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "9cf9a192-4486-48ba-8994-52f4534e80a9",
+  "schedule" : "0 0 8 1-5 * ? *",
+  "scheduleDescription" : "Monthly payment cycle, due on the first to fifth of every month",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "MEDIUM",
+  "cost" : "EXPENSIVE",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "MINIMAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "b34d96b0-51b3-4cb7-be38-7066a6175539",
+  "schedule" : "Monthly",
+  "scheduleDescription" : "Renewal must be processed at least one week before the subscription expires to avoid service disruption.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "EXPENSIVE",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "9998c2bf-0b1e-43d2-9ee9-447c081b5643",
+  "schedule" : "First day of every month",
+  "scheduleDescription" : "The task must start on the first day of the month to ensure timely inclusion of all previous month's financial data.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "6fb009bc-65ed-4bfc-b76f-35121f6b3fcc",
+  "schedule" : "Monthly",
+  "scheduleDescription" : "Scheduled at the start of each month to align with billing cycles.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "3a062e7d-fd52-48cb-817b-275148da912b",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "The task must be executed weekly to ensure constraints remain relevant.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "19ab1ef2-4698-49cd-871a-fe6cc2372649",
+  "schedule" : "FIRST_DAY_OF_MONTH",
+  "scheduleDescription" : "The task must be executed on the first day of every month to ensure timely availability of data for management decisions.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "6f8aee25-f89c-481e-a012-6d323e3fa3e3",
+  "schedule" : "0 0 9 * * MON-FRI",
+  "scheduleDescription" : "Scheduled every weekday at 9 AM to maintain consistent progress and alignment.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "HIGH",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "4c9e4f0a-a760-4dad-807b-613ff500e328",
+  "schedule" : "0 8 * * *",
+  "scheduleDescription" : "Every day at 8:00 AM",
+  "leadTime" : "ONE_DAY",
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "2db2a057-4b9c-4885-b3d4-d457d27d0d6e",
+  "schedule" : "Daily weekdays at noon",
+  "scheduleDescription" : "Posts must be scheduled daily on weekdays at noon to ensure timely audience reach.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "ef55a946-d02f-48a7-84ad-f377d87f134e",
+  "schedule" : "Bi-weekly",
+  "scheduleDescription" : "Meetings should occur every two weeks to maintain consistent communication.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+} ]

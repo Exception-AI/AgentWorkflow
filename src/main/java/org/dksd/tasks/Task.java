@@ -3,7 +3,7 @@ package org.dksd.tasks;
 import java.time.Instant;
 import java.util.*;
 
-public class Task implements Identifier, NameIdentifier {
+public class Task implements Identifier {
 
     private UUID id;
     private String name;

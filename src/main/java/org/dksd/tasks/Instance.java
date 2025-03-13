@@ -22,7 +22,7 @@ public class Instance implements Identifier {
     private List<Task> tasks = new ArrayList<>();
     private List<Link> links = new ArrayList<>();
     private List<Constraint> constraints = new ArrayList<>();
-    private Cache<Task> taskMap = null;
+    private Cache<Task> taskCache = null;
     private Cache<Constraint> constraintMap = null;
     private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -44,7 +44,7 @@ public class Instance implements Identifier {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        taskMap = new Cache<>(tasks);
+        taskCache = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);
     }
@@ -161,7 +161,7 @@ public class Instance implements Identifier {
     }
 
     public Task getTask(UUID id) {
-        return taskMap.get(id);
+        return taskCache.get(id);
     }
 
     public Constraint getConstraint(UUID id) {
@@ -202,11 +202,21 @@ public class Instance implements Identifier {
     }
 
     public Task getTaskByName(String taskName) {
-        return taskMap.get(taskName);
+        List<Task> tasks = taskCache.getAll();
+        for (Task task : tasks) {
+            if (task.getName().equals(taskName)) {
+                return task;
+            }
+        }
+        return null;
     }
 
-    public boolean containsTaskName(String taskName) {
-        return taskMap.get(taskName) != null;
+    public boolean containsTaskId(UUID id) {
+        return taskCache.get(id) != null;
+    }
+
+    private String getNameForUUID(UUID id) {
+        return this.taskCache.get(id).getName();
     }
 
     public String getTaskView(Task task) {

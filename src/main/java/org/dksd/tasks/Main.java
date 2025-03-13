@@ -31,7 +31,7 @@ public class Main {
         //beforeEachLLmInference(checkHashCache);
         //beforeEachLLmInference(checkEmbeddingCache);
 
-        Collection coll = new Collection(new Instance("asap"));
+        Collection coll = new Collection(new Instance("sanDiego"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
 
@@ -188,7 +188,7 @@ public class Main {
     private static int countLeadingSpaces(String line) {
         int count = 0;
         for (char c : line.toCharArray()) {
-            if (c == ' ') {
+            if (c == ' ' || c == '\t') {
                 count++;
             } else {
                 break;

@@ -1,4 +1,5 @@
 [ {
+<<<<<<< HEAD
   "id" : "1aecca24-4b20-40c3-bfc6-fef1b5f9f927",
   "name" : "ASAP List",
   "description" : "The database performance is slowing down the application. It needs to be optimized for better performance.",
@@ -141,4 +142,174 @@
   },
   "createdTime" : 1741969331,
   "lastModifiedTime" : 1741969331
+=======
+  "id" : "8c3d0345-92f8-4d8c-a281-a840b6759771",
+  "name" : "ASAP List",
+  "description" : "An example task requiring immediate action with an ASAP deadline.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "ASAP Task Example",
+    "proposedSubTasks" : [ "Subtask1", "Subtask2" ],
+    "taskId" : "8c3d0345-92f8-4d8c-a281-a840b6759771"
+  },
+  "createdTime" : 1741973893,
+  "lastModifiedTime" : 1741973893
+}, {
+  "id" : "77e6a699-cdf8-4efb-9328-705bebe097fb",
+  "name" : "UK Passport",
+  "description" : "Ensure compliance with UK passport requirements, including application deadlines, documentation, and processing times to avoid delays or rejections.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ? *",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "UK Passport Constraint",
+    "proposedSubTasks" : [ "Check UK Passport Documentation", "Submit Passport Application", "Monitor Processing Times", "Prepare for Biometric Appointment" ],
+    "taskId" : "77e6a699-cdf8-4efb-9328-705bebe097fb"
+  },
+  "createdTime" : 1741973910,
+  "lastModifiedTime" : 1741973910
+}, {
+  "id" : "97ea8b27-8736-44aa-adee-cda40c815c82",
+  "name" : "Insurance cards",
+  "description" : "Ensure all insurance cards are up to date and valid for medical coverage.",
+  "metadata" : {
+    "schedule" : "0 0 12 1 * ? *",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Insurance Card Constraint",
+    "proposedSubTasks" : [ "Verify Card Expiry", "Update Beneficiary Info", "Submit Renewal Forms" ],
+    "taskId" : "97ea8b27-8736-44aa-adee-cda40c815c82"
+  },
+  "createdTime" : 1741973926,
+  "lastModifiedTime" : 1741973926
+}, {
+  "id" : "fb61ce04-f645-47be-bc9c-3e1e82a7c017",
+  "name" : "Medical cards",
+  "description" : "Ensure medical cards are updated, reviewed, and stored securely in compliance with healthcare regulations.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Medical Card Maintenance",
+    "proposedSubTasks" : [ "Update Patient Records", "Review Compliance", "Secure Data Storage" ],
+    "taskId" : "fb61ce04-f645-47be-bc9c-3e1e82a7c017"
+  },
+  "createdTime" : 1741973941,
+  "lastModifiedTime" : 1741973941
+}, {
+  "id" : "99891ebf-72a4-42ca-9f15-6e3b4712c4cd",
+  "name" : "Website get quotes",
+  "description" : "Retrieve necessary quotes from a specified website by accessing the relevant pages and extracting the required information.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Obtain Quotes via Website",
+    "proposedSubTasks" : [ "Access Target Website", "Locate Quote Section", "Extract Quote Data", "Validate Quote Accuracy" ],
+    "taskId" : "99891ebf-72a4-42ca-9f15-6e3b4712c4cd"
+  },
+  "createdTime" : 1741973958,
+  "lastModifiedTime" : 1741973958
+}, {
+  "id" : "33c43869-e442-494e-879f-dea1de67a87d",
+  "name" : "Driving Docs for School",
+  "description" : "Gather and organize all necessary documents required for school-related driving authorization, including permission slips, medical forms, and any additional paperwork specified by the school's policy.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Driving Docs for School",
+    "proposedSubTasks" : [ "Collect Permission Slips", "Fill Medical Forms", "Verify School Policies", "Submit Documents" ],
+    "taskId" : "33c43869-e442-494e-879f-dea1de67a87d"
+  },
+  "createdTime" : 1741973977,
+  "lastModifiedTime" : 1741973977
+}, {
+  "id" : "734d1fd4-30ea-4c76-af1b-66dc723bcd82",
+  "name" : "Lily Passport",
+  "description" : "Return the constraint from Lily's Passport requirements and explanation.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Lily Passport Constraint",
+    "proposedSubTasks" : [ "Analyze Passport Requirements", "Identify Time Constraints", "Determine Cost Factors", "Assess Urgency and Importance", "Evaluate Concentration Needs" ],
+    "taskId" : "734d1fd4-30ea-4c76-af1b-66dc723bcd82"
+  },
+  "createdTime" : 1741973993,
+  "lastModifiedTime" : 1741973993
+}, {
+  "id" : "be244980-2e61-4ac4-8ac3-70bc684c2a45",
+  "name" : "Fidelity Phone",
+  "description" : "Ensuring all phone-related tasks adhere to Fidelity's strict security protocols and compliance requirements.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Fidelity Phone Constraint",
+    "proposedSubTasks" : [ "Security Compliance Check", "Protocol Review", "Compliance Training", "Audit Preparation" ],
+    "taskId" : "be244980-2e61-4ac4-8ac3-70bc684c2a45"
+  },
+  "createdTime" : 1741974010,
+  "lastModifiedTime" : 1741974010
+}, {
+  "id" : "1e524485-918a-4d78-b070-20ac154e8465",
+  "name" : "Consolidate empower",
+  "description" : "Consolidate and analyze data from multiple sources to empower decision-making through actionable insights.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Consolidate Empower",
+    "proposedSubTasks" : [ "Data Collection", "Data Cleaning", "Data Analysis", "Insight Generation", "Report Compilation" ],
+    "taskId" : "1e524485-918a-4d78-b070-20ac154e8465"
+  },
+  "createdTime" : 1741974026,
+  "lastModifiedTime" : 1741974026
+}, {
+  "id" : "3bd52408-3e26-40de-844f-f9dd4af09708",
+  "name" : "USD review webinar and log into all things",
+  "description" : "Document the constraints discussed during the USD review webinar and maintain a log of all related items, explaining the rationale behind each constraint.",
+  "metadata" : {
+    "schedule" : "0 0 16 * * 1-5",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Log USD Review Webinar Constraints",
+    "proposedSubTasks" : [ "Review Webinar Recording", "Identify Key Constraints", "Analyze Constraint Rationales", "Update Constraint Log" ],
+    "taskId" : "3bd52408-3e26-40de-844f-f9dd4af09708"
+  },
+  "createdTime" : 1741974044,
+  "lastModifiedTime" : 1741974044
+}, {
+  "id" : "54f727e0-6439-4753-9471-34d390614187",
+  "name" : "Homework with girls",
+  "description" : "Complete homework assignments while collaborating with a group of girls.",
+  "metadata" : {
+    "schedule" : "0 0 18 ? * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Homework with Girls",
+    "proposedSubTasks" : [ "Gather with Girls", "Divide Homework Topics", "Discuss Difficult Questions", "Review Completed Work" ],
+    "taskId" : "54f727e0-6439-4753-9471-34d390614187"
+  },
+  "createdTime" : 1741974062,
+  "lastModifiedTime" : 1741974062
+}, {
+  "id" : "f40d7a3b-32d6-4e2e-9f80-b868bd91705f",
+  "name" : "Clean yard and trash",
+  "description" : "Remove trash and debris from the yard, ensuring all waste is properly disposed of in designated bins or through local waste management guidelines.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "CleanYardTrash",
+    "proposedSubTasks" : [ "CollectTrashItems", "DisposeOfDebris", "CheckComplianceWithLocalWasteRules" ],
+    "taskId" : "f40d7a3b-32d6-4e2e-9f80-b868bd91705f"
+  },
+  "createdTime" : 1741974079,
+  "lastModifiedTime" : 1741974079
+}, {
+  "id" : "a730bfb8-ec27-477b-bc57-450cbebc3e83",
+  "name" : "Weed whack yard",
+  "description" : "Using a weed whacker to trim weeds and overgrown grass around the yard, including flower beds, walkways, and edges of the lawn.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * MON-FRI",
+    "fileName" : "data/asap/asap.todo",
+    "proposedName" : "Weed Whack Yard",
+    "proposedSubTasks" : [ "Fuel the weed whacker", "Check equipment functionality", "Trim around flower beds", "Edge the lawn borders", "Maintain walkways" ],
+    "taskId" : "a730bfb8-ec27-477b-bc57-450cbebc3e83"
+  },
+  "createdTime" : 1741974097,
+  "lastModifiedTime" : 1741974097
+>>>>>>> 33f5508 (This is wild strings to help the llm)
 } ]
