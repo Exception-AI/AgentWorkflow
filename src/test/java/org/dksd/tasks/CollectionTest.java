@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Node;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,11 +16,11 @@ class CollectionTest {
     private Collection collection;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         loadFiles("test_tasks.json", "test_links.json", "test_constraints.json");
     }
 
-    private void loadFiles(String tasks, String links, String constraints) {
+    private void loadFiles(String tasks, String links, String constraints) throws IOException {
         //ClassLoader classLoader = getClass().getClassLoader();
         //File tasksFile = new File(classLoader.getResource(tasks).getFile());
         //File linksFile = new File(classLoader.getResource(links).getFile());

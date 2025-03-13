@@ -7,7 +7,9 @@ import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 
-public class Constr {
+import java.io.Serializable;
+
+public class Constr implements Serializable {
     public String schedule; // "* * * etc
     public String scheduleDescription;
     public LeadTime leadTime; //How much time needed before deadlines in seconds etc

@@ -1,5 +1,6 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.cache.ModelCache;
 import org.dksd.tasks.model.LinkType;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class TaskLLMProcessor {
             //Want to combine these into one call instead of two
             String description = modelCache.chat("Can you provide a description of the task name in 10-20 words: '" + stask.taskName + "' ?");
             Task task = new Task(stask.taskName, description);
-            String schedule = modelCache.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task + "' also please append a cron expression of the schedule?");
+            String schedule = modelCache.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task.getName() + "' also please append a cron expression of the schedule?");
             task.getMetadata().put("schedule", schedule);
             task.getMetadata().put("fileName", coll.getInstance().getTodoFilePath().toString());
             task.getMetadata().put("lineNumber", stask.line);
@@ -38,7 +39,7 @@ public class TaskLLMProcessor {
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
             amp.put(task.getName(), task);
             try {
-                Constr constr = modelCache.extractConstraintFrom(task.toString());
+                Constr constr = modelCache.extractConstraintFrom(task.getName() + " : " + task.getDescription());
                 coll.getInstance().addConstraint(task, new Constraint(constr));
                 coll.getInstance().write(coll);
             } catch (Exception ep) {

@@ -1,47 +1,27 @@
 [ {
-  "id" : "6505c35b-41fe-4333-a90b-dcfd776424d0",
-  "schedule" : "Immediate",
-  "scheduleDescription" : "The task requires prompt action as it deals with urgent tasks that need immediate attention and completion.",
+  "id" : "c240e775-90e9-49f2-b2b6-959648032d73",
+  "schedule" : "ASAP",
+  "scheduleDescription" : "A concise list of tasks meant to tackle matters that demand immediate attention due to their urgency.",
   "leadTime" : "ONE_DAY",
   "effort" : "HIGH",
-  "cost" : "CHEAP",
+  "cost" : "EXPENSIVE",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
 }, {
-  "id" : "b0b712f8-ab40-4519-832b-5d18e5ebd88b",
+  "id" : "2272160a-3b5a-4802-92a6-1bc3abaa5f90",
   "schedule" : "ASAP",
-  "scheduleDescription" : "Immediate attention required as the description is needed quickly for an ongoing project",
-  "leadTime" : "ONE_DAY",
-  "effort" : "LOW",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "270128ec-b1c2-4c17-9599-1f8320a418ab",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "Immediate execution to minimize delay in obtaining quotes from the specified website.",
+  "scheduleDescription" : "Applying for or renewing a UK Passport often requires prompt attention to ensure smooth travel plans.",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
-  "cost" : "CHEAP",
+  "cost" : "COSTLY",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
-  "deadlineType" : "ASAP"
+  "deadlineType" : "HARD"
 }, {
-  "id" : "6382a2db-0bc7-4d2a-bf4d-d798fd4c6548",
+  "id" : "04876a2d-3bea-445b-9782-3bfeea53f9a1",
   "schedule" : "ASAP",
-  "scheduleDescription" : "Requires immediate attention due to the importance and potential impact on the school's administrative processes.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "HIGH",
-  "cost" : null,
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "92556feb-1185-4d6d-97bd-69533d506216",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "Immediate attention required for crafting a concise and engaging description.",
+  "scheduleDescription" : "Immediate research and information collection",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
   "cost" : null,
@@ -49,9 +29,19 @@
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
 }, {
-  "id" : "fdedf3dc-75f6-4ae2-a12b-6a98cbde9f08",
+  "id" : "81b2c0f0-5a7c-415f-8e59-21dd206797ca",
+  "schedule" : "Hard",
+  "scheduleDescription" : "Requires immediate attention when needed for medical procedures or appointments.",
+  "leadTime" : null,
+  "effort" : null,
+  "cost" : null,
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "137643b2-0981-4e36-9715-d4ee1e0606a0",
   "schedule" : "ASAP",
-  "scheduleDescription" : "This task requires immediate attention to properly understand and interpret the meaning of 'Fidelity Phone'.",
+  "scheduleDescription" : "This task requires immediate attention as users expect a prompt response to their quote requests.",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
   "cost" : null,
@@ -59,9 +49,49 @@
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
 }, {
-  "id" : "98a46967-415b-43e9-855e-0e6ed5078a34",
-  "schedule" : "Weekly",
-  "scheduleDescription" : "Recurring consolidation meetings to maintain team productivity and empowerment.",
+  "id" : "228d6db2-b77b-45d9-ab98-83972d9ce065",
+  "schedule" : "As needed",
+  "scheduleDescription" : "The task is ongoing and may require attention at various points throughout the school year.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "9fa1bf4b-6f78-4491-8ae2-c6995e7775d2",
+  "schedule" : "ASAP",
+  "scheduleDescription" : "Immediate release to meet user needs",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "cff7aaa0-29d2-453d-963d-5dea27ff365e",
+  "schedule" : "ASAP",
+  "scheduleDescription" : "Immediate clarification needed to understand the context and purpose of Fidelity Phone.",
+  "leadTime" : null,
+  "effort" : null,
+  "cost" : null,
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "bb834a7b-4a6f-48f1-83b9-15ac8923ead0",
+  "schedule" : "Planned",
+  "scheduleDescription" : "Scheduled for a time when the consolidation and empowerment of teams will have minimal impact on ongoing operations.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "e86cd553-36bd-4089-add7-1d00b08bb6b5",
+  "schedule" : "Next week",
+  "scheduleDescription" : "Set a date and time for the USD review webinar",
   "leadTime" : "ONE_WEEK",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
@@ -69,43 +99,33 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "3494610a-b8cc-4f7d-8354-a786623acd71",
-  "schedule" : "Virtual",
-  "scheduleDescription" : "Join the webinar via a link provided",
+  "id" : "3af44ce4-2109-431a-90ff-8660fd4522e8",
+  "schedule" : "Regular",
+  "scheduleDescription" : "Daily or weekly sessions",
   "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "PARTIAL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "370e3d3b-b045-4e3b-b39f-88109e8a43aa",
-  "schedule" : "Daily",
-  "scheduleDescription" : "Daily activities schedule for the 'Homework with girls' task",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "07558176-4638-493a-9436-a28d1caa959f",
-  "schedule" : "Weekly",
-  "scheduleDescription" : "It is recommended to perform this task once a week for optimal results.",
-  "leadTime" : "ONE_WEEK",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "NOT_URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "SOFT"
 }, {
-  "id" : "eee46be0-e910-47ee-9f5e-46fdac23034a",
-  "schedule" : "As needed",
-  "scheduleDescription" : "Weed whacking can be done at any time during the growing season when weeds are present.",
-  "leadTime" : "ONE_DAY",
+  "id" : "87fe9e8a-747f-43f6-82a1-1e6c675c3674",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Regular maintenance to keep the yard and surroundings clean",
+  "leadTime" : "ONE_WEEK",
   "effort" : "MEDIUM",
-  "cost" : "EXPENSIVE",
+  "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
-  "deadlineType" : "SOFT"
+  "deadlineType" : "ASAP"
+}, {
+  "id" : "ae7369b4-585b-4150-882e-18db661bf666",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Weed whacking is typically done on a regular basis to keep the yard free from unwanted vegetation.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
 } ]
