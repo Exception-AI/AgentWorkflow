@@ -78,10 +78,9 @@ public class TaskLLMProcessor {
         return task;
     }
 
-    public void createSubTaskFromParent(String parentName, String parentDescription) {
-        //Need to pass in parent and all subtasks so far so it can suggest a new task.
-        //Task l;imited to depth 1
-        //String subTaskName = modelCache.chat("Can you create a new sub task to help divide and conquer this task and description: 'name=" + name + ", description='"+description+" ?");
-        //createSimpleTask(parentName, subTaskName);
+    public void createAutoSubTaskFromParent(Task parent) {
+        String taskView = coll.getInstance().getTaskView(parent, 1);
+        String subTaskName = modelCache.chat("Can you create a new succinct sub task name to help divide and conquer this task and description: '" + taskView + "' ?");
+        createTask(parent, subTaskName);
     }
 }
