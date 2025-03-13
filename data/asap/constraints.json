@@ -24,7 +24,7 @@
   "scheduleDescription" : "Immediate research and information collection",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
-  "cost" : null,
+  "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
@@ -33,8 +33,8 @@
   "schedule" : "Hard",
   "scheduleDescription" : "Requires immediate attention when needed for medical procedures or appointments.",
   "leadTime" : null,
-  "effort" : null,
-  "cost" : null,
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
@@ -44,7 +44,7 @@
   "scheduleDescription" : "This task requires immediate attention as users expect a prompt response to their quote requests.",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
-  "cost" : null,
+  "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
@@ -73,8 +73,8 @@
   "schedule" : "ASAP",
   "scheduleDescription" : "Immediate clarification needed to understand the context and purpose of Fidelity Phone.",
   "leadTime" : null,
-  "effort" : null,
-  "cost" : null,
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "ASAP"
@@ -125,6 +125,16 @@
   "leadTime" : "ONE_WEEK",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "38fd80f3-caa2-40fd-a85f-15f2da850f82",
+  "schedule" : "Hard",
+  "scheduleDescription" : "Requires careful planning and coordination due to official processes involved.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "EXPENSIVE",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "HARD"

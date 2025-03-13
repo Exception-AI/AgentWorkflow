@@ -188,4 +188,9 @@
   "left" : "d3febaa1-dc73-4289-bfc8-6d46787f5635",
   "linkType" : "SUBTASK",
   "right" : "be2a3823-8364-4b61-a02d-8888751b84de"
+}, {
+  "id" : "db8bbcce-c0c4-45db-b948-c4e9072a649d",
+  "left" : "454d5a45-a82b-4a24-b4c4-34a04249a515",
+  "linkType" : "CONSTRAINT",
+  "right" : "38fd80f3-caa2-40fd-a85f-15f2da850f82"
 } ]

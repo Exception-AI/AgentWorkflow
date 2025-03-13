@@ -3,7 +3,7 @@ package org.dksd.tasks;
 import java.time.Instant;
 import java.util.*;
 
-public class Task implements Identifier {
+public class Task implements Identifier, NameIdentifier {
 
     private UUID id;
     private String name;
@@ -107,11 +107,11 @@ public class Task implements Identifier {
             return false;
         }
         Task task = (Task) o;
-        return Objects.equals(id, task.id) && Objects.equals(name, task.name) && Objects.equals(description, task.description);
+        return Objects.equals(name, task.name) && Objects.equals(description, task.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description);
+        return Objects.hash(name, description);
     }
 }

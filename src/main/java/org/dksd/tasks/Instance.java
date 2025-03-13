@@ -22,7 +22,7 @@ public class Instance implements Identifier {
     private List<Task> tasks = new ArrayList<>();
     private List<Link> links = new ArrayList<>();
     private List<Constraint> constraints = new ArrayList<>();
-    private Cache<Task> taskMap= null;
+    private Cache<Task> taskMap = null;
     private Cache<Constraint> constraintMap = null;
     private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -199,6 +199,14 @@ public class Instance implements Identifier {
             }
         }
         return lastTaskTime;
+    }
+
+    public Task getTaskByName(String taskName) {
+        return taskMap.get(taskName);
+    }
+
+    public boolean containsTaskName(String taskName) {
+        return taskMap.get(taskName) != null;
     }
 
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
