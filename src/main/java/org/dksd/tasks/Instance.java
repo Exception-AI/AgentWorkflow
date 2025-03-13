@@ -2,33 +2,26 @@ package org.dksd.tasks;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.dksd.tasks.cache.Cache;
+import org.dksd.tasks.cache.NodeTaskCache;
 import org.dksd.tasks.model.LinkType;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class Instance implements Identifier {
 
     private final UUID id;
     private final String instanceName;
     private String instanceDescription;
-    private List<Task> tasks = null;
-    private List<Link> links = null;
-    private List<Constraint> constraints = null;
+    private List<Task> tasks = new ArrayList<>();
+    private List<Link> links = new ArrayList<>();
+    private List<Constraint> constraints = new ArrayList<>();
     private Cache<Task> taskMap= null;
     private Cache<Constraint> constraintMap = null;
     private NodeTaskCache nodeTaskCache = null;
@@ -44,9 +37,13 @@ public class Instance implements Identifier {
         File taskFile = new File(instanceDir, "tasks.json");
         File linksFile = new File(instanceDir, "links.json");
         File constraintsFile = new File(instanceDir, "constraints.json");
-        tasks = loadTasks(taskFile);
-        links = loadLinks(linksFile);
-        constraints = loadConstraints(constraintsFile);
+        try {
+            tasks = loadTasks(taskFile);
+            links = loadLinks(linksFile);
+            constraints = loadConstraints(constraintsFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         taskMap = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);
@@ -106,7 +103,6 @@ public class Instance implements Identifier {
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             fileWriter.write(json);
             fileWriter.flush();
-            System.out.println("Successfully saved JSON to " + fileName);
         } catch (IOException e) {
             System.err.println("Error writing JSON to file: " + e.getMessage());
             e.printStackTrace();
@@ -125,14 +121,23 @@ public class Instance implements Identifier {
     }
 
     public List<Task> getTasks() {
+        if (tasks == null) {
+            tasks = new ArrayList<>();
+        }
         return tasks;
     }
 
     public List<Link> getLinks() {
+        if (links == null) {
+            links = new ArrayList<>();
+        }
         return links;
     }
 
     public List<Constraint> getConstraints() {
+        if (constraints == null) {
+            constraints = new ArrayList<>();
+        }
         return constraints;
     }
 

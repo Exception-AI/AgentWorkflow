@@ -134,6 +134,9 @@ public class Constraint implements Identifier {
         if (deadlineType == null) {
             deadlineType = DeadlineType.SOFT;
         }
+        if (effort == null) {
+            effort = Effort.MEDIUM;
+        }
         return importance.getValue() + ":" + effort.getValue() + ":" + cost.getValue() + ":" +
                 concentration.getValue() + ":" + deadlineType.getValue();
     }

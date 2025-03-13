@@ -1,7 +1,11 @@
-package org.dksd.tasks;
+package org.dksd.tasks.cache;
 
+import org.dksd.tasks.Link;
+import org.dksd.tasks.NodeTask;
+import org.dksd.tasks.Task;
 import org.dksd.tasks.model.LinkType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +61,9 @@ public class NodeTaskCache {
     }
 
     public NodeTask getFirst() {
+        if (tasks.isEmpty()) {
+            return null;
+        }
         return get(tasks.getFirst().getId());
     }
 

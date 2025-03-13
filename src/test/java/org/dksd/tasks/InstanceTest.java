@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ class InstanceTest {
     private final String instanceName = "test-instance-" + UUID.randomUUID();
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         instance = new Instance(instanceName);
     }
 

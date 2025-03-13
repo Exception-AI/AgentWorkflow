@@ -32,7 +32,6 @@ public class Main {
         //beforeEachLLmInference(checkEmbeddingCache);
 
         Collection coll = new Collection(new Instance("asap"));
-
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(coll.getInstance(),
                 Files.readAllLines(coll.getInstance().getTodoFilePath())));
