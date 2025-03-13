@@ -4,9 +4,7 @@ import org.dksd.tasks.cache.ModelCache;
 import org.dksd.tasks.model.LinkType;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * TaskLLMProcessor processes a list of SimpleTask objects.
@@ -25,38 +23,65 @@ public class TaskLLMProcessor {
         this.modelCache = new ModelCache();
     }
 
+    public boolean createSimpleTask(String parent, String child) {
+        boolean taskExists = coll.getInstance().containsTaskName(child);
+        if (parent == null && !taskExists) {
+            createTask(null, child);
+            return true;
+        } else {
+            boolean parentExists = coll.getInstance().containsTaskName(parent);
+            if (parentExists && !taskExists) {
+                createTask(coll.getInstance().getTaskByName(parent), child);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void processSimpleTasks(List<SimpleTask> stasks) throws IOException {
-        Map<String, Task> amp = new HashMap<>();
-        for (SimpleTask stask : stasks) {
-            //Want to combine these into one call instead of two
-            String description = modelCache.chat("Can you provide a description of the task name in 10-20 words: '" + stask.taskName + "' ?");
-            Task task = new Task(stask.taskName, description);
-            String schedule = modelCache.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task.getName() + "' also please append a cron expression of the schedule?");
-            task.getMetadata().put("schedule", schedule);
-            task.getMetadata().put("fileName", coll.getInstance().getTodoFilePath().toString());
-            task.getMetadata().put("lineNumber", stask.line);
-            coll.getInstance().addTask(task);
-            System.out.println("Task: " + task.getName() + " id: " + task.getId());
-            amp.put(task.getName(), task);
-            try {
-                Constr constr = modelCache.extractConstraintFrom(task.getName() + " : " + task.getDescription());
-                coll.getInstance().addConstraint(task, new Constraint(constr));
-                coll.getInstance().write(coll);
-            } catch (Exception ep) {
-                ep.printStackTrace();
+        boolean bailOut = false;
+        while (!bailOut) {
+            bailOut = true;
+            for (SimpleTask stask : stasks) {
+                boolean ans = createSimpleTask(stask.parentTask, stask.taskName);
+                if (bailOut && ans) {
+                    bailOut = false;
+                }
             }
         }
-        for (SimpleTask stask : stasks) {
-            Task parent = amp.get(stask.parentTask);
-            Task child = amp.get(stask.taskName);
-            if (parent == null && child != null) {
-                coll.getInstance().addLink(null, LinkType.PARENT, child.getId());
-            }
-            if (parent != null && child != null) {
-                coll.getInstance().addLink(parent.getId(), LinkType.PARENT, child.getId());
-                coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, child.getId());
-            }
+        System.out.println("Processed simple tasks: " + stasks.size());
+    }
+
+    public Task createTask(Task parent, String childName) {
+        String description = modelCache.chat("Can you provide a description of the task name in 10-20 words: '" + childName + "' ?");
+        Task task = new Task(childName, description);
+        String schedule = modelCache.chat("Can you take a guess at the scheduling of this task, when and how often we should execute or check this task: '" + task.getName() + "' also please append a cron expression of the schedule?");
+        task.getMetadata().put("schedule", schedule);
+        task.getMetadata().put("fileName", coll.getInstance().getTodoFilePath().toString());
+        //task.getMetadata().put("lineNumber", stask.line);
+        coll.getInstance().addTask(task);
+        System.out.println("Task: " + task.getName() + " id: " + task.getId());
+        try {
+            Constr constr = modelCache.extractConstraintFrom(task.getName() + " : " + task.getDescription());
+            coll.getInstance().addConstraint(task, new Constraint(constr));
+            coll.getInstance().write(coll);
+        } catch (Exception ep) {
+            ep.printStackTrace();
         }
-        coll.getInstance().write(coll);
+        if (parent == null) {
+            coll.getInstance().addLink(null, LinkType.PARENT, task.getId());
+        }
+        if (parent != null) {
+            coll.getInstance().addLink(parent.getId(), LinkType.PARENT, task.getId());
+            coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, task.getId());
+        }
+        return task;
+    }
+
+    public void createSubTaskFromParent(String parentName, String parentDescription) {
+        //Need to pass in parent and all subtasks so far so it can suggest a new task.
+        //Task l;imited to depth 1
+        //String subTaskName = modelCache.chat("Can you create a new sub task to help divide and conquer this task and description: 'name=" + name + ", description='"+description+" ?");
+        //createSimpleTask(parentName, subTaskName);
     }
 }
