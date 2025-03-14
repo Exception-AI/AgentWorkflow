@@ -1,0 +1,196 @@
+[ {
+  "id" : "543b2569-a2ea-4ad3-ab9a-aaebf726f8a2",
+  "name" : "LeaderPhrases",
+  "description" : "Review and analyze user feedback from the latest product release to identify areas for improvement.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Analyze User Feedback",
+    "proposedSubTasks" : [ "Collect Feedback Data", "Categorize Feedback", "Generate Insights Report" ],
+    "taskId" : "543b2569-a2ea-4ad3-ab9a-aaebf726f8a2"
+  },
+  "createdTime" : 1741990471,
+  "lastModifiedTime" : 1741990471
+}, {
+  "id" : "f1594ed4-b46a-4095-a1cf-bb9a2fd093b6",
+  "name" : "Tell me more about that",
+  "description" : "Collect and analyze customer feedback to identify common issues and areas for improvement.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON-FRI",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Analyze Customer Feedback",
+    "proposedSubTasks" : [ "Gather Feedback Data", "Categorize Feedback", "Identify Trends" ],
+    "taskId" : "f1594ed4-b46a-4095-a1cf-bb9a2fd093b6"
+  },
+  "createdTime" : 1741990471,
+  "lastModifiedTime" : 1741990471
+}, {
+  "id" : "58088e8a-71c4-42ba-8ae7-58f5bbad7038",
+  "name" : "Show genuine interest and curiosity in what others have to say. How can I help you?",
+  "description" : "Demonstrate genuine interest and curiosity by actively listening and asking thoughtful questions when interacting with others.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * 1-5",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Engage Actively in Conversations",
+    "proposedSubTasks" : [ "Practice Active Listening", "Ask Open-Ended Questions", "Reflect on Feedback" ],
+    "taskId" : "58088e8a-71c4-42ba-8ae7-58f5bbad7038"
+  },
+  "createdTime" : 1741990487,
+  "lastModifiedTime" : 1741990487
+}, {
+  "id" : "1e9f8112-00f5-4c95-8f1e-13bae7d59015",
+  "name" : "Demonstrate care and support for your team’s success. Let’s figure this out together",
+  "description" : "Hold regular meetings to discuss challenges and brainstorm solutions as a team, ensuring everyone's input is valued to drive collective success.",
+  "metadata" : {
+    "schedule" : "0 10 * * 1-5",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Collaborative Problem-Solving Session",
+    "proposedSubTasks" : [ "Schedule Team Meeting", "Facilitate Open Discussion", "Document Insights", "Assign Follow-Up Actions" ],
+    "taskId" : "1e9f8112-00f5-4c95-8f1e-13bae7d59015"
+  },
+  "createdTime" : 1741990505,
+  "lastModifiedTime" : 1741990505
+}, {
+  "id" : "0cdb7749-b7ec-420b-bcd0-c7b8ec881399",
+  "name" : "Encourage collaboration and shared problem-solving.  I hear what you’re saying",
+  "description" : "Host a workshop where team members can collaborate on shared problem-solving exercises designed to strengthen teamwork and shared understanding.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Collaborative Problem-Solving Workshop",
+    "proposedSubTasks" : [ "Plan Workshop Agenda", "Gather Problem-Solving Materials", "Facilitate Team Exercises", "Conduct Feedback Session" ],
+    "taskId" : "0cdb7749-b7ec-420b-bcd0-c7b8ec881399"
+  },
+  "createdTime" : 1741990522,
+  "lastModifiedTime" : 1741990522
+}, {
+  "id" : "0e7238d5-cf4a-4342-b045-d6bc76d0bcb3",
+  "name" : "Confirm that you are actively listening.  What do you think we should do?",
+  "description" : "A task to ensure that the user feels heard by actively confirming understanding and proposing actionable steps.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Confirm Active Listening",
+    "proposedSubTasks" : [ "Acknowledge User's Statement", "Clarify Objectives", "Propose Next Steps" ],
+    "taskId" : "0e7238d5-cf4a-4342-b045-d6bc76d0bcb3"
+  },
+  "createdTime" : 1741990538,
+  "lastModifiedTime" : 1741990538
+}, {
+  "id" : "fa9affdb-8702-4236-a227-7a846abaf9ea",
+  "name" : "Invite input and empower team members to share ideas.  I appreciate this",
+  "description" : "Organize regular sessions where team members can freely share ideas in a supportive environment. Encourage open dialogue and ensure all voices are heard to foster innovation and collaboration.",
+  "metadata" : {
+    "schedule" : "0 0 15 * * ? *",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Facilitate Idea Sharing Sessions",
+    "proposedSubTasks" : [ "Create Idea Sharing Agenda", "Prepare Discussion Guidelines", "Host Weekly Brainstorming Sessions", "Document and Share Ideas Post-Session" ],
+    "taskId" : "fa9affdb-8702-4236-a227-7a846abaf9ea"
+  },
+  "createdTime" : 1741990557,
+  "lastModifiedTime" : 1741990557
+}, {
+  "id" : "583305bf-00bc-482d-8cce-ce5c5db6a21e",
+  "name" : "Express gratitude and acknowledge contributions.  Your effort made this happen",
+  "description" : "Acknowledge contributions by expressing gratitude and recognizing efforts that led to the project's success. This includes sending personalized thank you notes, public recognition, and celebrating milestones.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * 1-5",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Express Gratitude",
+    "proposedSubTasks" : [ "Send Thank You Notes", "Public Recognition", "Celebrate Milestones" ],
+    "taskId" : "583305bf-00bc-482d-8cce-ce5c5db6a21e"
+  },
+  "createdTime" : 1741990573,
+  "lastModifiedTime" : 1741990573
+}, {
+  "id" : "da0b8385-1a06-47e0-bdf5-220ccb051762",
+  "name" : "Recognize the team’s achievements and give them credit.  We need your voice",
+  "description" : "Acknowledge and publicly commend the team's accomplishments to boost morale and foster a culture of appreciation.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * THU",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Recognize Team Achievements",
+    "proposedSubTasks" : [ "Identify recent team milestones", "Prepare an appreciation message", "Share recognition in a team meeting or platform" ],
+    "taskId" : "da0b8385-1a06-47e0-bdf5-220ccb051762"
+  },
+  "createdTime" : 1741990590,
+  "lastModifiedTime" : 1741990590
+}, {
+  "id" : "9e3473cd-8d22-4bca-a37b-08e22a32187e",
+  "name" : "Encourage sharing of perspectives and ideas.  What did we learn here?",
+  "description" : "Foster an environment where team members feel comfortable sharing their perspectives and ideas openly.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Encourage Perspective Sharing",
+    "proposedSubTasks" : [ "Weekly Brainstorming Sessions", "Anonymous Feedback Channel", "Idea Recognition Program" ],
+    "taskId" : "9e3473cd-8d22-4bca-a37b-08e22a32187e"
+  },
+  "createdTime" : 1741990605,
+  "lastModifiedTime" : 1741990605
+}, {
+  "id" : "8ae94553-bb27-46e6-af3b-ae90856afdbf",
+  "name" : "Focus on growth and improvement rather than blame.  That was my mistake",
+  "description" : "Encourage a culture of learning and improvement by focusing on growth rather than assigning blame when mistakes occur.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON-FRI",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Foster Growth Mindset",
+    "proposedSubTasks" : [ "Weekly Team Reflection Sessions", "Mistake Analysis Workshops", "Recognition of Improvement Efforts", "Feedback Loops Implementation" ],
+    "taskId" : "8ae94553-bb27-46e6-af3b-ae90856afdbf"
+  },
+  "createdTime" : 1741990622,
+  "lastModifiedTime" : 1741990622
+}, {
+  "id" : "1ec17ebf-c38f-4611-97c4-e4e29f23faa3",
+  "name" : "Take responsibility and model accountability.  Show me how you would do it",
+  "description" : "Regularly review personal and team responsibilities, assess accountability, and address any gaps or issues proactively.",
+  "metadata" : {
+    "schedule" : "0 0 15 * * ? *",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Take Responsibility & Model Accountability",
+    "proposedSubTasks" : [ "Conduct weekly self-assessment of responsibilities", "Hold team accountability meetings bi-weekly", "Document lessons learned from past tasks", "Follow up on unresolved issues" ],
+    "taskId" : "1ec17ebf-c38f-4611-97c4-e4e29f23faa3"
+  },
+  "createdTime" : 1741990640,
+  "lastModifiedTime" : 1741990640
+}, {
+  "id" : "3f67a341-aa54-4256-980f-0ad3b4a7caf1",
+  "name" : "Encourage initiative and confidence in others.  What are your career goals?",
+  "description" : "Reflect on and document your career goals, then outline actionable steps to encourage initiative and confidence in others.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * *",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Career Goal Planning",
+    "proposedSubTasks" : [ "Self-Assessment of Career Aspirations", "Identify Opportunities for Mentorship", "Develop Leadership Skills", "Create a Professional Development Plan" ],
+    "taskId" : "3f67a341-aa54-4256-980f-0ad3b4a7caf1"
+  },
+  "createdTime" : 1741990657,
+  "lastModifiedTime" : 1741990657
+}, {
+  "id" : "c22d5ac9-71a0-4046-90f0-a3bef1121e47",
+  "name" : "Show genuine interest in their growth and future.  I trust your judgment",
+  "description" : "Engage in discussions to understand and support their long-term goals and aspirations, offering guidance and resources where appropriate.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON-FRI",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Support Growth and Future Planning",
+    "proposedSubTasks" : [ "Weekly Check-Ins", "Resource Sharing", "Career/Personal Development Advice" ],
+    "taskId" : "c22d5ac9-71a0-4046-90f0-a3bef1121e47"
+  },
+  "createdTime" : 1741990673,
+  "lastModifiedTime" : 1741990673
+}, {
+  "id" : "0a075be2-3862-43e8-9653-907a5d44a25c",
+  "name" : "Empower them to make decisions and build confidence.",
+  "description" : "Conduct regular workshops to guide employees in making informed decisions and building their confidence through practical exercises and feedback.",
+  "metadata" : {
+    "schedule" : "0 0 15 * *",
+    "fileName" : "data/leaderPhrases/leaderPhrases.todo",
+    "proposedName" : "Decision-Making Workshops",
+    "proposedSubTasks" : [ "Design Workshop Content", "Facilitate Workshop Sessions", "Provide Feedback and Debrief" ],
+    "taskId" : "0a075be2-3862-43e8-9653-907a5d44a25c"
+  },
+  "createdTime" : 1741990690,
+  "lastModifiedTime" : 1741990690
+} ]
