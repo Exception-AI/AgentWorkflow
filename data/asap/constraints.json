@@ -1,25 +1,17 @@
 [ {
-<<<<<<< HEAD
-  "id" : "9841261f-6f5b-4ad1-ad7b-3f9cff850ee4",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "The task needs to be started as soon as possible.",
+  "id" : "0ac28ca4-e95b-4c47-81bd-d33408f33e85",
+  "schedule" : "Daily at midnight",
+  "scheduleDescription" : "The task must be executed every day without fail to maintain system reliability.",
   "leadTime" : "ONE_DAY",
-  "effort" : "HIGH",
-  "cost" : "COSTLY",
-=======
-  "id" : "383b9d93-8a21-4373-8cd9-8f6502232dad",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "Task must be completed as soon as possible without a specific deadline date.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "HIGH",
+  "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
+  "concentration" : "PARTIAL",
   "deadlineType" : "ASAP"
 }, {
-  "id" : "42a07ee8-6519-4e1c-a4aa-28973d005be9",
-  "schedule" : "Bi-weekly",
-  "scheduleDescription" : "Regular checks to stay updated on changes in requirements and processing times.",
+  "id" : "cfd93197-d9be-4f1a-bce6-210c89fc91a3",
+  "schedule" : "ASAP",
+  "scheduleDescription" : "Processing times for UK passports can vary, but applications should be submitted well in advance of the required travel date.",
   "leadTime" : "ONE_MONTH",
   "effort" : "HIGH",
   "cost" : "COSTLY",
@@ -27,29 +19,29 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "ea131221-e437-4177-ace4-6afb80b4f401",
+  "id" : "e13118c9-5983-4d60-8f1a-da16c2098bc8",
   "schedule" : "Monthly",
-  "scheduleDescription" : "Task must be performed on the first day of every month at noon.",
+  "scheduleDescription" : "Task must be performed once a month to maintain up-to-date information.",
   "leadTime" : "ONE_MONTH",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "NOT_URGENT_IMPORTANT",
   "concentration" : "PARTIAL",
-  "deadlineType" : "HARD"
+  "deadlineType" : "SOFT"
 }, {
-  "id" : "93fe014a-f6f5-44d7-877b-44b2eeeddb1e",
-  "schedule" : "Weekly",
-  "scheduleDescription" : "Tasks must be performed every week on weekdays at noon.",
-  "leadTime" : "ONE_WEEK",
+  "id" : "b7b48d90-05ce-40cd-beb8-8e3c7ad67b0e",
+  "schedule" : "Daily",
+  "scheduleDescription" : "The task must be performed every day to maintain current records.",
+  "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
-  "cost" : "COSTLY",
+  "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "4ac3a521-53d3-4cf5-8265-995744312f25",
-  "schedule" : "Daily at 12:00 PM",
-  "scheduleDescription" : "The task should be executed once daily to ensure the most up-to-date quotes are obtained.",
+  "id" : "c3f2aafc-6617-498a-81ea-1be3a030d63c",
+  "schedule" : "Daily at midnight",
+  "scheduleDescription" : "The task must be executed daily to ensure the most up-to-date information is captured.",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
@@ -57,133 +49,49 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "SOFT"
 }, {
-  "id" : "b2937783-e451-479f-a76b-bca87c47d694",
-  "schedule" : "0 0 8 ? * MON-FRI",
-  "scheduleDescription" : "During school weekdays, mornings are optimal for focusing on administrative tasks without after-school commitments.",
-  "leadTime" : "TWO_DAYS",
+  "id" : "7db00864-8e39-4e65-b16b-0a2045bdaff3",
+  "schedule" : "15:00 daily",
+  "scheduleDescription" : "The task must be completed by 3 PM every day until the deadline.",
+  "leadTime" : "ONE_WEEK",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
+  "concentration" : "PARTIAL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "e091cb41-e0fb-41ba-b1ea-f1a9ba1e1e53",
+  "id" : "e1eb4cc6-c5c1-41f7-97c4-bedc15cad55e",
   "schedule" : "ASAP",
-  "scheduleDescription" : "The task must be completed as soon as possible due to potential passport processing delays.",
+  "scheduleDescription" : "The task must be completed as soon as possible to avoid delays in obtaining the passport.",
   "leadTime" : "ONE_MONTH",
+  "effort" : "MEDIUM",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "8cb4a169-33a3-454e-835b-3c5a34922f66",
+  "schedule" : "Weekly Review",
+  "scheduleDescription" : "The task must be reviewed every week to maintain compliance.",
+  "leadTime" : "ONE_WEEK",
   "effort" : "HIGH",
   "cost" : "COSTLY",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "f8e57f34-efe8-4780-bec6-ed2abacb08d5",
-  "schedule" : "Weekly",
-  "scheduleDescription" : "Must be completed every Monday morning at 9:00 AM EST",
-  "leadTime" : "TWO_DAYS",
-  "effort" : "HIGH",
-  "cost" : "EXPENSIVE",
->>>>>>> 33f5508 (This is wild strings to help the llm)
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "HARD"
-}, {
-<<<<<<< HEAD
-  "id" : "06d17a09-1334-4f0d-a996-8b27c39d3daf",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "This task should be started as soon as possible.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "d43d30f0-379e-498d-bfb0-5f0e5f0ff100",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "The task should be started as soon as possible to ensure the data is up-to-date.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-=======
-  "id" : "0f9f8088-d463-4e2a-92f3-87d8cdd56cb4",
-  "schedule" : "Weekly",
-  "scheduleDescription" : "The task must be performed every week to keep insights current.",
+  "id" : "aac95009-8e10-48b2-8264-9447ecf58033",
+  "schedule" : "Bi-weekly",
+  "scheduleDescription" : "This task should be performed every two weeks to maintain consistent progress and address emerging issues promptly.",
   "leadTime" : "ONE_WEEK",
-  "effort" : "HIGH",
->>>>>>> 33f5508 (This is wild strings to help the llm)
-  "cost" : "COSTLY",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "SOFT"
-}, {
-<<<<<<< HEAD
-  "id" : "063ef65f-a1c3-4a03-a772-8987523f053e",
-  "schedule" : "MONTHLY",
-  "scheduleDescription" : "The task should be performed once a month to maintain the accuracy of the medical card details.",
-  "leadTime" : "ONE_WEEK",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "e8d492a9-aaf7-4401-9b8a-42ba3635df41",
-  "schedule" : "DAILY",
-  "scheduleDescription" : "The task runs every day to ensure the database is up-to-date.",
-  "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "URGENT_IMPORTANT",
   "concentration" : "PARTIAL",
-  "deadlineType" : "ASAP"
+  "deadlineType" : "HARD"
 }, {
-  "id" : "ffec6a7c-7c15-44c4-9f22-ba0ba7fa59fd",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "It is important to prepare for school in advance to ensure everything is ready by the start of the new academic year.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "aa17e28c-1842-4ba5-ac12-27274110ee17",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "The task should be executed as soon as possible.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "c43c34dd-819d-42ca-a5db-9f427e3e2f09",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "This task needs to be scheduled as soon as possible due to the urgency of the account inquiry or assistance.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "07c84fb1-2449-463c-85be-54163fa9cf58",
-  "schedule" : "EVERY_WEEK",
-  "scheduleDescription" : "The consolidation and empowerment task is scheduled weekly to ensure the system remains optimized.",
-  "leadTime" : "ONE_WEEK",
-  "effort" : "MEDIUM",
-  "cost" : "COSTLY",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "ecb1783e-050f-442f-9c9d-a2a5121c5166",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "Task should be done as soon as possible",
-=======
-  "id" : "bacb5af3-ec38-4442-ab9d-ebb7efae7d8e",
-  "schedule" : "Every weekday at 4 PM",
-  "scheduleDescription" : "Scheduled daily during work hours to ensure timely updates and reflection on webinar content.",
+  "id" : "59b03b6f-94ae-44fa-8f0b-8a190ee467ec",
+  "schedule" : "daily",
+  "scheduleDescription" : "Executed Monday-Friday at noon to capture constraints from webinars in a timely manner",
   "leadTime" : "ONE_DAY",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
@@ -191,65 +99,33 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "SOFT"
 }, {
-  "id" : "f20fac66-3fb8-44a0-8c9a-49d6c0f87b20",
-  "schedule" : "Daily from Monday to Friday at 6 PM",
-  "scheduleDescription" : "The task must be done daily after school hours to ensure consistent progress and group availability.",
->>>>>>> 33f5508 (This is wild strings to help the llm)
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-<<<<<<< HEAD
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "47ff67e1-1ae1-4d56-9db6-47c377e47827",
-  "schedule" : "ASAP",
-  "scheduleDescription" : "This task should be completed as soon as possible, but not necessarily immediately.",
-=======
-  "deadlineType" : "HARD"
-}, {
-  "id" : "64f473d3-664a-4b0d-ad6f-8252de10d1e4",
-  "schedule" : "Daily during weekdays",
-  "scheduleDescription" : "The task should be performed every weekday morning to maintain cleanliness and prevent accumulation.",
->>>>>>> 33f5508 (This is wild strings to help the llm)
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "PARTIAL",
-<<<<<<< HEAD
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "ffd62773-1059-411b-96f6-8b116da16952",
-  "schedule" : "DAILY",
-  "scheduleDescription" : "Cleaning the yard and disposing of trash should be done daily to maintain a clean and healthy environment.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "FULL",
-  "deadlineType" : "ASAP"
-}, {
-  "id" : "5b990787-941d-45a5-830d-ab61eaa77897",
-  "schedule" : "cronSchedule",
-  "scheduleDescription" : "Every Monday at 9 AM.",
-  "leadTime" : "ONE_DAY",
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_NOT_IMPORTANT",
-  "concentration" : "FULL",
-=======
-  "deadlineType" : "HARD"
-}, {
-  "id" : "b2599054-921b-41d6-85d1-147afafdd7bb",
-  "schedule" : "Weekly",
-  "scheduleDescription" : "Task should be performed weekly during the growing season to maintain yard appearance and prevent weed overgrowth.",
+  "id" : "09900a5f-c2c2-4a8a-9a40-b63dda304a4e",
+  "schedule" : "Weekly between Monday to Friday at 6 PM",
+  "scheduleDescription" : "The task must be done every weekday at 6 PM to maintain consistency and avoid last-minute rushes.",
   "leadTime" : "ONE_WEEK",
   "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "3066462e-2b31-4694-a58c-ab79057d4a96",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Performed every Monday through Friday at 8:00 AM.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "MINIMAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "8dbc396a-5d75-4e34-8acd-2af29183a42e",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Maintenance should be done weekly during the growing season to prevent overgrowth.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
   "concentration" : "PARTIAL",
->>>>>>> 33f5508 (This is wild strings to help the llm)
   "deadlineType" : "SOFT"
 } ]
