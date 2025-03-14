@@ -1,5 +1,7 @@
 package org.dksd.tasks.pso;
 
+import java.util.List;
+
 /**
  *
  * @author dscottdawkins
@@ -10,6 +12,6 @@ public interface FitnessFunction {
 
    int getDimension();
 
-   double[] getDomain();
+   List<Domain> getDomain();
 
 }

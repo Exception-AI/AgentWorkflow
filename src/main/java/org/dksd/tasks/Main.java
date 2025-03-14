@@ -1,5 +1,6 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.pso.Domain;
 import org.dksd.tasks.pso.FitnessFunction;
 import org.dksd.tasks.pso.Particle;
 import org.dksd.tasks.pso.StandardConcurrentSwarm;
@@ -107,17 +108,16 @@ public class Main {
 
             @Override
             public int getDimension() {
-                return 0;//instance.getTasks().size();
+                return coll.getTotalTaskCount();
             }
 
             @Override
-            public double[] getDomain() {
-                /*double[] dm = new double[instance.getTasks().size()];
-                for (int i = 0; i < instance.getTasks().size(); i++) {
-                    dm[i] = 1.0;
+            public List<Domain> getDomain() {
+                List<Domain> domains = new ArrayList<>();
+                for (int i = 0; i < coll.getTotalTaskCount(); i++) {
+                    domains.add(new Domain(0.0, 1.0));
                 }
-                return dm;*/
-                return new double[0];
+                return domains;
             }
         }, 10);
         try {
