@@ -1,0 +1,177 @@
+[ {
+  "id" : "524bd7cb-307a-4ac1-a8d3-f1c85cfc304e",
+  "name" : "San Deigo Todo",
+  "description" : "Identify and document constraints from the San Diego Todo project to ensure alignment with project goals and resource allocation.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "San Diego Todo Constraint",
+    "proposedSubTasks" : [ "Review Project Goals", "Analyze Resource Availability", "Document Constraints", "Validate with Stakeholders" ],
+    "taskId" : "524bd7cb-307a-4ac1-a8d3-f1c85cfc304e"
+  },
+  "createdTime" : 1741978454,
+  "lastModifiedTime" : 1741978454
+}, {
+  "id" : "ab70a38e-3ced-44f5-b8e7-44db24faa005",
+  "name" : "Class Start Date:",
+  "description" : "Determine and finalize the start date for the new class ensuring it aligns with academic calendars, instructor availability, and student enrollment deadlines.",
+  "metadata" : {
+    "schedule" : "0 0 12 1/1 * ? *",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Schedule Class Start Date",
+    "proposedSubTasks" : [ "Check Academic Calendar Dates", "Verify Instructor Availability", "Review Student Enrollment Deadlines" ],
+    "taskId" : "ab70a38e-3ced-44f5-b8e7-44db24faa005"
+  },
+  "createdTime" : 1741978473,
+  "lastModifiedTime" : 1741978473
+}, {
+  "id" : "774be9e6-3860-4310-9aa9-8b635b454041",
+  "name" : "Student Success Center:",
+  "description" : "Submit all completed coursework assignments to the Student Success Center by the deadline.",
+  "metadata" : {
+    "schedule" : "0 0 16 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Submit Coursework",
+    "proposedSubTasks" : [ "Review Grading Rubric", "Finalize Assignments", "Upload Files", "Confirm Submission" ],
+    "taskId" : "774be9e6-3860-4310-9aa9-8b635b454041"
+  },
+  "createdTime" : 1741978489,
+  "lastModifiedTime" : 1741978489
+}, {
+  "id" : "66376719-3890-469e-8d67-08b3944c28e3",
+  "name" : "Textbooks:",
+  "description" : "Analyze constraints in textbook supply chain",
+  "metadata" : {
+    "schedule" : "0 0 12 1/1 * ? *",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Textbook Constraint Analysis",
+    "proposedSubTasks" : [ "Identify textbook suppliers", "Assess production lead times", "Evaluate distribution costs", "Determine demand urgency" ],
+    "taskId" : "66376719-3890-469e-8d67-08b3944c28e3"
+  },
+  "createdTime" : 1741978503,
+  "lastModifiedTime" : 1741978503
+}, {
+  "id" : "a4fc2f66-9799-4774-a4b3-75b9d6356b3b",
+  "name" : "Tuition & Fees:",
+  "description" : "Handle tuition fee calculations, payment processing, and financial aid disbursements for students.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Manage Tuition & Fees",
+    "proposedSubTasks" : [ "Calculate Tuition", "Process Payments", "Disburse Financial Aid" ],
+    "taskId" : "a4fc2f66-9799-4774-a4b3-75b9d6356b3b"
+  },
+  "createdTime" : 1741978519,
+  "lastModifiedTime" : 1741978519
+}, {
+  "id" : "97a0228c-f87a-4da7-b6b9-6752d60e60eb",
+  "name" : "Slack Pro Account:",
+  "description" : null,
+  "metadata" : { },
+  "createdTime" : 1741978522,
+  "lastModifiedTime" : 1741978522
+}, {
+  "id" : "4c227ef7-4792-4448-aa0f-d79681e4e994",
+  "name" : "Itemized Statements:",
+  "description" : "Extract and structure constraint details from the user's query about Itemized Statements.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Generate JSON Constraint",
+    "proposedSubTasks" : [ "Parse User Query", "Identify Constraints", "Map to JSON Schema" ],
+    "taskId" : "4c227ef7-4792-4448-aa0f-d79681e4e994"
+  },
+  "createdTime" : 1741978537,
+  "lastModifiedTime" : 1741978537
+}, {
+  "id" : "e74033d1-c7fa-423e-bf45-d32a7c56bb1e",
+  "name" : "e-Textbook Fees:",
+  "description" : "Monitor and ensure payment of e-textbook fees for upcoming courses to prevent access denial.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * MON-FRI",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "e-Textbook Fees",
+    "proposedSubTasks" : [ "Check e-textbook balances", "Process overdue payments", "Notify students of pending fees" ],
+    "taskId" : "e74033d1-c7fa-423e-bf45-d32a7c56bb1e"
+  },
+  "createdTime" : 1741978554,
+  "lastModifiedTime" : 1741978554
+}, {
+  "id" : "b0f88e4b-f906-495d-b96c-123ddcd99bac",
+  "name" : "Required Software:",
+  "description" : "Ensure all required software dependencies are installed and configured properly before starting the main task.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Required Software Constraint",
+    "proposedSubTasks" : [ "Check Software List", "Install Dependencies", "Verify Configurations" ],
+    "taskId" : "b0f88e4b-f906-495d-b96c-123ddcd99bac"
+  },
+  "createdTime" : 1741978570,
+  "lastModifiedTime" : 1741978570
+}, {
+  "id" : "bc8ec210-0c01-461c-86a4-8b5f1fbcca84",
+  "name" : "Technology Requirements:",
+  "description" : "Extract and analyze constraints from Technology Requirements.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Tech Req Constraint",
+    "proposedSubTasks" : [ "Extract Constraints", "Analyze Constraints", "Validate Constraints" ],
+    "taskId" : "bc8ec210-0c01-461c-86a4-8b5f1fbcca84"
+  },
+  "createdTime" : 1741978586,
+  "lastModifiedTime" : 1741978586
+}, {
+  "id" : "88ce6f8c-9e09-4d75-a96e-5182b7678696",
+  "name" : "Canvas & Orientation:",
+  "description" : "Conduct initial project canvas and orientation session with stakeholders to align expectations and define project scope.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * MON-FRI",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Canvas & Orientation",
+    "proposedSubTasks" : [ "Stakeholder Meeting Setup", "Project Scope Drafting", "Objective Prioritization" ],
+    "taskId" : "88ce6f8c-9e09-4d75-a96e-5182b7678696"
+  },
+  "createdTime" : 1741978602,
+  "lastModifiedTime" : 1741978602
+}, {
+  "id" : "46dc34c1-e51b-4148-8f3a-73a68ebf29db",
+  "name" : "Health & Wellness:",
+  "description" : "Engage in 30 minutes of moderate exercise daily to maintain physical health.",
+  "metadata" : {
+    "schedule" : "0 0 7 * * *",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Daily Exercise Routine",
+    "proposedSubTasks" : [ "Morning Stretching", "Cardio Workouts", "Strength Training" ],
+    "taskId" : "46dc34c1-e51b-4148-8f3a-73a68ebf29db"
+  },
+  "createdTime" : 1741978617,
+  "lastModifiedTime" : 1741978617
+}, {
+  "id" : "6301657e-c061-4f19-ab66-52814f080c19",
+  "name" : "Social Media:",
+  "description" : "Creating engaging content for social media platforms like Facebook, Instagram, Twitter, and LinkedIn to promote brand awareness, customer engagement, and drive traffic to the company's website.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * MON-FRI",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Social Media Content Creation",
+    "proposedSubTasks" : [ "Content Writing", "Visual Design Creation", "Scheduling Posts", "Monitoring Engagement" ],
+    "taskId" : "6301657e-c061-4f19-ab66-52814f080c19"
+  },
+  "createdTime" : 1741978634,
+  "lastModifiedTime" : 1741978634
+}, {
+  "id" : "cac6afc5-c3a4-41fd-8e23-f1f5ea9d9ae5",
+  "name" : "Important Program Contacts:",
+  "description" : "Extract constraints from the provided list of Important Program Contacts.",
+  "metadata" : {
+    "schedule" : "0 0 12 * * ?",
+    "fileName" : "data/sanDiego/sanDiego.todo",
+    "proposedName" : "Generate Constraints from Contacts",
+    "proposedSubTasks" : [ "Parse Contact Data", "Identify Constraints", "Validate Constraints" ],
+    "taskId" : "cac6afc5-c3a4-41fd-8e23-f1f5ea9d9ae5"
+  },
+  "createdTime" : 1741978648,
+  "lastModifiedTime" : 1741978648
+} ]
