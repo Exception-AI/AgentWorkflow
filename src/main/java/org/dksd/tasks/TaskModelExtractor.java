@@ -2,7 +2,7 @@ package org.dksd.tasks;
 
 import dev.langchain4j.service.UserMessage;
 
-public interface ConstraintExtractor {
+public interface TaskModelExtractor {
     @UserMessage("Return the constraint from {{it}} also explain why")
-    Constr extractConstraintFrom(String text);
+    TaskModel extractTaskModelFrom(String text);
 }

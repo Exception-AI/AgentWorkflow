@@ -209,6 +209,16 @@ public class Instance implements Identifier {
         return taskMap.get(taskName) != null;
     }
 
+    public String getTaskView(Task task) {
+        NodeTask nt = getTaskNode(task.getId());
+        NodeTaskStrings ntStr = new NodeTaskStrings(this, nt);
+        return ntStr.toString();
+    }
+
+    private String getNameForUUID(UUID id) {
+        return this.taskMap.get(id).getName();
+    }
+
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private WatchService watchService;
 
