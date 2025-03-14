@@ -35,7 +35,7 @@ public class ModelCache {
         pojoModel = OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434")
                 .responseFormat(JSON)
-                .modelName("mistral:latest")
+                .modelName("qwq")
                 .build();
         taskModelExtractor = AiServices.create(TaskModelExtractor.class, pojoModel);
         loadCachesFromDisk();

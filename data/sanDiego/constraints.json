@@ -1,0 +1,131 @@
+[ {
+  "id" : "cde5bcb1-b454-49d3-a466-cf577ad429e5",
+  "schedule" : "Bi-Weekly",
+  "scheduleDescription" : "Constraints must be reviewed every two weeks to adapt to changes.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "8ec76f36-e5c7-44c5-8a1f-e731af52f96e",
+  "schedule" : "The start date must not conflict with existing academic events and should allow sufficient time for student enrollment.",
+  "scheduleDescription" : "The task should be completed by the end of the planning phase before the semester begins.",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "HIGH",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "c82d1970-b162-438a-9371-d516c74c8e2b",
+  "schedule" : "Biweekly",
+  "scheduleDescription" : "Submissions are required every two weeks on the specified day and time.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "9c96ddd9-cf7b-42a8-aace-7e96b0ed99c2",
+  "schedule" : "Monthly",
+  "scheduleDescription" : "Monthly analysis to ensure timely adjustments",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "8aaaa56b-cefa-4deb-b157-d4494387ed69",
+  "schedule" : "Biweekly",
+  "scheduleDescription" : "Tasks must be completed every two weeks to align with academic terms.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "HIGH",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "918454af-cd05-40a7-a2fa-e84a221f8f13",
+  "schedule" : "0 0 12 * * ?",
+  "scheduleDescription" : "Daily at noon",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "2762b34b-63ca-476d-8ffd-4b48c94c314c",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Task should be performed every week during the academic term",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "7634688f-6294-460d-90f7-7f6bffa314b9",
+  "schedule" : "Before Main Task",
+  "scheduleDescription" : "This task must be completed at least 24 hours before the main task starts to allow for any unexpected issues.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "86098f85-f2b9-4716-9b30-920585ddf2d2",
+  "schedule" : "Bi-Weekly",
+  "scheduleDescription" : "Task must be performed every two weeks to ensure constraints are up-to-date.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "f3f08480-e933-41f1-946c-63ed7312c88c",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Weekly sessions to ensure ongoing alignment and address emerging issues",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "HIGH",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "f81a0b5e-83f1-4657-a65c-01dc5a37737e",
+  "schedule" : "Daily",
+  "scheduleDescription" : "Exercise must be performed every day without exception.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "d8b00ce5-d6fd-440d-9cc5-878cd5e93020",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Content must be posted consistently every weekday to maintain audience engagement and visibility.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "HIGH",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "e2df77d6-6a52-4bfc-9861-35940ddc7d1c",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "The task should be executed weekly to ensure constraints are up to date.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+} ]

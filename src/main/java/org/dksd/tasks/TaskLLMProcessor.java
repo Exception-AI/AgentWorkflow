@@ -3,7 +3,6 @@ package org.dksd.tasks;
 import org.dksd.tasks.cache.ModelCache;
 import org.dksd.tasks.model.LinkType;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -16,7 +15,7 @@ import java.util.List;
 public class TaskLLMProcessor {
 
     private final Collection coll;
-    private ModelCache modelCache;
+    private final ModelCache modelCache;
 
     public TaskLLMProcessor(Collection collection) {
         this.coll = collection;
@@ -24,12 +23,13 @@ public class TaskLLMProcessor {
     }
 
     public boolean createSimpleTask(String parent, String child) {
-        boolean taskExists = coll.getInstance().containsTaskName(child);
+        Instance in = coll.getInstance();
+        boolean taskExists = in.getTaskByName(child) != null;
         if (parent == null && !taskExists) {
             createTask(null, child);
             return true;
         } else {
-            boolean parentExists = coll.getInstance().containsTaskName(parent);
+            boolean parentExists = in.getTaskByName(parent) != null;;
             if (parentExists && !taskExists) {
                 createTask(coll.getInstance().getTaskByName(parent), child);
                 return true;
@@ -38,14 +38,13 @@ public class TaskLLMProcessor {
         return false;
     }
 
-    public void processSimpleTasks(List<SimpleTask> stasks) throws IOException {
-        boolean bailOut = false;
-        while (!bailOut) {
-            bailOut = true;
+    public void processSimpleTasks(List<SimpleTask> stasks) {
+        for (int i = 0; i < 3; i++) { //loop in case some were out of order, tried being smarter here
+            //but for now not needed, its all cached
             for (SimpleTask stask : stasks) {
                 boolean ans = createSimpleTask(stask.parentTask, stask.taskName);
-                if (bailOut && ans) {
-                    bailOut = false;
+                if (ans) {
+                    System.out.println("Created task: " + stask.taskName);
                 }
             }
         }
@@ -65,6 +64,8 @@ public class TaskLLMProcessor {
             task.getMetadata().put("schedule", taskModel.cronSchedule);
             task.getMetadata().put("fileName", coll.getInstance().getTodoFilePath().toString());
             task.getMetadata().put("taskId", task.getId());
+            task.getMetadata().put("proposedSubTasks", taskModel.proposedSubTaskNames);
+            task.getMetadata().put("proposedName", taskModel.shortTaskName);
 
             if (parent == null) {
                 coll.getInstance().addLink(null, LinkType.PARENT, task.getId());

@@ -188,7 +188,7 @@ public class Main {
     private static int countLeadingSpaces(String line) {
         int count = 0;
         for (char c : line.toCharArray()) {
-            if (c == ' ') {
+            if (c == ' ' || c == '\t') {
                 count++;
             } else {
                 break;
