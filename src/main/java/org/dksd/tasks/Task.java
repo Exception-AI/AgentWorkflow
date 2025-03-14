@@ -13,6 +13,7 @@ public class Task implements Identifier, NameIdentifier {
     private Long lastModifiedTime;
 
     public Task() {
+        this.id = UUID.randomUUID();
         this.createdTime = Instant.now().getEpochSecond();
         this.lastModifiedTime = Instant.now().getEpochSecond();
     }

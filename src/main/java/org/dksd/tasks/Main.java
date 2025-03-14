@@ -59,9 +59,9 @@ public class Main {
                         //selectTask();
                         System.out.println("Enter pressed");
                         break;
-                    case "csauto":
-                        taskLLMProcessor.createAutoSubTaskFromParent(coll.getCurrentTask());
-                        break;
+                    //case "csauto":
+                    //    taskLLMProcessor.createAutoSubTaskFromParent(coll.getCurrentTask());
+                    //    break;
                     case "cs":
                         multiInput(reader, (name, desc) -> coll.getInstance().createSubTask(coll.getCurrentTask(), name, desc));
                         break;

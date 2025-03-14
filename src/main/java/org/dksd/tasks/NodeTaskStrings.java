@@ -13,7 +13,11 @@ public class NodeTaskStrings {
     private final List<String> constraints = new ArrayList<>();
 
     public NodeTaskStrings(Instance inst, NodeTask nt) {
-        parentName = inst.getTask(nt.getParentId()).getName();
+        if (nt.getParentId() != null) {
+            parentName = inst.getTask(nt.getParentId()).getName();
+        } else {
+            parentName = null;
+        }
         name = inst.getTask(nt.getId()).getName();
         for (UUID subTask : nt.getSubTasks()) {
             subTasks.add(inst.getTask(subTask).getName());
@@ -22,7 +26,7 @@ public class NodeTaskStrings {
             dependencies.add(inst.getTask(dep).getName());
         }
         for (UUID c : nt.getConstraints()) {
-            constraints.add(inst.getTask(c).getName());
+            constraints.add(inst.getConstraint(c).getName());
         }
     }
 

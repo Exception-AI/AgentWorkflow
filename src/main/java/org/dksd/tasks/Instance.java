@@ -209,7 +209,7 @@ public class Instance implements Identifier {
         return taskMap.get(taskName) != null;
     }
 
-    public String getTaskView(Task task, int depth) {
+    public String getTaskView(Task task) {
         NodeTask nt = getTaskNode(task.getId());
         NodeTaskStrings ntStr = new NodeTaskStrings(this, nt);
         return ntStr.toString();
