@@ -1,0 +1,151 @@
+[ {
+  "id" : "90969329-af93-4299-84d1-636ee536ebbc",
+  "schedule" : "Bi-weekly",
+  "scheduleDescription" : "Task must be completed every two weeks to stay aligned with product iteration cycles.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "f3f87550-6d38-4c4f-ac55-fbab2378b932",
+  "schedule" : "Bi-weekly",
+  "scheduleDescription" : "Task should be performed every two weeks to maintain timely insights.",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "e443e498-127a-430d-8e3b-c32b624e43cd",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Daily interactions require consistent effort, but scheduling weekly reflection helps maintain progress.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "01cf82a5-29a6-46a2-8fc4-cf6d2596c6ec",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Conducted once a week to maintain consistent progress and address emerging issues promptly.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "8f38ca93-dc0a-488c-b453-9db0a03b645c",
+  "schedule" : "Biweekly",
+  "scheduleDescription" : "Occurs every two weeks on Monday at noon",
+  "leadTime" : "TWO_DAYS",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "f74376f5-7bb8-459c-a5d5-b8402f6b5d53",
+  "schedule" : "Daily at noon",
+  "scheduleDescription" : "Scheduled once daily to maintain consistent communication and ensure ongoing alignment.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "LOW",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "4e1eb0f1-be27-4893-8f3a-eac302ad8f90",
+  "schedule" : "Bi-Weekly",
+  "scheduleDescription" : "Sessions should occur every two weeks to maintain regularity without overwhelming the team.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "4bab2833-acf7-4ca0-9cd0-0ab7306f1d0b",
+  "schedule" : "Bi-Weekly",
+  "scheduleDescription" : "Requires consistent acknowledgment to maintain team morale and motivation.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "61bb5cd2-aedb-49d3-8f11-5d925d9dae1e",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Scheduled every Thursday at noon to maintain consistency and ensure timely recognition.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "8717a40b-38a0-4801-946f-cc934b6fffdb",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Regular intervals to maintain consistent communication and idea flow.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "b1d76480-6454-4830-bcc8-2e568b380400",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Regular sessions to reinforce the culture continuously.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "6c8ff8fc-21e3-4bf7-a002-e2b1247a4fdf",
+  "schedule" : "Daily",
+  "scheduleDescription" : "Daily reflection helps maintain continuous awareness of responsibilities and accountability.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "419ab534-e3b5-4aaa-9849-7b93d3ad7ede",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Regular reflection and planning are essential for career growth and supporting others.",
+  "leadTime" : "ONE_MONTH",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "4ce74d4f-5131-4beb-8d83-301ef5d6cf5d",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Regular but not overly frequent to allow for reflection and progress tracking.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "f77b5f77-b4ca-41e7-bb1d-a92f3758ca13",
+  "schedule" : "Bi-weekly",
+  "scheduleDescription" : "Workshops should be held every two weeks to maintain momentum and allow for gradual skill development.",
+  "leadTime" : "ONE_WEEK",
+  "effort" : "MEDIUM",
+  "cost" : "COSTLY",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "SOFT"
+} ]

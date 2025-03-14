@@ -1,6 +1,6 @@
 [ {
   "id" : "524bd7cb-307a-4ac1-a8d3-f1c85cfc304e",
-  "name" : "San Deigo Todo",
+  "name" : "San Diego Todo",
   "description" : "Identify and document constraints from the San Diego Todo project to ensure alignment with project goals and resource allocation.",
   "metadata" : {
     "schedule" : "0 0 12 * * ?",

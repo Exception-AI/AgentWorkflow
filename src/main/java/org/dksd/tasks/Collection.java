@@ -124,4 +124,12 @@ public class Collection {
         }
         return null;
     }
+
+    public int getTotalTaskCount() {
+        int tot = 0;
+        for (Instance instance : instances) {
+            tot += instance.getTaskNodes().getTaskNodeMap().size();
+        }
+        return tot;
+    }
 }

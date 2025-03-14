@@ -60,13 +60,10 @@ public class TaskLLMProcessor {
             task.setDescription(taskModel.description);
             coll.getInstance().addTask(task);
             System.out.println("Task: " + task.getName() + " id: " + task.getId());
-            coll.getInstance().addConstraint(task, new Constraint(taskModel.constr));
-            task.getMetadata().put("schedule", taskModel.cronSchedule);
             task.getMetadata().put("fileName", coll.getInstance().getTodoFilePath().toString());
             task.getMetadata().put("taskId", task.getId());
             task.getMetadata().put("proposedSubTasks", taskModel.proposedSubTaskNames);
             task.getMetadata().put("proposedName", taskModel.shortTaskName);
-
             if (parent == null) {
                 coll.getInstance().addLink(null, LinkType.PARENT, task.getId());
             }
@@ -74,6 +71,8 @@ public class TaskLLMProcessor {
                 coll.getInstance().addLink(parent.getId(), LinkType.PARENT, task.getId());
                 coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, task.getId());
             }
+            coll.getInstance().addConstraint(task, new Constraint(taskModel.constr));
+            task.getMetadata().put("schedule", taskModel.cronSchedule);
             coll.getInstance().write(coll);
             return task;
         } catch (Exception ep) {

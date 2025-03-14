@@ -1,6 +1,7 @@
 package org.dksd.tasks.pso;
 
 import java.security.SecureRandom;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -33,9 +34,9 @@ public class Particle {
         this.pBest = new Gene(ff.getDimension());
     }
 
-    public void init(double[] sadomain) {
+    public void init(List<Domain>sadomains) {
         for (int i = 0; i < particle.size(); i++) {
-            double rndv = pickRandom() * sadomain[i];
+            double rndv = pickRandom() * sadomains.get(i).getHigh();
             particle.setValue(i, rndv);
             velocity.setValue(i, 0);
             pBest.setValue(i, particle.getValue(i));
@@ -50,8 +51,8 @@ public class Particle {
             double v = w * velocity.getValue(i) + pbestconst * r1 * (pBest.getValue(i) - particle.getValue(i))
                     + gbestconst * r2 * (gBest.getValue(i) - particle.getValue(i));
 
-            double domain = ff.getDomain()[i];
-            v = constrainMaxVelocity(v, domain * 0.8);
+            Domain domain = ff.getDomain().get(i);
+            v = constrainMaxVelocity(v, domain.getHigh() * 0.8);
             velocity.setValue(i, v);
             particle.setValue(i, particle.getValue(i) + v);
             constrainParticleToDomain(i, domain);
@@ -64,12 +65,12 @@ public class Particle {
         return fitness;
     }
 
-    private void constrainParticleToDomain(int index, double domain) {
-        if (particle.getValue(index) > domain) {
-            particle.setValue(index, domain);
+    private void constrainParticleToDomain(int index, Domain domain) {
+        if (particle.getValue(index) > domain.getHigh()) {
+            particle.setValue(index, domain.getHigh());
         }
-        if (particle.getValue(index) < -domain) {
-            particle.setValue(index, -domain);
+        if (particle.getValue(index) < -domain.getLow()) {
+            particle.setValue(index, -domain.getLow());
         }
     }
 

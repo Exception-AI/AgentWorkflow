@@ -25,6 +25,10 @@ public class Constraint implements Identifier {
 
     public Constraint() {
         this.id = UUID.randomUUID();
+        setBase();
+    }
+
+    private void setBase() {
         this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
         this.scheduleDescription = setSchedDesc(schedule);
         this.leadTime = LeadTime.ONE_DAY;
@@ -37,6 +41,10 @@ public class Constraint implements Identifier {
 
     public Constraint(Constr constr) {
         this.id = UUID.randomUUID();
+        if (constr == null) {
+            setBase();
+            return;
+        }
         this.schedule = constr.schedule;
         this.scheduleDescription = constr.scheduleDescription;
         this.leadTime = constr.leadTime;
