@@ -1,0 +1,92 @@
+[ {
+  "id" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "name" : "Weekly Planner",
+  "description" : "Ensure that weekly planning tasks are scheduled with appropriate lead times and resources, considering their urgency and importance.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * MON",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Planner Constraint",
+    "proposedSubTasks" : [ "Review Weekly Goals", "Allocate Time Blocks", "Adjust Priorities", "Set Deadlines" ],
+    "taskId" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9"
+  },
+  "createdTime" : 1742009373,
+  "lastModifiedTime" : 1742009373
+}, {
+  "id" : "181f0f77-b87b-46ea-afed-5c26e3d95593",
+  "name" : "Sunday",
+  "description" : "Compile and finalize the weekly report by Sunday every week.",
+  "metadata" : {
+    "schedule" : "0 0 23 ? * SUN",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Report Compilation",
+    "proposedSubTasks" : [ "Data Collection", "Report Drafting", "Final Review" ],
+    "taskId" : "181f0f77-b87b-46ea-afed-5c26e3d95593"
+  },
+  "createdTime" : 1742009389,
+  "lastModifiedTime" : 1742009389
+}, {
+  "id" : "d70ff0be-6f6b-44cf-9280-e17341994096",
+  "name" : "Monday",
+  "description" : "Conduct a comprehensive inventory audit to ensure stock levels are accurate and up-to-date.",
+  "metadata" : {
+    "schedule" : "0 0 13 ? * MON",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Inventory Audit",
+    "proposedSubTasks" : [ "Inventory Count Verification", "Discrepancy Reporting", "Stock Adjustment" ],
+    "taskId" : "d70ff0be-6f6b-44cf-9280-e17341994096"
+  },
+  "createdTime" : 1742009404,
+  "lastModifiedTime" : 1742009404
+}, {
+  "id" : "787fd43a-eb2f-498e-a096-fa9bb1de2dd8",
+  "name" : "Tuesday",
+  "description" : "Conduct a weekly team meeting to review progress and discuss upcoming tasks.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Team Meeting",
+    "proposedSubTasks" : [ "Agenda Preparation", "Meeting Minutes", "Action Items Follow-Up" ],
+    "taskId" : "787fd43a-eb2f-498e-a096-fa9bb1de2dd8"
+  },
+  "createdTime" : 1742009420,
+  "lastModifiedTime" : 1742009420
+}, {
+  "id" : "ca7d5910-59e8-474a-b052-e85563c1b551",
+  "name" : "Wednesday",
+  "description" : "Compile and submit the weekly report summarizing project progress and issues to stakeholders.",
+  "metadata" : {
+    "schedule" : "0 0 15 ? * WED",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Report Compilation",
+    "proposedSubTasks" : [ "Gather progress data from team members", "Analyze key metrics", "Draft report content", "Review and finalize report" ],
+    "taskId" : "ca7d5910-59e8-474a-b052-e85563c1b551"
+  },
+  "createdTime" : 1742009438,
+  "lastModifiedTime" : 1742009438
+}, {
+  "id" : "6ec2c280-6512-4f3b-98e5-032c74d5905a",
+  "name" : "Thursday",
+  "description" : "Compile and analyze weekly sales data to prepare a report for stakeholders.",
+  "metadata" : {
+    "schedule" : "0 0 15 ? * MON-FRI",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Report Compilation",
+    "proposedSubTasks" : [ "Gather Sales Data", "Analyze Trends", "Draft Report" ],
+    "taskId" : "6ec2c280-6512-4f3b-98e5-032c74d5905a"
+  },
+  "createdTime" : 1742009454,
+  "lastModifiedTime" : 1742009454
+}, {
+  "id" : "eb5fc2ed-3b00-4ef6-96ca-6348dd98a367",
+  "name" : "Friday",
+  "description" : "Submit the weekly progress report by Friday every week.",
+  "metadata" : {
+    "schedule" : "0 0 17 ? * FRI",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Weekly Report Submission",
+    "proposedSubTasks" : [ "Gather Progress Data", "Compile Report", "Review Report", "Submit Report" ],
+    "taskId" : "eb5fc2ed-3b00-4ef6-96ca-6348dd98a367"
+  },
+  "createdTime" : 1742009469,
+  "lastModifiedTime" : 1742009469
+} ]
