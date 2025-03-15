@@ -108,6 +108,22 @@ public class Collection {
         }
     }
 
+    public NodeTask setCurrentTaskToPrev() {
+        //Need to traverse the tree.
+        System.out.println("Prev method: curr node task: " + curr);
+        dfs(getRootTask(curr), 0);
+        for (int i = 0; i < path.length; i++) {
+            if (path[i].getId().equals(curr.getId())) {
+                if (i - 1 >= 0) {
+                    curr = path[i - 1];
+                    System.out.println("Prev method: next node task id: " + curr);
+                    return curr;
+                }
+            }
+        }
+        return curr;
+    }
+
     public NodeTask setCurrentTaskToNext() {
         //Need to traverse the tree.
         System.out.println("Next method: curr node task: " + curr);

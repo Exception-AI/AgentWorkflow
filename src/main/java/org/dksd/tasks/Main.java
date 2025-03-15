@@ -53,6 +53,9 @@ public class Main {
                     case "o":
                         coll.setCurrentTaskToParent();
                         break;
+                    case "p":
+                        coll.setCurrentTaskToPrev();
+                        break;
                     case "n":
                         coll.setCurrentTaskToNext();
                         break;
