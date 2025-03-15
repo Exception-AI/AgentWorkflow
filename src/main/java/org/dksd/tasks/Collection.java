@@ -50,6 +50,7 @@ public class Collection {
             hierarchy.add(getInstance().getTask(wtn.getId()).getName());
         }
 
+        wtn = getInstance().getTaskNode(wt.getId());
         String indent = "  ";
         System.out.println(wt.getName() + " <- " + hierarchy);
         //System.out.println(suffix + "   Description: " + wt.getDescription());

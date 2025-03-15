@@ -53,13 +53,12 @@ public class Instance implements Identifier {
         assert parent != null;
         UUID nKey = UUID.randomUUID();//(taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
-        getTasks().add(task);
-        createSubTask(parent, task);
-        return task;
+        return createCommonTask(parent, task);
     }
 
     public Task createCommonTask(Task parent, Task child) {
         assert parent != null;
+        getTasks().add(child);
         addLink(parent.getId(), LinkType.PARENT, child.getId());
         createConstraint(child);
         return child;
@@ -67,13 +66,6 @@ public class Instance implements Identifier {
 
     public Task createSubTask(Task parent, String name, String desc) {
         Task task = createCommonTask(parent, name, desc);
-        addLink(parent.getId(), LinkType.SUBTASK, task.getId());
-        return task;
-    }
-
-    public Task createSubTask(Task parent, Task child) {
-        //TODO add exception handling.
-        Task task = createCommonTask(parent, child);
         addLink(parent.getId(), LinkType.SUBTASK, task.getId());
         return task;
     }
