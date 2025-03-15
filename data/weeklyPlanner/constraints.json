@@ -1,0 +1,71 @@
+[ {
+  "id" : "b6802461-6734-4e10-82f3-a7973d645780",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Occurs every Monday at 8:00 AM",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "ab1e49d4-e399-4799-88bf-d30b9b7f68c5",
+  "schedule" : "Weekly on Sunday",
+  "scheduleDescription" : "The task must be completed every Sunday by 11:59 PM.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "c6ccdcc0-3d4f-43e7-873b-7292a70b4442",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "This task must be performed every Monday at 1 PM.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "c38be535-b7fd-4d75-b30e-e62c9edf8910",
+  "schedule" : "Weekly every Monday at 9:00 AM",
+  "scheduleDescription" : "The meeting must occur every Monday at the same time to maintain consistency.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "FULL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "9eb9169b-a4ab-4b17-98d9-1143f1a1a235",
+  "schedule" : "Weekly on Wednesday at 3:00 PM",
+  "scheduleDescription" : "The report must be finalized and submitted every Wednesday at 3 PM to align with stakeholder meeting schedules.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+}, {
+  "id" : "f1c4178f-d41a-43e2-90e4-1c3a84830a4b",
+  "schedule" : "Weekly on weekdays",
+  "scheduleDescription" : "The task must be completed every weekday, excluding weekends.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "90b6108b-3ad4-4173-af07-8a9a7eba2bce",
+  "schedule" : "Weekly",
+  "scheduleDescription" : "Task must be completed every Friday by 5:00 PM",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "HARD"
+} ]

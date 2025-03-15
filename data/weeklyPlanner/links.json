@@ -1,0 +1,101 @@
+[ {
+  "id" : "3438c647-fe6a-4e06-90f3-dde525243e59",
+  "left" : null,
+  "linkType" : "PARENT",
+  "right" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9"
+}, {
+  "id" : "c852cb3e-c50d-4961-a968-379ec55b6280",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "CONSTRAINT",
+  "right" : "b6802461-6734-4e10-82f3-a7973d645780"
+}, {
+  "id" : "1453411a-50ff-49e7-90ac-7adc31c37526",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "PARENT",
+  "right" : "181f0f77-b87b-46ea-afed-5c26e3d95593"
+}, {
+  "id" : "f9cfaece-b1e7-41ca-9db4-6243e8933298",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "SUBTASK",
+  "right" : "181f0f77-b87b-46ea-afed-5c26e3d95593"
+}, {
+  "id" : "034714a1-fbc0-4406-9f84-8ce3300e8c21",
+  "left" : "181f0f77-b87b-46ea-afed-5c26e3d95593",
+  "linkType" : "CONSTRAINT",
+  "right" : "ab1e49d4-e399-4799-88bf-d30b9b7f68c5"
+}, {
+  "id" : "a025bf9b-1a24-48bd-bb56-df6112b7cab0",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "PARENT",
+  "right" : "d70ff0be-6f6b-44cf-9280-e17341994096"
+}, {
+  "id" : "066ef26d-d1fa-496d-8e3a-abf04a6dc828",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "SUBTASK",
+  "right" : "d70ff0be-6f6b-44cf-9280-e17341994096"
+}, {
+  "id" : "d646d609-411b-4386-ac1e-505d85dd9af4",
+  "left" : "d70ff0be-6f6b-44cf-9280-e17341994096",
+  "linkType" : "CONSTRAINT",
+  "right" : "c6ccdcc0-3d4f-43e7-873b-7292a70b4442"
+}, {
+  "id" : "e98d49c0-0e93-4414-b07d-802be0d7395f",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "PARENT",
+  "right" : "787fd43a-eb2f-498e-a096-fa9bb1de2dd8"
+}, {
+  "id" : "9d6ea148-7fe2-492b-a8ac-0f9343e4591b",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "SUBTASK",
+  "right" : "787fd43a-eb2f-498e-a096-fa9bb1de2dd8"
+}, {
+  "id" : "68017bcd-5569-4fad-868a-b4970f22713e",
+  "left" : "787fd43a-eb2f-498e-a096-fa9bb1de2dd8",
+  "linkType" : "CONSTRAINT",
+  "right" : "c38be535-b7fd-4d75-b30e-e62c9edf8910"
+}, {
+  "id" : "cbd9bda3-6044-42d1-8e7f-7306fa697352",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "PARENT",
+  "right" : "ca7d5910-59e8-474a-b052-e85563c1b551"
+}, {
+  "id" : "bebcb89d-69b7-4c8b-b11b-fe47d85add6d",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "SUBTASK",
+  "right" : "ca7d5910-59e8-474a-b052-e85563c1b551"
+}, {
+  "id" : "7ccf985e-39f1-4bb4-af90-797030d121c4",
+  "left" : "ca7d5910-59e8-474a-b052-e85563c1b551",
+  "linkType" : "CONSTRAINT",
+  "right" : "9eb9169b-a4ab-4b17-98d9-1143f1a1a235"
+}, {
+  "id" : "b25583e5-7c9a-4545-96f0-66c961b6a0a4",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "PARENT",
+  "right" : "6ec2c280-6512-4f3b-98e5-032c74d5905a"
+}, {
+  "id" : "5968caa2-ec49-4db4-908f-886eb77e6641",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "SUBTASK",
+  "right" : "6ec2c280-6512-4f3b-98e5-032c74d5905a"
+}, {
+  "id" : "0861f2c2-4d5e-4e8f-8b88-b7d4f9965828",
+  "left" : "6ec2c280-6512-4f3b-98e5-032c74d5905a",
+  "linkType" : "CONSTRAINT",
+  "right" : "f1c4178f-d41a-43e2-90e4-1c3a84830a4b"
+}, {
+  "id" : "1c2de8c9-12e8-43ba-9784-98bd5813fa1e",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "PARENT",
+  "right" : "eb5fc2ed-3b00-4ef6-96ca-6348dd98a367"
+}, {
+  "id" : "1fd50c83-ad61-4713-bd3b-72aee08470b8",
+  "left" : "f3c61532-a32d-4081-a8e3-3d1b793e94b9",
+  "linkType" : "SUBTASK",
+  "right" : "eb5fc2ed-3b00-4ef6-96ca-6348dd98a367"
+}, {
+  "id" : "a5f14ae8-81bf-4234-9a68-f2ac39127443",
+  "left" : "eb5fc2ed-3b00-4ef6-96ca-6348dd98a367",
+  "linkType" : "CONSTRAINT",
+  "right" : "90b6108b-3ad4-4173-af07-8a9a7eba2bce"
+} ]

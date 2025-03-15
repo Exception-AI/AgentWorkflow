@@ -92,20 +92,50 @@ public class Collection {
         }
     }
 
+    private NodeTask[] path = new NodeTask[1000];
+    private int cnt = 0;
+    public void dfs(NodeTask nt, int depth) {
+        if (nt == null)
+            return;
+
+        path[cnt++] = nt;
+
+        for (UUID subTask : nt.getSubTasks()) {
+            dfs(getInstance().getTaskNode(subTask), depth + 1);
+        }
+        for (UUID depTask : nt.getDependencies()) {
+            dfs(getInstance().getTaskNode(depTask), depth + 1);
+        }
+    }
+
     public NodeTask setCurrentTaskToNext() {
-        NodeTask prev = null;
-        for (Instance instance : instances) {
-            for (Map.Entry<UUID, NodeTask> entry : instance.getTaskNodes().getTaskNodeMap().entrySet()) {
-                if (prev != null && prev.getId().equals(getCurrentNodeTask().getId())) {
-                    return entry.getValue();
+        //Need to traverse the tree.
+        System.out.println("Next method: curr node task: " + curr);
+        dfs(getRootTask(curr), 0);
+        for (int i = 0; i < path.length; i++) {
+            if (path[i].getId().equals(curr.getId())) {
+                if (i + 1 >= path.length) {
+                    curr = path[0];
+                    System.out.println("Next method: next node task id: " + curr);
+                    return curr;
                 }
-                if (!entry.getValue().getId().equals(getCurrentNodeTask().getId())) {
-                    prev = entry.getValue();
-                }
+                curr = path[i + 1];
+                System.out.println("Next method: next node task id: " + curr);
+                return curr;
             }
         }
-        curr = prev;
-        return prev;
+        return curr;
+    }
+
+    private NodeTask getRootTask(NodeTask nt) {
+        if (nt.getParentId() == null) {
+            return nt;
+        }
+        return getRootTask(getInstance().getTaskNode(nt.getParentId()));
+    }
+
+    private UUID getNextIndex(List<UUID> list, int i) {
+        return list.get(i + 1);
     }
 
     public Task getCurrentTask() {
@@ -128,7 +158,7 @@ public class Collection {
     public int getTotalTaskCount() {
         int tot = 0;
         for (Instance instance : instances) {
-            tot += instance.getTaskNodes().getTaskNodeMap().size();
+            tot += instance.getTasks().size();
         }
         return tot;
     }
