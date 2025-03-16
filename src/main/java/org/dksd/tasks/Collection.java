@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 
 public class Collection {
 
@@ -34,6 +36,10 @@ public class Collection {
             }
         }
         return null;
+    }
+
+    private void deleteTask(Task currentTask) {
+        getInstance().removeTask(currentTask);
     }
 
     public void displayTasks() {
@@ -93,54 +99,45 @@ public class Collection {
         }
     }
 
-    private NodeTask[] path = new NodeTask[1000];
-    private int cnt = 0;
-    public void dfs(NodeTask nt, int depth) {
+    public void dfs(List<NodeTask> path, NodeTask nt) {
         if (nt == null)
             return;
 
-        path[cnt++] = nt;
+        path.add(nt);
 
         for (UUID subTask : nt.getSubTasks()) {
-            dfs(getInstance().getTaskNode(subTask), depth + 1);
+            dfs(path, getInstance().getTaskNode(subTask));
         }
         for (UUID depTask : nt.getDependencies()) {
-            dfs(getInstance().getTaskNode(depTask), depth + 1);
+            dfs(path, getInstance().getTaskNode(depTask));
         }
     }
 
-    public NodeTask setCurrentTaskToPrev() {
-        //Need to traverse the tree.
-        System.out.println("Prev method: curr node task: " + curr);
-        dfs(getRootTask(curr), 0);
-        for (int i = 0; i < path.length; i++) {
-            if (path[i].getId().equals(curr.getId())) {
-                if (i - 1 >= 0) {
-                    curr = path[i - 1];
-                    System.out.println("Prev method: next node task id: " + curr);
-                    return curr;
-                }
-            }
-        }
-        return curr;
+    public List<NodeTask> getInlineTasks() {
+        List<NodeTask> path = new ArrayList<>();
+        dfs(path, getRootTask(curr));
+        return path;
     }
 
-    public NodeTask setCurrentTaskToNext() {
-        //Need to traverse the tree.
-        System.out.println("Next method: curr node task: " + curr);
-        dfs(getRootTask(curr), 0);
-        for (int i = 0; i < path.length; i++) {
-            if (path[i].getId().equals(curr.getId())) {
-                if (i + 1 >= path.length) {
-                    curr = path[0];
-                    System.out.println("Next method: next node task id: " + curr);
-                    return curr;
-                }
-                curr = path[i + 1];
-                System.out.println("Next method: next node task id: " + curr);
-                return curr;
-            }
+    public NodeTask setCurrentTask(List<NodeTask> path, Function<Integer, Integer> indexSelector) {
+        System.out.println("Current node task: " + curr);
+
+        // Find the index of the current task in the path.
+        int currentIndex = IntStream.range(0, path.size())
+                .filter(i -> path.get(i).getId().equals(curr.getId()))
+                .findFirst()
+                .orElse(-1);
+
+        if (currentIndex == -1) {
+            // If current task is not found, return the current task.
+            return curr;
         }
+
+        // Calculate new index based on provided function.
+        int newIndex = indexSelector.apply(currentIndex);
+        curr = path.get(newIndex);
+
+        System.out.println("Updated node task: " + curr);
         return curr;
     }
 
@@ -149,10 +146,6 @@ public class Collection {
             return nt;
         }
         return getRootTask(getInstance().getTaskNode(nt.getParentId()));
-    }
-
-    private UUID getNextIndex(List<UUID> list, int i) {
-        return list.get(i + 1);
     }
 
     public Task getCurrentTask() {

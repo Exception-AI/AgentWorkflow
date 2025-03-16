@@ -44,7 +44,7 @@ public class Main {
                 coll.displayTasks();
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
-
+                List<NodeTask> path = coll.getInlineTasks();
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
@@ -54,10 +54,10 @@ public class Main {
                         coll.setCurrentTaskToParent();
                         break;
                     case "p":
-                        coll.setCurrentTaskToPrev();
+                        coll.setCurrentTask(path, i -> (i - 1 + path.size()) % path.size());
                         break;
                     case "n":
-                        coll.setCurrentTaskToNext();
+                        coll.setCurrentTask(path, i -> (i + 1) % path.size());
                         break;
                     case "": // Enter key
                         //selectTask();
@@ -75,6 +75,9 @@ public class Main {
                     case "e":
                         multiInput(reader, (name, desc) -> coll.getCurrentTask().updateTask(name, desc));
                         break;
+                    case "d":
+                        //deleteTask(coll.getCurrentTask());
+                        break;
                     case ":w": // Write
                         coll.getInstance().write(coll);
                         break;
@@ -88,23 +91,25 @@ public class Main {
             }
         }
         coll.getInstance().write(coll);
+        //Should I unroll all the tasks based on schedules...
+        //
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
-                //sort p according to value and index.
-                //then go through tasks int that order and calc fitness.
-                Set<Task> depCache = new HashSet<>();
-
                 TreeMap<Double, Integer> sorted = new TreeMap<>();
                 for (int i = 0; i < p.getGene().size(); i++) {
                     sorted.put(p.getGene().getValue(i), i);
                 }
+                //we loop through the week... executing tasks
+                long time = 0;
+                while (time <= 10080) {
+                    //Do the next task
+
+                    time+=1;//every minute
+                }
                 for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    //Task task = instance.getTasks().get(entry.getValue());
-                    //System.out.println("Task ordering: " + task);
-                    //Weighted by importance, effort, cost
-                    //get next execution time of task.
-                    //Deadline calc
+                    Task task = coll.getInstance().getTasks().get(entry.getValue());
+
                 }
                 return 0;
             }

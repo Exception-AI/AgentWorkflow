@@ -211,6 +211,12 @@ public class Instance implements Identifier {
         return this.taskCache.get(id).getName();
     }
 
+    public void removeTask(Task currentTask) {
+        this.tasks.remove(currentTask);
+        //omg this could be complex.
+        //need to basicaly do a VM GC algo
+    }
+
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private WatchService watchService;
 
