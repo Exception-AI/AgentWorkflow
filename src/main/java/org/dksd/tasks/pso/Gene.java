@@ -31,7 +31,7 @@ public class Gene {
    public String toString() {
       StringBuilder result = new StringBuilder("");
       for (int i = 0; i < this.dimension; i++) {
-         result.append(result).append(getValue(i)).append(", ");
+         result.append(getValue(i)).append(", ");
       }
       return result.toString();
    }

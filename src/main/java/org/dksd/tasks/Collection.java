@@ -3,12 +3,12 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.dksd.tasks.model.NodeTask;
+import org.dksd.tasks.model.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 import java.util.function.Function;
@@ -38,7 +38,7 @@ public class Collection {
         getInstance().removeTask(currentTask);
     }
 
-    public void displayTasks(List<NodeTask> path, TreeMap<Double, Integer> sorted) {
+    public void displayTasks(List<NodeTask> path, TreeMap<Integer, NodeTask> sorted) {
         //String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //TODO
 

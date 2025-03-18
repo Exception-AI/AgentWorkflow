@@ -1,4 +1,4 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
 
 import java.util.ArrayList;
 import java.util.List;

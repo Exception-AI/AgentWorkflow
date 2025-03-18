@@ -1,19 +1,28 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.pso.Domain;
 import org.dksd.tasks.pso.FitnessFunction;
 import org.dksd.tasks.pso.Particle;
 import org.dksd.tasks.pso.StandardConcurrentSwarm;
+import org.dksd.tasks.scheduling.ScheduledTask;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 
@@ -35,21 +44,25 @@ public class Main {
         Collection coll = new Collection(new Instance("test"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
-
+        List<ScheduledTask> scheduledTasks = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
         while (!"q".equals(line)) {
             try {
                 List<NodeTask> path = coll.getInlineTasks();
-                TreeMap<Double, Integer> sorted = new TreeMap<>();
+                TreeMap<Integer, NodeTask> sorted = new TreeMap<>();
+                scheduledTasks.clear();
                 for (NodeTask nodeTask : path) {
-                    //TODO do we rather want deadlines with not a lot of time first...
-                    //Probably.
-                    //Work with lead time perhaps for calculating the start time. or just use that.
-                    //sorted.put(coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst()).getStartTime(),
-                    //        nodeTask);
+                    Constraint constraint = coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst());
+                    for (DayOfWeek dayOfWeek : constraint.getDaysOfWeek()) {
+                        ScheduledTask newTask = new ScheduledTask(nodeTask, coll.getInstance().getTask(nodeTask.getId()).getName(),dayOfWeek, constraint);
+                        scheduledTasks.add(newTask);
+                    }
                 }
+                //WeekScheduler scheduler = new WeekScheduler();
+                //Map<DayOfWeek, List<ScheduledTask>> weekSchedule = scheduler.planWeekTasks(path, coll.getInstance().getConstraintMap());
+                //System.out.println("Week Scheduler: " + weekSchedule);
                 coll.displayTasks(path, sorted);
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
@@ -101,33 +114,56 @@ public class Main {
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
-                TreeMap<Double, Integer> sorted = new TreeMap<>();
+                LocalDate beginningOfWeek = LocalDate.now()
+                        .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+                LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
+                LocalDateTime endOfWeek = beginningOfWeekAtSeven.plusDays(7);
+                Duration duration = Duration.between(beginningOfWeekAtSeven, endOfWeek);
+                long millisStart = beginningOfWeekAtSeven.atZone(ZoneId.systemDefault())
+                        .toInstant()
+                        .toEpochMilli();
+                long millisDifference = duration.toMillis();
+                long endOfWeekMillis = endOfWeek.atZone(ZoneId.systemDefault())
+                        .toInstant()
+                        .toEpochMilli();
+
+                double error = 0;
+                //TODO can now do some calcs.
                 for (int i = 0; i < p.getGene().size(); i++) {
-                    sorted.put(p.getGene().getValue(i), i);
+                    double fraction = p.getGene().getValue(i);
+                    ScheduledTask scheduledTask = scheduledTasks.get(i);
+                    long targetMillis = millisStart + (long) (millisDifference * fraction);
+                    LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                    //TODO calc difference between the two
+                    System.out.println(targetTime);
                 }
-                //we loop through the week... executing tasks
-                long time = 0;
-                while (time <= 10080) {
-                    //Do the next task
 
-                    time+=1;//every minute
-                }
+                /*LocalDateTime time = beginningOfWeekAtSeven;
+                //we step in unison to the end
                 for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    Task task = coll.getInstance().getTasks().get(entry.getValue());
-
+                    ScheduledTask scheduledTask = scheduledTasks.get(entry.getValue());
+                    Constraint c = scheduledTask.getConstraint();
+                    LocalTime lt = c.getEndTime().minusSeconds(c.getLeadTimeSeconds());
+                    time = (lt.isAfter(time.toLocalTime())) ? LocalDateTime.of(time.toLocalDate(), lt.plusSeconds(1)) : time;
+                    Duration durationDifference = Duration.between(lt, time.toLocalTime());
+                    error += Math.abs(durationDifference.toSeconds());
+                    //time = LocalDateTime.of(time.toLocalDate(), c.getEndTime().plusSeconds(1));
                 }
-                return 0;
+*/
+                return error;
             }
 
             @Override
             public int getDimension() {
-                return coll.getTotalTaskCount();
+                return scheduledTasks.size();
             }
 
             @Override
             public List<Domain> getDomain() {
                 List<Domain> domains = new ArrayList<>();
-                for (int i = 0; i < coll.getTotalTaskCount(); i++) {
+                for (int i = 0; i < scheduledTasks.size(); i++) {
                     domains.add(new Domain(0.0, 1.0));
                 }
                 return domains;
@@ -137,6 +173,8 @@ public class Main {
             for (int i = 0; i < 5; i++) {
                 swarm.step();
             }
+            System.out.println(swarm.getGbest());
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

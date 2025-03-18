@@ -5,7 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.dksd.tasks.cache.Cache;
 import org.dksd.tasks.cache.NodeTaskCache;
+import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.Link;
 import org.dksd.tasks.model.LinkType;
+import org.dksd.tasks.model.NodeTask;
+import org.dksd.tasks.model.Task;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class Instance implements Identifier {
@@ -239,6 +244,10 @@ public class Instance implements Identifier {
             hierarchy.add(getTask(ht.getId()).getName());
         }
         return hierarchy.toString();
+    }
+
+    public Map<UUID, Constraint> getConstraintMap() {
+        return constraintMap.getMap();
     }
 
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();

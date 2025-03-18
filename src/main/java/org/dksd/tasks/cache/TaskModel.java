@@ -1,4 +1,6 @@
-package org.dksd.tasks;
+package org.dksd.tasks.cache;
+
+import org.dksd.tasks.model.llmpojo.Constr;
 
 import java.io.Serializable;
 import java.util.List;

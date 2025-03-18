@@ -1,7 +1,10 @@
 package org.dksd.tasks;
 
 import org.dksd.tasks.cache.ModelCache;
+import org.dksd.tasks.cache.TaskModel;
+import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.LinkType;
+import org.dksd.tasks.model.Task;
 
 import java.util.List;
 

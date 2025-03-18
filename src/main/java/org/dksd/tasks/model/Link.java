@@ -1,6 +1,6 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
 
-import org.dksd.tasks.model.LinkType;
+import org.dksd.tasks.Identifier;
 
 import java.util.Objects;
 import java.util.UUID;
