@@ -2,6 +2,7 @@ package org.dksd.tasks;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.dksd.tasks.cache.Cache;
 import org.dksd.tasks.cache.NodeTaskCache;
 import org.dksd.tasks.model.LinkType;
@@ -47,19 +48,19 @@ public class Instance implements Identifier {
         taskCache = new Cache<>(tasks);
         constraintMap = new Cache<>(constraints);
         nodeTaskCache = new NodeTaskCache(tasks, links);
+        mapper.registerModule(new JavaTimeModule());
     }
 
     public Task createCommonTask(Task parent, String name, String desc) {
         assert parent != null;
         UUID nKey = UUID.randomUUID();//(taskMap.isEmpty()) ? 1 : Collections.max(taskMap.keySet()) + 1;
         Task task = new Task(nKey, name, desc);
-        getTasks().add(task);
-        createSubTask(parent, task);
-        return task;
+        return createCommonTask(parent, task);
     }
 
     public Task createCommonTask(Task parent, Task child) {
         assert parent != null;
+        getTasks().add(child);
         addLink(parent.getId(), LinkType.PARENT, child.getId());
         createConstraint(child);
         return child;
@@ -71,13 +72,6 @@ public class Instance implements Identifier {
         return task;
     }
 
-    public Task createSubTask(Task parent, Task child) {
-        //TODO add exception handling.
-        Task task = createCommonTask(parent, child);
-        addLink(parent.getId(), LinkType.SUBTASK, task.getId());
-        return task;
-    }
-
     public Task createDepTask(Task parent, String name, String desc) {
         Task task = createCommonTask(parent, name, desc);
         addLink(parent.getId(), LinkType.DEPENDENCY, task.getId());
@@ -85,16 +79,19 @@ public class Instance implements Identifier {
     }
 
     public List<Task> loadTasks(File file) throws IOException {
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(file, new TypeReference<List<Task>>() {
             });
     }
 
     public List<Link> loadLinks(File file) throws IOException {
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(file, new TypeReference<List<Link>>() {
             });
     }
 
     public List<Constraint> loadConstraints(File file) throws IOException {
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(file, new TypeReference<List<Constraint>>() {
             });
     }
@@ -217,6 +214,31 @@ public class Instance implements Identifier {
 
     private String getNameForUUID(UUID id) {
         return this.taskCache.get(id).getName();
+    }
+
+    public void removeTask(Task currentTask) {
+        this.tasks.remove(currentTask);
+        //omg this could be complex.
+        //need to basicaly do a VM GC algo
+    }
+
+    public boolean isParent(UUID id) {
+        for (Link link : this.links) {
+            if (link.getLeft() != null && link.getLeft().equals(id) && link.getLinkType().equals(LinkType.PARENT)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getHierarchy(NodeTask nodeTask) {
+        NodeTask ht = nodeTask;
+        List<String> hierarchy = new ArrayList<>();
+        while (ht.getParentId() != null) {
+            ht = getTaskNode(ht.getParentId());
+            hierarchy.add(getTask(ht.getId()).getName());
+        }
+        return hierarchy.toString();
     }
 
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();

@@ -8,6 +8,8 @@ import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -16,6 +18,10 @@ public class Constraint implements Identifier {
     private UUID id;
     private String schedule; // "* * * etc
     private String scheduleDescription;
+    private DayOfWeek[] daysOfWeek;
+    private int durationSeconds;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private LeadTime leadTime; //How much time needed before deadlines in seconds etc
     private Effort effort;
     private Cost cost;
@@ -31,6 +37,10 @@ public class Constraint implements Identifier {
     private void setBase() {
         this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
         this.scheduleDescription = setSchedDesc(schedule);
+        this.durationSeconds = 30*60;
+        this.daysOfWeek = new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY };
+        this.startTime = LocalTime.of(9, 30);
+        this.endTime = LocalTime.of(10, 0);
         this.leadTime = LeadTime.ONE_DAY;
         this.effort = Effort.MEDIUM;
         this.cost = Cost.CHEAP;
@@ -47,6 +57,10 @@ public class Constraint implements Identifier {
         }
         this.schedule = constr.schedule;
         this.scheduleDescription = constr.scheduleDescription;
+        this.durationSeconds = constr.durationSeconds;
+        this.daysOfWeek = constr.daysOfWeek;
+        this.startTime = constr.startTime;
+        this.endTime = constr.endTime;
         this.leadTime = constr.leadTime;
         this.effort = constr.effort;
         this.cost = constr.cost;
@@ -153,6 +167,38 @@ public class Constraint implements Identifier {
 
     public void setScheduleDescription(String scheduleDescription) {
         this.scheduleDescription = scheduleDescription;
+    }
+
+    public DayOfWeek[] getDaysOfWeek() {
+        return daysOfWeek;
+    }
+
+    public void setDaysOfWeek(DayOfWeek[] daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public int getDurationSeconds() {
+        return durationSeconds;
+    }
+
+    public void setDurationSeconds(int durationSeconds) {
+        this.durationSeconds = durationSeconds;
     }
 
     @Override

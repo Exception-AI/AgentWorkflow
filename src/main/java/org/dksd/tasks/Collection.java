@@ -2,29 +2,27 @@ package org.dksd.tasks;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 
 public class Collection {
 
     private final List<Instance> instances = new ArrayList<>(); // save these
     private final ObjectMapper mapper = new ObjectMapper();
     private NodeTask curr;
-    private final Map<UUID, UUID> nextPrevMap = new HashMap<>();
 
     public Collection(Instance... instances) {
         this.instances.addAll(Arrays.stream(instances).toList());
-    }
-
-    public void setCurrentTaskToParent() {
-        if (getCurrentNodeTask() != null && getCurrentNodeTask().getParentId() != null) {
-            curr = getInstance().getTaskNodes().get(getCurrentNodeTask().getParentId());
-        }
+        mapper.registerModule(new JavaTimeModule());
     }
 
     public Instance getInstance() {
@@ -36,27 +34,31 @@ public class Collection {
         return null;
     }
 
-    public void displayTasks() {
-        String greenCheck = "\u001B[32m\u2713\u001B[0m";
-        //Needs to be recursive right?
-        //for (Task wt : workingSet) {
+    private void deleteTask(Task currentTask) {
+        getInstance().removeTask(currentTask);
+    }
 
-        Task wt = getCurrentTask();
+    public void displayTasks(List<NodeTask> path, TreeMap<Double, Integer> sorted) {
+        //String greenCheck = "\u001B[32m\u2713\u001B[0m";
+        //TODO
 
-        NodeTask wtn = getInstance().getTaskNode(wt.getId());
-        List<String> hierarchy = new ArrayList<>();
+        for (NodeTask nodeTask : path) {
+            String suffix = (nodeTask.equals(curr)) ? "(*)" : "";
+            if (!getInstance().isParent(nodeTask.getId())) {
+                System.out.println(getInstance().getTask(nodeTask.getId()).getName() + " <- " + getInstance().getHierarchy(nodeTask) + " " + suffix);
+            }
+        }
+        /*List<String> hierarchy = new ArrayList<>();
         while (wtn.getParentId() != null) {
             wtn = getInstance().getTaskNode(wtn.getParentId());
             hierarchy.add(getInstance().getTask(wtn.getId()).getName());
         }
 
+        wtn = getInstance().getTaskNode(wt.getId());
         String indent = "  ";
         System.out.println(wt.getName() + " <- " + hierarchy);
         //System.out.println(suffix + "   Description: " + wt.getDescription());
         System.out.flush();
-            /*if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
-                System.out.println(suffix + "   SubTasks: ");
-            }*/
 
         for (UUID subTask : wtn.getSubTasks()) {
             for (UUID constraint : getInstance().getTaskNode(subTask).getConstraints()) {
@@ -71,6 +73,7 @@ public class Collection {
         for (UUID dep : wtn.getDependencies()) {
             System.out.print(getInstance().getTask(dep).getName() + ", ");
         }
+        */
         System.out.flush();
     }
 
@@ -92,38 +95,48 @@ public class Collection {
         }
     }
 
-    private NodeTask[] path = new NodeTask[1000];
-    private int cnt = 0;
-    public void dfs(NodeTask nt, int depth) {
+    public void dfs(List<NodeTask> path, NodeTask nt) {
         if (nt == null)
             return;
 
-        path[cnt++] = nt;
+        path.add(nt);
 
         for (UUID subTask : nt.getSubTasks()) {
-            dfs(getInstance().getTaskNode(subTask), depth + 1);
+            dfs(path, getInstance().getTaskNode(subTask));
         }
         for (UUID depTask : nt.getDependencies()) {
-            dfs(getInstance().getTaskNode(depTask), depth + 1);
+            dfs(path, getInstance().getTaskNode(depTask));
         }
     }
 
-    public NodeTask setCurrentTaskToNext() {
-        //Need to traverse the tree.
-        System.out.println("Next method: curr node task: " + curr);
-        dfs(getRootTask(curr), 0);
-        for (int i = 0; i < path.length; i++) {
-            if (path[i].getId().equals(curr.getId())) {
-                if (i + 1 >= path.length) {
-                    curr = path[0];
-                    System.out.println("Next method: next node task id: " + curr);
-                    return curr;
-                }
-                curr = path[i + 1];
-                System.out.println("Next method: next node task id: " + curr);
-                return curr;
-            }
+    public List<NodeTask> getInlineTasks() {
+        List<NodeTask> path = new ArrayList<>();
+        dfs(path, getRootTask(curr));
+        return path;
+    }
+
+    public NodeTask setCurrentTask(List<NodeTask> path, Function<Integer, Integer> indexSelector) {
+        System.out.println("Current node task: " + curr);
+
+        // Find the index of the current task in the path.
+        int currentIndex = IntStream.range(0, path.size())
+                .filter(i -> path.get(i).getId().equals(curr.getId()))
+                .findFirst()
+                .orElse(-1);
+
+        if (currentIndex == -1) {
+            // If current task is not found, return the current task.
+            return curr;
         }
+
+        // Calculate new index based on provided function.
+        int newIndex = indexSelector.apply(currentIndex);
+        while (getInstance().isParent(path.get(newIndex).getId())) {
+            newIndex = indexSelector.apply(newIndex);
+        }
+        curr = path.get(newIndex);
+
+        System.out.println("Updated node task: " + curr);
         return curr;
     }
 
@@ -132,10 +145,6 @@ public class Collection {
             return nt;
         }
         return getRootTask(getInstance().getTaskNode(nt.getParentId()));
-    }
-
-    private UUID getNextIndex(List<UUID> list, int i) {
-        return list.get(i + 1);
     }
 
     public Task getCurrentTask() {

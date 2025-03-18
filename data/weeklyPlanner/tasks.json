@@ -89,4 +89,24 @@
   },
   "createdTime" : 1742009469,
   "lastModifiedTime" : 1742009469
+}, {
+  "id" : "0de61816-c727-4dc9-81da-9a84033a0d8b",
+  "name" : "test",
+  "description" : "test",
+  "metadata" : { },
+  "createdTime" : 1742067017,
+  "lastModifiedTime" : 1742067017
+}, {
+  "id" : "b65bf320-0134-4d5c-b7fc-3d36902e226e",
+  "name" : "Every weekday, School Starts 8:15am lead time of 30 mins in car",
+  "description" : "Drive to school every weekday by 8:15 AM with a 30-minute lead time.",
+  "metadata" : {
+    "schedule" : "0 7:45 1/1 * * MON-FRI",
+    "fileName" : "data/weeklyPlanner/weeklyPlanner.todo",
+    "proposedName" : "Drive to School",
+    "proposedSubTasks" : [ "Start Car", "Leave House", "Begin Commute" ],
+    "taskId" : "b65bf320-0134-4d5c-b7fc-3d36902e226e"
+  },
+  "createdTime" : 1742159226,
+  "lastModifiedTime" : 1742159226
 } ]

@@ -32,7 +32,7 @@ public class Main {
         //beforeEachLLmInference(checkHashCache);
         //beforeEachLLmInference(checkEmbeddingCache);
 
-        Collection coll = new Collection(new Instance("weeklyPlanner"));
+        Collection coll = new Collection(new Instance("test"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
 
@@ -41,20 +41,28 @@ public class Main {
 
         while (!"q".equals(line)) {
             try {
-                coll.displayTasks();
+                List<NodeTask> path = coll.getInlineTasks();
+                TreeMap<Double, Integer> sorted = new TreeMap<>();
+                for (NodeTask nodeTask : path) {
+                    //TODO do we rather want deadlines with not a lot of time first...
+                    //Probably.
+                    //Work with lead time perhaps for calculating the start time. or just use that.
+                    //sorted.put(coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst()).getStartTime(),
+                    //        nodeTask);
+                }
+                coll.displayTasks(path, sorted);
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
-
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
                         coll.find(reader.readLine());
                         break;
-                    case "o":
-                        coll.setCurrentTaskToParent();
+                    case "p":
+                        coll.setCurrentTask(path, i -> (i - 1 + path.size()) % path.size());
                         break;
                     case "n":
-                        coll.setCurrentTaskToNext();
+                        coll.setCurrentTask(path, i -> (i + 1) % path.size());
                         break;
                     case "": // Enter key
                         //selectTask();
@@ -72,6 +80,9 @@ public class Main {
                     case "e":
                         multiInput(reader, (name, desc) -> coll.getCurrentTask().updateTask(name, desc));
                         break;
+                    case "d":
+                        //deleteTask(coll.getCurrentTask());
+                        break;
                     case ":w": // Write
                         coll.getInstance().write(coll);
                         break;
@@ -85,23 +96,25 @@ public class Main {
             }
         }
         coll.getInstance().write(coll);
+        //Should I unroll all the tasks based on schedules...
+        //
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
-                //sort p according to value and index.
-                //then go through tasks int that order and calc fitness.
-                Set<Task> depCache = new HashSet<>();
-
                 TreeMap<Double, Integer> sorted = new TreeMap<>();
                 for (int i = 0; i < p.getGene().size(); i++) {
                     sorted.put(p.getGene().getValue(i), i);
                 }
+                //we loop through the week... executing tasks
+                long time = 0;
+                while (time <= 10080) {
+                    //Do the next task
+
+                    time+=1;//every minute
+                }
                 for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    //Task task = instance.getTasks().get(entry.getValue());
-                    //System.out.println("Task ordering: " + task);
-                    //Weighted by importance, effort, cost
-                    //get next execution time of task.
-                    //Deadline calc
+                    Task task = coll.getInstance().getTasks().get(entry.getValue());
+
                 }
                 return 0;
             }

@@ -68,4 +68,24 @@
   "importance" : "NOT_URGENT_IMPORTANT",
   "concentration" : "PARTIAL",
   "deadlineType" : "HARD"
+}, {
+  "id" : "098396bc-3c62-4931-ae2e-6b4441f12e8d",
+  "schedule" : "30 22 * * 1",
+  "scheduleDescription" : "At 10:30 pm, only on Monday",
+  "leadTime" : "ONE_DAY",
+  "effort" : "MEDIUM",
+  "cost" : "CHEAP",
+  "importance" : "NOT_URGENT_IMPORTANT",
+  "concentration" : "PARTIAL",
+  "deadlineType" : "SOFT"
+}, {
+  "id" : "90f600be-e7cd-4de2-bd01-3a46aba19209",
+  "schedule" : "Recurring daily on weekdays",
+  "scheduleDescription" : "The task must be completed every weekday without exception.",
+  "leadTime" : "ONE_DAY",
+  "effort" : "LOW",
+  "cost" : "COSTLY",
+  "importance" : "URGENT_IMPORTANT",
+  "concentration" : "MINIMAL",
+  "deadlineType" : "HARD"
 } ]
