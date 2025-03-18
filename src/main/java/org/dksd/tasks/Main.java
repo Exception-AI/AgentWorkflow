@@ -32,7 +32,7 @@ public class Main {
         //beforeEachLLmInference(checkHashCache);
         //beforeEachLLmInference(checkEmbeddingCache);
 
-        Collection coll = new Collection(new Instance("weeklyPlanner"));
+        Collection coll = new Collection(new Instance("test"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
 
@@ -41,17 +41,22 @@ public class Main {
 
         while (!"q".equals(line)) {
             try {
-                coll.displayTasks();
+                List<NodeTask> path = coll.getInlineTasks();
+                TreeMap<Double, Integer> sorted = new TreeMap<>();
+                for (NodeTask nodeTask : path) {
+                    //TODO do we rather want deadlines with not a lot of time first...
+                    //Probably.
+                    //Work with lead time perhaps for calculating the start time. or just use that.
+                    //sorted.put(coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst()).getStartTime(),
+                    //        nodeTask);
+                }
+                coll.displayTasks(path, sorted);
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
-                List<NodeTask> path = coll.getInlineTasks();
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
                         coll.find(reader.readLine());
-                        break;
-                    case "o":
-                        coll.setCurrentTaskToParent();
                         break;
                     case "p":
                         coll.setCurrentTask(path, i -> (i - 1 + path.size()) % path.size());

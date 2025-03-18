@@ -2,12 +2,14 @@ package org.dksd.tasks;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.IntStream;
@@ -17,16 +19,10 @@ public class Collection {
     private final List<Instance> instances = new ArrayList<>(); // save these
     private final ObjectMapper mapper = new ObjectMapper();
     private NodeTask curr;
-    private final Map<UUID, UUID> nextPrevMap = new HashMap<>();
 
     public Collection(Instance... instances) {
         this.instances.addAll(Arrays.stream(instances).toList());
-    }
-
-    public void setCurrentTaskToParent() {
-        if (getCurrentNodeTask() != null && getCurrentNodeTask().getParentId() != null) {
-            curr = getInstance().getTaskNodes().get(getCurrentNodeTask().getParentId());
-        }
+        mapper.registerModule(new JavaTimeModule());
     }
 
     public Instance getInstance() {
@@ -42,15 +38,17 @@ public class Collection {
         getInstance().removeTask(currentTask);
     }
 
-    public void displayTasks() {
-        String greenCheck = "\u001B[32m\u2713\u001B[0m";
-        //Needs to be recursive right?
-        //for (Task wt : workingSet) {
+    public void displayTasks(List<NodeTask> path, TreeMap<Double, Integer> sorted) {
+        //String greenCheck = "\u001B[32m\u2713\u001B[0m";
+        //TODO
 
-        Task wt = getCurrentTask();
-
-        NodeTask wtn = getInstance().getTaskNode(wt.getId());
-        List<String> hierarchy = new ArrayList<>();
+        for (NodeTask nodeTask : path) {
+            String suffix = (nodeTask.equals(curr)) ? "(*)" : "";
+            if (!getInstance().isParent(nodeTask.getId())) {
+                System.out.println(getInstance().getTask(nodeTask.getId()).getName() + " <- " + getInstance().getHierarchy(nodeTask) + " " + suffix);
+            }
+        }
+        /*List<String> hierarchy = new ArrayList<>();
         while (wtn.getParentId() != null) {
             wtn = getInstance().getTaskNode(wtn.getParentId());
             hierarchy.add(getInstance().getTask(wtn.getId()).getName());
@@ -61,9 +59,6 @@ public class Collection {
         System.out.println(wt.getName() + " <- " + hierarchy);
         //System.out.println(suffix + "   Description: " + wt.getDescription());
         System.out.flush();
-            /*if (!taskNodeMap.get(wt.getId()).getSubTasks().isEmpty()) {
-                System.out.println(suffix + "   SubTasks: ");
-            }*/
 
         for (UUID subTask : wtn.getSubTasks()) {
             for (UUID constraint : getInstance().getTaskNode(subTask).getConstraints()) {
@@ -78,6 +73,7 @@ public class Collection {
         for (UUID dep : wtn.getDependencies()) {
             System.out.print(getInstance().getTask(dep).getName() + ", ");
         }
+        */
         System.out.flush();
     }
 
@@ -135,6 +131,9 @@ public class Collection {
 
         // Calculate new index based on provided function.
         int newIndex = indexSelector.apply(currentIndex);
+        while (getInstance().isParent(path.get(newIndex).getId())) {
+            newIndex = indexSelector.apply(newIndex);
+        }
         curr = path.get(newIndex);
 
         System.out.println("Updated node task: " + curr);
