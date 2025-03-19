@@ -46,6 +46,9 @@ public class Collection {
             String suffix = (nodeTask.equals(curr)) ? "(*)" : "";
             //if (!getInstance().isParent(nodeTask.getId())) {
                 System.out.println(getInstance().getTask(nodeTask.getId()).getName() + " <- " + getInstance().getHierarchy(nodeTask) + " " + suffix);
+                if (nodeTask.equals(curr)) {
+                    System.out.println(getInstance().getConstraint(nodeTask.getConstraints().getFirst()));
+                }
             //}
         }
         /*List<String> hierarchy = new ArrayList<>();
@@ -154,7 +157,7 @@ public class Collection {
         return getInstance().getTask(getCurrentNodeTask().getId());
     }
 
-    private NodeTask getCurrentNodeTask() {
+    public NodeTask getCurrentNodeTask() {
         if (curr != null) {
             return curr;
         }

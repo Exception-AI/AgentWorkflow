@@ -6,6 +6,7 @@ import org.dksd.tasks.model.llmpojo.Constr;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -188,14 +189,16 @@ public class Constraint implements Identifier {
 
     @Override
     public String toString() {
-        return "Constraint{" +
-                "schedule='" + schedule + '\'' +
-                "scheduleDescription='" + scheduleDescription + '\'' +
+        return  "daysOfWeek=" + Arrays.toString(daysOfWeek) +
+                ", durationMins=" + durationSeconds / 60.0 +
+                ", deadline=" + endTime +
+                ", leadTimeMinutes=" + leadTimeSeconds / 60.0 +
                 ", effort=" + effort +
                 ", cost=" + cost +
                 ", importance=" + importance +
                 ", concentration=" + concentration +
                 ", deadlineType=" + deadlineType +
+                ", id=" + id +
                 '}';
     }
 

@@ -25,8 +25,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class Main {
+
+    public static void updateConstraintAmount(Collection coll, String line, String prefix, BiConsumer<Constraint, Integer> updater) {
+        int amount = Integer.parseInt(line.substring(prefix.length()).trim());
+        Constraint c = coll.getInstance().getConstraint(coll.getCurrentNodeTask().getConstraints().getFirst());
+        updater.accept(c, amount);
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -68,6 +75,14 @@ public class Main {
                 coll.displayTasks(path, sorted);
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
+
+                //TODO check some others...
+
+                checkForChanges(line, "cleadtime", coll, (c, amount) -> c.setLeadTimeSeconds(c.getLeadTimeSeconds() + amount * 60));
+                checkForChanges(line, "cduration", coll, (c, amount) -> c.setDurationSeconds(c.getDurationSeconds() + amount * 60));
+                checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setEndTime(c.getEndTime().plusMinutes(amount)));
+                //checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setEndTime(c.getEndTime().plusMinutes(amount)));
+
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
@@ -112,17 +127,29 @@ public class Main {
         }
         coll.getInstance().write(coll);
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
-            @Override
-            public double calcFitness(Particle p) {
-                LocalDate beginningOfWeek = LocalDate.now()
-                        .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+
+            private long calcWeekMillis(LocalDate date) {
+                LocalDate beginningOfWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
                 LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
                 LocalDateTime endOfWeek = beginningOfWeekAtSeven.plusDays(7);
-                Duration duration = Duration.between(beginningOfWeekAtSeven, endOfWeek);
+                LocalDateTime endOfWeekAtMidnight = endOfWeek.toLocalDate().atTime(22, 0);
+                return Duration.between(beginningOfWeekAtSeven, endOfWeekAtMidnight).toMillis();
+            }
+
+            private double calcError(LocalDateTime targetTime, LocalDateTime effectiveDeadline, double factor) {
+                return Math.pow(Math.abs(
+                        Duration.between(targetTime, effectiveDeadline).getSeconds() / 60.0 / 60.0), factor);
+            }
+
+            @Override
+            public double calcFitness(Particle p) {
+                LocalDate beginningOfWeek = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+                LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
+
+                long millisDifference = calcWeekMillis(LocalDate.now());
                 long millisStart = beginningOfWeekAtSeven.atZone(ZoneId.systemDefault())
                         .toInstant()
                         .toEpochMilli();
-                long millisDifference = duration.toMillis();
 
                 double error = 0;
                 for (int i = 0; i < p.getGene().size(); i++) {
@@ -138,13 +165,9 @@ public class Main {
                     LocalDateTime effectiveDeadline = effectiveDate.atTime(c.getEndTime().minusSeconds(c.getLeadTimeSeconds()));
                     LocalDateTime fullEndTime = effectiveDate.atTime(c.getEndTime());
                     if (targetTime.isBefore(effectiveDeadline)) {
-                        Duration diff = Duration.between(targetTime, effectiveDeadline);
-                        long secondsDiff = Math.abs(diff.getSeconds());
-                        error += Math.pow(secondsDiff, 2);
+                        error += calcError(targetTime, effectiveDeadline, 1);
                     } else if (targetTime.isAfter(fullEndTime)) {
-                        Duration diff = Duration.between(fullEndTime, targetTime);
-                        long secondsDiff = Math.abs(diff.getSeconds());
-                        error += Math.pow(secondsDiff, 3);
+                        error += calcError(fullEndTime, targetTime, 1);
                     }
                 }
                 return error;
@@ -163,14 +186,13 @@ public class Main {
                 }
                 return domains;
             }
-        }, 10);
+        }, 100);
         try {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 10000; i++) {
                 swarm.step();
-                System.out.println(swarm.getGbest());
+                System.out.println(swarm.getGbestFitness() + " -> " + swarm.getGbest());
             }
-            System.out.println(swarm.getGbest());
-            System.out.println(scheduledTasks);
+            System.out.println(swarm.getGbestFitness() + " -> " + swarm.getGbest());
             LocalDate beginningOfWeek = LocalDate.now()
                     .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
             LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
@@ -186,10 +208,20 @@ public class Main {
                 LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
                         .atZone(ZoneId.systemDefault())
                         .toLocalDateTime();
-                System.out.println(targetTime);
+                ScheduledTask scheduledTask = scheduledTasks.get(i);
+                DayOfWeek dayOfWeek = targetTime.getDayOfWeek();
+                System.out.println(scheduledTask);
+                System.out.println(dayOfWeek + " -> " + targetTime);
+                System.out.println();
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private static void checkForChanges(String line, String clt, Collection coll, BiConsumer<Constraint, Integer> func) {
+        if (line.startsWith(clt)) {
+            updateConstraintAmount(coll, line, clt, func);
         }
     }
 
