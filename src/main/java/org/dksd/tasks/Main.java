@@ -55,9 +55,11 @@ public class Main {
                 scheduledTasks.clear();
                 for (NodeTask nodeTask : path) {
                     Constraint constraint = coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst());
-                    for (DayOfWeek dayOfWeek : constraint.getDaysOfWeek()) {
-                        ScheduledTask newTask = new ScheduledTask(nodeTask, coll.getInstance().getTask(nodeTask.getId()).getName(),dayOfWeek, constraint);
-                        scheduledTasks.add(newTask);
+                    if (coll.getInstance().isLeaf(nodeTask)) {
+                        for (DayOfWeek dayOfWeek : constraint.getDaysOfWeek()) {
+                            ScheduledTask newTask = new ScheduledTask(nodeTask, coll.getInstance().getTask(nodeTask.getId()).getName(), dayOfWeek, constraint);
+                            scheduledTasks.add(newTask);
+                        }
                     }
                 }
                 //WeekScheduler scheduler = new WeekScheduler();
@@ -109,8 +111,6 @@ public class Main {
             }
         }
         coll.getInstance().write(coll);
-        //Should I unroll all the tasks based on schedules...
-        //
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
             @Override
             public double calcFitness(Particle p) {
@@ -123,12 +123,8 @@ public class Main {
                         .toInstant()
                         .toEpochMilli();
                 long millisDifference = duration.toMillis();
-                long endOfWeekMillis = endOfWeek.atZone(ZoneId.systemDefault())
-                        .toInstant()
-                        .toEpochMilli();
 
                 double error = 0;
-                //TODO can now do some calcs.
                 for (int i = 0; i < p.getGene().size(); i++) {
                     double fraction = p.getGene().getValue(i);
                     ScheduledTask scheduledTask = scheduledTasks.get(i);
@@ -136,22 +132,21 @@ public class Main {
                     LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
-                    //TODO calc difference between the two
-                    System.out.println(targetTime);
-                }
 
-                /*LocalDateTime time = beginningOfWeekAtSeven;
-                //we step in unison to the end
-                for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    ScheduledTask scheduledTask = scheduledTasks.get(entry.getValue());
+                    LocalDate effectiveDate = beginningOfWeek.with(TemporalAdjusters.nextOrSame(scheduledTask.getEndDay()));
                     Constraint c = scheduledTask.getConstraint();
-                    LocalTime lt = c.getEndTime().minusSeconds(c.getLeadTimeSeconds());
-                    time = (lt.isAfter(time.toLocalTime())) ? LocalDateTime.of(time.toLocalDate(), lt.plusSeconds(1)) : time;
-                    Duration durationDifference = Duration.between(lt, time.toLocalTime());
-                    error += Math.abs(durationDifference.toSeconds());
-                    //time = LocalDateTime.of(time.toLocalDate(), c.getEndTime().plusSeconds(1));
+                    LocalDateTime effectiveDeadline = effectiveDate.atTime(c.getEndTime().minusSeconds(c.getLeadTimeSeconds()));
+                    LocalDateTime fullEndTime = effectiveDate.atTime(c.getEndTime());
+                    if (targetTime.isBefore(effectiveDeadline)) {
+                        Duration diff = Duration.between(targetTime, effectiveDeadline);
+                        long secondsDiff = Math.abs(diff.getSeconds());
+                        error += Math.pow(secondsDiff, 2);
+                    } else if (targetTime.isAfter(fullEndTime)) {
+                        Duration diff = Duration.between(fullEndTime, targetTime);
+                        long secondsDiff = Math.abs(diff.getSeconds());
+                        error += Math.pow(secondsDiff, 3);
+                    }
                 }
-*/
                 return error;
             }
 
@@ -170,11 +165,29 @@ public class Main {
             }
         }, 10);
         try {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 swarm.step();
+                System.out.println(swarm.getGbest());
             }
             System.out.println(swarm.getGbest());
-
+            System.out.println(scheduledTasks);
+            LocalDate beginningOfWeek = LocalDate.now()
+                    .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+            LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
+            LocalDateTime endOfWeek = beginningOfWeekAtSeven.plusDays(7);
+            Duration duration = Duration.between(beginningOfWeekAtSeven, endOfWeek);
+            long millisStart = beginningOfWeekAtSeven.atZone(ZoneId.systemDefault())
+                    .toInstant()
+                    .toEpochMilli();
+            long millisDifference = duration.toMillis();
+            for (int i = 0; i < swarm.getGbest().size(); i++) {
+                double fraction = swarm.getGbest().getValue(i);
+                long targetMillis = millisStart + (long) (millisDifference * fraction);
+                LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDateTime();
+                System.out.println(targetTime);
+            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

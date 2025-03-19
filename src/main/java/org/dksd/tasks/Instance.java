@@ -250,6 +250,10 @@ public class Instance implements Identifier {
         return constraintMap.getMap();
     }
 
+    public boolean isLeaf(NodeTask nodeTask) {
+        return nodeTask.getSubTasks().isEmpty();
+    }
+
     /*private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private WatchService watchService;
 

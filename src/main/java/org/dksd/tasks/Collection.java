@@ -44,9 +44,9 @@ public class Collection {
 
         for (NodeTask nodeTask : path) {
             String suffix = (nodeTask.equals(curr)) ? "(*)" : "";
-            if (!getInstance().isParent(nodeTask.getId())) {
+            //if (!getInstance().isParent(nodeTask.getId())) {
                 System.out.println(getInstance().getTask(nodeTask.getId()).getName() + " <- " + getInstance().getHierarchy(nodeTask) + " " + suffix);
-            }
+            //}
         }
         /*List<String> hierarchy = new ArrayList<>();
         while (wtn.getParentId() != null) {

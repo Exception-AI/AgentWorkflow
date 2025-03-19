@@ -48,8 +48,9 @@ public class ScheduledTask {
     @Override
     public String toString() {
         return "ScheduledTask{" +
-                "task=" + task.getId() +
-                ", day=" + endDay +
+                ", taskName='" + taskName + '\'' +
+                ", endDay=" + endDay +
+                ", constraint=" + constraint +
                 '}';
     }
 }

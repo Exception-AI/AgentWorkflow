@@ -1,0 +1,71 @@
+[ {
+  "id" : "b9b99bea-6d5a-41d0-8a62-3edc82737a50",
+  "left" : null,
+  "linkType" : "PARENT",
+  "right" : "9c72514e-5439-474c-a251-54f009ad43c8"
+}, {
+  "id" : "e3a9f475-504c-46e1-9456-dd9eb33b1b82",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "CONSTRAINT",
+  "right" : "02b55080-0a12-465e-ba36-70613e84ce56"
+}, {
+  "id" : "0009064d-3f35-4c9e-96ff-3818eaa15a4d",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "PARENT",
+  "right" : "7c5da0a6-3e23-4e17-a064-f7d8be481c67"
+}, {
+  "id" : "610fe554-172d-45fd-b7f4-f9be4c9c654c",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "SUBTASK",
+  "right" : "7c5da0a6-3e23-4e17-a064-f7d8be481c67"
+}, {
+  "id" : "a47ad77e-aeb6-4948-925a-1633dfdd6817",
+  "left" : "7c5da0a6-3e23-4e17-a064-f7d8be481c67",
+  "linkType" : "CONSTRAINT",
+  "right" : "d09e11a7-a206-48c2-87da-53496d86c62d"
+}, {
+  "id" : "1ef05171-baa9-4c32-a38d-60af23fd7d33",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "PARENT",
+  "right" : "a6374bfe-322c-40a4-82cc-833d57f4f9ac"
+}, {
+  "id" : "bf828622-7416-49a5-9daf-116e01d693fb",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "SUBTASK",
+  "right" : "a6374bfe-322c-40a4-82cc-833d57f4f9ac"
+}, {
+  "id" : "338445fe-9226-4c09-aa3b-ddd7dfc8c8ee",
+  "left" : "a6374bfe-322c-40a4-82cc-833d57f4f9ac",
+  "linkType" : "CONSTRAINT",
+  "right" : "8c94bdcf-ec90-4ffb-8252-27d902cfec34"
+}, {
+  "id" : "2fcf09b1-9f41-423d-9bf1-a0e3f92f0b07",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "PARENT",
+  "right" : "d52cc1e6-3bde-4256-ab4a-4f4e6d30d2b4"
+}, {
+  "id" : "b7321058-ed25-4bec-acc4-9afc23531fd4",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "SUBTASK",
+  "right" : "d52cc1e6-3bde-4256-ab4a-4f4e6d30d2b4"
+}, {
+  "id" : "faf9c2d4-ea43-40e3-b384-8c91d9ee1d11",
+  "left" : "d52cc1e6-3bde-4256-ab4a-4f4e6d30d2b4",
+  "linkType" : "CONSTRAINT",
+  "right" : "27d3e6c8-a16c-4cc8-9b0f-ec554dfc30f0"
+}, {
+  "id" : "daffcc71-e0b7-4a81-9457-df243bcce50d",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "PARENT",
+  "right" : "423a485f-06b5-4c77-be7f-d85cee2ec152"
+}, {
+  "id" : "e3b49843-8e92-47d7-8425-a87aaed89f51",
+  "left" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "linkType" : "SUBTASK",
+  "right" : "423a485f-06b5-4c77-be7f-d85cee2ec152"
+}, {
+  "id" : "433766fa-6703-4408-b11e-0d6b94d255e7",
+  "left" : "423a485f-06b5-4c77-be7f-d85cee2ec152",
+  "linkType" : "CONSTRAINT",
+  "right" : "0be9d34d-f096-4837-af42-21e57b817da8"
+} ]
