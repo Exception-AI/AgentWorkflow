@@ -27,7 +27,7 @@ class ConstraintTest {
         assertEquals(Cost.CHEAP, constraint.getCost(), "Default cost should be CHEAP");
         assertEquals(Importance.NOT_URGENT_IMPORTANT, constraint.getImportance(), "Default importance should be NOT_URGENT_IMPORTANT");
         assertEquals(Concentration.PARTIAL, constraint.getConcentration(), "Default concentration should be PARTIAL");
-        assertEquals(DeadlineType.SOFT, constraint.getDeadlineType(), "Default deadline type should be SOFT");
+        assertEquals(DeadlineType.ANYTIME_ON_DAY, constraint.getDeadlineType(), "Default deadline type should be SOFT");
     }
 
     @Test

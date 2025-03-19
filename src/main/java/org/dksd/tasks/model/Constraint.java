@@ -70,8 +70,8 @@ public class Constraint implements Identifier {
         this.scheduleDescription = constr.scheduleDescription;
         this.durationSeconds = constr.durationSeconds;
         this.daysOfWeek = constr.daysOfWeek;
-        this.deadlineTime = constr.endTime;
-        this.allowedSecondsBeforeDeadline = constr.leadTimeSeconds;
+        this.deadlineTime = constr.deadlineTime;
+        this.allowedSecondsBeforeDeadline = constr.allowedSecondsBeforeDeadline;
         this.effort = constr.effort;
         this.cost = constr.cost;
         this.importance = constr.importance;

@@ -34,10 +34,16 @@ public class Main {
         updater.accept(c, amount);
     }
 
-    public static void updateConstraintString(Collection coll, String line, String prefix, BiConsumer<Constraint, String> updater) {
+    public static void updateConstraintString(Collection coll, String line, String prefix, BiConsumer<Constraint, String> updater,
+                                              BiConsumer<Constraint, String> remover) {
         String value = line.substring(prefix.length()).trim();
         Constraint c = coll.getInstance().getConstraint(coll.getCurrentNodeTask().getConstraints().getFirst());
-        updater.accept(c, value);
+        char sign = value.charAt(0);
+        value = value.substring(1).trim();
+        if (sign == '+') {
+            updater.accept(c, value);
+        }
+        remover.accept(c, value);
     }
 
     public static void updateConstraintNext(Collection coll, Consumer<Constraint> updater) {
@@ -86,7 +92,8 @@ public class Main {
                 checkForChanges(line, "cleadtime", coll, (c, amount) -> c.setAllowedSecondsBeforeDeadline(c.getAllowedSecondsBeforeDeadline() + amount * 60));
                 checkForChanges(line, "cduration", coll, (c, amount) -> c.setDurationSeconds(c.getDurationSeconds() + amount * 60));
                 checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setDeadlineTime(c.getDeadlineTime().plusMinutes(amount)));
-                checkForChangesString(line, "cday", coll, (c, day) -> c.getDaysOfWeek().add(DayOfWeek.valueOf(day)));
+                checkForChangesString(line, "cday", coll, (c, day) -> c.getDaysOfWeek().add(DayOfWeek.valueOf(day)),
+                        (c, day) -> c.getDaysOfWeek().remove(DayOfWeek.valueOf(day)));
                 checkForToggle(line, "teffort", coll, (c) -> c.setEffort(c.getEffort().next(c.getEffort())));
                 checkForToggle(line, "tcost", coll, (c) -> c.setCost(c.getCost().next(c.getCost())));
                 checkForToggle(line, "timport", coll, (c) -> c.setImportance(c.getImportance().next(c.getImportance())));
@@ -311,9 +318,10 @@ public class Main {
         }
     }
 
-    private static void checkForChangesString(String line, String clt, Collection coll, BiConsumer<Constraint, String> func) {
+    private static void checkForChangesString(String line, String clt, Collection coll, BiConsumer<Constraint, String> func,
+                                              BiConsumer<Constraint, String> rmFunc) {
         if (line.startsWith(clt)) {
-            updateConstraintString(coll, line, clt, func);
+            updateConstraintString(coll, line, clt, func, rmFunc);
         }
     }
 

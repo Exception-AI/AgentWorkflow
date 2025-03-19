@@ -1,8 +1,15 @@
 package org.dksd.tasks.model;
 
+import dev.langchain4j.model.output.structured.Description;
+
 public enum Cost {
+    @Description("Cheap: Represents a minimal expense.")
     CHEAP("\uD83D\uDCB0"),
+
+    @Description("Costly: Represents a moderate expense with two money emojis.")
     COSTLY("\uD83D\uDCB0\uD83D\uDCB0"),
+
+    @Description("Expensive: Represents a high expense with three money emojis.")
     EXPENSIVE("\uD83D\uDCB0\uD83D\uDCB0\uD83D\uDCB0");
 
     private final String value;

@@ -1,8 +1,15 @@
 package org.dksd.tasks.model;
 
+import dev.langchain4j.model.output.structured.Description;
+
 public enum Effort {
+    @Description("High effort: Requires significant energy and focus.")
     HIGH("\uD83D\uDCAA\uD83D\uDCAA\uD83D\uDCAA"),
+
+    @Description("Medium effort: Requires moderate energy and focus.")
     MEDIUM("\uD83D\uDCAA\uD83D\uDCAA"),
+
+    @Description("Low effort: Requires minimal energy and focus.")
     LOW("\uD83D\uDCAA");
 
     private final String value;
