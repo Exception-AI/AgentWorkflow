@@ -5,6 +5,8 @@ import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.model.Task;
 import org.dksd.tasks.model.LinkType;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +19,8 @@ public class NodeTaskCache {
     private final Map<UUID, NodeTask> taskNodeMap = new HashMap<>();
 
     public NodeTaskCache(List<Task> tasks, List<Link> links) {
-        this.tasks = tasks;
-        this.links = links;
+        this.tasks = Collections. synchronizedList(new ArrayList<>(tasks));
+        this.links = Collections. synchronizedList(new ArrayList<>(links));;
     }
 
     private void addLinkToTree(Link link) {

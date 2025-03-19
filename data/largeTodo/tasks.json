@@ -1,0 +1,1105 @@
+[ {
+  "id" : "7c7cad80-30d1-4720-9c56-3ffbca904aac",
+  "name" : "The Big list",
+  "description" : "Submit monthly expense report to finance department.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "ExpenseReport",
+    "proposedSubTasks" : [ "Gather receipts", "Categorize expenses", "Input data into system" ],
+    "taskId" : "7c7cad80-30d1-4720-9c56-3ffbca904aac"
+  },
+  "createdTime" : 1742418362,
+  "lastModifiedTime" : 1742418362
+}, {
+  "id" : "6608ccd9-019c-4688-ab4b-67d61a0e9582",
+  "name" : "reallygood idea for library method, basic (small params), medium (more), advanced(all params)",
+  "description" : "Optimize library methods by categorizing them into basic, medium, and advanced based on parameter complexity.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Library Method Optimization",
+    "proposedSubTasks" : [ "Basic Method Implementation", "Medium Method Implementation", "Advanced Method Implementation", "Parameter Complexity Analysis", "User Feedback Collection", "Documentation Update" ],
+    "taskId" : "6608ccd9-019c-4688-ab4b-67d61a0e9582"
+  },
+  "createdTime" : 1742418388,
+  "lastModifiedTime" : 1742418388
+}, {
+  "id" : "e39c6302-d618-4922-913b-62348a6fd2c2",
+  "name" : "Focus on Advanced Topics: My focus stays on topics such as Dynamic Programming ,Binary Search, Graphs ,Trees and Priority Queue since these topics are asked very very frequently in interviews and require time and patience to be good at.",
+  "description" : "Daily practice of advanced topics like Dynamic Programming, Binary Search, Graphs, Trees, and Priority Queue. These are high-frequency interview topics requiring deep understanding and problem-solving skills.",
+  "metadata" : {
+    "schedule" : "0 0 18 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Advanced Algorithm Practice",
+    "proposedSubTasks" : [ "DP Problems", "Binary Search Optimization", "Graph Algorithms", "Tree Traversals", "Priority Queue Implementation" ],
+    "taskId" : "e39c6302-d618-4922-913b-62348a6fd2c2"
+  },
+  "createdTime" : 1742418414,
+  "lastModifiedTime" : 1742418414
+}, {
+  "id" : "c2efe642-6850-4dbf-a05a-9ed8677a5bf4",
+  "name" : "Adding crypto currency.",
+  "description" : "Adding a new cryptocurrency to a platform or service",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "AddCryptoCurrency",
+    "proposedSubTasks" : [ "ResearchCryptoCurrency", "VerifyRegulatoryCompliance", "IntegrateAPI", "ConductSecurityAudit", "UpdateUserInterface", "TestFunctionality", "LaunchAnnouncement" ],
+    "taskId" : "c2efe642-6850-4dbf-a05a-9ed8677a5bf4"
+  },
+  "createdTime" : 1742418439,
+  "lastModifiedTime" : 1742418439
+}, {
+  "id" : "6027d1ed-705d-43af-a5ad-da4a62d69493",
+  "name" : "CV,",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "6027d1ed-705d-43af-a5ad-da4a62d69493"
+  },
+  "createdTime" : 1742418444,
+  "lastModifiedTime" : 1742418444
+}, {
+  "id" : "406c8d7f-15ad-4998-890d-424e9099e98c",
+  "name" : "Sign tax docs",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "406c8d7f-15ad-4998-890d-424e9099e98c"
+  },
+  "createdTime" : 1742418449,
+  "lastModifiedTime" : 1742418449
+}, {
+  "id" : "6c2e70d0-dd14-48a5-938c-77db8fd75ae2",
+  "name" : "Design diagrams in a single line of text.",
+  "description" : "Extract and return the constraint from Design diagrams in a single line of text along with an explanation.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Design Diag Constraints",
+    "proposedSubTasks" : [ "IdentifyConstraints", "ExtractConstraints", "FormatConstraints" ],
+    "taskId" : "6c2e70d0-dd14-48a5-938c-77db8fd75ae2"
+  },
+  "createdTime" : 1742418473,
+  "lastModifiedTime" : 1742418473
+}, {
+  "id" : "22fc3a9b-da75-4b89-b113-73d71439e559",
+  "name" : "Image generation notebook?",
+  "description" : "Generate high-quality images using machine learning models.",
+  "metadata" : {
+    "schedule" : "0 0 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Image Generation",
+    "proposedSubTasks" : [ "Model Initialization", "Data Preparation", "Image Synthesis", "Post-Processing" ],
+    "taskId" : "22fc3a9b-da75-4b89-b113-73d71439e559"
+  },
+  "createdTime" : 1742418582,
+  "lastModifiedTime" : 1742418582
+}, {
+  "id" : "82ef92d6-6ef0-4765-aa7d-2bd7eebaa612",
+  "name" : "Idea for getting brain into the zone, capture generate a picture that is easy to spot and pick up out of others.",
+  "description" : "Create a simple, high-contrast visual cue that stands out visually to signal when the brain is 'in the zone' for focused work. The image should use bold colors, geometric shapes, and minimal elements to ensure quick recognition.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Brain Zone Visual Cue",
+    "proposedSubTasks" : [ "Design Brain Zone Icon", "Test Visual Recognition", "Finalize and Implement Cue" ],
+    "taskId" : "82ef92d6-6ef0-4765-aa7d-2bd7eebaa612"
+  },
+  "createdTime" : 1742418608,
+  "lastModifiedTime" : 1742418608
+}, {
+  "id" : "ef6e410a-d31b-4c9a-8b9e-7a5329b2ec06",
+  "name" : "Suggestion",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "ef6e410a-d31b-4c9a-8b9e-7a5329b2ec06"
+  },
+  "createdTime" : 1742418613,
+  "lastModifiedTime" : 1742418613
+}, {
+  "id" : "dfa4408d-19a1-4465-9cb8-e5f849c59fad",
+  "name" : "Setup GrPC template apps",
+  "description" : "Configure and deploy gRPC template applications ensuring proper communication between microservices, including protocol buffer definitions and server/client implementations.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Setup GrPC Template Apps",
+    "proposedSubTasks" : [ "Define gRPC Protobuf Definitions", "Implement Server Endpoint Logic", "Develop Client Communication Layer", "Test End-to-End gRPC Communication", "Deploy Configurations to Production" ],
+    "taskId" : "dfa4408d-19a1-4465-9cb8-e5f849c59fad"
+  },
+  "createdTime" : 1742418639,
+  "lastModifiedTime" : 1742418639
+}, {
+  "id" : "3a9b75fe-a5a7-4a52-ac57-ba17911e24bc",
+  "name" : "At some point I need to bed down what we are dpoing here? for Sift, why are we using the existing system with such hamstrings? 100 events it's kind of a joke",
+  "description" : "Assess why the existing system is limited to handling only 100 events and determine the feasibility of scaling it. Investigate technical bottlenecks and business constraints driving this limitation.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Evaluate System Constraints",
+    "proposedSubTasks" : [ "Analyze Performance Metrics", "Review System Architecture", "Interview Stakeholders", "Cost-Benefit Analysis" ],
+    "taskId" : "3a9b75fe-a5a7-4a52-ac57-ba17911e24bc"
+  },
+  "createdTime" : 1742418666,
+  "lastModifiedTime" : 1742418666
+}, {
+  "id" : "793452f7-b056-4c53-a9c1-2f9af493e543",
+  "name" : "Read and create plans for Q2 https://sift.atlassian.net/wiki/spaces/RNDTEAM/pages/2382987378/Fraud+Feature+Coverage+Marketplaces+-+Phase+2+Brainstorm",
+  "description" : "Expand existing fraud detection features to cover additional marketplaces in Phase 2. This includes integrating new data sources, validating feature performance, and ensuring compliance with regional regulations.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Q2 Fraud Feature Coverage Expansion",
+    "proposedSubTasks" : [ "Data Integration for New Marketplaces", "Feature Validation Testing", "Compliance Review", "Performance Optimization", "Documentation Updates" ],
+    "taskId" : "793452f7-b056-4c53-a9c1-2f9af493e543"
+  },
+  "createdTime" : 1742418693,
+  "lastModifiedTime" : 1742418693
+}, {
+  "id" : "57abfdc6-aa36-4919-8c58-950bf002f1c9",
+  "name" : "Update documentation for Offline fraud patterns: explain dashboard -> Create queries -> productionize, consolidate all existing docs too",
+  "description" : "Consolidate and update documentation for offline fraud patterns, including explanations for the dashboard, creation of queries, and productionization steps. Ensure all existing documentation is consolidated into a single source, enhancing clarity and accessibility.",
+  "metadata" : {
+    "schedule" : "0 0 2 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Update Offline Fraud Documentation",
+    "proposedSubTasks" : [ "Review existing offline fraud docs", "Update dashboard explanation section", "Revise query creation guidelines", "Productionize documentation steps", "Consolidate all existing docs into a single repository" ],
+    "taskId" : "57abfdc6-aa36-4919-8c58-950bf002f1c9"
+  },
+  "createdTime" : 1742418933,
+  "lastModifiedTime" : 1742418933
+}, {
+  "id" : "3e770c40-49d5-4f97-86d6-851726c1bc1f",
+  "name" : "Start in Sift architecture simulation",
+  "description" : "Return the constraint from Start in Sift architecture simulation",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "SimulateSiftArchConstraint",
+    "proposedSubTasks" : [ "AnalyzeSiftConstraints", "ReviewSimulationParameters" ],
+    "taskId" : "3e770c40-49d5-4f97-86d6-851726c1bc1f"
+  },
+  "createdTime" : 1742418956,
+  "lastModifiedTime" : 1742418956
+}, {
+  "id" : "372fe10d-7d2d-40e6-94d3-91d92b781829",
+  "name" : "Activate BOA card",
+  "description" : "Activate a Bank of America credit card online through the official website or mobile app, ensuring all security steps are followed to prevent fraud.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Activate BOA Card",
+    "proposedSubTasks" : [ "Verify Card Details", "Complete Online Activation Form", "Set Up Security Alerts", "Confirm Activation via Email" ],
+    "taskId" : "372fe10d-7d2d-40e6-94d3-91d92b781829"
+  },
+  "createdTime" : 1742418981,
+  "lastModifiedTime" : 1742418981
+}, {
+  "id" : "4f840367-828a-4a2c-ba94-d3d51dcb3494",
+  "name" : "Feedback for Dylan: Watch cloesly all logs and metrics regarding code you are running, create reports and feedback and diagrams showing speed etc. Also watching most importantly for errors.",
+  "description" : "Continuously watch logs and metrics of running code, generate reports and diagrams highlighting performance (speed, resource usage) and critical errors. Prioritize error detection and root cause analysis.",
+  "metadata" : {
+    "schedule" : "*/5 * * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Monitor Logs & Metrics",
+    "proposedSubTasks" : [ "Real-Time Error Scanning", "Performance Metrics Aggregation", "Automated Report Generation", "Root Cause Analysis", "Dashboard Updates" ],
+    "taskId" : "4f840367-828a-4a2c-ba94-d3d51dcb3494"
+  },
+  "createdTime" : 1742419007,
+  "lastModifiedTime" : 1742419007
+}, {
+  "id" : "3507acfa-f1c5-48bc-9179-7b3e3729ddbf",
+  "name" : "Upgrade Snowflake Vault FraudPattern Generator",
+  "description" : "Upgrade the Snowflake Vault FraudPattern Generator to enhance fraud detection capabilities and ensure compliance with the latest regulatory standards.",
+  "metadata" : {
+    "schedule" : "0 0 2 * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "UpgradeSnowflakeVaultFraudPatternGenerator",
+    "proposedSubTasks" : [ "AnalyzeCurrentFraudPatterns", "ImplementNewDetectionAlgorithms", "TestFraudPatternGenerator", "DeployUpdatesToProduction" ],
+    "taskId" : "3507acfa-f1c5-48bc-9179-7b3e3729ddbf"
+  },
+  "createdTime" : 1742419032,
+  "lastModifiedTime" : 1742419032
+}, {
+  "id" : "6ed7f927-26b5-4c13-83a1-ad4732b85b04",
+  "name" : "create python / datascience knowledge base where each entry is a single line, super fast fzf find",
+  "description" : "Build a concise Python and Data Science knowledge base with single-line entries for fast fzf search",
+  "metadata" : {
+    "schedule" : "0 0 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Create Python/DS Knowledge Base",
+    "proposedSubTasks" : [ "Design knowledge base structure", "Curate Python topics", "Curate Data Science topics", "Implement fzf-friendly formatting", "Test search functionality" ],
+    "taskId" : "6ed7f927-26b5-4c13-83a1-ad4732b85b04"
+  },
+  "createdTime" : 1742419057,
+  "lastModifiedTime" : 1742419057
+}, {
+  "id" : "de81a7ca-314a-4ea0-a23e-82463337c33c",
+  "name" : "PlantUML plugin -> WBS text align to the right can use -txt option on command line",
+  "description" : "Modify the PlantUML plugin configuration to align WBS text to the right using the -txt command line option. Explain the necessity of this option for proper alignment.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Configure PlantUML WBS Right Text Alignment",
+    "proposedSubTasks" : [ "Research PlantUML command line options", "Test -txt option with WBS diagrams", "Document configuration changes" ],
+    "taskId" : "de81a7ca-314a-4ea0-a23e-82463337c33c"
+  },
+  "createdTime" : 1742419476,
+  "lastModifiedTime" : 1742419476
+}, {
+  "id" : "1a38d335-de7b-42a5-94ad-208b66487f84",
+  "name" : "Reduce decision Tree counts for customers with fewer labels1",
+  "description" : "Improve decision tree models by constraining sample selection to customers with fewer labeled instances, ensuring balanced training data and preventing overfitting.",
+  "metadata" : {
+    "schedule" : "0 0 1 * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "OptimizeCustomerLabelAnalysis",
+    "proposedSubTasks" : [ "DataSamplingValidation", "ModelRebalancing", "OverfittingMitigation" ],
+    "taskId" : "1a38d335-de7b-42a5-94ad-208b66487f84"
+  },
+  "createdTime" : 1742419501,
+  "lastModifiedTime" : 1742419501
+}, {
+  "id" : "5720fcfc-0524-49bd-afca-353f9755fa5f",
+  "name" : "Create workflow diagram for launching experiment",
+  "description" : "Coordinate and execute a scientific experiment following approved protocols, ensuring all safety measures are in place.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Launch Experiment",
+    "proposedSubTasks" : [ "Prepare Equipment", "Review Safety Protocols", "Conduct Experiment", "Document Results" ],
+    "taskId" : "5720fcfc-0524-49bd-afca-353f9755fa5f"
+  },
+  "createdTime" : 1742419525,
+  "lastModifiedTime" : 1742419525
+}, {
+  "id" : "d4d59f07-9456-4835-98df-47b842825e12",
+  "name" : "Create example workflow for hypothesis testing: https://www.simplilearn.com/tutorials/statistics-tutorial/hypothesis-testing-in-statistics#:~:text=Hypothesis%20Testing%20is%20a%20type,relationship%20between%202%20statistical%20variables.",
+  "description" : "Create a workflow example for hypothesis testing, explaining the process of formulating hypotheses, selecting significance levels, choosing tests, analyzing data, and drawing conclusions.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "HypothesisTestingWorkflow",
+    "proposedSubTasks" : [ "FormulateHypotheses", "SelectSignificanceLevel", "ChooseTestStatistic", "CollectData", "ConductAnalysis", "DrawConclusion" ],
+    "taskId" : "d4d59f07-9456-4835-98df-47b842825e12"
+  },
+  "createdTime" : 1742419553,
+  "lastModifiedTime" : 1742419553
+}, {
+  "id" : "fb2c6685-93af-426b-9a44-462abc66288f",
+  "name" : "Would like a ollama LLM for memory learning (input the book)",
+  "description" : "Train and use an ollama LLM to learn memory from input books",
+  "metadata" : {
+    "schedule" : "0 0 8 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Ollama Memory Learning",
+    "proposedSubTasks" : [ "Install Ollama", "Import Books", "Train Model", "Test Memory Recall" ],
+    "taskId" : "fb2c6685-93af-426b-9a44-462abc66288f"
+  },
+  "createdTime" : 1742419577,
+  "lastModifiedTime" : 1742419577
+}, {
+  "id" : "f70d3046-f002-49ef-9919-946989971744",
+  "name" : "Update epic for market collusion.",
+  "description" : "Update the epic to reflect new findings regarding market collusion strategies, including competitor analysis, pricing adjustments, and regulatory compliance measures.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Update Epic for Market Collusion",
+    "proposedSubTasks" : [ "Analyze competitor pricing data", "Review regulatory compliance guidelines", "Draft updated epic documentation" ],
+    "taskId" : "f70d3046-f002-49ef-9919-946989971744"
+  },
+  "createdTime" : 1742419602,
+  "lastModifiedTime" : 1742419602
+}, {
+  "id" : "c726bae8-2610-4896-afca-0b4164949563",
+  "name" : "Snowflake dashbaord for order phone number",
+  "description" : "Ensure all order phone numbers in the Snowflake dashboard are correctly formatted and valid. This includes checking for proper country codes, length, and no special characters.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Validate Order Phone Numbers",
+    "proposedSubTasks" : [ "Extract Order Data", "Phone Number Validation", "Report Invalid Entries" ],
+    "taskId" : "c726bae8-2610-4896-afca-0b4164949563"
+  },
+  "createdTime" : 1742419627,
+  "lastModifiedTime" : 1742419627
+}, {
+  "id" : "a05fef30-6bb8-4451-b1b0-50954525169f",
+  "name" : "Setup some workshops to understand the offline path a bit better.",
+  "description" : "Organize and conduct workshops to enhance understanding of the offline path.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "SetupWorkshopsOffline",
+    "proposedSubTasks" : [ "PlanWorkshopAgenda", "BookWorkshopVenue", "InviteParticipants", "ConductWorkshop" ],
+    "taskId" : "a05fef30-6bb8-4451-b1b0-50954525169f"
+  },
+  "createdTime" : 1742419651,
+  "lastModifiedTime" : 1742419651
+}, {
+  "id" : "dae9d076-11ce-4f33-8af2-75b20e2c5bf3",
+  "name" : "Do spark guide",
+  "description" : "Optimize the data pipeline to reduce processing time and improve resource utilization.",
+  "metadata" : {
+    "schedule" : "0 0 2 * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Data Pipeline Optimization",
+    "proposedSubTasks" : [ "Analyze Pipeline Bottlenecks", "Implement Caching Strategies", "Tune Query Performance" ],
+    "taskId" : "dae9d076-11ce-4f33-8af2-75b20e2c5bf3"
+  },
+  "createdTime" : 1742419675,
+  "lastModifiedTime" : 1742419675
+}, {
+  "id" : "5bf118f4-8625-4e60-abb2-ad994cdd6ace",
+  "name" : "Automate checkstyle check. organize imports. Find dead code and fail. Rerun protos. Run tests that usually fail... not the db tests or fix it. PG + Mongo",
+  "description" : "Organize imports, find and remove dead code, rerun protobuf definitions, and execute flaky tests excluding DB tests. Analyze performance implications on PostgreSQL and MongoDB.",
+  "metadata" : {
+    "schedule" : "0 0 2 * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Code Maintenance and Proto Rerun",
+    "proposedSubTasks" : [ "OrganizeImports", "DeadCodeAnalysis", "ProtoRerun", "FlakyTestExecution", "DBPerformanceAnalysis" ],
+    "taskId" : "5bf118f4-8625-4e60-abb2-ad994cdd6ace"
+  },
+  "createdTime" : 1742419701,
+  "lastModifiedTime" : 1742419701
+}, {
+  "id" : "59bd7bd2-8259-4d94-a9c6-d26ea855c8b1",
+  "name" : "flag in the snapshot reader class that can sample the snapshot to not be so large.",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "59bd7bd2-8259-4d94-a9c6-d26ea855c8b1"
+  },
+  "createdTime" : 1742419706,
+  "lastModifiedTime" : 1742419706
+}, {
+  "id" : "7be972d0-9321-460d-93cd-8ea7a49f357e",
+  "name" : "Organize documents + atom notebooks",
+  "description" : "Organize and file physical documents and Atom notebooks ensuring all notes are categorized and stored appropriately.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Organize Documents & Notebooks",
+    "proposedSubTasks" : [ "Sort Physical Documents", "Categorize Atom Notebooks", "File Documents Electronically", "Update Index for Notebooks" ],
+    "taskId" : "7be972d0-9321-460d-93cd-8ea7a49f357e"
+  },
+  "createdTime" : 1742419731,
+  "lastModifiedTime" : 1742419731
+}, {
+  "id" : "50c140ec-765f-42ed-9624-71a34a55cb36",
+  "name" : "Update design docs detailing offline issue with shared attributes.",
+  "description" : "Address the offline issue related to shared attributes in the design documentation by updating the conflict resolution logic and ensuring attribute synchronization across environments.",
+  "metadata" : {
+    "schedule" : "0 0 2 * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "FixOfflineSharedAttrIssue",
+    "proposedSubTasks" : [ "AnalyzeSharedAttrConflicts", "UpdateConflictResolutionLogic", "ImplementSynchronization" ],
+    "taskId" : "50c140ec-765f-42ed-9624-71a34a55cb36"
+  },
+  "createdTime" : 1742419757,
+  "lastModifiedTime" : 1742419757
+}, {
+  "id" : "9ae89b27-7081-4f78-84e7-e075e15484fc",
+  "name" : "Manually check Avik examples for shared attributes",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "9ae89b27-7081-4f78-84e7-e075e15484fc"
+  },
+  "createdTime" : 1742419762,
+  "lastModifiedTime" : 1742419762
+}, {
+  "id" : "a0f18dbf-362b-4994-8277-21e6d46b77cc",
+  "name" : "Rebase existing PRs to get to one commit: DONE",
+  "description" : "Consolidate multiple commits from existing Pull Requests into a single commit to simplify the commit history. This ensures a cleaner repository and reduces merge conflicts.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Rebase PRs to Single Commit",
+    "proposedSubTasks" : [ "Identify PRs needing rebase", "Perform Rebase and Squash", "Resolve Merge Conflicts", "Push Changes and Update PRs" ],
+    "taskId" : "a0f18dbf-362b-4994-8277-21e6d46b77cc"
+  },
+  "createdTime" : 1742419788,
+  "lastModifiedTime" : 1742419788
+}, {
+  "id" : "cafae352-95ad-43f0-ae43-56ae15d82f20",
+  "name" : "JIRA Plugin for Neovim",
+  "description" : "Install and configure the JIRA Plugin for Neovim to enable seamless integration between the code editor and the project management tool.",
+  "metadata" : {
+    "schedule" : "0 17 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Install JIRA Plugin for Neovim",
+    "proposedSubTasks" : [ "Research compatible JIRA plugins for Neovim", "Install plugin via package manager", "Configure plugin settings", "Test integration with a sample project" ],
+    "taskId" : "cafae352-95ad-43f0-ae43-56ae15d82f20"
+  },
+  "createdTime" : 1742419814,
+  "lastModifiedTime" : 1742419814
+}, {
+  "id" : "f4cf9a2e-17b3-4401-8cf8-abe04fcea3c8",
+  "name" : "VIM save commands to file",
+  "description" : "Return the constraint from VIM save commands to file and explain why",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Save File in VIM",
+    "proposedSubTasks" : [ "Understand VIM Save Commands", "Identify Constraints", "Explain Constraints" ],
+    "taskId" : "f4cf9a2e-17b3-4401-8cf8-abe04fcea3c8"
+  },
+  "createdTime" : 1742419837,
+  "lastModifiedTime" : 1742419837
+}, {
+  "id" : "43a27ece-acb5-424f-9a5d-e64a1fd5eeb7",
+  "name" : "Code some sweet zigzag persistance",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "43a27ece-acb5-424f-9a5d-e64a1fd5eeb7"
+  },
+  "createdTime" : 1742419842,
+  "lastModifiedTime" : 1742419842
+}, {
+  "id" : "c8ce64d9-ae70-4a16-9ec2-46733ad1f932",
+  "name" : "Review Irvings PRs, who else? Michael Parking?",
+  "description" : "Reviewing pull requests from team members such as Irvings and Michael Parking to ensure code quality and provide feedback.",
+  "metadata" : {
+    "schedule" : "0 15 10 * * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Review PRs",
+    "proposedSubTasks" : [ "Code Review: Irvings PR", "Code Review: Michael Parking's PR" ],
+    "taskId" : "c8ce64d9-ae70-4a16-9ec2-46733ad1f932"
+  },
+  "createdTime" : 1742419866,
+  "lastModifiedTime" : 1742419866
+}, {
+  "id" : "83e36441-2585-4409-81b2-d5c5b580734b",
+  "name" : "Fill out TDD with results: DONE",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "83e36441-2585-4409-81b2-d5c5b580734b"
+  },
+  "createdTime" : 1742419872,
+  "lastModifiedTime" : 1742419872
+}, {
+  "id" : "04b7ee51-b70a-45c1-a42a-e5528a57aaf6",
+  "name" : "Update tdd with online/offline design highlighting the issue",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "04b7ee51-b70a-45c1-a42a-e5528a57aaf6"
+  },
+  "createdTime" : 1742419882,
+  "lastModifiedTime" : 1742419882
+}, {
+  "id" : "d67ea9d0-8ea4-4c22-a67e-a2ed27314c39",
+  "name" : "Use those awesome git commands for understanding a code base (similar commits or commits made together etc): DONE called code-maat https://github.com/adamtornhill/code-maat",
+  "description" : "Use Code-Maat (https://github.com/adamtornhill/code-maat) to analyze the repository's commit history for understanding codebase evolution, identifying key contributors, and finding frequently modified files.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "AnalyzeCodeMaat",
+    "proposedSubTasks" : [ "InstallCodeMaat", "RunCodeMaatAnalysis", "ReviewAnalysisResults" ],
+    "taskId" : "d67ea9d0-8ea4-4c22-a67e-a2ed27314c39"
+  },
+  "createdTime" : 1742419909,
+  "lastModifiedTime" : 1742419909
+}, {
+  "id" : "472f8107-7a3a-4fd5-a57b-103528e67ced",
+  "name" : "Also stop pushing commits up! just keep them local and then clean up once perfect then push",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "472f8107-7a3a-4fd5-a57b-103528e67ced"
+  },
+  "createdTime" : 1742419914,
+  "lastModifiedTime" : 1742419914
+}, {
+  "id" : "73e17a5f-d49a-4027-8080-8e18d08bae77",
+  "name" : "Create the offline Producer for the seller side extracted grains...",
+  "description" : "Develop an offline producer system for the seller side to handle the extraction and processing of grains. This involves setting up infrastructure to collect, sort, and package grains efficiently.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "CreateOfflineProducerSellerGrains",
+    "proposedSubTasks" : [ "InfrastructureSetup", "DataCollection", "GrainSorting", "PackagingSystemIntegration" ],
+    "taskId" : "73e17a5f-d49a-4027-8080-8e18d08bae77"
+  },
+  "createdTime" : 1742419939,
+  "lastModifiedTime" : 1742419939
+}, {
+  "id" : "ab8eaa0b-2b08-4b8a-83a0-00aa31de0e00",
+  "name" : "Create Q2 fleshing out a plan for feature selection and monitoring",
+  "description" : "Develop a detailed plan for feature selection strategies, including automated selection techniques and manual domain-driven approaches, and establish a monitoring framework to track feature performance over time. This plan should include methods for evaluating feature importance, handling drift, and ensuring model robustness.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "FeatureSelectionAndMonitoringPlan",
+    "proposedSubTasks" : [ "ResearchAutomatedFeatureSelection", "DevelopDomainDrivenFeatureCriteria", "DesignFeatureMonitoringFramework", "ImplementDriftDetectionAlgorithms", "CreateFeaturePerformanceEvaluationMetrics" ],
+    "taskId" : "ab8eaa0b-2b08-4b8a-83a0-00aa31de0e00"
+  },
+  "createdTime" : 1742419968,
+  "lastModifiedTime" : 1742419968
+}, {
+  "id" : "da787fe6-d58f-4393-8b53-64aa3f4a2639",
+  "name" : "Create wrapper for creating Grains events for testing, can get fancy with builder and generics + functions etc.",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "da787fe6-d58f-4393-8b53-64aa3f4a2639"
+  },
+  "createdTime" : 1742419973,
+  "lastModifiedTime" : 1742419973
+}, {
+  "id" : "1f3f49a5-9cc5-4a04-a340-d21d587b51f2",
+  "name" : "Go on Dataflow course or guide",
+  "description" : "Implement constraints for tasks in the Dataflow course, ensuring they align with Go's best practices and scheduling requirements.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "DataflowConstraint",
+    "proposedSubTasks" : [ "AnalyzeGoConstraints", "DesignConstraintSchema", "IntegrateWithScheduler" ],
+    "taskId" : "1f3f49a5-9cc5-4a04-a340-d21d587b51f2"
+  },
+  "createdTime" : 1742419996,
+  "lastModifiedTime" : 1742419996
+}, {
+  "id" : "f20d9842-1bdd-489e-90e2-16ae6cddee29",
+  "name" : "Projects to work on in Q2:",
+  "description" : "Identify and document constraints affecting project execution in Q2, including resource availability, timelines, budget limits, and dependencies between tasks.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Q2 Project Constraints Analysis",
+    "proposedSubTasks" : [ "Resource Availability Audit", "Timeline Dependency Mapping", "Budget Limit Review", "Risk Assessment for Constraints" ],
+    "taskId" : "f20d9842-1bdd-489e-90e2-16ae6cddee29"
+  },
+  "createdTime" : 1742420021,
+  "lastModifiedTime" : 1742420021
+}, {
+  "id" : "84f0c566-f6ba-4ac2-8d06-12139f42a94c",
+  "name" : "Working with just indents and can do whatever you want... create the plugin using java compiled binary,",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "84f0c566-f6ba-4ac2-8d06-12139f42a94c"
+  },
+  "createdTime" : 1742420026,
+  "lastModifiedTime" : 1742420026
+}, {
+  "id" : "63f548e4-246b-4321-a419-ab2d56e5a161",
+  "name" : "Ask MLP on the new PR to add their comments for shared Collusion",
+  "description" : "Review the new PR to add comments for shared Collusion detection and ensure alignment with existing processes.",
+  "metadata" : {
+    "schedule" : "0 0 10 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Add Collusion Comments PR",
+    "proposedSubTasks" : [ "Analyze Collusion Detection Logic", "Validate Comment Integration", "Test PR Impact" ],
+    "taskId" : "63f548e4-246b-4321-a419-ab2d56e5a161"
+  },
+  "createdTime" : 1742420141,
+  "lastModifiedTime" : 1742420141
+}, {
+  "id" : "5b2e38d5-1655-4e01-9a3e-f8eef4d63d55",
+  "name" : "Netflix CV add in section about favourite shows for example",
+  "description" : "Review a job applicant's listed favorite Netflix shows to assess cultural fit and relevance to Netflix content.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Analyze Netflix CV Show Preferences",
+    "proposedSubTasks" : [ "Identify Top 3 Shows Mentioned", "Cross-Reference with Netflix Library", "Assess Cultural Relevance" ],
+    "taskId" : "5b2e38d5-1655-4e01-9a3e-f8eef4d63d55"
+  },
+  "createdTime" : 1742420166,
+  "lastModifiedTime" : 1742420166
+}, {
+  "id" : "eb570d6a-4590-4634-8f05-0ad9c683f952",
+  "name" : "New Fraud pattern: ATO on an account then spends a large amount of money.",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "eb570d6a-4590-4634-8f05-0ad9c683f952"
+  },
+  "createdTime" : 1742420171,
+  "lastModifiedTime" : 1742420171
+}, {
+  "id" : "e42f6d9b-8dba-4a83-9676-d04bcb901c7d",
+  "name" : "Add many more unit tests for the two branches currently open, code unit tests all week if needed/bored",
+  "description" : "Develop and execute a large number of unit tests for the two open branches, focusing on edge cases and code coverage. Continue testing throughout the week as needed or when bored, documenting failures and iterating on fixes.",
+  "metadata" : {
+    "schedule" : "0 0/15 * * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "AddComprehensiveUnitTests",
+    "proposedSubTasks" : [ "AnalyzeExistingTestCoverage", "IdentifyEdgeCases", "WriteAdditionalTests", "RunTestSuiteFrequently", "DocumentTestResults" ],
+    "taskId" : "e42f6d9b-8dba-4a83-9676-d04bcb901c7d"
+  },
+  "createdTime" : 1742420198,
+  "lastModifiedTime" : 1742420198
+}, {
+  "id" : "bcfa560c-6968-423f-b845-5cdb583d8c33",
+  "name" : "Fix MACOS home and end keys ffs, update: made some fixes lets see if help, might need a restarts",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "bcfa560c-6968-423f-b845-5cdb583d8c33"
+  },
+  "createdTime" : 1742420204,
+  "lastModifiedTime" : 1742420204
+}, {
+  "id" : "23cd9fc0-9882-405b-a641-6e586c9b2f73",
+  "name" : "Add keymaps for common actions, delete to end of line and replace with text.",
+  "description" : "Configure keymaps for common actions like deleting to end of line and replacing text in an editor or IDE.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Add Keymaps Common Actions",
+    "proposedSubTasks" : [ "Set up delete to end of line shortcut", "Configure replace with text shortcut" ],
+    "taskId" : "23cd9fc0-9882-405b-a641-6e586c9b2f73"
+  },
+  "createdTime" : 1742420228,
+  "lastModifiedTime" : 1742420228
+}, {
+  "id" : "6970e32d-f521-4b34-b721-f518e66b7106",
+  "name" : "Depop Investigation (Add logging and systematic working through of what events are available at what time)",
+  "description" : "Add logging and systematic analysis of event timelines for Depop investigation to track when specific events occurred and ensure data consistency.",
+  "metadata" : {
+    "schedule" : "0 0 8,14,22 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "DepopInvestigationAddLogging",
+    "proposedSubTasks" : [ "IdentifyRelevantEvents", "ImplementEventLogging", "ValidateEventTimestamps", "AnalyzeEventSequences" ],
+    "taskId" : "6970e32d-f521-4b34-b721-f518e66b7106"
+  },
+  "createdTime" : 1742420256,
+  "lastModifiedTime" : 1742420256
+}, {
+  "id" : "33fee5bd-d39c-4c10-9eea-17a1e6f0b329",
+  "name" : "Create document for re-imagined extraction system.",
+  "description" : "Generate a comprehensive document based on provided data and templates, ensuring accuracy and adherence to formatting standards.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Create Document",
+    "proposedSubTasks" : [ "Data Collection", "Template Selection", "Content Generation", "Formatting", "Proofreading" ],
+    "taskId" : "33fee5bd-d39c-4c10-9eea-17a1e6f0b329"
+  },
+  "createdTime" : 1742420287,
+  "lastModifiedTime" : 1742420287
+}, {
+  "id" : "43333e8b-eec4-4842-aa05-e11017834a9f",
+  "name" : "Create Velocities, split create and update into separate counts",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "43333e8b-eec4-4842-aa05-e11017834a9f"
+  },
+  "createdTime" : 1742420292,
+  "lastModifiedTime" : 1742420292
+}, {
+  "id" : "b6f6bd61-4d63-45cd-8b2f-aefb4a853e83",
+  "name" : "Write Identity Single page plan for Q2",
+  "description" : "Developing a single page plan outlining the brand's identity for Q2, including core values, visual elements, and messaging strategy.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Q2 Write Identity Single Page Plan",
+    "proposedSubTasks" : [ "Research Q2 Brand Goals", "Draft Core Values", "Design Visual Elements", "Outline Messaging Strategy" ],
+    "taskId" : "b6f6bd61-4d63-45cd-8b2f-aefb4a853e83"
+  },
+  "createdTime" : 1742420320,
+  "lastModifiedTime" : 1742420320
+}, {
+  "id" : "13e4d354-c514-4167-9b93-6ceb5020da0b",
+  "name" : "Discovery Money",
+  "description" : "Analyze and track monthly expenses to identify areas for cost reduction.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Discovery Money",
+    "proposedSubTasks" : [ "Review Bank Statements", "Categorize Expenses", "Identify Overdraft Fees", "Compare Budget vs Actuals" ],
+    "taskId" : "13e4d354-c514-4167-9b93-6ceb5020da0b"
+  },
+  "createdTime" : 1742420348,
+  "lastModifiedTime" : 1742420348
+}, {
+  "id" : "72e766aa-3781-4342-9af4-888bfbfebca6",
+  "name" : "Zigzag persistance Applied to Temporal Graphs and Hypergraphs: https://www.youtube.com/watch?v=YrXuQGG7SEk",
+  "description" : "Analyze temporal graphs and hypergraphs using Zigzag persistence to identify topological features over time.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "ZigzagPersistenceAnalysis",
+    "proposedSubTasks" : [ "DataPreparation", "ZigzagPersistenceComputation", "FeatureExtraction" ],
+    "taskId" : "72e766aa-3781-4342-9af4-888bfbfebca6"
+  },
+  "createdTime" : 1742420376,
+  "lastModifiedTime" : 1742420376
+}, {
+  "id" : "2ca54334-ce2b-4f57-a356-ad9e887abc3b",
+  "name" : "Identify and Create some Sift patterns to apply (debuggin Depop in flow2 for example)",
+  "description" : "Identify and create Sift patterns to debug the Depop in flow2. The patterns should help isolate issues in the workflow by filtering specific error logs or trace data.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Debug Depop Flow2 Sift Patterns",
+    "proposedSubTasks" : [ "Analyze Flow2 Error Logs", "Create Initial Sift Patterns", "Test Sift Patterns on Sample Data", "Refine Patterns Based on Feedback" ],
+    "taskId" : "2ca54334-ce2b-4f57-a356-ad9e887abc3b"
+  },
+  "createdTime" : 1742420405,
+  "lastModifiedTime" : 1742420405
+}, {
+  "id" : "3a2405bd-02b8-4230-8197-21600d00e5e3",
+  "name" : "Terminal how to move around and delete words etc",
+  "description" : "Master text manipulation in terminal using commands like backspace, delete, arrow keys, and shortcuts for moving cursor and deleting words.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Delete and Move Text",
+    "proposedSubTasks" : [ "Navigate Cursor with Arrow Keys", "Delete Characters with Backspace/Delete", "Use Ctrl+Left/Right to Move by Words", "Delete Words with Ctrl+Backspace/Ctrl+Delete" ],
+    "taskId" : "3a2405bd-02b8-4230-8197-21600d00e5e3"
+  },
+  "createdTime" : 1742420434,
+  "lastModifiedTime" : 1742420434
+}, {
+  "id" : "6890f3ea-3520-4d59-8c23-496be3b0fbf5",
+  "name" : "Write Lua socket client and Java Server",
+  "description" : "Develop a Lua socket client and a corresponding Java server that can communicate with each other over a network. The client should be able to send data, and the server should receive and process it, then respond appropriately.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Create Lua Socket Client & Java Server",
+    "proposedSubTasks" : [ "Design Network Protocol", "Implement Lua Client Socket", "Implement Java Server Socket", "Test Communication Between Client and Server", "Document API and Error Handling" ],
+    "taskId" : "6890f3ea-3520-4d59-8c23-496be3b0fbf5"
+  },
+  "createdTime" : 1742420462,
+  "lastModifiedTime" : 1742420462
+}, {
+  "id" : "293bda7e-3fae-45f8-8e20-d9fad7c0a0ed",
+  "name" : "Freezing -> Normalizing densification counts at offline stage.",
+  "description" : "Convert densification data from Freezing to Normalizing phase at offline stage",
+  "metadata" : {
+    "schedule" : "0 0 2 * * ?",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "FreezingToNormalizingDensification",
+    "proposedSubTasks" : [ "DataValidation", "PhaseTransitionProcessing", "NormalizationCheck" ],
+    "taskId" : "293bda7e-3fae-45f8-8e20-d9fad7c0a0ed"
+  },
+  "createdTime" : 1742420488,
+  "lastModifiedTime" : 1742420488
+}, {
+  "id" : "e9a76ec2-a4e9-40cf-9b29-07974b6b9160",
+  "name" : "Want to create a basic simulation of how data flows through our sift architecture.",
+  "description" : "Create a basic simulation to visualize and analyze how data flows through our sift architecture. This includes setting up mock data sources, defining data processing steps, and visualizing the flow using tools like graph representations or logs.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "DataFlowSimulation",
+    "proposedSubTasks" : [ "SetupMockDataSources", "DefineProcessingSteps", "ImplementVisualization" ],
+    "taskId" : "e9a76ec2-a4e9-40cf-9b29-07974b6b9160"
+  },
+  "createdTime" : 1742420515,
+  "lastModifiedTime" : 1742420515
+}, {
+  "id" : "9d39ad3b-c4c8-4410-b915-d07f169c891a",
+  "name" : "Install Diffview plugin",
+  "description" : "Install the Diffview plugin to compare files effectively in your development environment.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Install Diffview Plugin",
+    "proposedSubTasks" : [ "Check plugin compatibility", "Download Diffview plugin", "Configure plugin settings" ],
+    "taskId" : "9d39ad3b-c4c8-4410-b915-d07f169c891a"
+  },
+  "createdTime" : 1742420537,
+  "lastModifiedTime" : 1742420537
+}, {
+  "id" : "0f5d5534-c9b8-4de3-ba2e-dd8f4770e1a7",
+  "name" : "Car registration",
+  "description" : "Ensure that the car registration is renewed before it expires to avoid legal penalties and maintain vehicle legality on the road.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Car Registration Renewal",
+    "proposedSubTasks" : [ "Check Registration Expiry Date", "Gather Required Documents", "Complete Renewal Form", "Submit Application", "Verify Renewal Confirmation" ],
+    "taskId" : "0f5d5534-c9b8-4de3-ba2e-dd8f4770e1a7"
+  },
+  "createdTime" : 1742420563,
+  "lastModifiedTime" : 1742420563
+}, {
+  "id" : "c18223a0-4abd-44f0-8e61-d28e06ba320b",
+  "name" : "Apply fixes for Transaction velocities code that was added to master. DONE",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "c18223a0-4abd-44f0-8e61-d28e06ba320b"
+  },
+  "createdTime" : 1742420568,
+  "lastModifiedTime" : 1742420568
+}, {
+  "id" : "495fca15-2ece-4127-8ae1-7e6213032320",
+  "name" : "University Admissions",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "495fca15-2ece-4127-8ae1-7e6213032320"
+  },
+  "createdTime" : 1742422704,
+  "lastModifiedTime" : 1742422704
+}, {
+  "id" : "92ddf917-77b0-45f9-849a-c95cf66bdda5",
+  "name" : "Offline pipeline, learn to load all datasets and how to use them, Maybe create a learning session on how to do this...",
+  "description" : "Learn to load all datasets from an offline pipeline, understand their structures, and create a learning session to teach others how to use them effectively. This includes troubleshooting common issues and ensuring data integrity.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Load and Utilize Datasets",
+    "proposedSubTasks" : [ "Explore Dataset Structures", "Troubleshoot Loading Issues", "Create Tutorial Documentation", "Conduct Learning Session", "Validate Data Integrity" ],
+    "taskId" : "92ddf917-77b0-45f9-849a-c95cf66bdda5"
+  },
+  "createdTime" : 1742422795,
+  "lastModifiedTime" : 1742422795
+}, {
+  "id" : "b504df4d-bcdc-40a5-b480-a5cec4458f63",
+  "name" : "Github PR plugin for NeoVim",
+  "description" : "Set up and configure a GitHub Pull Request plugin for NeoVim to streamline code review and collaboration workflows.",
+  "metadata" : {
+    "schedule" : "0 0 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Configure GitHub PR Plugin for NeoVim",
+    "proposedSubTasks" : [ "Research suitable GitHub PR plugins for NeoVim", "Install the chosen plugin", "Configure plugin settings for workflow integration", "Test PR review functionality in NeoVim" ],
+    "taskId" : "b504df4d-bcdc-40a5-b480-a5cec4458f63"
+  },
+  "createdTime" : 1742422884,
+  "lastModifiedTime" : 1742422884
+}, {
+  "id" : "76e8673a-19c5-4476-9bbf-99e63ee83374",
+  "name" : "Lily UK Passport",
+  "description" : "Submit the application for Lily's UK passport renewal or first-time application, ensuring all required documents are prepared and submitted within the specified timeframe.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Apply for UK Passport (Lily)",
+    "proposedSubTasks" : [ "Gather Passport Documents", "Schedule Appointment", "Submit Application Online", "Attend Biometrics Session", "Track Application Status" ],
+    "taskId" : "76e8673a-19c5-4476-9bbf-99e63ee83374"
+  },
+  "createdTime" : 1742422974,
+  "lastModifiedTime" : 1742422974
+}, {
+  "id" : "6d3fae12-e7ab-40f9-82ea-e4cd94d4ce59",
+  "name" : "Water filter replacement",
+  "description" : "Replace the water filter in the filtration system to maintain water quality and prevent contamination.",
+  "metadata" : {
+    "schedule" : "0 0 8 ? * SUN",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Replace Water Filter",
+    "proposedSubTasks" : [ "Purchase New Filter", "Turn Off Water Supply", "Dispose Old Filter", "Install New Filter" ],
+    "taskId" : "6d3fae12-e7ab-40f9-82ea-e4cd94d4ce59"
+  },
+  "createdTime" : 1742423060,
+  "lastModifiedTime" : 1742423060
+}, {
+  "id" : "eb2a22c2-b3b4-436b-bd0f-b324ca9ec41d",
+  "name" : "Dylan USA Passport",
+  "description" : "Renewing a U.S. passport for Dylan before travel",
+  "metadata" : {
+    "schedule" : "0 0 8 * * 2-6",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Renew USA Passport",
+    "proposedSubTasks" : [ "Gather passport renewal documents", "Complete passport form DS-82", "Submit renewal application", "Track passport application status" ],
+    "taskId" : "eb2a22c2-b3b4-436b-bd0f-b324ca9ec41d"
+  },
+  "createdTime" : 1742423150,
+  "lastModifiedTime" : 1742423150
+}, {
+  "id" : "ecc96f2a-8c22-4f03-86ae-ceedca686dee",
+  "name" : "Finish TDD updating with existing features Gain + Covers see spreadsheet",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "ecc96f2a-8c22-4f03-86ae-ceedca686dee"
+  },
+  "createdTime" : 1742423223,
+  "lastModifiedTime" : 1742423223
+}, {
+  "id" : "57e38b07-0dec-4157-a813-a1cc01ab8b29",
+  "name" : "Clean up PRs rename features.",
+  "description" : "Clean up and organize pull requests by renaming them to reflect current changes and ensuring they are up-to-date with the latest codebase.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Cleanup and Rename PRs",
+    "proposedSubTasks" : [ "Review PR titles for clarity", "Update PR descriptions", "Merge or close outdated PRs", "Align PRs with current codebase" ],
+    "taskId" : "57e38b07-0dec-4157-a813-a1cc01ab8b29"
+  },
+  "createdTime" : 1742423249,
+  "lastModifiedTime" : 1742423249
+}, {
+  "id" : "81ac4eb0-08c3-4d8a-a682-666218a03baa",
+  "name" : "Create NVIM plugin for TODO and other operations needed",
+  "description" : "Develop a Neovim plugin that allows users to manage TODO items, including creating, editing, deleting, and viewing TODOs. The plugin should also support additional operations like filtering by priority, tagging, and generating reports.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Create NVIM Plugin for TODO Management",
+    "proposedSubTasks" : [ "Design plugin architecture", "Implement core TODO functionality", "Add tagging and filtering features", "Create report generation module", "Test and debug the plugin" ],
+    "taskId" : "81ac4eb0-08c3-4d8a-a682-666218a03baa"
+  },
+  "createdTime" : 1742423332,
+  "lastModifiedTime" : 1742423332
+}, {
+  "id" : "9bab4de2-3577-4bb3-a6f0-d3b060901148",
+  "name" : "Cluster all existing features for TDD to see if we can identify where we need to add features.",
+  "description" : "Cluster all existing features to identify gaps for Test-Driven Development (TDD) implementation. Analyze clusters to determine missing features needed for effective TDD.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "ClusterFeaturesForTDDAnalysis",
+    "proposedSubTasks" : [ "FeatureInventoryCompilation", "ClusterAnalysisExecution", "GapIdentification", "PrioritizationOfGaps" ],
+    "taskId" : "9bab4de2-3577-4bb3-a6f0-d3b060901148"
+  },
+  "createdTime" : 1742423358,
+  "lastModifiedTime" : 1742423358
+}, {
+  "id" : "25256e00-69bf-49c2-88c8-08c6126050b1",
+  "name" : "Create some OFP patterns from the Identity Market collusion work",
+  "description" : "Generate and analyze OFP patterns to detect collusion in the Identity Market.",
+  "metadata" : {
+    "schedule" : "0 0 9 ? * MON-FRI",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "CreateOFPPatterns",
+    "proposedSubTasks" : [ "AnalyzeCollusionData", "GenerateOFPPrototypes", "ValidatePatterns" ],
+    "taskId" : "25256e00-69bf-49c2-88c8-08c6126050b1"
+  },
+  "createdTime" : 1742423389,
+  "lastModifiedTime" : 1742423389
+}, {
+  "id" : "e97089eb-417a-41f9-bddf-befd5156b716",
+  "name" : "CV in latex, find template",
+  "description" : "Identify and return the constraint related to a CV (Curriculum Vitae) from a given context, using LaTeX formatting. The task involves finding an appropriate template and explaining the reasoning behind the choice.",
+  "metadata" : {
+    "schedule" : "0 0 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Return CV Constraint",
+    "proposedSubTasks" : [ "Analyze CV Requirements", "Select LaTeX Template", "Extract Constraint Details", "Formulate Explanation" ],
+    "taskId" : "e97089eb-417a-41f9-bddf-befd5156b716"
+  },
+  "createdTime" : 1742423415,
+  "lastModifiedTime" : 1742423415
+}, {
+  "id" : "d55391aa-6734-492e-a358-f53a75ea0ea3",
+  "name" : "Like Tiger Style create a Sift style.",
+  "description" : "Develop a new style inspired by the 'Like Tiger' aesthetic, emphasizing bold patterns and dynamic movement, while integrating elements of Sift's minimalist design philosophy.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Sift Style Creation",
+    "proposedSubTasks" : [ "Research Tiger Style Elements", "Sketch Initial Concepts", "Integrate Minimalist Design", "Prototype Style Variations", "Finalize Design" ],
+    "taskId" : "d55391aa-6734-492e-a358-f53a75ea0ea3"
+  },
+  "createdTime" : 1742423449,
+  "lastModifiedTime" : 1742423449
+}, {
+  "id" : "787c5e3c-9655-4291-9c04-0ef1e4c9c13e",
+  "name" : "Long offline experiments, how can we add better checks to make sure everything in place before running? Maybe just a command line tool to check that.",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "787c5e3c-9655-4291-9c04-0ef1e4c9c13e"
+  },
+  "createdTime" : 1742423455,
+  "lastModifiedTime" : 1742423455
+}, {
+  "id" : "ef50288f-59a3-4250-b1df-c53cfe22b2bc",
+  "name" : "Setup Lua programming enviornment",
+  "description" : "Install Lua runtime and configure development environment for Lua programming.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "SetupLuaEnvironment",
+    "proposedSubTasks" : [ "InstallLuaRuntime", "ConfigureIDE", "VerifyInstallation" ],
+    "taskId" : "ef50288f-59a3-4250-b1df-c53cfe22b2bc"
+  },
+  "createdTime" : 1742423479,
+  "lastModifiedTime" : 1742423479
+}, {
+  "id" : "a42b4319-fe00-41a1-a7ac-9f85f03a1e51",
+  "name" : "Setup Rust programming enviornment",
+  "description" : null,
+  "metadata" : {
+    "schedule" : "30 22 * * 1",
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Setup Rust programming enviornment",
+    "proposedSubTasks" : null,
+    "taskId" : "a42b4319-fe00-41a1-a7ac-9f85f03a1e51"
+  },
+  "createdTime" : 1742423481,
+  "lastModifiedTime" : 1742423481
+}, {
+  "id" : "f96753be-a164-4a73-a7f3-fd6ff14c6fc5",
+  "name" : "Harmonic vectors, deconstruct a feature into a representative vector describing the type of feature (multi event, which feields etc) then can cluster to find missing features..",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/largeTodo/largeTodo.todo",
+    "proposedName" : "Harmonic vectors, deconstruct a feature into a representative vector describing the type of feature (multi event, which feields etc) then can cluster to find missing features..",
+    "proposedSubTasks" : null,
+    "taskId" : "f96753be-a164-4a73-a7f3-fd6ff14c6fc5"
+  },
+  "createdTime" : 1742423481,
+  "lastModifiedTime" : 1742423481
+} ]

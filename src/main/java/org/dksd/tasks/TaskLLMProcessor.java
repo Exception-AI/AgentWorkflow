@@ -7,6 +7,9 @@ import org.dksd.tasks.model.LinkType;
 import org.dksd.tasks.model.Task;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * TaskLLMProcessor processes a list of SimpleTask objects.
@@ -19,10 +22,26 @@ public class TaskLLMProcessor {
 
     private final Collection coll;
     private final ModelCache modelCache;
+    private final ExecutorService threadPool = Executors.newFixedThreadPool(5);
 
     public TaskLLMProcessor(Collection collection) {
         this.coll = collection;
         this.modelCache = new ModelCache();
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutdownPool));
+    }
+
+    private void shutdownPool() {
+        threadPool.shutdown();
+        try {
+            // Wait for all tasks to finish, with a timeout of 60 seconds
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                // Force shutdown if tasks did not finish in time
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 
     public boolean createSimpleTask(String parent, String child) {
@@ -42,16 +61,13 @@ public class TaskLLMProcessor {
     }
 
     public void processSimpleTasks(List<SimpleTask> stasks) {
-        for (int i = 0; i < 3; i++) { //loop in case some were out of order, tried being smarter here
-            //but for now not needed, its all cached
-            for (SimpleTask stask : stasks) {
-                boolean ans = createSimpleTask(stask.parentTask, stask.taskName);
-                if (ans) {
+        for (SimpleTask stask : stasks) {
+            threadPool.submit(() -> {
+                if (createSimpleTask(stask.parentTask, stask.taskName)) {
                     System.out.println("Created task: " + stask.taskName);
                 }
-            }
+            });
         }
-        System.out.println("Processed simple tasks: " + stasks.size());
     }
 
     public Task createTask(Task parent, String taskName) {

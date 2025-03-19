@@ -64,7 +64,7 @@ public class Main {
         //beforeEachLLmInference(checkHashCache);
         //beforeEachLLmInference(checkEmbeddingCache);
 
-        Collection coll = new Collection(new Instance("test"));
+        Collection coll = new Collection(new Instance("largeTodo"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
         List<ScheduledTask> scheduledTasks = new ArrayList<>();
@@ -73,12 +73,13 @@ public class Main {
 
         while (!"q".equals(line)) {
             try {
+                long st = System.currentTimeMillis();
                 List<NodeTask> path = coll.getInlineTasks();
                 TreeMap<Integer, NodeTask> sorted = new TreeMap<>();
                 scheduledTasks.clear();
                 for (NodeTask nodeTask : path) {
-                    Constraint constraint = coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst());
-                    if (coll.getInstance().isLeaf(nodeTask)) {
+                    if (coll.getInstance().isLeaf(nodeTask) && !nodeTask.getConstraints().isEmpty()) {
+                        Constraint constraint = coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst());
                         for (DayOfWeek dayOfWeek : constraint.getDaysOfWeek()) {
                             ScheduledTask newTask = new ScheduledTask(nodeTask, coll.getInstance().getTask(nodeTask.getId()).getName(), dayOfWeek, constraint);
                             scheduledTasks.add(newTask);
@@ -86,6 +87,8 @@ public class Main {
                     }
                 }
                 coll.displayTasks(path, sorted);
+                long ed = System.currentTimeMillis();
+                System.out.println("ts: " + (ed - st));
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
 
@@ -271,7 +274,7 @@ public class Main {
                 }
                 return domains;
             }
-        }, 1000);
+        }, 100);
         try {
             int cnt = 0;
             while (cnt < 5) {
