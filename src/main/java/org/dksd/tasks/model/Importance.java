@@ -14,4 +14,10 @@ public enum Importance {
     public String getValue() {
         return value;
     }
+    public Importance next(Importance current) {
+        if (current.ordinal() < Importance.values().length - 1) {
+            return Importance.values()[current.ordinal() + 1];
+        }
+        return Importance.values()[0];
+    }
 }

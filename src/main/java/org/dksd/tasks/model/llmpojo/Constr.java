@@ -10,11 +10,12 @@ import org.dksd.tasks.model.LeadTime;
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Set;
 
 public class Constr implements Serializable {
     public String schedule; // "* * * etc
     public String scheduleDescription;
-    public DayOfWeek[] daysOfWeek;
+    public Set<DayOfWeek> daysOfWeek;
     public int durationSeconds;
     public LocalTime endTime;
     public int leadTimeSeconds; //How much time needed before deadlines in seconds etc

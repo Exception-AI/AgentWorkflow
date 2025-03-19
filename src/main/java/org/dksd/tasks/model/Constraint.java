@@ -6,19 +6,28 @@ import org.dksd.tasks.model.llmpojo.Constr;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
+
+import static java.time.DayOfWeek.FRIDAY;
+import static java.time.DayOfWeek.MONDAY;
+import static java.time.DayOfWeek.SATURDAY;
+import static java.time.DayOfWeek.SUNDAY;
+import static java.time.DayOfWeek.THURSDAY;
+import static java.time.DayOfWeek.TUESDAY;
+import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Constraint implements Identifier {
 
     private UUID id;
     private String schedule; // "* * * etc
     private String scheduleDescription;
-    private DayOfWeek[] daysOfWeek;
+    private Set<DayOfWeek> daysOfWeek;
     private int durationSeconds;
-    private LocalTime endTime;
-    private int leadTimeSeconds; //How much time needed before deadlines in seconds etc
+    private LocalTime deadlineTime;
+    private int allowedSecondsBeforeDeadline; //How much time needed before deadlines in seconds the task can be started
     private Effort effort;
     private Cost cost;
     private Importance importance;
@@ -34,14 +43,21 @@ public class Constraint implements Identifier {
         this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
         this.scheduleDescription = setSchedDesc(schedule);
         this.durationSeconds = 30*60;
-        this.daysOfWeek = new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY };
-        this.endTime = LocalTime.of(10, 0);
-        this.leadTimeSeconds = 10*60;
+        this.daysOfWeek = new HashSet<>();
+        daysOfWeek.add(MONDAY);
+        daysOfWeek.add(TUESDAY);
+        daysOfWeek.add(WEDNESDAY);
+        daysOfWeek.add(THURSDAY);
+        daysOfWeek.add(FRIDAY);
+        daysOfWeek.add(SATURDAY);
+        daysOfWeek.add(SUNDAY);
+        this.deadlineTime = LocalTime.of(10, 0);
+        this.allowedSecondsBeforeDeadline = 10*60;
         this.effort = Effort.MEDIUM;
         this.cost = Cost.CHEAP;
         this.importance = Importance.NOT_URGENT_IMPORTANT;
         this.concentration = Concentration.PARTIAL;
-        this.deadlineType = DeadlineType.SOFT;
+        this.deadlineType = DeadlineType.ANYTIME_ON_DAY;
     }
 
     public Constraint(Constr constr) {
@@ -54,8 +70,8 @@ public class Constraint implements Identifier {
         this.scheduleDescription = constr.scheduleDescription;
         this.durationSeconds = constr.durationSeconds;
         this.daysOfWeek = constr.daysOfWeek;
-        this.endTime = constr.endTime;
-        this.leadTimeSeconds = constr.leadTimeSeconds;
+        this.deadlineTime = constr.endTime;
+        this.allowedSecondsBeforeDeadline = constr.leadTimeSeconds;
         this.effort = constr.effort;
         this.cost = constr.cost;
         this.importance = constr.importance;
@@ -127,12 +143,12 @@ public class Constraint implements Identifier {
         this.deadlineType = deadlineType;
     }
 
-    public int getLeadTimeSeconds() {
-        return leadTimeSeconds;
+    public int getAllowedSecondsBeforeDeadline() {
+        return allowedSecondsBeforeDeadline;
     }
 
-    public void setLeadTimeSeconds(int leadTimeSeconds) {
-        this.leadTimeSeconds = leadTimeSeconds;
+    public void setAllowedSecondsBeforeDeadline(int allowedSecondsBeforeDeadline) {
+        this.allowedSecondsBeforeDeadline = allowedSecondsBeforeDeadline;
     }
 
     public String toCompactString() {
@@ -146,7 +162,7 @@ public class Constraint implements Identifier {
             concentration = Concentration.PARTIAL;
         }
         if (deadlineType == null) {
-            deadlineType = DeadlineType.SOFT;
+            deadlineType = DeadlineType.ANYTIME_ON_DAY;
         }
         if (effort == null) {
             effort = Effort.MEDIUM;
@@ -163,20 +179,20 @@ public class Constraint implements Identifier {
         this.scheduleDescription = scheduleDescription;
     }
 
-    public DayOfWeek[] getDaysOfWeek() {
+    public Set<DayOfWeek> getDaysOfWeek() {
         return daysOfWeek;
     }
 
-    public void setDaysOfWeek(DayOfWeek[] daysOfWeek) {
+    public void setDaysOfWeek(Set<DayOfWeek> daysOfWeek) {
         this.daysOfWeek = daysOfWeek;
     }
 
-    public LocalTime getEndTime() {
-        return endTime;
+    public LocalTime getDeadlineTime() {
+        return deadlineTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
+    public void setDeadlineTime(LocalTime deadlineTime) {
+        this.deadlineTime = deadlineTime;
     }
 
     public int getDurationSeconds() {
@@ -189,10 +205,10 @@ public class Constraint implements Identifier {
 
     @Override
     public String toString() {
-        return  "daysOfWeek=" + Arrays.toString(daysOfWeek) +
+        return  "daysOfWeek=" + daysOfWeek +
                 ", durationMins=" + durationSeconds / 60.0 +
-                ", deadline=" + endTime +
-                ", leadTimeMinutes=" + leadTimeSeconds / 60.0 +
+                ", deadline=" + deadlineTime +
+                ", leadTimeMinutes=" + allowedSecondsBeforeDeadline / 60.0 +
                 ", effort=" + effort +
                 ", cost=" + cost +
                 ", importance=" + importance +
@@ -216,11 +232,11 @@ public class Constraint implements Identifier {
             return false;
         }
         Constraint that = (Constraint) o;
-        return Objects.equals(id, that.id) && Objects.equals(schedule, that.schedule) && Objects.equals(scheduleDescription, that.scheduleDescription) && leadTimeSeconds == that.leadTimeSeconds && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
+        return Objects.equals(id, that.id) && Objects.equals(schedule, that.schedule) && Objects.equals(scheduleDescription, that.scheduleDescription) && allowedSecondsBeforeDeadline == that.allowedSecondsBeforeDeadline && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, schedule, scheduleDescription, leadTimeSeconds, effort, cost, importance, concentration, deadlineType);
+        return Objects.hash(id, schedule, scheduleDescription, allowedSecondsBeforeDeadline, effort, cost, importance, concentration, deadlineType);
     }
 }

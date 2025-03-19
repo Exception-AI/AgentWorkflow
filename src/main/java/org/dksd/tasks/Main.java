@@ -1,6 +1,7 @@
 package org.dksd.tasks;
 
 import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.DeadlineType;
 import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.pso.Domain;
 import org.dksd.tasks.pso.FitnessFunction;
@@ -17,12 +18,10 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -33,6 +32,17 @@ public class Main {
         int amount = Integer.parseInt(line.substring(prefix.length()).trim());
         Constraint c = coll.getInstance().getConstraint(coll.getCurrentNodeTask().getConstraints().getFirst());
         updater.accept(c, amount);
+    }
+
+    public static void updateConstraintString(Collection coll, String line, String prefix, BiConsumer<Constraint, String> updater) {
+        String value = line.substring(prefix.length()).trim();
+        Constraint c = coll.getInstance().getConstraint(coll.getCurrentNodeTask().getConstraints().getFirst());
+        updater.accept(c, value);
+    }
+
+    public static void updateConstraintNext(Collection coll, Consumer<Constraint> updater) {
+        Constraint c = coll.getInstance().getConstraint(coll.getCurrentNodeTask().getConstraints().getFirst());
+        updater.accept(c);
     }
 
     public static void main(String[] args) throws IOException {
@@ -69,19 +79,19 @@ public class Main {
                         }
                     }
                 }
-                //WeekScheduler scheduler = new WeekScheduler();
-                //Map<DayOfWeek, List<ScheduledTask>> weekSchedule = scheduler.planWeekTasks(path, coll.getInstance().getConstraintMap());
-                //System.out.println("Week Scheduler: " + weekSchedule);
                 coll.displayTasks(path, sorted);
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
 
-                //TODO check some others...
-
-                checkForChanges(line, "cleadtime", coll, (c, amount) -> c.setLeadTimeSeconds(c.getLeadTimeSeconds() + amount * 60));
+                checkForChanges(line, "cleadtime", coll, (c, amount) -> c.setAllowedSecondsBeforeDeadline(c.getAllowedSecondsBeforeDeadline() + amount * 60));
                 checkForChanges(line, "cduration", coll, (c, amount) -> c.setDurationSeconds(c.getDurationSeconds() + amount * 60));
-                checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setEndTime(c.getEndTime().plusMinutes(amount)));
-                //checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setEndTime(c.getEndTime().plusMinutes(amount)));
+                checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setDeadlineTime(c.getDeadlineTime().plusMinutes(amount)));
+                checkForChangesString(line, "cday", coll, (c, day) -> c.getDaysOfWeek().add(DayOfWeek.valueOf(day)));
+                checkForToggle(line, "teffort", coll, (c) -> c.setEffort(c.getEffort().next(c.getEffort())));
+                checkForToggle(line, "tcost", coll, (c) -> c.setCost(c.getCost().next(c.getCost())));
+                checkForToggle(line, "timport", coll, (c) -> c.setImportance(c.getImportance().next(c.getImportance())));
+                checkForToggle(line, "tconcen", coll, (c) -> c.setConcentration(c.getConcentration().next(c.getConcentration())));
+                checkForToggle(line, "tdeadlinetype", coll, (c) -> c.setDeadlineType(c.getDeadlineType().next(c.getDeadlineType())));
 
                 switch (line) {
                     case "/": // Search
@@ -136,9 +146,75 @@ public class Main {
                 return Duration.between(beginningOfWeekAtSeven, endOfWeekAtMidnight).toMillis();
             }
 
-            private double calcError(LocalDateTime targetTime, LocalDateTime effectiveDeadline, double factor) {
-                return Math.pow(Math.abs(
-                        Duration.between(targetTime, effectiveDeadline).getSeconds() / 60.0 / 60.0), factor);
+            private double calcError(Constraint c, LocalDateTime targetTime, LocalDateTime taskDeadline, LocalDateTime leadTimeStart, LocalDateTime targetPlusDuration) {
+
+                double error = 0.0;
+
+                // Determine weight based on deadline type
+                double deadlineWeight;
+                switch (c.getDeadlineType()) {
+                    case ASAP:
+                        deadlineWeight = 10.0;
+                        break;
+                    case HARD:
+                        deadlineWeight = 8.0;
+                        break;
+                    case ANYTIME_ON_DAY:
+                        deadlineWeight = 2.0;
+                        break;
+                    case ANYTIME_WEEK:
+                        deadlineWeight = 1.0;
+                        break;
+                    case ANYTIME_MONTH:
+                    case ANYTIME_BEFORE:
+                    case ANYTIME_AFTER:
+                        deadlineWeight = 0.5;
+                        break;
+                    default:
+                        deadlineWeight = 1.0;
+                }
+
+                // Determine weight based on importance
+                double importanceWeight;
+                switch (c.getImportance()) {
+                    case URGENT_IMPORTANT:
+                        importanceWeight = 10.0;
+                        break;
+                    case URGENT_NOT_IMPORTANT:
+                        importanceWeight = 8.0;
+                        break;
+                    case NOT_URGENT_IMPORTANT:
+                        importanceWeight = 5.0;
+                        break;
+                    case NOT_URGENT_NOT_IMPORTANT:
+                        importanceWeight = 3.0;
+                        break;
+                    default:
+                        importanceWeight = 1.0;
+                }
+
+                // Combined multiplier
+                double multiplier = deadlineWeight * importanceWeight;
+
+                // Check if targetTime is before the leadTimeStart (i.e. too early)
+                if (targetTime.isBefore(leadTimeStart) && c.getAllowedSecondsBeforeDeadline() > 0 && !c.getDeadlineType().equals(DeadlineType.ANYTIME_BEFORE)) {
+                    // Calculate how many seconds early
+                    Duration diff = Duration.between(targetTime, leadTimeStart);
+                    double hoursLate = diff.getSeconds() / 60.0 / 60.0;
+                    // Linear penalty for being early
+                    error = hoursLate;
+                }
+                // Otherwise, if the task's end (targetPlusDuration) is after the deadline, it's late.
+                else if (targetPlusDuration.isAfter(taskDeadline)) {
+                    // Calculate how many seconds late the completion would be
+                    Duration diff = Duration.between(taskDeadline, targetPlusDuration);
+                    double hoursLate = diff.getSeconds() / 60.0 / 60.0;
+                    // Cubic penalty for lateness; Math.pow can be adjusted if needed.
+                    error = Math.pow(hoursLate, 2);
+                }
+
+                error *= multiplier;
+                return error;
             }
 
             @Override
@@ -155,20 +231,22 @@ public class Main {
                 for (int i = 0; i < p.getGene().size(); i++) {
                     double fraction = p.getGene().getValue(i);
                     ScheduledTask scheduledTask = scheduledTasks.get(i);
+                    Constraint c = scheduledTask.getConstraint();
                     long targetMillis = millisStart + (long) (millisDifference * fraction);
                     LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
 
                     LocalDate effectiveDate = beginningOfWeek.with(TemporalAdjusters.nextOrSame(scheduledTask.getEndDay()));
-                    Constraint c = scheduledTask.getConstraint();
-                    LocalDateTime effectiveDeadline = effectiveDate.atTime(c.getEndTime().minusSeconds(c.getLeadTimeSeconds()));
-                    LocalDateTime fullEndTime = effectiveDate.atTime(c.getEndTime());
-                    if (targetTime.isBefore(effectiveDeadline)) {
+                    LocalDateTime taskDeadline = effectiveDate.atTime(c.getDeadlineTime());
+                    LocalDateTime leadTimeStart = effectiveDate.atTime(c.getDeadlineTime().minusSeconds(c.getAllowedSecondsBeforeDeadline()));
+                    LocalDateTime targetPlusDuration = targetTime.plusSeconds(c.getDurationSeconds());
+                    error += calcError(c, targetTime, taskDeadline, leadTimeStart, targetPlusDuration);
+                    /*if (targetTime.isBefore(effectiveDeadline)) {
                         error += calcError(targetTime, effectiveDeadline, 1);
                     } else if (targetTime.isAfter(fullEndTime)) {
                         error += calcError(fullEndTime, targetTime, 1);
-                    }
+                    }*/
                 }
                 return error;
             }
@@ -186,11 +264,19 @@ public class Main {
                 }
                 return domains;
             }
-        }, 100);
+        }, 1000);
         try {
-            for (int i = 0; i < 10000; i++) {
+            int cnt = 0;
+            while (cnt < 5) {
+                double fitness = swarm.getGbestFitness();
                 swarm.step();
-                System.out.println(swarm.getGbestFitness() + " -> " + swarm.getGbest());
+                if (fitness == swarm.getGbestFitness()) {
+                    cnt++;
+                } else {
+                    cnt = 0;
+                }
+                fitness = swarm.getGbestFitness();
+                System.out.println(fitness + " -> " + swarm.getGbest());
             }
             System.out.println(swarm.getGbestFitness() + " -> " + swarm.getGbest());
             LocalDate beginningOfWeek = LocalDate.now()
@@ -222,6 +308,18 @@ public class Main {
     private static void checkForChanges(String line, String clt, Collection coll, BiConsumer<Constraint, Integer> func) {
         if (line.startsWith(clt)) {
             updateConstraintAmount(coll, line, clt, func);
+        }
+    }
+
+    private static void checkForChangesString(String line, String clt, Collection coll, BiConsumer<Constraint, String> func) {
+        if (line.startsWith(clt)) {
+            updateConstraintString(coll, line, clt, func);
+        }
+    }
+
+    private static void checkForToggle(String line, String clt, Collection coll, Consumer<Constraint> func) {
+        if (line.startsWith(clt)) {
+            updateConstraintNext(coll, func);
         }
     }
 

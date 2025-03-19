@@ -13,5 +13,10 @@ public enum Effort {
     public String getValue() {
         return value;
     }
-
+    public Effort next(Effort current) {
+        if (current.ordinal() < Effort.values().length - 1) {
+            return Effort.values()[current.ordinal() + 1];
+        }
+        return Effort.values()[0];
+    }
 }

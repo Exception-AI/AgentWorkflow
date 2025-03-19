@@ -13,4 +13,10 @@ public enum Concentration {
     public String getValue() {
         return value;
     }
+    public Concentration next(Concentration current) {
+        if (current.ordinal() < Concentration.values().length - 1) {
+            return Concentration.values()[current.ordinal() + 1];
+        }
+        return Concentration.values()[0];
+    }
 }

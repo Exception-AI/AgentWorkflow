@@ -1,66 +1,66 @@
 [ {
-  "id" : "9c72514e-5439-474c-a251-54f009ad43c8",
+  "id" : "985baebb-7e12-4eb7-96ab-b53a98fb334a",
   "name" : "Flatter list",
-  "description" : "Ensure that all elements in a nested list are flattened into a single-level list without any nested structures.",
+  "description" : "Implement a function to flatten a nested list structure into a single-level list without using recursion.",
   "metadata" : {
     "schedule" : "0 0 12 * * ?",
     "fileName" : "data/test/test.todo",
     "proposedName" : "Flatter List Constraint",
-    "proposedSubTasks" : [ "Check for nested lists", "Recursively flatten elements", "Combine elements into a single list" ],
-    "taskId" : "9c72514e-5439-474c-a251-54f009ad43c8"
+    "proposedSubTasks" : [ "Analyze Input Structures", "Design Iterative Approach", "Implement Loop-Based Flattening", "Test Edge Cases" ],
+    "taskId" : "985baebb-7e12-4eb7-96ab-b53a98fb334a"
   },
-  "createdTime" : 1742322887,
-  "lastModifiedTime" : 1742322887
+  "createdTime" : 1742413870,
+  "lastModifiedTime" : 1742413870
 }, {
-  "id" : "7c5da0a6-3e23-4e17-a064-f7d8be481c67",
+  "id" : "9b529793-cc97-4260-9aaf-865fda6f4186",
   "name" : "Check Homework: every weekday before 7pm",
-  "description" : "Review and verify all homework submissions before 7pm every weekday.",
+  "description" : "Review and verify homework assignments before 7pm on weekdays.",
   "metadata" : {
-    "schedule" : "0 0 19 ? * MON-FRI",
+    "schedule" : "0 00 19 ? * MON-FRI",
     "fileName" : "data/test/test.todo",
-    "proposedName" : "Check Homework Daily",
-    "proposedSubTasks" : [ "Download Homework", "Analyze Submissions", "Provide Feedback" ],
-    "taskId" : "7c5da0a6-3e23-4e17-a064-f7d8be481c67"
+    "proposedName" : "Check Homework",
+    "proposedSubTasks" : [ "Gather Homework Assignments", "Review Content", "Provide Feedback" ],
+    "taskId" : "9b529793-cc97-4260-9aaf-865fda6f4186"
   },
-  "createdTime" : 1742322914,
-  "lastModifiedTime" : 1742322914
+  "createdTime" : 1742413892,
+  "lastModifiedTime" : 1742413892
 }, {
-  "id" : "a6374bfe-322c-40a4-82cc-833d57f4f9ac",
+  "id" : "a6e4f9ea-500b-4b3d-8251-7131cd1100b7",
   "name" : "Check swimming kit every Sunday, Tuesday, Thursday before 7pm",
-  "description" : "Ensure all swimming gear is in good condition and ready for use every Sunday, Tuesday, and Thursday before 7:00 PM.",
+  "description" : "Ensure all swimming gear is in good condition and ready for use every Sunday, Tuesday, and Thursday before 7:00 PM. This includes checking goggles, swim cap, towel, and any other essentials to prevent last-minute shortages.",
   "metadata" : {
-    "schedule" : "0 0 19 ? * SUN,MON,WED",
+    "schedule" : "0 0 19 ? * SUN,TUE,THU",
     "fileName" : "data/test/test.todo",
     "proposedName" : "Check Swimming Kit",
-    "proposedSubTasks" : [ "Inspect Swimwear", "Check Swim Cap", "Verify Goggles", "Test Water Shoes" ],
-    "taskId" : "a6374bfe-322c-40a4-82cc-833d57f4f9ac"
+    "proposedSubTasks" : [ "Inspect Goggles", "Check Swim Cap", "Verify Towel Availability", "Ensure Accessories are Prepared" ],
+    "taskId" : "a6e4f9ea-500b-4b3d-8251-7131cd1100b7"
   },
-  "createdTime" : 1742322936,
-  "lastModifiedTime" : 1742322936
+  "createdTime" : 1742413916,
+  "lastModifiedTime" : 1742413916
 }, {
-  "id" : "d52cc1e6-3bde-4256-ab4a-4f4e6d30d2b4",
+  "id" : "0f92a50d-924c-41eb-ac01-c3fcecbeef7b",
   "name" : "Check trash every every day before 5pm",
-  "description" : "Ensure that all trash is collected and disposed of every day before 5 PM.",
+  "description" : "Ensure that trash is collected and taken out every day before 5 PM.",
   "metadata" : {
     "schedule" : "0 0 17 * * ?",
     "fileName" : "data/test/test.todo",
     "proposedName" : "Daily Trash Collection",
-    "proposedSubTasks" : [ "Gather Trash Bags", "Take Trash to Collection Point", "Verify Disposal Completion" ],
-    "taskId" : "d52cc1e6-3bde-4256-ab4a-4f4e6d30d2b4"
+    "proposedSubTasks" : [ "Gather Trash Bags", "Transport Trash to Collection Point" ],
+    "taskId" : "0f92a50d-924c-41eb-ac01-c3fcecbeef7b"
   },
-  "createdTime" : 1742322959,
-  "lastModifiedTime" : 1742322959
+  "createdTime" : 1742413937,
+  "lastModifiedTime" : 1742413937
 }, {
-  "id" : "423a485f-06b5-4c77-be7f-d85cee2ec152",
+  "id" : "7bcaa4bd-24ba-4c9a-b269-6de5be993786",
   "name" : "Lunchmaster every Sunday before 10pm",
-  "description" : "Prepare and cook dinner every Sunday before 10pm, ensuring all family members have their meals ready on time.",
+  "description" : "Prepare and schedule meals for the upcoming week every Sunday before 10pm. This ensures timely organization and avoids last-minute stress.",
   "metadata" : {
-    "schedule" : "0 0 22 ? * SUN",
+    "schedule" : "0 0 22 * * SUN",
     "fileName" : "data/test/test.todo",
     "proposedName" : "Weekly Sunday Dinner Prep",
-    "proposedSubTasks" : [ "Plan Sunday Dinner Menu", "Shop for Ingredients", "Start Cooking by 7pm", "Serve Dinner by 10pm" ],
-    "taskId" : "423a485f-06b5-4c77-be7f-d85cee2ec152"
+    "proposedSubTasks" : [ "Plan Weekly Menu", "Create Shopping List", "Check Pantry Stock", "Schedule Cooking Times" ],
+    "taskId" : "7bcaa4bd-24ba-4c9a-b269-6de5be993786"
   },
-  "createdTime" : 1742322981,
-  "lastModifiedTime" : 1742322981
+  "createdTime" : 1742413958,
+  "lastModifiedTime" : 1742413958
 } ]

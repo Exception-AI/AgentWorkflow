@@ -15,5 +15,10 @@ public enum LeadTime {
     public int getValue() {
         return value;
     }
-
+    public LeadTime next(LeadTime current) {
+        if (current.ordinal() < LeadTime.values().length - 1) {
+            return LeadTime.values()[current.ordinal() + 1];
+        }
+        return LeadTime.values()[0];
+    }
 }

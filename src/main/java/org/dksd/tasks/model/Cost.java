@@ -13,4 +13,12 @@ public enum Cost {
     public String getValue() {
         return value;
     }
+
+    public Cost next(Cost current) {
+        if (current.ordinal() < Cost.values().length - 1) {
+            return Cost.values()[current.ordinal() + 1];
+        }
+        return Cost.values()[0];
+    }
+
 }
