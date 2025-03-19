@@ -3,12 +3,12 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.dksd.tasks.model.NodeTask;
+import org.dksd.tasks.model.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 import java.util.function.Function;
@@ -38,15 +38,18 @@ public class Collection {
         getInstance().removeTask(currentTask);
     }
 
-    public void displayTasks(List<NodeTask> path, TreeMap<Double, Integer> sorted) {
+    public void displayTasks(List<NodeTask> path, TreeMap<Integer, NodeTask> sorted) {
         //String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //TODO
 
         for (NodeTask nodeTask : path) {
             String suffix = (nodeTask.equals(curr)) ? "(*)" : "";
-            if (!getInstance().isParent(nodeTask.getId())) {
+            //if (!getInstance().isParent(nodeTask.getId())) {
                 System.out.println(getInstance().getTask(nodeTask.getId()).getName() + " <- " + getInstance().getHierarchy(nodeTask) + " " + suffix);
-            }
+                if (nodeTask.equals(curr)) {
+                    System.out.println(getInstance().getConstraint(nodeTask.getConstraints().getFirst()));
+                }
+            //}
         }
         /*List<String> hierarchy = new ArrayList<>();
         while (wtn.getParentId() != null) {
@@ -154,7 +157,7 @@ public class Collection {
         return getInstance().getTask(getCurrentNodeTask().getId());
     }
 
-    private NodeTask getCurrentNodeTask() {
+    public NodeTask getCurrentNodeTask() {
         if (curr != null) {
             return curr;
         }

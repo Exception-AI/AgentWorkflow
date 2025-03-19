@@ -4,7 +4,6 @@ import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
 import dev.langchain4j.service.AiServices;
 import org.dksd.tasks.TaskModelExtractor;
-import org.dksd.tasks.TaskModel;
 
 import java.io.File;
 import java.io.FileInputStream;

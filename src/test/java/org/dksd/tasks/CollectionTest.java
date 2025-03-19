@@ -1,11 +1,12 @@
 package org.dksd.tasks;
 
-import org.dksd.tasks.model.LinkType;
+import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.Link;
+import org.dksd.tasks.model.NodeTask;
+import org.dksd.tasks.model.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.Node;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 

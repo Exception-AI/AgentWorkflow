@@ -35,4 +35,8 @@ public class Cache<T extends Identifier> {
     public List<T> getAll() {
         return this.allEntries;
     }
+
+    public Map<UUID, T> getMap() {
+        return this.map;
+    }
 }

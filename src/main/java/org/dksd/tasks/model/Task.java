@@ -1,4 +1,6 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
+
+import org.dksd.tasks.Identifier;
 
 import java.time.Instant;
 import java.util.*;

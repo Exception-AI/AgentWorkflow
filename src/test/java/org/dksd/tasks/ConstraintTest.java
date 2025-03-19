@@ -1,14 +1,13 @@
 package org.dksd.tasks;
 
 import org.dksd.tasks.model.Concentration;
+import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.Cost;
 import org.dksd.tasks.model.DeadlineType;
 import org.dksd.tasks.model.Effort;
 import org.dksd.tasks.model.Importance;
 import org.dksd.tasks.model.LeadTime;
 import org.junit.jupiter.api.Test;
-
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +22,7 @@ class ConstraintTest {
         // Verify default schedule value
         assertEquals("30 22 * * 1", constraint.getSchedule(), "Default schedule should be '30 22 * * 1'");
         // Verify default LeadTime, Effort, Cost, Importance, Concentration, and DeadlineType
-        assertEquals(LeadTime.ONE_DAY, constraint.getLeadTime(), "Default lead time should be ONE_DAY");
+        assertEquals(LeadTime.ONE_DAY, constraint.getLeadTimeSeconds(), "Default lead time should be ONE_DAY");
         assertEquals(Effort.MEDIUM, constraint.getEffort(), "Default effort should be MEDIUM");
         assertEquals(Cost.CHEAP, constraint.getCost(), "Default cost should be CHEAP");
         assertEquals(Importance.NOT_URGENT_IMPORTANT, constraint.getImportance(), "Default importance should be NOT_URGENT_IMPORTANT");
@@ -37,7 +36,7 @@ class ConstraintTest {
 
         // Create new values (assume these enum constants exist)
         String newSchedule = "0 0 * * *";
-        LeadTime newLeadTime = LeadTime.TWO_DAYS; // Assumes TWO_DAYS exists
+        int newLeadTime = 2*24*60*60; // Assumes TWO_DAYS exists
         Effort newEffort = Effort.HIGH;
         Cost newCost = Cost.EXPENSIVE; // Assumes EXPENSIVE exists
         Importance newImportance = Importance.URGENT_IMPORTANT; // Assumes URGENT_IMPORTANT exists
@@ -46,7 +45,7 @@ class ConstraintTest {
 
         // Set new values
         constraint.setSchedule(newSchedule);
-        constraint.setLeadTime(newLeadTime);
+        constraint.setLeadTimeSeconds(newLeadTime);
         constraint.setEffort(newEffort);
         constraint.setCost(newCost);
         constraint.setImportance(newImportance);
@@ -55,7 +54,7 @@ class ConstraintTest {
 
         // Verify that the getters return the new values
         assertEquals(newSchedule, constraint.getSchedule());
-        assertEquals(newLeadTime, constraint.getLeadTime());
+        assertEquals(newLeadTime, constraint.getLeadTimeSeconds());
         assertEquals(newEffort, constraint.getEffort());
         assertEquals(newCost, constraint.getCost());
         assertEquals(newImportance, constraint.getImportance());

@@ -1,15 +1,12 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
 
 import net.redhogs.cronparser.CronExpressionDescriptor;
-import org.dksd.tasks.model.Concentration;
-import org.dksd.tasks.model.Cost;
-import org.dksd.tasks.model.DeadlineType;
-import org.dksd.tasks.model.Effort;
-import org.dksd.tasks.model.Importance;
-import org.dksd.tasks.model.LeadTime;
+import org.dksd.tasks.Identifier;
+import org.dksd.tasks.model.llmpojo.Constr;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -20,9 +17,8 @@ public class Constraint implements Identifier {
     private String scheduleDescription;
     private DayOfWeek[] daysOfWeek;
     private int durationSeconds;
-    private LocalTime startTime;
     private LocalTime endTime;
-    private LeadTime leadTime; //How much time needed before deadlines in seconds etc
+    private int leadTimeSeconds; //How much time needed before deadlines in seconds etc
     private Effort effort;
     private Cost cost;
     private Importance importance;
@@ -39,9 +35,8 @@ public class Constraint implements Identifier {
         this.scheduleDescription = setSchedDesc(schedule);
         this.durationSeconds = 30*60;
         this.daysOfWeek = new DayOfWeek[] { DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY };
-        this.startTime = LocalTime.of(9, 30);
         this.endTime = LocalTime.of(10, 0);
-        this.leadTime = LeadTime.ONE_DAY;
+        this.leadTimeSeconds = 10*60;
         this.effort = Effort.MEDIUM;
         this.cost = Cost.CHEAP;
         this.importance = Importance.NOT_URGENT_IMPORTANT;
@@ -59,9 +54,8 @@ public class Constraint implements Identifier {
         this.scheduleDescription = constr.scheduleDescription;
         this.durationSeconds = constr.durationSeconds;
         this.daysOfWeek = constr.daysOfWeek;
-        this.startTime = constr.startTime;
         this.endTime = constr.endTime;
-        this.leadTime = constr.leadTime;
+        this.leadTimeSeconds = constr.leadTimeSeconds;
         this.effort = constr.effort;
         this.cost = constr.cost;
         this.importance = constr.importance;
@@ -133,12 +127,12 @@ public class Constraint implements Identifier {
         this.deadlineType = deadlineType;
     }
 
-    public LeadTime getLeadTime() {
-        return leadTime;
+    public int getLeadTimeSeconds() {
+        return leadTimeSeconds;
     }
 
-    public void setLeadTime(LeadTime leadTime) {
-        this.leadTime = leadTime;
+    public void setLeadTimeSeconds(int leadTimeSeconds) {
+        this.leadTimeSeconds = leadTimeSeconds;
     }
 
     public String toCompactString() {
@@ -177,14 +171,6 @@ public class Constraint implements Identifier {
         this.daysOfWeek = daysOfWeek;
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
     public LocalTime getEndTime() {
         return endTime;
     }
@@ -203,14 +189,16 @@ public class Constraint implements Identifier {
 
     @Override
     public String toString() {
-        return "Constraint{" +
-                "schedule='" + schedule + '\'' +
-                "scheduleDescription='" + scheduleDescription + '\'' +
+        return  "daysOfWeek=" + Arrays.toString(daysOfWeek) +
+                ", durationMins=" + durationSeconds / 60.0 +
+                ", deadline=" + endTime +
+                ", leadTimeMinutes=" + leadTimeSeconds / 60.0 +
                 ", effort=" + effort +
                 ", cost=" + cost +
                 ", importance=" + importance +
                 ", concentration=" + concentration +
                 ", deadlineType=" + deadlineType +
+                ", id=" + id +
                 '}';
     }
 
@@ -228,11 +216,11 @@ public class Constraint implements Identifier {
             return false;
         }
         Constraint that = (Constraint) o;
-        return Objects.equals(id, that.id) && Objects.equals(schedule, that.schedule) && Objects.equals(scheduleDescription, that.scheduleDescription) && leadTime == that.leadTime && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
+        return Objects.equals(id, that.id) && Objects.equals(schedule, that.schedule) && Objects.equals(scheduleDescription, that.scheduleDescription) && leadTimeSeconds == that.leadTimeSeconds && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, schedule, scheduleDescription, leadTime, effort, cost, importance, concentration, deadlineType);
+        return Objects.hash(id, schedule, scheduleDescription, leadTimeSeconds, effort, cost, importance, concentration, deadlineType);
     }
 }

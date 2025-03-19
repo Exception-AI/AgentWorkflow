@@ -1,8 +1,8 @@
 package org.dksd.tasks.cache;
 
-import org.dksd.tasks.Link;
-import org.dksd.tasks.NodeTask;
-import org.dksd.tasks.Task;
+import org.dksd.tasks.model.Link;
+import org.dksd.tasks.model.NodeTask;
+import org.dksd.tasks.model.Task;
 import org.dksd.tasks.model.LinkType;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model.llmpojo;
 
 import org.dksd.tasks.model.Concentration;
 import org.dksd.tasks.model.Cost;
@@ -16,9 +16,8 @@ public class Constr implements Serializable {
     public String scheduleDescription;
     public DayOfWeek[] daysOfWeek;
     public int durationSeconds;
-    public LocalTime startTime;
     public LocalTime endTime;
-    public LeadTime leadTime; //How much time needed before deadlines in seconds etc
+    public int leadTimeSeconds; //How much time needed before deadlines in seconds etc
     public Effort effort;
     public Cost cost;
     public Importance importance;

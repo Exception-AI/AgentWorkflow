@@ -1,23 +1,39 @@
 package org.dksd.tasks;
 
+import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.pso.Domain;
 import org.dksd.tasks.pso.FitnessFunction;
 import org.dksd.tasks.pso.Particle;
 import org.dksd.tasks.pso.StandardConcurrentSwarm;
+import org.dksd.tasks.scheduling.ScheduledTask;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class Main {
+
+    public static void updateConstraintAmount(Collection coll, String line, String prefix, BiConsumer<Constraint, Integer> updater) {
+        int amount = Integer.parseInt(line.substring(prefix.length()).trim());
+        Constraint c = coll.getInstance().getConstraint(coll.getCurrentNodeTask().getConstraints().getFirst());
+        updater.accept(c, amount);
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -35,24 +51,38 @@ public class Main {
         Collection coll = new Collection(new Instance("test"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
-
+        List<ScheduledTask> scheduledTasks = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
 
         while (!"q".equals(line)) {
             try {
                 List<NodeTask> path = coll.getInlineTasks();
-                TreeMap<Double, Integer> sorted = new TreeMap<>();
+                TreeMap<Integer, NodeTask> sorted = new TreeMap<>();
+                scheduledTasks.clear();
                 for (NodeTask nodeTask : path) {
-                    //TODO do we rather want deadlines with not a lot of time first...
-                    //Probably.
-                    //Work with lead time perhaps for calculating the start time. or just use that.
-                    //sorted.put(coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst()).getStartTime(),
-                    //        nodeTask);
+                    Constraint constraint = coll.getInstance().getConstraint(nodeTask.getConstraints().getFirst());
+                    if (coll.getInstance().isLeaf(nodeTask)) {
+                        for (DayOfWeek dayOfWeek : constraint.getDaysOfWeek()) {
+                            ScheduledTask newTask = new ScheduledTask(nodeTask, coll.getInstance().getTask(nodeTask.getId()).getName(), dayOfWeek, constraint);
+                            scheduledTasks.add(newTask);
+                        }
+                    }
                 }
+                //WeekScheduler scheduler = new WeekScheduler();
+                //Map<DayOfWeek, List<ScheduledTask>> weekSchedule = scheduler.planWeekTasks(path, coll.getInstance().getConstraintMap());
+                //System.out.println("Week Scheduler: " + weekSchedule);
                 coll.displayTasks(path, sorted);
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
+
+                //TODO check some others...
+
+                checkForChanges(line, "cleadtime", coll, (c, amount) -> c.setLeadTimeSeconds(c.getLeadTimeSeconds() + amount * 60));
+                checkForChanges(line, "cduration", coll, (c, amount) -> c.setDurationSeconds(c.getDurationSeconds() + amount * 60));
+                checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setEndTime(c.getEndTime().plusMinutes(amount)));
+                //checkForChanges(line, "cdeadline", coll, (c, amount) -> c.setEndTime(c.getEndTime().plusMinutes(amount)));
+
                 switch (line) {
                     case "/": // Search
                         System.out.print("Find: ");
@@ -96,49 +126,102 @@ public class Main {
             }
         }
         coll.getInstance().write(coll);
-        //Should I unroll all the tasks based on schedules...
-        //
         StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
+
+            private long calcWeekMillis(LocalDate date) {
+                LocalDate beginningOfWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+                LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
+                LocalDateTime endOfWeek = beginningOfWeekAtSeven.plusDays(7);
+                LocalDateTime endOfWeekAtMidnight = endOfWeek.toLocalDate().atTime(22, 0);
+                return Duration.between(beginningOfWeekAtSeven, endOfWeekAtMidnight).toMillis();
+            }
+
+            private double calcError(LocalDateTime targetTime, LocalDateTime effectiveDeadline, double factor) {
+                return Math.pow(Math.abs(
+                        Duration.between(targetTime, effectiveDeadline).getSeconds() / 60.0 / 60.0), factor);
+            }
+
             @Override
             public double calcFitness(Particle p) {
-                TreeMap<Double, Integer> sorted = new TreeMap<>();
+                LocalDate beginningOfWeek = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+                LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
+
+                long millisDifference = calcWeekMillis(LocalDate.now());
+                long millisStart = beginningOfWeekAtSeven.atZone(ZoneId.systemDefault())
+                        .toInstant()
+                        .toEpochMilli();
+
+                double error = 0;
                 for (int i = 0; i < p.getGene().size(); i++) {
-                    sorted.put(p.getGene().getValue(i), i);
-                }
-                //we loop through the week... executing tasks
-                long time = 0;
-                while (time <= 10080) {
-                    //Do the next task
+                    double fraction = p.getGene().getValue(i);
+                    ScheduledTask scheduledTask = scheduledTasks.get(i);
+                    long targetMillis = millisStart + (long) (millisDifference * fraction);
+                    LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
 
-                    time+=1;//every minute
+                    LocalDate effectiveDate = beginningOfWeek.with(TemporalAdjusters.nextOrSame(scheduledTask.getEndDay()));
+                    Constraint c = scheduledTask.getConstraint();
+                    LocalDateTime effectiveDeadline = effectiveDate.atTime(c.getEndTime().minusSeconds(c.getLeadTimeSeconds()));
+                    LocalDateTime fullEndTime = effectiveDate.atTime(c.getEndTime());
+                    if (targetTime.isBefore(effectiveDeadline)) {
+                        error += calcError(targetTime, effectiveDeadline, 1);
+                    } else if (targetTime.isAfter(fullEndTime)) {
+                        error += calcError(fullEndTime, targetTime, 1);
+                    }
                 }
-                for (Map.Entry<Double, Integer> entry : sorted.entrySet()) {
-                    Task task = coll.getInstance().getTasks().get(entry.getValue());
-
-                }
-                return 0;
+                return error;
             }
 
             @Override
             public int getDimension() {
-                return coll.getTotalTaskCount();
+                return scheduledTasks.size();
             }
 
             @Override
             public List<Domain> getDomain() {
                 List<Domain> domains = new ArrayList<>();
-                for (int i = 0; i < coll.getTotalTaskCount(); i++) {
+                for (int i = 0; i < scheduledTasks.size(); i++) {
                     domains.add(new Domain(0.0, 1.0));
                 }
                 return domains;
             }
-        }, 10);
+        }, 100);
         try {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10000; i++) {
                 swarm.step();
+                System.out.println(swarm.getGbestFitness() + " -> " + swarm.getGbest());
+            }
+            System.out.println(swarm.getGbestFitness() + " -> " + swarm.getGbest());
+            LocalDate beginningOfWeek = LocalDate.now()
+                    .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+            LocalDateTime beginningOfWeekAtSeven = beginningOfWeek.atTime(7, 0);
+            LocalDateTime endOfWeek = beginningOfWeekAtSeven.plusDays(7);
+            Duration duration = Duration.between(beginningOfWeekAtSeven, endOfWeek);
+            long millisStart = beginningOfWeekAtSeven.atZone(ZoneId.systemDefault())
+                    .toInstant()
+                    .toEpochMilli();
+            long millisDifference = duration.toMillis();
+            for (int i = 0; i < swarm.getGbest().size(); i++) {
+                double fraction = swarm.getGbest().getValue(i);
+                long targetMillis = millisStart + (long) (millisDifference * fraction);
+                LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDateTime();
+                ScheduledTask scheduledTask = scheduledTasks.get(i);
+                DayOfWeek dayOfWeek = targetTime.getDayOfWeek();
+                System.out.println(scheduledTask);
+                System.out.println(dayOfWeek + " -> " + targetTime);
+                System.out.println();
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private static void checkForChanges(String line, String clt, Collection coll, BiConsumer<Constraint, Integer> func) {
+        if (line.startsWith(clt)) {
+            updateConstraintAmount(coll, line, clt, func);
         }
     }
 
