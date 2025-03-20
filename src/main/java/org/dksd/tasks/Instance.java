@@ -10,27 +10,29 @@ import org.dksd.tasks.model.Link;
 import org.dksd.tasks.model.LinkType;
 import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.model.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Instance implements Identifier {
 
+    private static final Logger logger = LoggerFactory.getLogger(Instance.class);
     private final UUID id;
     private final String instanceName;
     private String instanceDescription;
     private List<Task> tasks = new ArrayList<>();
     private List<Link> links = new ArrayList<>();
     private List<Constraint> constraints = new ArrayList<>();
-    private Cache<Task> taskCache = null;
-    private Cache<Constraint> constraintMap = null;
-    private NodeTaskCache nodeTaskCache = null;
     private final ObjectMapper mapper = new ObjectMapper();
 
     public Instance(String instanceName) throws IOException {
@@ -48,11 +50,8 @@ public class Instance implements Identifier {
             links = loadLinks(linksFile);
             constraints = loadConstraints(constraintsFile);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Could not load tasks, links or constraints", e);
         }
-        taskCache = new Cache<>(tasks);
-        constraintMap = new Cache<>(constraints);
-        nodeTaskCache = new NodeTaskCache(tasks, links);
         mapper.registerModule(new JavaTimeModule());
     }
 
@@ -106,8 +105,7 @@ public class Instance implements Identifier {
             fileWriter.write(json);
             fileWriter.flush();
         } catch (IOException e) {
-            System.err.println("Error writing JSON to file: " + e.getMessage());
-            e.printStackTrace();
+            logger.error("Error writing JSON to file: ", e);
         }
     }
 
@@ -143,6 +141,18 @@ public class Instance implements Identifier {
         return constraints;
     }
 
+    public List<Constraint> getConstraints(Task task) {
+        return links.stream()
+                .filter(link -> link.getLeft() != null
+                        && link.getLeft().equals(task.getId())
+                        && link.getLinkType().equals(LinkType.CONSTRAINT))
+                .map(link -> getConstraint(link.getRight()))
+                .filter(Objects::nonNull)
+                .findFirst()
+                .map(List::of)
+                .orElse(Collections.emptyList());
+    }
+
     public Link addLink(UUID left, LinkType linkType, UUID right) {
         Link link = new Link(left, linkType, right);
         links.add(link);
@@ -163,24 +173,22 @@ public class Instance implements Identifier {
     }
 
     public Task getTask(UUID id) {
-        return taskCache.get(id);
+        return tasks.stream()
+                .filter(task -> task.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     public Constraint getConstraint(UUID id) {
-        return constraintMap.get(id);
-    }
-
-    public NodeTask getTaskNode(UUID id) {
-        return nodeTaskCache.get(id);
+        return constraints.stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public UUID getId() {
         return id;
-    }
-
-    public NodeTaskCache getTaskNodes() {
-        return nodeTaskCache;
     }
 
     public void addTask(Task task) {
@@ -204,21 +212,12 @@ public class Instance implements Identifier {
     }
 
     public Task getTaskByName(String taskName) {
-        List<Task> tasks = taskCache.getAll();
         for (Task task : tasks) {
             if (task.getName().equals(taskName)) {
                 return task;
             }
         }
         return null;
-    }
-
-    public boolean containsTaskId(UUID id) {
-        return taskCache.get(id) != null;
-    }
-
-    private String getNameForUUID(UUID id) {
-        return this.taskCache.get(id).getName();
     }
 
     public void removeTask(Task currentTask) {
@@ -236,7 +235,7 @@ public class Instance implements Identifier {
         return false;
     }
 
-    public String getHierarchy(NodeTask nodeTask) {
+    /*public String getHierarchy(Task nodeTask) {
         NodeTask ht = nodeTask;
         List<String> hierarchy = new ArrayList<>();
         while (ht.getParentId() != null) {
@@ -244,11 +243,7 @@ public class Instance implements Identifier {
             hierarchy.add(getTask(ht.getId()).getName());
         }
         return hierarchy.toString();
-    }
-
-    public Map<UUID, Constraint> getConstraintMap() {
-        return constraintMap.getMap();
-    }
+    }*/
 
     public boolean isLeaf(NodeTask nodeTask) {
         return nodeTask.getSubTasks().isEmpty();

@@ -1,0 +1,235 @@
+[ {
+  "id" : "4c7b2cec-fdf0-4ab1-af8b-f3f2ad79d6b9",
+  "name" : "EAI",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "4c7b2cec-fdf0-4ab1-af8b-f3f2ad79d6b9"
+  },
+  "createdTime" : 1742497352,
+  "lastModifiedTime" : 1742497352
+}, {
+  "id" : "23bf9115-26b6-4b59-aa3b-cedf93242cad",
+  "name" : "File Tax return for EAI",
+  "description" : "Submit Electronic Annual Information (EAI) tax return files to the tax authorities by the deadline.",
+  "metadata" : {
+    "schedule" : "0 0 23 * * ?",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "EAI File Tax Return",
+    "proposedSubTasks" : [ "Verify EAI Data Accuracy", "Generate Tax Return Documents", "Upload EAI Files to Portal", "Confirm Submission Receipt" ],
+    "taskId" : "23bf9115-26b6-4b59-aa3b-cedf93242cad"
+  },
+  "createdTime" : 1742497378,
+  "lastModifiedTime" : 1742497378
+}, {
+  "id" : "b63112b9-bdac-4b0e-9918-61b2c7d90b05",
+  "name" : "Plan how to get EAI Agents live",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "b63112b9-bdac-4b0e-9918-61b2c7d90b05"
+  },
+  "createdTime" : 1742497383,
+  "lastModifiedTime" : 1742497383
+}, {
+  "id" : "ca53452a-3610-45be-bc8e-4c942349ea6b",
+  "name" : "Website",
+  "description" : "Update the website with new content and ensure all links are functional.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Daily Website Update",
+    "proposedSubTasks" : [ "Content Creation", "Link Verification", "Backup Website" ],
+    "taskId" : "ca53452a-3610-45be-bc8e-4c942349ea6b"
+  },
+  "createdTime" : 1742497406,
+  "lastModifiedTime" : 1742497406
+}, {
+  "id" : "325bc761-cd62-4d7a-982e-b8f80c13016a",
+  "name" : "Decide on stack",
+  "description" : "Evaluate and choose the most suitable technology stack for the new project based on project requirements and team expertise.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "DecideOnStack",
+    "proposedSubTasks" : [ "ResearchAvailableTechnologies", "AssessTeamExpertise", "EvaluateAlternatives", "FinalizeStack" ],
+    "taskId" : "325bc761-cd62-4d7a-982e-b8f80c13016a"
+  },
+  "createdTime" : 1742497431,
+  "lastModifiedTime" : 1742497431
+}, {
+  "id" : "6c5f565a-b1ef-4808-b4fc-05b39cc03e6a",
+  "name" : "Stripe integration",
+  "description" : "Handle recurring subscription payments via Stripe, ensuring timely processing and handling any failures or disputes.",
+  "metadata" : {
+    "schedule" : "0 0 2 * * ? *",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Process Stripe Payments",
+    "proposedSubTasks" : [ "Validate Payment Sources", "Charge Customers", "Handle Failed Payments", "Resolve Disputes" ],
+    "taskId" : "6c5f565a-b1ef-4808-b4fc-05b39cc03e6a"
+  },
+  "createdTime" : 1742497456,
+  "lastModifiedTime" : 1742497456
+}, {
+  "id" : "42156020-dff6-4350-8e82-af2ff0515796",
+  "name" : "FE ability to upload lists",
+  "description" : "Develop and integrate the functionality allowing users to upload lists via the front-end interface, ensuring data validation and proper handling.",
+  "metadata" : {
+    "schedule" : "0 0 9-17 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Implement List Upload Feature",
+    "proposedSubTasks" : [ "Design UI for list upload", "Implement backend API endpoints", "Validate uploaded data", "Handle errors and edge cases", "Integrate with existing system" ],
+    "taskId" : "42156020-dff6-4350-8e82-af2ff0515796"
+  },
+  "createdTime" : 1742497483,
+  "lastModifiedTime" : 1742497483
+}, {
+  "id" : "5f56e42c-3af2-49ce-a67c-a31e4aaadcb3",
+  "name" : "CRUD operations on tasks",
+  "description" : "Implementing constraints for CRUD operations on tasks, ensuring data integrity and operational limits.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CRUDConstraints",
+    "proposedSubTasks" : [ "ValidateInputData", "EnforcePermissions", "AuditLogs", "RateLimiting" ],
+    "taskId" : "5f56e42c-3af2-49ce-a67c-a31e4aaadcb3"
+  },
+  "createdTime" : 1742497506,
+  "lastModifiedTime" : 1742497506
+}, {
+  "id" : "303fadad-c195-4d77-aade-be116fc7d96b",
+  "name" : "CRUD operations on links",
+  "description" : "Implement constraints for CRUD operations on links to ensure data integrity and security.",
+  "metadata" : {
+    "schedule" : "0 0 9-17 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Manage CRUD Constraints",
+    "proposedSubTasks" : [ "Validate Input Data", "Implement Authorization Checks", "Audit Logs for CRUD Operations" ],
+    "taskId" : "303fadad-c195-4d77-aade-be116fc7d96b"
+  },
+  "createdTime" : 1742497531,
+  "lastModifiedTime" : 1742497531
+}, {
+  "id" : "dff06c26-eb04-48e2-be62-111237b98314",
+  "name" : "CRUD operations on constraints",
+  "description" : "Analyze and return the constraints inherent in CRUD (Create, Read, Update, Delete) operations, explaining their necessity and implications in system design.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Constraint from CRUD Operations",
+    "proposedSubTasks" : [ "Identify Constraints in Create Operations", "Analyze Read Operation Limitations", "Evaluate Update Operation Constraints", "Assess Delete Operation Restrictions", "Synthesize Overall System Implications" ],
+    "taskId" : "dff06c26-eb04-48e2-be62-111237b98314"
+  },
+  "createdTime" : 1742497561,
+  "lastModifiedTime" : 1742497561
+}, {
+  "id" : "99f23756-7fda-4230-9111-54787d8a747b",
+  "name" : "Combine Instances into collections",
+  "description" : "Group related instances into collections for better management and efficiency.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Combine Instances into Collections",
+    "proposedSubTasks" : [ "Identify Related Instances", "Create Collection Structure", "Migrate Instances into Collections", "Verify Collection Integrity" ],
+    "taskId" : "99f23756-7fda-4230-9111-54787d8a747b"
+  },
+  "createdTime" : 1742497595,
+  "lastModifiedTime" : 1742497595
+}, {
+  "id" : "64f5b90c-bd15-4414-9bc0-5f4010bf31f6",
+  "name" : "Templates",
+  "description" : "Compile daily sales reports and send them to the management team.",
+  "metadata" : {
+    "schedule" : "0 30 15 * * MON-FRI",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Daily Report Compilation",
+    "proposedSubTasks" : [ "Gather Sales Data", "Analyze Key Metrics", "Prepare Summary", "Send Report Email" ],
+    "taskId" : "64f5b90c-bd15-4414-9bc0-5f4010bf31f6"
+  },
+  "createdTime" : 1742497619,
+  "lastModifiedTime" : 1742497619
+}, {
+  "id" : "7a4f9349-4dea-4fda-b1f5-a9dd8273da74",
+  "name" : "User account",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "7a4f9349-4dea-4fda-b1f5-a9dd8273da74"
+  },
+  "createdTime" : 1742497625,
+  "lastModifiedTime" : 1742497625
+}, {
+  "id" : "e79f77b5-8495-406a-93af-1f19c84da327",
+  "name" : "Tracking usage and cost",
+  "description" : "Monitor and analyze resource usage and associated costs to ensure efficient spending and prevent overages.",
+  "metadata" : {
+    "schedule" : "0 0 * * *",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Track Usage & Cost",
+    "proposedSubTasks" : [ "Daily Cost Report", "Analyze Spending Trends", "Identify Cost Overruns", "Optimize Resource Usage" ],
+    "taskId" : "e79f77b5-8495-406a-93af-1f19c84da327"
+  },
+  "createdTime" : 1742497649,
+  "lastModifiedTime" : 1742497649
+}, {
+  "id" : "728620db-223f-43ae-97ce-c838e9b68ce8",
+  "name" : "Limiting free tier",
+  "description" : null,
+  "metadata" : {
+    "schedule" : null,
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "728620db-223f-43ae-97ce-c838e9b68ce8"
+  },
+  "createdTime" : 1742497655,
+  "lastModifiedTime" : 1742497655
+}, {
+  "id" : "741ec22b-6295-42e2-b33a-5d0dddbf1601",
+  "name" : "Backend work to support FE calls",
+  "description" : "Develop and maintain backend endpoints to handle frontend requests efficiently, ensuring smooth communication and data transfer between frontend and backend systems. This includes debugging and optimizing API responses for performance and reliability.",
+  "metadata" : {
+    "schedule" : "0 0/15 * * * ?",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Support FE Calls",
+    "proposedSubTasks" : [ "API Endpoint Development", "Performance Optimization", "Debugging and Error Handling", "Documentation Update" ],
+    "taskId" : "741ec22b-6295-42e2-b33a-5d0dddbf1601"
+  },
+  "createdTime" : 1742497681,
+  "lastModifiedTime" : 1742497681
+}, {
+  "id" : "1bb125ca-3ed8-4ba5-aa4c-1f6421ed2055",
+  "name" : "Kafka",
+  "description" : "Ensure data ingestion into Kafka topics with high throughput and low latency.",
+  "metadata" : {
+    "schedule" : "0 0/15 * * * ?",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "KafkaDataIngestion",
+    "proposedSubTasks" : [ "Topic Configuration Check", "Producer Monitoring", "Consumer Lag Analysis", "Network Bandwidth Check" ],
+    "taskId" : "1bb125ca-3ed8-4ba5-aa4c-1f6421ed2055"
+  },
+  "createdTime" : 1742497707,
+  "lastModifiedTime" : 1742497707
+}, {
+  "id" : "b31b5134-4feb-47e3-b862-40c9f1d4dae3",
+  "name" : "REST?",
+  "description" : "Retrieve and return the constraints defined in the REST API for a specific task, ensuring compliance with system requirements.",
+  "metadata" : {
+    "schedule" : "0 0 9 * * 1-5",
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Return the constraint from REST",
+    "proposedSubTasks" : [ "Access REST API endpoint", "Parse constraint data", "Validate constraint parameters", "Return constraint results" ],
+    "taskId" : "b31b5134-4feb-47e3-b862-40c9f1d4dae3"
+  },
+  "createdTime" : 1742497745,
+  "lastModifiedTime" : 1742497745
+} ]

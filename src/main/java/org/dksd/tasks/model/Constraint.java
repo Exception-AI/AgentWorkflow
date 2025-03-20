@@ -3,6 +3,8 @@ package org.dksd.tasks.model;
 import net.redhogs.cronparser.CronExpressionDescriptor;
 import org.dksd.tasks.Identifier;
 import org.dksd.tasks.model.llmpojo.Constr;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -21,6 +23,7 @@ import static java.time.DayOfWeek.WEDNESDAY;
 
 public class Constraint implements Identifier {
 
+    private static final Logger logger = LoggerFactory.getLogger(Constraint.class);
     private UUID id;
     private String schedule; // "* * * etc
     private String scheduleDescription;
@@ -83,11 +86,10 @@ public class Constraint implements Identifier {
         try {
             return CronExpressionDescriptor.getDescription(schedule);
         } catch (Exception e) {
-            //e.printStackTrace();
+            logger.error("Could not get description from cron expression");
             this.schedule = "30 22 * * 1";
         }
         return setSchedDesc(this.schedule);
-
     }
 
     public void setId(UUID id) {
@@ -99,8 +101,8 @@ public class Constraint implements Identifier {
     }
 
     public void setSchedule(String schedule) {
-        setSchedDesc(schedule);
         this.schedule = schedule;
+        setSchedDesc(schedule);
     }
 
     public Effort getEffort() {
@@ -136,6 +138,9 @@ public class Constraint implements Identifier {
     }
 
     public DeadlineType getDeadlineType() {
+        if (deadlineType == null) {
+            deadlineType = DeadlineType.ANYTIME_ON_DAY;
+        }
         return deadlineType;
     }
 
@@ -180,6 +185,16 @@ public class Constraint implements Identifier {
     }
 
     public Set<DayOfWeek> getDaysOfWeek() {
+        if (daysOfWeek == null) {
+            daysOfWeek = new HashSet<>();
+            daysOfWeek.add(MONDAY);
+            daysOfWeek.add(TUESDAY);
+            daysOfWeek.add(WEDNESDAY);
+            daysOfWeek.add(THURSDAY);
+            daysOfWeek.add(FRIDAY);
+            daysOfWeek.add(SATURDAY);
+            daysOfWeek.add(SUNDAY);
+        }
         return daysOfWeek;
     }
 
@@ -188,6 +203,9 @@ public class Constraint implements Identifier {
     }
 
     public LocalTime getDeadlineTime() {
+        if (deadlineTime == null) {
+            this.deadlineTime = LocalTime.of(10, 0);
+        }
         return deadlineTime;
     }
 

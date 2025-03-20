@@ -1,0 +1,53 @@
+EAI
+        - File Tax return for EAI
+        - Plan how to get EAI Agents live
+          - Website
+            - Decide on stack
+            - Stripe integration
+            - FE ability to upload lists
+              - CRUD operations on tasks
+              - CRUD operations on links
+              - CRUD operations on constraints
+              - Combine Instances into collections
+              - Templates
+              - User account
+              - Tracking usage and cost
+              - Limiting free tier
+            - Backend work to support FE calls
+              - Kafka
+              - REST? 
+              - GrpC?
+              - Database
+          - Hosting via Hostinger
+        Garden
+         - Pick up sticks and put in compost
+         - Sweep Patio
+         - Weed Garden Bed
+         - Cut grass, once a year lasting multiple days in March.
+        Shed
+          - Clean floor
+          - Repack tool box
+          - Hangup bike in shed
+        House 
+          - Perform night rounds
+            - Check doors are locked
+            - Check outside for bikes
+            - Check car doors
+            - Any car charging needed?
+            - Gate closed
+          - Cleaning
+            - Vacuuming
+            - 
+          - Replacing consumables
+            - Toilet paper
+            - Dishwasher pods
+            - Washing machine liquid
+            - Compost bags
+              - 3 Gallon I think here
+            - Trash bags
+              - What type? Type K I think, double check
+        Getting a Job
+          - API Design
+          - System Design
+          - Coding
+          - Leadership prep on tough questions
