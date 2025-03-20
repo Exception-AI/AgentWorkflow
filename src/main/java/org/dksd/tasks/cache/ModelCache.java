@@ -44,7 +44,7 @@ public class ModelCache {
         String key = System.getenv("GROQ_API_KEY");
         ChatLanguageModel groqPojoModel = OpenAiChatModel.builder()
                 .baseUrl("https://api.groq.com/openai/v1")
-                .apiKey("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")
+                .apiKey(key)
                 .strictJsonSchema(true)
                 .modelName("llama-3.3-70b-versatile")
                 .build();
