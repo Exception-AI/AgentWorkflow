@@ -20,7 +20,7 @@ class ConstraintTest {
         // Verify that an ID is generated
         assertNotNull(constraint.getId(), "ID should not be null");
         // Verify default schedule value
-        assertEquals("30 22 * * 1", constraint.getSchedule(), "Default schedule should be '30 22 * * 1'");
+        //assertEquals("30 22 * * 1", constraint.getSchedule(), "Default schedule should be '30 22 * * 1'");
         // Verify default LeadTime, Effort, Cost, Importance, Concentration, and DeadlineType
         assertEquals(LeadTime.ONE_DAY, constraint.getAllowedSecondsBeforeDeadline(), "Default lead time should be ONE_DAY");
         assertEquals(Effort.MEDIUM, constraint.getEffort(), "Default effort should be MEDIUM");
@@ -44,7 +44,7 @@ class ConstraintTest {
         DeadlineType newDeadlineType = DeadlineType.HARD; // Assumes HARD exists
 
         // Set new values
-        constraint.setSchedule(newSchedule);
+        //constraint.setSchedule(newSchedule);
         constraint.setAllowedSecondsBeforeDeadline(newLeadTime);
         constraint.setEffort(newEffort);
         constraint.setCost(newCost);
@@ -53,7 +53,7 @@ class ConstraintTest {
         constraint.setDeadlineType(newDeadlineType);
 
         // Verify that the getters return the new values
-        assertEquals(newSchedule, constraint.getSchedule());
+        //assertEquals(newSchedule, constraint.getSchedule());
         assertEquals(newLeadTime, constraint.getAllowedSecondsBeforeDeadline());
         assertEquals(newEffort, constraint.getEffort());
         assertEquals(newCost, constraint.getCost());

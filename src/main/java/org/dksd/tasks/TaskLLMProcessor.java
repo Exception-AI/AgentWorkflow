@@ -49,7 +49,11 @@ public class TaskLLMProcessor {
     public boolean createSimpleTask(String parent, String child) {
         Instance in = coll.getInstance();
         if (in.getTaskByName(child) == null) {
-            createTask(in.getTaskByName(parent), child);
+            String p = "";
+            if (in.getTaskByName(parent) != null) {
+                p = in.getTaskByName(parent).getName();
+            }
+            createTask(in.getTaskByName(parent), p, child);
             return true;
         }
         return false;
@@ -65,10 +69,10 @@ public class TaskLLMProcessor {
         );
     }
 
-    public Task createTask(Task parent, String taskName) {
+    public Task createTask(Task parent, String parentName, String taskName) {
         //task.getMetadata().put("lineNumber", stask.line);
         try {
-            TaskModel taskModel = modelCache.extractTaskModelFrom(taskName);
+            TaskModel taskModel = modelCache.extractTaskModelFrom(parentName, taskName);
             Task task = new Task();
             task.setName(taskName);
             task.setDescription(taskModel.description);
@@ -85,7 +89,6 @@ public class TaskLLMProcessor {
                 coll.getInstance().addLink(parent.getId(), LinkType.SUBTASK, task.getId());
             }
             coll.getInstance().addConstraint(task, new Constraint(taskModel.constr));
-            task.getMetadata().put("schedule", taskModel.cronSchedule);
             coll.getInstance().write(coll);
             return task;
         } catch (Exception ep) {
