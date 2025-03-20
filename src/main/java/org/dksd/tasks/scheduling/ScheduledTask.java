@@ -2,24 +2,25 @@ package org.dksd.tasks.scheduling;
 
 import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.NodeTask;
+import org.dksd.tasks.model.Task;
 
 import java.time.DayOfWeek;
 
 public class ScheduledTask {
 
-    private NodeTask task;
+    private Task task;
     private final String taskName;
     private DayOfWeek endDay;
     private final Constraint constraint;
 
-    public ScheduledTask(NodeTask task, String taskName, DayOfWeek day, Constraint constraint) {
+    public ScheduledTask(Task task, String taskName, DayOfWeek day, Constraint constraint) {
         this.task = task;
         this.taskName = taskName;
         this.endDay = day;
         this.constraint = constraint;
     }
 
-    public NodeTask getTask() {
+    public Task getTask() {
         return task;
     }
 
@@ -28,7 +29,7 @@ public class ScheduledTask {
     }
 
 
-    public void setTask(NodeTask task) {
+    public void setTask(Task task) {
         this.task = task;
     }
 

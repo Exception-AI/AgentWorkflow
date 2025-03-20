@@ -5,8 +5,13 @@ import org.dksd.tasks.cache.TaskModel;
 import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.LinkType;
 import org.dksd.tasks.model.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * TaskLLMProcessor processes a list of SimpleTask objects.
@@ -16,42 +21,48 @@ import java.util.List;
  * It also updates the collection's latest modified timestamp.
  */
 public class TaskLLMProcessor {
-
+    private static final Logger logger = LoggerFactory.getLogger(TaskLLMProcessor.class);
     private final Collection coll;
     private final ModelCache modelCache;
+    private final ExecutorService threadPool = Executors.newFixedThreadPool(1);
 
     public TaskLLMProcessor(Collection collection) {
         this.coll = collection;
         this.modelCache = new ModelCache();
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutdownPool));
+    }
+
+    public void shutdownPool() {
+        threadPool.shutdown();
+        try {
+            // Wait for all tasks to finish, with a timeout of 60 seconds
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                // Force shutdown if tasks did not finish in time
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 
     public boolean createSimpleTask(String parent, String child) {
         Instance in = coll.getInstance();
-        boolean taskExists = in.getTaskByName(child) != null;
-        if (parent == null && !taskExists) {
-            createTask(null, child);
+        if (in.getTaskByName(child) == null) {
+            createTask(in.getTaskByName(parent), child);
             return true;
-        } else {
-            boolean parentExists = in.getTaskByName(parent) != null;;
-            if (parentExists && !taskExists) {
-                createTask(coll.getInstance().getTaskByName(parent), child);
-                return true;
-            }
         }
         return false;
     }
 
     public void processSimpleTasks(List<SimpleTask> stasks) {
-        for (int i = 0; i < 3; i++) { //loop in case some were out of order, tried being smarter here
-            //but for now not needed, its all cached
-            for (SimpleTask stask : stasks) {
-                boolean ans = createSimpleTask(stask.parentTask, stask.taskName);
-                if (ans) {
-                    System.out.println("Created task: " + stask.taskName);
-                }
-            }
-        }
-        System.out.println("Processed simple tasks: " + stasks.size());
+        stasks.forEach(stask ->
+                threadPool.submit(() -> {
+                    if (createSimpleTask(stask.parentTask, stask.taskName)) {
+                        logger.info("Created task: " + stask.taskName);
+                    }
+                })
+        );
     }
 
     public Task createTask(Task parent, String taskName) {
@@ -62,7 +73,6 @@ public class TaskLLMProcessor {
             task.setName(taskName);
             task.setDescription(taskModel.description);
             coll.getInstance().addTask(task);
-            System.out.println("Task: " + task.getName() + " id: " + task.getId());
             task.getMetadata().put("fileName", coll.getInstance().getTodoFilePath().toString());
             task.getMetadata().put("taskId", task.getId());
             task.getMetadata().put("proposedSubTasks", taskModel.proposedSubTaskNames);

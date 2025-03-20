@@ -3,51 +3,67 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.model.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.TreeMap;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.IntStream;
 
 public class Collection {
 
+    private static final Logger logger = LoggerFactory.getLogger(Collection.class);
     private final List<Instance> instances = new ArrayList<>(); // save these
     private final ObjectMapper mapper = new ObjectMapper();
-    private NodeTask curr;
+    private Task curr;
 
     public Collection(Instance... instances) {
         this.instances.addAll(Arrays.stream(instances).toList());
         mapper.registerModule(new JavaTimeModule());
+        final Collection coll = this;
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            for (Instance instance : instances) {
+                instance.write(coll);
+                logger.info("Wrote coll");
+            }
+        }));
     }
 
     public Instance getInstance() {
+        if (instances.size() == 1) {
+            return instances.getFirst();
+        }
+        //TODO a bug below where all the tasks are not yet loaded.
         for (Instance instance : instances) {
-            if (getCurrentNodeTask() == null || instance.getTaskNodes().get(getCurrentNodeTask().getId()) != null) {
+            if (instance.getTasks().contains(getCurrentTask())) {
                 return instance;
             }
         }
         return null;
     }
 
+    public static <T> T getNextIndex(List<T> tasks, int currentIndex) {
+        if (tasks == null || tasks.isEmpty()) {
+            throw new IllegalArgumentException("Task list cannot be null or empty");
+        }
+        return tasks.get((currentIndex + 1) % tasks.size());
+    }
+
     private void deleteTask(Task currentTask) {
         getInstance().removeTask(currentTask);
     }
 
-    public void displayTasks(List<NodeTask> path, TreeMap<Integer, NodeTask> sorted) {
+    public void displayTasks(List<Task> path) {
         //String greenCheck = "\u001B[32m\u2713\u001B[0m";
         //TODO
 
-        for (NodeTask nodeTask : path) {
-            String suffix = (nodeTask.equals(curr)) ? "(*)" : "";
+        for (Task nodeTask : path) {
+            String suffix = (nodeTask.equals(getCurrentTask())) ? "(*)" : "";
             //if (!getInstance().isParent(nodeTask.getId())) {
-                System.out.println(getInstance().getTask(nodeTask.getId()).getName() + " <- " + getInstance().getHierarchy(nodeTask) + " " + suffix);
-                if (nodeTask.equals(curr)) {
-                    System.out.println(getInstance().getConstraint(nodeTask.getConstraints().getFirst()));
+                System.out.println(getInstance().getTask(nodeTask.getId()).getName() /*+ " <- " + getInstance().getHierarchy(nodeTask) + " "*/ + suffix);
+                if (nodeTask.equals(getCurrentTask())) {
+                    System.out.println(getInstance().getConstraints(nodeTask));
                 }
             //}
         }
@@ -93,12 +109,12 @@ public class Collection {
     public void find(String searchTerm) {
         for (Task task : getInstance().getTasks()) {
             if (task.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
-                curr = getInstance().getTaskNode(task.getId());
+                curr = task;
             }
         }
     }
 
-    public void dfs(List<NodeTask> path, NodeTask nt) {
+    /*public void dfs(List<Task> path, Task nt) {
         if (nt == null)
             return;
 
@@ -112,13 +128,15 @@ public class Collection {
         }
     }
 
-    public List<NodeTask> getInlineTasks() {
-        List<NodeTask> path = new ArrayList<>();
-        dfs(path, getRootTask(curr));
+    public List<Task> getInlineTasks() {
+        List<Task> path = new ArrayList<>();
+        for (Task nodeTask : getRootTasks()) {
+            dfs(path, nodeTask);
+        }
         return path;
     }
 
-    public NodeTask setCurrentTask(List<NodeTask> path, Function<Integer, Integer> indexSelector) {
+    public Task setCurrentTask(List<NodeTask> path, Function<Integer, Integer> indexSelector) {
         System.out.println("Current node task: " + curr);
 
         // Find the index of the current task in the path.
@@ -143,18 +161,14 @@ public class Collection {
         return curr;
     }
 
-    private NodeTask getRootTask(NodeTask nt) {
-        if (nt.getParentId() == null) {
-            return nt;
+    private List<Task> getRootTasks() {
+        List<NodeTask> rootNodes = new ArrayList<>();
+        for (Link link : new ArrayList<>(getInstance().getLinks())) {
+                if (link.getLinkType().equals(LinkType.PARENT) && link.getLeft() == null) {
+                    rootNodes.add(getInstance().getTaskNode(link.getRight()));
+                }
         }
-        return getRootTask(getInstance().getTaskNode(nt.getParentId()));
-    }
-
-    public Task getCurrentTask() {
-        if (getCurrentNodeTask() == null) {
-            return null;
-        }
-        return getInstance().getTask(getCurrentNodeTask().getId());
+        return rootNodes;
     }
 
     public NodeTask getCurrentNodeTask() {
@@ -165,7 +179,7 @@ public class Collection {
             curr = this.instances.getFirst().getTaskNodes().getFirst();
         }
         return null;
-    }
+    }*/
 
     public int getTotalTaskCount() {
         int tot = 0;
@@ -173,5 +187,23 @@ public class Collection {
             tot += instance.getTasks().size();
         }
         return tot;
+    }
+
+    public Task setNextTask() {
+        List<Task> tasks = getInstance().getTasks();
+        int indx = tasks.indexOf(curr);
+        int next = (indx + 1) % tasks.size();
+        return tasks.get(next);
+    }
+
+    public Task setPrevTask() {
+        List<Task> tasks = getInstance().getTasks();
+        int indx = tasks.indexOf(curr);
+        int next = (indx - 1) % tasks.size();
+        return tasks.get(next);
+    }
+
+    public Task getCurrentTask() {
+        return curr;
     }
 }

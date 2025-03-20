@@ -1,0 +1,142 @@
+The Big list
+	- reallygood idea for library method, basic (small params), medium (more), advanced(all params)
+	- Focus on Advanced Topics: My focus stays on topics such as Dynamic Programming ,Binary Search, Graphs ,Trees and Priority Queue since these topics are asked very very frequently in interviews and require time and patience to be good at.
+	  - See screenshot in desktop folder: 2:07pm 6 April
+	- Adding crypto currency. 
+	-CV, 
+	 - GreatLearning, 
+	 - Calendoh Simulation user time, 
+	- Sign tax docs
+	- Design diagrams in a single line of text.
+	- Image generation notebook? 
+	- Idea for getting brain into the zone, capture generate a picture that is easy to spot and pick up out of others. 
+	- Suggestion
+	  - Mention to Pradhan I would like to know more about 
+	    - Offline pipeline, spark, loading xgb etc. 
+	    - Pandas, Signal lab, Clustering.
+	    - Can we setup some ride along pair programming sessions where we can learn and see what others are doing.   
+	- Setup GrPC template apps 
+	  - create mono repo
+	  - I should just have one huge repo, done
+	  - need to convert maven projects into gradle ones tho, need a project for that. 
+	  - Really want to get the request/response for EAI
+	- At some point I need to bed down what we are dpoing here? for Sift, why are we using the existing system with such hamstrings? 100 events it's kind of a joke
+	  - Can we get past this with Flink?  Might be much more efficient
+	- Read and create plans for Q2 https://sift.atlassian.net/wiki/spaces/RNDTEAM/pages/2382987378/Fraud+Feature+Coverage+Marketplaces+-+Phase+2+Brainstorm
+	- Update documentation for Offline fraud patterns: explain dashboard -> Create queries -> productionize, consolidate all existing docs too 
+	- Start in Sift architecture simulation
+	- Activate BOA card
+	  - Create BOA account or find existing one...
+	- Feedback for Dylan: Watch cloesly all logs and metrics regarding code you are running, create reports and feedback and diagrams showing speed etc. Also watching most importantly for errors. 
+	  - Need feedback on how to setup the EMR montitoring... Maybe ask Tinou for some quick demo on how best to do that? 
+	  - Check cost of experiments link: what is that cost link... DONE doit: https://console.doit.com/customers/Rt5zFJQEiihiOmjvnVux/analytics/reports/BqfZ5LazNq2olx2cuUC6
+	- Upgrade Snowflake Vault FraudPattern Generator
+	  - Check Vault for user etc  
+	  - Ohh add fallback mechanism, much like the chain of command.
+	  - How do I test this?
+	  - From Tinou: looks like this DAG i am missing in my migration list. I would suggest you change the code and we move to GKE Airflow directly. So for GKE airflow there is two ways.
+	  - Run the java command still using SiftWrappedPythonOperator in Airflow worker, for this case you have to use GCP Auth method, because you have to use this new service account (airflow-payment-us-e4@sift-offline-batch which I already stored as connection in Airflow side) to auth to batch Vault.
+	  - Run the java command using GKEPodStartOperator, for this option, we need to build a image and pull the jar file inside the image during start pod. Then for this option you have to use GKE auth method, as the new service account (airflow-payment-us-e4@sift-offline-batch) already setup in batch vault with GKE workload identitiy.
+	- create python / datascience knowledge base where each entry is a single line, super fast fzf find
+	- PlantUML plugin -> WBS text align to the right can use -txt option on command line
+	  - Flow charts in text left to right in one line... 
+	  - https://devlauer.github.io/plantuml-generator/plantuml-generator-util/latest/index.html
+	  - https://asciidoc.org/  
+	- Reduce decision Tree counts for customers with fewer labels1 
+	- Create workflow diagram for launching experiment
+	- Create example workflow for hypothesis testing: https://www.simplilearn.com/tutorials/statistics-tutorial/hypothesis-testing-in-statistics#:~:text=Hypothesis%20Testing%20is%20a%20type,relationship%20between%202%20statistical%20variables.
+	- Would like a ollama LLM for memory learning (input the book)
+	  - What does that look like... 
+	    - Acronyms 
+	    - Numbers in sentences: How I wish I could enumerate pi easily (3.1415926)
+	    - Body system: imagine the object comically on the body e.g. dog jumping at my knee
+	    - Link system: linking objects together like stethescope etc
+	    - The journey method: 
+	- Update epic for market collusion.
+	- Snowflake dashbaord for order phone number
+	- Setup some workshops to understand the offline path a bit better.
+	- Do spark guide
+	  - https://spark.apache.org/docs/latest/rdd-programming-guide.html
+	- Automate checkstyle check. organize imports. Find dead code and fail. Rerun protos. Run tests that usually fail... not the db tests or fix it. PG + Mongo
+	  - Githup PR, rebase, push, update from main, run tests on PR. 
+	- flag in the snapshot reader class that can sample the snapshot to not be so large.
+	- Organize documents + atom notebooks
+	- Update design docs detailing offline issue with shared attributes. 
+	- Manually check Avik examples for shared attributes
+	- Rebase existing PRs to get to one commit: DONE 
+	  - Reset ml branch to ml_staging and apply new commits use that cool branch command: `git reset --hard target-branch`: DONE
+	  - Build package jars on the branch
+	  - Run long experimnent: update name and link here:  
+	- JIRA Plugin for Neovim
+	- VIM save commands to file
+	  vim -w >(./timestamper.py > log)
+	  vim -w >(tee raw-log | ./timestamper.py > log) # If we want the raw log, too
+	- Code some sweet zigzag persistance
+	- Review Irvings PRs, who else? Michael Parking?  
+	- Fill out TDD with results: DONE
+	- Update tdd with online/offline design highlighting the issue
+	- Use those awesome git commands for understanding a code base (similar commits or commits made together etc): DONE called code-maat https://github.com/adamtornhill/code-maat
+	- Also stop pushing commits up! just keep them local and then clean up once perfect then push
+	- Create the offline Producer for the seller side extracted grains...
+	  - Steps to follow from Irving or team.
+	- Create Q2 fleshing out a plan for feature selection and monitoring
+	- Create wrapper for creating Grains events for testing, can get fancy with builder and generics + functions etc.
+	- Go on Dataflow course or guide
+	- Projects to work on in Q2:  
+	  - Feature selection, 
+	  - Feature limiting which features for which customers. 
+	  - There was another one: Ah yes, customer integration improvmeents  
+	- Working with just indents and can do whatever you want... create the plugin using java compiled binary, 
+	- Ask MLP on the new PR to add their comments for shared Collusion    
+	  - Rest are garbage
+	- Netflix CV add in section about favourite shows for example
+	- New Fraud pattern: ATO on an account then spends a large amount of money.
+	- Add many more unit tests for the two branches currently open, code unit tests all week if needed/bored 
+	- Fix MACOS home and end keys ffs, update: made some fixes lets see if help, might need a restarts
+	- Add keymaps for common actions, delete to end of line and replace with text. 
+	  - replace text to bracket
+	  - copy class name
+	  - copy current file path 
+	- Depop Investigation (Add logging and systematic working through of what events are available at what time)
+	- Create document for re-imagined extraction system. 
+	  - Redis stores features, grpc call calls for inference, which the Model reads from Redis
+	  - Capture the events and then replay them until we get the desired effect 
+	    - Can even repurpose the offline path and test with that. ExctrationOutput..
+	- Create Velocities, split create and update into separate counts
+	- Write Identity Single page plan for Q2
+	- Discovery Money 
+	  - Get proof of address from bank
+	- Zigzag persistance Applied to Temporal Graphs and Hypergraphs: https://www.youtube.com/watch?v=YrXuQGG7SEk 
+	- Identify and Create some Sift patterns to apply (debuggin Depop in flow2 for example)
+	- Terminal how to move around and delete words etc 
+	  - Create doc for Labelling and clustering and doing feature selection...
+	  - like hbase access , redis, memcache caching, error handling for trx/catch
+	- Write Lua socket client and Java Server
+	  - Can use plenary.curl or job instead... https://github.com/nvim-lua/plenary.nvim/blob/master/lua/plenary/curl.lua
+	- Freezing -> Normalizing densification counts at offline stage. 
+	  - Find medium job example
+	- Want to create a basic simulation of how data flows through our sift architecture.
+	- Install Diffview plugin
+	- Car registration
+	- Apply fixes for Transaction velocities code that was added to master. DONE 
+	- University Admissions
+	  - Apply for GaTech
+	  - Apply for UTexas
+	- Offline pipeline, learn to load all datasets and how to use them, Maybe create a learning session on how to do this...
+	- Github PR plugin for NeoVim  
+	  - https://github.com/pwntester/octo.nvim
+	- Lily UK Passport
+	- Water filter replacement
+	- Dylan USA Passport
+	-Finish TDD updating with existing features Gain + Covers see spreadsheet
+	- Clean up PRs rename features. 
+	  - Add features to feature set and turn to non learnable
+	- Create NVIM plugin for TODO and other operations needed
+	- Harmonic vectors, deconstruct a feature into a representative vector describing the type of feature (multi event, which feields etc) then can cluster to find missing features..
+	- Cluster all existing features for TDD to see if we can identify where we need to add features.   
+	- Setup Lua programming enviornment
+	- Setup Rust programming enviornment
+	- Create some OFP patterns from the Identity Market collusion work
+	- CV in latex, find template
+	- Like Tiger Style create a Sift style. 
+	- Long offline experiments, how can we add better checks to make sure everything in place before running? Maybe just a command line tool to check that. 

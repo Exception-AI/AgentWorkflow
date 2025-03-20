@@ -22,12 +22,12 @@ class ConstraintTest {
         // Verify default schedule value
         assertEquals("30 22 * * 1", constraint.getSchedule(), "Default schedule should be '30 22 * * 1'");
         // Verify default LeadTime, Effort, Cost, Importance, Concentration, and DeadlineType
-        assertEquals(LeadTime.ONE_DAY, constraint.getLeadTimeSeconds(), "Default lead time should be ONE_DAY");
+        assertEquals(LeadTime.ONE_DAY, constraint.getAllowedSecondsBeforeDeadline(), "Default lead time should be ONE_DAY");
         assertEquals(Effort.MEDIUM, constraint.getEffort(), "Default effort should be MEDIUM");
         assertEquals(Cost.CHEAP, constraint.getCost(), "Default cost should be CHEAP");
         assertEquals(Importance.NOT_URGENT_IMPORTANT, constraint.getImportance(), "Default importance should be NOT_URGENT_IMPORTANT");
         assertEquals(Concentration.PARTIAL, constraint.getConcentration(), "Default concentration should be PARTIAL");
-        assertEquals(DeadlineType.SOFT, constraint.getDeadlineType(), "Default deadline type should be SOFT");
+        assertEquals(DeadlineType.ANYTIME_ON_DAY, constraint.getDeadlineType(), "Default deadline type should be SOFT");
     }
 
     @Test
@@ -45,7 +45,7 @@ class ConstraintTest {
 
         // Set new values
         constraint.setSchedule(newSchedule);
-        constraint.setLeadTimeSeconds(newLeadTime);
+        constraint.setAllowedSecondsBeforeDeadline(newLeadTime);
         constraint.setEffort(newEffort);
         constraint.setCost(newCost);
         constraint.setImportance(newImportance);
@@ -54,7 +54,7 @@ class ConstraintTest {
 
         // Verify that the getters return the new values
         assertEquals(newSchedule, constraint.getSchedule());
-        assertEquals(newLeadTime, constraint.getLeadTimeSeconds());
+        assertEquals(newLeadTime, constraint.getAllowedSecondsBeforeDeadline());
         assertEquals(newEffort, constraint.getEffort());
         assertEquals(newCost, constraint.getCost());
         assertEquals(newImportance, constraint.getImportance());
