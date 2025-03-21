@@ -1,337 +1,289 @@
 [ {
-  "id" : "a6c6db22-c0df-4715-9333-9492669eec77",
+  "id" : "80566b41-b848-4e3a-b9b4-1cd6eabf8883",
   "name" : "Friday 21 March TODO",
   "description" : null,
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "a6c6db22-c0df-4715-9333-9492669eec77"
+    "taskId" : "80566b41-b848-4e3a-b9b4-1cd6eabf8883"
   },
-  "createdTime" : 1742572242,
-  "lastModifiedTime" : 1742572242
+  "createdTime" : 1742587656,
+  "lastModifiedTime" : 1742587656
 }, {
-  "id" : "6c404bbb-efe4-444f-8d92-66a404f66fa9",
-  "name" : "Email Statefram for insurance information",
-  "description" : "Compose and send an email to Statefram Insurance to request necessary information for policy update.",
-  "metadata" : {
-    "fileName" : "data/Friday/Friday.todo",
-    "proposedName" : "EmailStatefram",
-    "proposedSubTasks" : [ ],
-    "taskId" : "6c404bbb-efe4-444f-8d92-66a404f66fa9"
-  },
-  "createdTime" : 1742572259,
-  "lastModifiedTime" : 1742572259
-}, {
-  "id" : "2e829c75-b689-45c5-9c14-2631cd3568e8",
+  "id" : "a6bbfddd-7c76-4ea1-8813-04cc422656a9",
   "name" : "Shopping",
-  "description" : "Complete grocery shopping for the week including essentials, pantry restocks, and fresh produce.",
+  "description" : "Purchase groceries and essential items for the week.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
-    "proposedName" : "Shop_Fri21Mar",
-    "proposedSubTasks" : [ "Buy essentials", "Restock pantry", "Select fresh produce" ],
-    "taskId" : "2e829c75-b689-45c5-9c14-2631cd3568e8"
+    "proposedName" : "Shopping",
+    "proposedSubTasks" : [ "Buy fruits and vegetables", "Pick up dairy products", "Check pantry staples" ],
+    "taskId" : "a6bbfddd-7c76-4ea1-8813-04cc422656a9"
   },
-  "createdTime" : 1742572278,
-  "lastModifiedTime" : 1742572278
+  "createdTime" : 1742587695,
+  "lastModifiedTime" : 1742587695
 }, {
-  "id" : "822348a1-b772-4297-8541-75c7ac72709b",
+  "id" : "c897b3d0-1e90-4f94-8b13-0426a1d901e2",
   "name" : "Gallons of water",
-  "description" : "Track and ensure adequate daily water consumption by measuring and recording the number of gallons consumed.",
+  "description" : null,
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
-    "proposedName" : "GallonsWater",
-    "proposedSubTasks" : [ ],
-    "taskId" : "822348a1-b772-4297-8541-75c7ac72709b"
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "c897b3d0-1e90-4f94-8b13-0426a1d901e2"
   },
-  "createdTime" : 1742572299,
-  "lastModifiedTime" : 1742572299
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "862997ba-edbc-43e4-91ed-71b3f3b0a171",
+  "id" : "a64a2a01-6da1-4df6-9f93-6207d1bc5bab",
   "name" : "Dog Food order",
   "description" : "Order dog food for the upcoming month to ensure continuous supply.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "DogFoodOrder",
     "proposedSubTasks" : [ "Check dog's food stock", "Select preferred brand", "Visit online pet store", "Complete purchase" ],
-    "taskId" : "862997ba-edbc-43e4-91ed-71b3f3b0a171"
+    "taskId" : "a64a2a01-6da1-4df6-9f93-6207d1bc5bab"
   },
-  "createdTime" : 1742572341,
-  "lastModifiedTime" : 1742572341
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "b2a095e1-2a8d-4ce8-ab06-64f2aa4ac675",
+  "id" : "f387f94c-be24-42fe-81d2-eff012b59a77",
   "name" : "Tea Adjust shoping schedule",
   "description" : "Adjust the shopping schedule to include tea and ensure availability of preferred brands.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "AdjustTeaShopping",
     "proposedSubTasks" : [ "CheckTeaStock", "ReviewPreferredBrands", "UpdateShoppingList" ],
-    "taskId" : "b2a095e1-2a8d-4ce8-ab06-64f2aa4ac675"
+    "taskId" : "f387f94c-be24-42fe-81d2-eff012b59a77"
   },
-  "createdTime" : 1742572360,
-  "lastModifiedTime" : 1742572360
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "aba7d4fd-1572-4fd0-bc8c-e3f8dac536db",
+  "id" : "ee4a9b18-ea04-449e-ae1b-c27f07a3b28c",
   "name" : "Compost bags",
   "description" : null,
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "aba7d4fd-1572-4fd0-bc8c-e3f8dac536db"
+    "taskId" : "ee4a9b18-ea04-449e-ae1b-c27f07a3b28c"
   },
-  "createdTime" : 1742572360,
-  "lastModifiedTime" : 1742572360
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "e254055f-52ca-4754-b993-5f2992bec74c",
+  "id" : "b6ce68a0-0df1-428c-b65f-218da8fadf79",
   "name" : "Pineapple canned",
   "description" : null,
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "e254055f-52ca-4754-b993-5f2992bec74c"
+    "taskId" : "b6ce68a0-0df1-428c-b65f-218da8fadf79"
   },
-  "createdTime" : 1742572365,
-  "lastModifiedTime" : 1742572365
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "57c20511-d52c-4677-a9e0-10ab4f4a2f3f",
+  "id" : "ed55ff97-d410-4ec2-91e7-dc08a4431c40",
   "name" : "Corn for pizza",
   "description" : "Prepare corn ingredients for pizza toppings. This involves selecting fresh corn, cleaning, and chopping it into appropriate sizes for even cooking on the pizza.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "CornForPizza",
     "proposedSubTasks" : [ ],
-    "taskId" : "57c20511-d52c-4677-a9e0-10ab4f4a2f3f"
+    "taskId" : "ed55ff97-d410-4ec2-91e7-dc08a4431c40"
   },
-  "createdTime" : 1742572384,
-  "lastModifiedTime" : 1742572384
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "20a094c9-9999-45e8-9d7d-4316fc3a77ec",
+  "id" : "45d94162-c9ef-442a-b80f-a4e177e0d537",
   "name" : "Pink lemonade",
   "description" : null,
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "20a094c9-9999-45e8-9d7d-4316fc3a77ec"
+    "taskId" : "45d94162-c9ef-442a-b80f-a4e177e0d537"
   },
-  "createdTime" : 1742572389,
-  "lastModifiedTime" : 1742572389
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "dcf24c92-dd54-459a-84ba-20ee5aa79732",
+  "id" : "a9e27707-6a1c-4153-ba5b-7bd503d50475",
   "name" : "Spag + Panzenela",
   "description" : "Prepare and cook spaghetti with panzenela sauce, including chopping ingredients, simmering sauce, and assembling the dish.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "SpagPanzenela",
     "proposedSubTasks" : [ "Chop Vegetables", "Cook Sauce Base", "Simmer Sauce", "Cook Pasta", "Plate Assembly" ],
-    "taskId" : "dcf24c92-dd54-459a-84ba-20ee5aa79732"
+    "taskId" : "a9e27707-6a1c-4153-ba5b-7bd503d50475"
   },
-  "createdTime" : 1742572410,
-  "lastModifiedTime" : 1742572410
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "51a3fcad-53ba-4370-8e58-50823841aae0",
+  "id" : "d15960ec-c0b2-49a7-8464-8947a7198c7b",
   "name" : "Baking topping for waffles",
   "description" : "Prepare and bake the toppings for waffles, ensuring they are cooked to perfection and ready to serve",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "WaffleTopping",
     "proposedSubTasks" : [ "Mix batter", "Preheat oven", "Bake toppings" ],
-    "taskId" : "51a3fcad-53ba-4370-8e58-50823841aae0"
+    "taskId" : "d15960ec-c0b2-49a7-8464-8947a7198c7b"
   },
-  "createdTime" : 1742572429,
-  "lastModifiedTime" : 1742572429
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "1a52ada8-15e7-49dc-924f-fe5122a2d87f",
+  "id" : "65ee9160-4829-4521-9e76-cfa328e96888",
   "name" : "Fizzy waters",
   "description" : null,
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "1a52ada8-15e7-49dc-924f-fe5122a2d87f"
+    "taskId" : "65ee9160-4829-4521-9e76-cfa328e96888"
   },
-  "createdTime" : 1742572434,
-  "lastModifiedTime" : 1742572434
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "3614a5bb-1655-4325-bfbd-ac09441a58d8",
+  "id" : "f55a746a-360f-4fa3-a622-2b5dd4f6e185",
   "name" : "creamer",
   "description" : "Prepare and serve creamer for coffee beverages",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "creamer",
     "proposedSubTasks" : [ ],
-    "taskId" : "3614a5bb-1655-4325-bfbd-ac09441a58d8"
+    "taskId" : "f55a746a-360f-4fa3-a622-2b5dd4f6e185"
   },
-  "createdTime" : 1742572453,
-  "lastModifiedTime" : 1742572453
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "1325eefe-ad8e-4d2b-9a8e-fe63e4185926",
+  "id" : "d4621028-a3b0-4e71-b03a-a8202df80cc5",
   "name" : "Ranch dressing",
   "description" : "Prepare homemade ranch dressing for the upcoming barbecue party. Ensure ingredients are fresh and the dressing is properly mixed.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "MakeRanchDressing",
     "proposedSubTasks" : [ "GatherIngredients", "MixIngredients", "ChillDressing" ],
-    "taskId" : "1325eefe-ad8e-4d2b-9a8e-fe63e4185926"
+    "taskId" : "d4621028-a3b0-4e71-b03a-a8202df80cc5"
   },
-  "createdTime" : 1742572472,
-  "lastModifiedTime" : 1742572472
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "9f21b1f8-5a8c-466c-9240-e83662d5c200",
-  "name" : "Cut up cardboard",
-  "description" : "Cut up cardboard into appropriate shapes for the project. Ensure safety precautions are taken.",
-  "metadata" : {
-    "fileName" : "data/Friday/Friday.todo",
-    "proposedName" : "CutCardboard",
-    "proposedSubTasks" : [ "Gather cutting tools", "Measure cardboard dimensions", "Execute precise cuts" ],
-    "taskId" : "9f21b1f8-5a8c-466c-9240-e83662d5c200"
-  },
-  "createdTime" : 1742572490,
-  "lastModifiedTime" : 1742572490
-}, {
-  "id" : "d7c03f7a-7eba-4860-acc9-06d74c336e9e",
+  "id" : "f013c703-7646-4ca4-8620-e15cd3082d01",
   "name" : "Cut own hair",
   "description" : "Self-administered hair cutting task using electric clippers for a neat and tidy appearance.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "HairCut",
     "proposedSubTasks" : [ "Gather supplies", "Section hair", "Trim sides", "Clean up hair clippings" ],
-    "taskId" : "d7c03f7a-7eba-4860-acc9-06d74c336e9e"
+    "taskId" : "f013c703-7646-4ca4-8620-e15cd3082d01"
   },
-  "createdTime" : 1742572510,
-  "lastModifiedTime" : 1742572510
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "babc9244-56b0-461e-84a3-41dd4f3d203f",
+  "id" : "74e26f6c-0ddc-491d-b307-25d4e2b73f21",
   "name" : "Sweep patio",
   "description" : "Sweep the patio to remove debris and prepare it for outdoor use.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "SweepPatio",
     "proposedSubTasks" : [ ],
-    "taskId" : "babc9244-56b0-461e-84a3-41dd4f3d203f"
+    "taskId" : "74e26f6c-0ddc-491d-b307-25d4e2b73f21"
   },
-  "createdTime" : 1742572527,
-  "lastModifiedTime" : 1742572527
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "33de746b-48df-490e-a628-c55fa56c6bd8",
+  "id" : "f10afde0-50c1-4935-8df1-47d3b3f5de8e",
   "name" : "Wash bike",
   "description" : "Clean and maintain the bicycle by removing dirt, checking brakes, and ensuring all parts are functioning properly.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "WashBike",
     "proposedSubTasks" : [ "Wipe down frame", "Clean wheels", "Check brake pads", "Lubricate chain" ],
-    "taskId" : "33de746b-48df-490e-a628-c55fa56c6bd8"
+    "taskId" : "f10afde0-50c1-4935-8df1-47d3b3f5de8e"
   },
-  "createdTime" : 1742572546,
-  "lastModifiedTime" : 1742572546
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "c361e3f4-508a-46c8-a5b1-8cb09da07c24",
-  "name" : "Anika Recital at 9:15am to 10:00am",
-  "description" : "Attend Anika's music recital from 9:15am to 10:00am",
-  "metadata" : {
-    "fileName" : "data/Friday/Friday.todo",
-    "proposedName" : "AnikaRecital",
-    "proposedSubTasks" : [ "Prepare outfit for event", "Confirm travel plans to venue" ],
-    "taskId" : "c361e3f4-508a-46c8-a5b1-8cb09da07c24"
-  },
-  "createdTime" : 1742572566,
-  "lastModifiedTime" : 1742572566
-}, {
-  "id" : "ec43093e-3a7e-43dd-9fcb-907d5ccb206c",
+  "id" : "324e5eaa-1def-401d-8d59-d8ca5d222122",
   "name" : "Put sheets away in Ani room",
   "description" : "Organize and store the sheets properly in Ani's room, ensuring they are neatly folded and arranged in the designated storage space.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "AniRoomSheets",
     "proposedSubTasks" : [ ],
-    "taskId" : "ec43093e-3a7e-43dd-9fcb-907d5ccb206c"
+    "taskId" : "324e5eaa-1def-401d-8d59-d8ca5d222122"
   },
-  "createdTime" : 1742572585,
-  "lastModifiedTime" : 1742572585
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "a05e96db-2656-434c-8f6f-b0f09d7dbb5b",
-  "name" : "Ani washing todo",
-  "description" : null,
-  "metadata" : {
-    "fileName" : "data/Friday/Friday.todo",
-    "proposedName" : null,
-    "proposedSubTasks" : null,
-    "taskId" : "a05e96db-2656-434c-8f6f-b0f09d7dbb5b"
-  },
-  "createdTime" : 1742572590,
-  "lastModifiedTime" : 1742572590
-}, {
-  "id" : "c7b25b29-571b-4531-a4ac-c7bf2e94353c",
+  "id" : "b4ee062f-20af-4239-912c-a5d0afdcd293",
   "name" : "USD module 1 continue",
   "description" : "Continue progress through the USD module 1 coursework, focusing on key concepts and exercises outlined in the curriculum. Ensure understanding of core topics before proceeding.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "USD_Module_1_Continue",
     "proposedSubTasks" : [ "Review module 1 notes", "Complete exercise 3", "Address unresolved questions" ],
-    "taskId" : "c7b25b29-571b-4531-a4ac-c7bf2e94353c"
+    "taskId" : "b4ee062f-20af-4239-912c-a5d0afdcd293"
   },
-  "createdTime" : 1742572610,
-  "lastModifiedTime" : 1742572610
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "b1aa0593-e580-444b-879e-34a7a934000e",
+  "id" : "be90d5f8-3ffe-4cdb-8294-967c4a265e72",
   "name" : "EAI",
   "description" : "Implementation and integration of Enterprise Application Integration modules to ensure seamless data flow between systems.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "EAI",
     "proposedSubTasks" : [ "API_Implementation", "Data_Mapping", "System_Tests" ],
-    "taskId" : "b1aa0593-e580-444b-879e-34a7a934000e"
+    "taskId" : "be90d5f8-3ffe-4cdb-8294-967c4a265e72"
   },
-  "createdTime" : 1742572610,
-  "lastModifiedTime" : 1742572610
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "e5ff5358-94aa-451e-8686-57baad925484",
+  "id" : "46c97398-15d5-493c-9be3-3f13f79a0d5a",
   "name" : "Android App for EAI",
   "description" : "Develop an Android application for Enterprise Application Integration (EAI) to facilitate communication between different enterprise systems.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "AndroidApp_EAI",
     "proposedSubTasks" : [ "Design UI/UX", "Implement API Integration", "Test Connectivity", "Deploy Beta Version" ],
-    "taskId" : "e5ff5358-94aa-451e-8686-57baad925484"
+    "taskId" : "46c97398-15d5-493c-9be3-3f13f79a0d5a"
   },
-  "createdTime" : 1742572631,
-  "lastModifiedTime" : 1742572631
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "99950363-b5b8-43af-8d18-51caca65ea70",
+  "id" : "c70f43b9-be9b-423d-ae45-36a11733b3f3",
   "name" : "Website for EAI",
   "description" : "Design and develop a user-friendly website for the EAI (Enterprise Application Integration) system, ensuring compatibility with existing platforms and integrating necessary APIs.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "EAI_Website",
     "proposedSubTasks" : [ "UI/UX Design", "Backend API Integration", "Testing & Debugging", "Deployment" ],
-    "taskId" : "99950363-b5b8-43af-8d18-51caca65ea70"
+    "taskId" : "c70f43b9-be9b-423d-ae45-36a11733b3f3"
   },
-  "createdTime" : 1742572653,
-  "lastModifiedTime" : 1742572653
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "4169b2c3-2f41-49c7-8ef3-e236805e4119",
+  "id" : "bfce0e54-77d9-430e-84ba-606c0a810a79",
   "name" : "Document Coolio and upgrade",
   "description" : "Document the implementation of Coolio and plan its system upgrade.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "DocCoolioUpgrade",
     "proposedSubTasks" : [ "Write Coolio documentation", "Draft upgrade plan" ],
-    "taskId" : "4169b2c3-2f41-49c7-8ef3-e236805e4119"
+    "taskId" : "bfce0e54-77d9-430e-84ba-606c0a810a79"
   },
-  "createdTime" : 1742572672,
-  "lastModifiedTime" : 1742572672
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 }, {
-  "id" : "88c2f330-7204-42a0-82fe-0f1c054cfaa4",
+  "id" : "3278ae81-79e4-42e4-8295-3d7cb33e7398",
   "name" : "Login to Hetzner and document",
   "description" : "Log into the Hetzner cloud platform and document the access details, server configurations, and security settings for future reference.",
   "metadata" : {
     "fileName" : "data/Friday/Friday.todo",
     "proposedName" : "HetznerLoginDoc",
     "proposedSubTasks" : [ ],
-    "taskId" : "88c2f330-7204-42a0-82fe-0f1c054cfaa4"
+    "taskId" : "3278ae81-79e4-42e4-8295-3d7cb33e7398"
   },
-  "createdTime" : 1742572692,
-  "lastModifiedTime" : 1742572692
+  "createdTime" : 1742587719,
+  "lastModifiedTime" : 1742587719
 } ]

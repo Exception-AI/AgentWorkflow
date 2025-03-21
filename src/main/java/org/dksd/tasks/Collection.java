@@ -59,6 +59,10 @@ public class Collection {
 
         //Do I know the current task?
         Task task = getCurrentTask();
+        if (task == null) {
+            System.out.println("Hold tight while we create the tasks");
+            return;
+        }
         int currIndex = path.indexOf(task);
         //for (int i = getIndex(path, currIndex - 5); i < getIndex(path, currIndex + 5); i++) {
             //Task task = path.get(i);

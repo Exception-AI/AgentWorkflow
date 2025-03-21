@@ -1,6 +1,6 @@
 [ {
-  "id" : "b741980d-b6ef-41f0-8e17-58b5c3865b2c",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "SUNDAY", "SATURDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "3527a623-f108-4677-aaa4-bd42329d4563",
+  "daysOfWeek" : [ "WEDNESDAY", "SATURDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY", "SUNDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
   "allowedSecondsBeforeDeadline" : 600,
@@ -10,51 +10,40 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "851a9e57-3964-4e1b-b635-048351d6831c",
+  "id" : "48b42baa-f7b1-4f6d-9830-d9fb905128db",
   "daysOfWeek" : [ "FRIDAY" ],
-  "durationSeconds" : 300,
-  "deadlineTime" : [ 13, 0 ],
-  "allowedSecondsBeforeDeadline" : 3600,
-  "effort" : "LOW",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "MINIMAL",
-  "deadlineType" : "HARD"
-}, {
-  "id" : "cc6ad4d2-9c29-4838-97ac-19fdbbb2cd1d",
-  "daysOfWeek" : [ "FRIDAY" ],
-  "durationSeconds" : 3600,
+  "durationSeconds" : 2700,
   "deadlineTime" : [ 18, 0 ],
-  "allowedSecondsBeforeDeadline" : 1200,
+  "allowedSecondsBeforeDeadline" : 7200,
   "effort" : "MEDIUM",
   "cost" : "COSTLY",
   "importance" : "NOT_URGENT_IMPORTANT",
   "concentration" : "MINIMAL",
-  "deadlineType" : "ANYTIME_ON_DAY"
+  "deadlineType" : "HARD"
 }, {
-  "id" : "eaffc5a2-4e16-444b-867c-db03e140fdb0",
-  "daysOfWeek" : [ "FRIDAY", "SUNDAY", "SATURDAY", "THURSDAY", "TUESDAY" ],
-  "durationSeconds" : 60,
-  "deadlineTime" : [ 22, 0 ],
-  "allowedSecondsBeforeDeadline" : 43200,
-  "effort" : "LOW",
+  "id" : "20ed8c10-1232-455b-a307-d6d600e350d6",
+  "daysOfWeek" : [ "WEDNESDAY", "SATURDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY", "SUNDAY" ],
+  "durationSeconds" : 1800,
+  "deadlineTime" : [ 10, 0 ],
+  "allowedSecondsBeforeDeadline" : 600,
+  "effort" : "MEDIUM",
   "cost" : "CHEAP",
   "importance" : "NOT_URGENT_IMPORTANT",
-  "concentration" : "MINIMAL",
+  "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "a1713dfe-e6e3-4e40-a273-7fa26e67e14f",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "78aced2b-2f55-4973-84c4-33ce81579e48",
+  "daysOfWeek" : [ "WEDNESDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY" ],
   "durationSeconds" : 600,
   "deadlineTime" : [ 17, 0 ],
   "allowedSecondsBeforeDeadline" : 21600,
   "effort" : "LOW",
   "cost" : "COSTLY",
-  "importance" : "URGENT_IMPORTANT",
+  "importance" : "NOT_URGENT_IMPORTANT",
   "concentration" : "MINIMAL",
   "deadlineType" : "ANYTIME_WEEK"
 }, {
-  "id" : "2ed9ce22-aea4-4b7a-8ab5-b636e8013d7b",
+  "id" : "07e993e4-7ab7-488c-9d38-f6fb279697e4",
   "daysOfWeek" : [ "MONDAY", "THURSDAY" ],
   "durationSeconds" : 900,
   "deadlineTime" : [ 15, 0 ],
@@ -65,8 +54,8 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "8fe58665-33c7-4f7d-aecc-b8068dc0ae50",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "SUNDAY", "SATURDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "c676ca3c-b83e-44a4-b28a-9c2df6a6181a",
+  "daysOfWeek" : [ "WEDNESDAY", "SATURDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY", "SUNDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
   "allowedSecondsBeforeDeadline" : 600,
@@ -76,8 +65,8 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "893daf9b-9dfa-4e4b-92a3-025334c70a12",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "SUNDAY", "SATURDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "c7e5aebc-999c-4a94-b620-03bf3ab739f2",
+  "daysOfWeek" : [ "WEDNESDAY", "SATURDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY", "SUNDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
   "allowedSecondsBeforeDeadline" : 600,
@@ -87,8 +76,8 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "c876edb6-0999-4d2b-b200-1da5a14514c5",
-  "daysOfWeek" : [ "FRIDAY", "SATURDAY" ],
+  "id" : "c5eacc4b-20eb-4cb1-ab08-ddebd6dbc938",
+  "daysOfWeek" : [ "SATURDAY", "FRIDAY" ],
   "durationSeconds" : 600,
   "deadlineTime" : [ 17, 30 ],
   "allowedSecondsBeforeDeadline" : 7200,
@@ -98,8 +87,8 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "76290d0e-3a23-4044-af31-ce9f022e17a9",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "SUNDAY", "SATURDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "3f8118c4-e18d-4f31-bb87-2e89fbb63c8f",
+  "daysOfWeek" : [ "WEDNESDAY", "SATURDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY", "SUNDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
   "allowedSecondsBeforeDeadline" : 600,
@@ -109,8 +98,8 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "2013159b-8a09-412c-9728-3973012fa3f1",
-  "daysOfWeek" : [ "FRIDAY", "SATURDAY" ],
+  "id" : "b8a2e58d-56a5-412d-a9d6-66e4c2d36448",
+  "daysOfWeek" : [ "SATURDAY", "FRIDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 19, 30 ],
   "allowedSecondsBeforeDeadline" : 3600,
@@ -120,7 +109,7 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "bbf0c6ac-efbe-48fd-b4db-b01dea0c7b03",
+  "id" : "5ac55784-6ced-403c-a5cd-cc342d6f64a0",
   "daysOfWeek" : [ "FRIDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 30 ],
@@ -131,8 +120,8 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "4f1779ad-8f73-4bef-a02e-be7e56cbb516",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "SUNDAY", "SATURDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "e46905c7-36c6-4cf9-9a93-e2d84b1e96ef",
+  "daysOfWeek" : [ "WEDNESDAY", "SATURDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY", "SUNDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
   "allowedSecondsBeforeDeadline" : 600,
@@ -142,8 +131,8 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "0933d463-73af-4a62-893b-2e94f09c371c",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "c3e40ec9-2ee0-4834-94e2-ac5a8facfcae",
+  "daysOfWeek" : [ "WEDNESDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY" ],
   "durationSeconds" : 180,
   "deadlineTime" : [ 9, 30 ],
   "allowedSecondsBeforeDeadline" : 1800,
@@ -153,7 +142,7 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "28e4ec38-f07b-4061-9aec-b2cab24f00b0",
+  "id" : "e0416796-1418-4ebd-ae0b-0f5930dabb5e",
   "daysOfWeek" : [ "SATURDAY" ],
   "durationSeconds" : 900,
   "deadlineTime" : [ 15, 0 ],
@@ -164,18 +153,7 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "e9b996e9-6d20-4226-ba38-cfccb0a9b6a8",
-  "daysOfWeek" : [ "FRIDAY" ],
-  "durationSeconds" : 1800,
-  "deadlineTime" : [ 17, 0 ],
-  "allowedSecondsBeforeDeadline" : 3600,
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "PARTIAL",
-  "deadlineType" : "HARD"
-}, {
-  "id" : "fe4397fb-1293-4ac2-9d35-c69ac741d3ed",
+  "id" : "7ca37bf0-a93f-4f74-bf95-48de68bacf53",
   "daysOfWeek" : [ "FRIDAY" ],
   "durationSeconds" : 1500,
   "deadlineTime" : [ 12, 0 ],
@@ -186,7 +164,7 @@
   "concentration" : "PARTIAL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "9cb1d722-693a-4114-b2f7-185e08182ae8",
+  "id" : "0f755c27-fd94-454a-ae62-c2609abfe850",
   "daysOfWeek" : [ "FRIDAY" ],
   "durationSeconds" : 900,
   "deadlineTime" : [ 15, 0 ],
@@ -197,7 +175,7 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "71c42e2d-e35e-4622-bc55-988be4f601dc",
+  "id" : "c2252a12-65b5-4e10-a3ff-2933e6b4cf27",
   "daysOfWeek" : [ "FRIDAY" ],
   "durationSeconds" : 1800,
   "deadlineTime" : [ 18, 0 ],
@@ -208,18 +186,7 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "95d2e4fc-fbb3-4fa6-be7c-3e84964e7955",
-  "daysOfWeek" : [ "FRIDAY" ],
-  "durationSeconds" : 2700,
-  "deadlineTime" : [ 10, 0 ],
-  "allowedSecondsBeforeDeadline" : 2700,
-  "effort" : "LOW",
-  "cost" : "CHEAP",
-  "importance" : "URGENT_IMPORTANT",
-  "concentration" : "MINIMAL",
-  "deadlineType" : "HARD"
-}, {
-  "id" : "9de76e9c-8f14-442f-85a7-113d5787b32b",
+  "id" : "f25db5fe-6c44-4b0b-8dfc-31dc23b5d250",
   "daysOfWeek" : [ "FRIDAY" ],
   "durationSeconds" : 900,
   "deadlineTime" : [ 18, 0 ],
@@ -230,18 +197,7 @@
   "concentration" : "MINIMAL",
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
-  "id" : "fce396d8-0cba-4f82-bf5d-c6c8f0d525cc",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "SUNDAY", "SATURDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
-  "durationSeconds" : 1800,
-  "deadlineTime" : [ 10, 0 ],
-  "allowedSecondsBeforeDeadline" : 600,
-  "effort" : "MEDIUM",
-  "cost" : "CHEAP",
-  "importance" : "NOT_URGENT_IMPORTANT",
-  "concentration" : "PARTIAL",
-  "deadlineType" : "ANYTIME_ON_DAY"
-}, {
-  "id" : "b2c500e7-d741-44fb-896c-5202bfe619b4",
+  "id" : "3c4d5462-6c24-4a54-8b8f-4ae7d52c6850",
   "daysOfWeek" : [ "FRIDAY" ],
   "durationSeconds" : 3600,
   "deadlineTime" : [ 21, 0 ],
@@ -252,8 +208,8 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "d503510c-72a0-48e8-ad38-98c41005a6b0",
-  "daysOfWeek" : [ "THURSDAY", "TUESDAY" ],
+  "id" : "9298772e-910c-4122-b736-35002f37e32c",
+  "daysOfWeek" : [ "TUESDAY", "THURSDAY" ],
   "durationSeconds" : 7200,
   "deadlineTime" : [ 16, 30 ],
   "allowedSecondsBeforeDeadline" : 21600,
@@ -263,8 +219,8 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "b9e1519f-d60d-46e6-bfee-8c18707dfe96",
-  "daysOfWeek" : [ "WEDNESDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "22f27f35-e840-4609-b822-65d2be2320bf",
+  "daysOfWeek" : [ "WEDNESDAY", "TUESDAY", "MONDAY", "THURSDAY" ],
   "durationSeconds" : 28800,
   "deadlineTime" : [ 17, 0 ],
   "allowedSecondsBeforeDeadline" : 43200,
@@ -274,8 +230,8 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "b1ba69cc-9c74-4077-a667-fb7b78eb8006",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "f4894b5f-767f-4cd7-85d7-ae14cde760b4",
+  "daysOfWeek" : [ "WEDNESDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY" ],
   "durationSeconds" : 21600,
   "deadlineTime" : [ 17, 0 ],
   "allowedSecondsBeforeDeadline" : 43200,
@@ -285,7 +241,7 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "58cb3f2a-7fcf-43ac-b8ae-d62441cbced8",
+  "id" : "08766bd8-db0c-4b22-8b80-312fb26311c1",
   "daysOfWeek" : [ "WEDNESDAY", "THURSDAY" ],
   "durationSeconds" : 10800,
   "deadlineTime" : [ 16, 0 ],
@@ -296,8 +252,8 @@
   "concentration" : "FULL",
   "deadlineType" : "HARD"
 }, {
-  "id" : "019363ae-3dad-4fcb-b738-ff3048175e98",
-  "daysOfWeek" : [ "FRIDAY", "WEDNESDAY", "MONDAY", "THURSDAY", "TUESDAY" ],
+  "id" : "4538f705-abe9-4269-822f-35b47f2b7ccb",
+  "daysOfWeek" : [ "WEDNESDAY", "TUESDAY", "MONDAY", "FRIDAY", "THURSDAY" ],
   "durationSeconds" : 900,
   "deadlineTime" : [ 17, 0 ],
   "allowedSecondsBeforeDeadline" : 21600,
