@@ -1,0 +1,6 @@
+Please provide the following details to create a new task entry:
+
+- Parent Task Name: {{parent}} if the parent name is empty then there is no parent
+- New Child Task Name: {{child}}
+
+These inputs will be used to generate a JSON representation of a TaskModel POJO, where the child task is linked as a sub-task of the specified parent. Ensure the child task name is clear.

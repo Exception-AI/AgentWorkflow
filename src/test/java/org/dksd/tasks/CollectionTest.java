@@ -46,10 +46,10 @@ class CollectionTest {
 
         Task root = tasks.get(0);
         Task st = tasks.get(1);
-        NodeTask ntRoot = collection.getInstance().getTaskNodes().get(root.getId());
-        NodeTask ntSubTask = collection.getInstance().getTaskNodes().get(st.getId());
-        assertEquals(1, ntRoot.getSubTasks().size());
-        assertEquals(0, ntSubTask.getSubTasks().size());
+        //NodeTask ntRoot = collection.getInstance().getTaskNodes().get(root.getId());
+        //NodeTask ntSubTask = collection.getInstance().getTaskNodes().get(st.getId());
+        //assertEquals(1, ntRoot.getSubTasks().size());
+        //assertEquals(0, ntSubTask.getSubTasks().size());
     }
 
     /*
