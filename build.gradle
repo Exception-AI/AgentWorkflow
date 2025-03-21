@@ -15,7 +15,7 @@ dependencies {
     implementation 'org.jline:jline:3.21.0'
     implementation group: 'net.redhogs.cronparser', name: 'cron-parser', version: '3.5'
     implementation group: 'net.redhogs.cronparser', name: 'cron-parser-core', version: '3.5'
-    implementation 'org.slf4j:slf4j-simple:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
 
     //implementation 'org.slf4j:slf4j-simple:2.0.17'
 

@@ -62,7 +62,7 @@ public class Main {
         //beforeEachLLmInference(checkHashCache);
         //beforeEachLLmInference(checkEmbeddingCache);
 
-        Collection coll = new Collection(new Instance("blendedAttempt"));
+        Collection coll = new Collection(new Instance("Friday"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
         List<ScheduledTask> scheduledTasks = new ArrayList<>();
@@ -82,7 +82,6 @@ public class Main {
                 }
                 coll.displayTasks(coll.getInstance().getTasks());
                 long ed = System.currentTimeMillis();
-                System.out.println("ts: " + (ed - st));
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
 
@@ -228,6 +227,26 @@ public class Main {
                 long millisStart = beginningOfWeekAtSeven.atZone(ZoneId.systemDefault())
                         .toInstant()
                         .toEpochMilli();
+
+                //group child tasks together in some form split on duration.
+                //don't schedule parent tasks
+                //45 minute windows of work?
+                //rest should be built in.
+                //kid times are non moveable. like ghost times.
+                //blocks of times can have tasks slotted into them.
+                //interval, and tasks that fit in the interval.
+                // 7am to 8:15am get ready for school (block 1)
+                // 8:15am to 10:15am work
+                // 10:15 to 10:45 walk/break/gardening
+                // 11:00 to 12:00 work
+                // 12:00 to 12:15 lunch
+                // 12:15 to 2pm work
+                // 2:15 pm to 3:125 driving
+                // 8pm kids duty and other light non focus work
+                // 8pm to 11pm work focus time
+                // previously we generate a target date.
+                // what about now we aim for a particular block? hmm.
+                // 
 
                 double error = 0;
                 for (int i = 0; i < p.getGene().size(); i++) {
