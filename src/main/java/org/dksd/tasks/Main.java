@@ -17,6 +17,7 @@ import java.util.Random;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -435,7 +436,8 @@ public class Main {
                 parsedTask.taskName = trimmed.trim();
             }
             parsedTask.indent = indent;
-            parsedTask.parentTask = getParent(lines, indent, i);
+            SimpleTask parTask = getParent(tasks, indent);
+            parsedTask.parentTask = (parTask != null) ? getParent(tasks, indent).taskName : null;
             parsedTask.line = i;
             tasks.add(parsedTask);
         }
@@ -443,13 +445,13 @@ public class Main {
         return tasks;
     }
 
-    private static String getParent(List<String> lines, int indent, int i) {
-        for (int j = i - 1; j >= 0; j--) {
-            if (countLeadingSpaces(lines.get(j)) < indent) {
-                return lines.get(j);
-            }
-        }
-        return null;
+    private static SimpleTask getParent(List<SimpleTask> tasks, int currIndent) {
+        return IntStream.range(0, tasks.size())
+                .map(i -> tasks.size() - 1 - i) // Convert to reverse index
+                .mapToObj(tasks::get)
+                .filter(task -> task.indent < currIndent)
+                .findFirst()
+                .orElse(null);
     }
 
     // Utility method to count leading spaces in a string.

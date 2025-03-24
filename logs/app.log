@@ -88,3 +88,77 @@ java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory
 2025-03-21 13:11:01 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
 2025-03-21 13:12:10 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
 2025-03-21 13:12:16 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 07:54:40 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 07:59:17 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:00:19 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:00:51 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:01:24 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:01:34 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-24 08:01:40 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=c897b3d0-1e90-4f94-8b13-0426a1d901e2, name='Gallons of water', description='null', createdTime=1742587719, lastModifiedTime=1742587719}
+2025-03-24 08:01:47 [main] INFO  org.dksd.tasks.Collection - Setting prev task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-24 08:02:44 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:03:17 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-24 08:08:59 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:48)
+2025-03-24 08:10:13 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:48)
+2025-03-24 08:10:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Friday 21 March TODO
+2025-03-24 08:11:25 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Shopping
+2025-03-24 08:21:30 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:22:26 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:23:35 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:49)
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Friday 21 March TODO
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Shopping
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Gallons of water
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Dog Food order
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Tea Adjust shoping schedule
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Compost bags
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pineapple canned
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Corn for pizza
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pink lemonade
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Spag + Panzenela
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Baking topping for waffles
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Fizzy waters
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: creamer
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Ranch dressing
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Cut own hair
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Sweep patio
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Wash bike
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Put sheets away in Ani room
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: USD module 1 continue
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: EAI
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Android App for EAI
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Website for EAI
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Document Coolio and upgrade
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Login to Hetzner and document
+2025-03-24 08:23:43 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=d5765c22-c9d8-4662-992a-c100e4eeb57c, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742829815, lastModifiedTime=1742829815}
+2025-03-24 08:23:49 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=2e799b25-f828-40fe-80c6-4369a7cdf465, name='Gallons of water', description='null', createdTime=1742829815, lastModifiedTime=1742829815}
+2025-03-24 08:23:58 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll

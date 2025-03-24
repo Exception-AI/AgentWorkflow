@@ -3,6 +3,7 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,13 +67,15 @@ public class Collection {
         int currIndex = path.indexOf(task);
         //for (int i = getIndex(path, currIndex - 5); i < getIndex(path, currIndex + 5); i++) {
             //Task task = path.get(i);
-            String suffix = "(*)";
-            if (!getInstance().isParent(task.getId())) {
+            String suffix = (getInstance().isParent(task.getId())) ? "(P)" : "(*)";
+            //if (!getInstance().isParent(task.getId())) {
                 System.out.println(getInstance().getTask(task.getId()).getName() /*+ " <- " + getInstance().getHierarchy(nodeTask)*/ + " " + suffix);
                 if (task.equals(getCurrentTask())) {
-                    System.out.println(getInstance().getConstraints(task));
+                    for (Constraint constraint : getInstance().getConstraints(task)) {
+                        System.out.println(constraint);
+                    }
                 }
-            }
+            //}
         //}
         /*List<String> hierarchy = new ArrayList<>();
         while (wtn.getParentId() != null) {

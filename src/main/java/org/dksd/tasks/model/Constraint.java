@@ -1,6 +1,5 @@
 package org.dksd.tasks.model;
 
-import net.redhogs.cronparser.CronExpressionDescriptor;
 import org.dksd.tasks.Identifier;
 import org.dksd.tasks.model.llmpojo.Constr;
 import org.slf4j.Logger;
@@ -26,6 +25,7 @@ public class Constraint implements Identifier {
     private static final Logger logger = LoggerFactory.getLogger(Constraint.class);
     private UUID id;
     private Set<DayOfWeek> daysOfWeek;
+    private int repeatEveryNWeeks = 1;
     private int durationSeconds;
     private LocalTime deadlineTime;
     private int allowedSecondsBeforeDeadline; //How much time needed before deadlines in seconds the task can be started
@@ -131,6 +131,14 @@ public class Constraint implements Identifier {
         this.allowedSecondsBeforeDeadline = allowedSecondsBeforeDeadline;
     }
 
+    public int getRepeatEveryNWeeks() {
+        return repeatEveryNWeeks;
+    }
+
+    public void setRepeatEveryNWeeks(int repeatEveryNWeeks) {
+        this.repeatEveryNWeeks = repeatEveryNWeeks;
+    }
+
     public String toCompactString() {
         if (cost == null) {
             cost = Cost.CHEAP;
@@ -190,16 +198,16 @@ public class Constraint implements Identifier {
 
     @Override
     public String toString() {
-        return  "daysOfWeek=" + daysOfWeek +
-                ", durationMins=" + durationSeconds / 60.0 +
-                ", deadline=" + deadlineTime +
-                ", leadTimeMinutes=" + allowedSecondsBeforeDeadline / 60.0 +
-                ", effort=" + effort +
-                ", cost=" + cost +
-                ", importance=" + importance +
-                ", concentration=" + concentration +
-                ", deadlineType=" + deadlineType +
-                ", id=" + id +
+        return  "  daysOfWeek=" + daysOfWeek +
+                "\n  durationMins=" + durationSeconds / 60.0 +
+                "\n  deadline=" + deadlineTime +
+                "\n  leadTimeMinutes=" + allowedSecondsBeforeDeadline / 60.0 +
+                "\n  effort=" + effort +
+                "\n  cost=" + cost +
+                "\n  importance=" + importance +
+                "\n  concentration=" + concentration +
+                "\n  deadlineType=" + deadlineType +
+                "\n  id=" + id +
                 '}';
     }
 
