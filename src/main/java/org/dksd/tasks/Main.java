@@ -1,12 +1,7 @@
 package org.dksd.tasks;
 
 import org.dksd.tasks.model.Constraint;
-import org.dksd.tasks.model.DeadlineType;
 import org.dksd.tasks.model.Task;
-import org.dksd.tasks.pso.Domain;
-import org.dksd.tasks.pso.FitnessFunction;
-import org.dksd.tasks.pso.Particle;
-import org.dksd.tasks.pso.StandardConcurrentSwarm;
 import org.dksd.tasks.scheduling.ScheduledTask;
 
 import java.io.BufferedReader;
@@ -14,19 +9,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.time.DayOfWeek;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.temporal.TemporalAdjusters;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.TreeMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 public class Main {
 
+    private static Random rand = new Random();
     public static void updateConstraintAmount(Collection coll, String line, String prefix, BiConsumer<Constraint, Integer> updater) {
         int amount = Integer.parseInt(line.substring(prefix.length()).trim());
         Constraint c = coll.getInstance().getConstraints(coll.getCurrentTask()).getFirst();
@@ -51,18 +46,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        //Need some logs...
-        //What was the last thing we inferenced on,
-        //When did we write the files to disk.
-        //Which is the latest version?
-
-        //Mostly avoid inference as much as possible.
-        //watchFiles(coll);
-        //onFilesChange(arethereHashDifferences?)->thenPersist;
-        //beforeEachLLmInference(checkHashCache);
-        //beforeEachLLmInference(checkEmbeddingCache);
-
-        Collection coll = new Collection(new Instance("blendedAttempt"));
+        Collection coll = new Collection(new Instance("Friday"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
         List<ScheduledTask> scheduledTasks = new ArrayList<>();
@@ -71,7 +55,6 @@ public class Main {
 
         while (!"q".equals(line)) {
             try {
-                long st = System.currentTimeMillis();
                 for (Task task : coll.getInstance().getTasks()) {
                     for (Constraint constraint : coll.getInstance().getConstraints(task)) {
                         for (DayOfWeek dayOfWeek : constraint.getDaysOfWeek()) {
@@ -81,8 +64,6 @@ public class Main {
                     }
                 }
                 coll.displayTasks(coll.getInstance().getTasks());
-                long ed = System.currentTimeMillis();
-                System.out.println("ts: " + (ed - st));
                 System.out.print("Enter choice: ");
                 line = reader.readLine();
 
@@ -138,7 +119,54 @@ public class Main {
         }
         coll.getInstance().write(coll);
 
-        StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
+        TreeMap<DayOfWeek, TreeMap<LocalTime, ScheduledTask>> newTasks = new TreeMap<>();
+        for (DayOfWeek value : DayOfWeek.values()) {
+            newTasks.put(value, new TreeMap<>());
+        }
+
+        List<ScheduledTask> pool = new ArrayList<>(scheduledTasks);
+        while (!pool.isEmpty()) {
+            int randSTask = (int) (rand.nextDouble() * pool.size());
+            ScheduledTask scheduledTask = pool.get(randSTask);
+            pool.remove(scheduledTask);
+            newTasks.get(scheduledTask.getEndDay()).put(scheduledTask.getConstraint().getDeadlineTime(), scheduledTask);
+        }
+        //We could just stop here now.
+        for (Map.Entry<DayOfWeek, TreeMap<LocalTime, ScheduledTask>> entry : newTasks.entrySet()) {
+            for (ScheduledTask scheduledTask : entry.getValue().values()) {
+                System.out.println(scheduledTask);
+            }
+        }
+        // 7am to 8:15am get ready for school (block 1)
+        // 8:15am to 10:15am work   2
+        // 10:15 to 10:45 walk/break/gardening
+        // 11:00 to 12:00 work   3
+        // 12:00 to 12:15 lunch
+        // 12:15 to 2pm work     4
+        // 2:15 pm to 3:125 driving
+        // 8pm kids duty and other light non focus work 5
+        // 8pm to 11pm work focus time 6
+        // How do I define periods that are blocked out or have special rules...
+        // hmm need a method to penalize based on rules...
+        /*double error = 0;
+        for (Map.Entry<DayOfWeek, TreeMap<LocalTime, ScheduledTask>> entry : newTasks.entrySet()) {
+            LocalTime time = LocalTime.of(8, 15);
+            for (ScheduledTask scheduledTask : entry.getValue().values()) {
+                LocalTime deadline = scheduledTask.getConstraint().getDeadlineTime();
+                if (time.plusSeconds(scheduledTask.getConstraint().getDurationSeconds()).isAfter(deadline)) {
+                    error += ChronoUnit.SECONDS.between(deadline, time);
+                }
+                time = time.plusSeconds(scheduledTask.getConstraint().getDurationSeconds());
+                if (time.isAfter(LocalTime.of(14, 0)) && time.isBefore(LocalTime.of(20, 0))) {
+                    time = LocalTime.of(20, 1);
+                }
+
+            }
+        }
+        System.out.println("Error: " + error);
+        */
+
+        /*StandardConcurrentSwarm swarm = new StandardConcurrentSwarm(new FitnessFunction() {
 
             private long calcWeekMillis(LocalDate date) {
                 LocalDate beginningOfWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
@@ -229,10 +257,54 @@ public class Main {
                         .toInstant()
                         .toEpochMilli();
 
+                //group child tasks together in some form split on duration.
+                //don't schedule parent tasks
+                //45 minute windows of work?
+                //rest should be built in.
+                //kid times are non moveable. like ghost times.
+                //blocks of times can have tasks slotted into them.
+                //interval, and tasks that fit in the interval.
+                // 7am to 8:15am get ready for school (block 1)
+                // 8:15am to 10:15am work   2
+                // 10:15 to 10:45 walk/break/gardening
+                // 11:00 to 12:00 work   3
+                // 12:00 to 12:15 lunch
+                // 12:15 to 2pm work     4
+                // 2:15 pm to 3:125 driving
+                // 8pm kids duty and other light non focus work 5
+                // 8pm to 11pm work focus time 6
+                // previously we generate a target date.
+                // what about now we aim for a particular block? hmm.
+                //
+
+                Map<DayOfWeek, List<ScheduledTask>> newTasks = new HashMap<>();
+                newTasks.put(DayOfWeek.SUNDAY, new ArrayList<>());
+                newTasks.put(DayOfWeek.MONDAY, new ArrayList<>());
+                newTasks.put(DayOfWeek.TUESDAY, new ArrayList<>());
+                newTasks.put(DayOfWeek.WEDNESDAY, new ArrayList<>());
+                newTasks.put(DayOfWeek.THURSDAY, new ArrayList<>());
+                newTasks.put(DayOfWeek.FRIDAY, new ArrayList<>());
+                newTasks.put(DayOfWeek.SATURDAY, new ArrayList<>());
+
+                Random rand = new Random();
+                List<ScheduledTask> pool = new ArrayList<>(scheduledTasks);
+                while (!pool.isEmpty()) {
+                    int randSTask = (int) (rand.nextDouble() * scheduledTasks.size());
+
+                    ScheduledTask scheduledTask = scheduledTasks.get(randSTask);
+                    pool.remove(scheduledTask);
+                    newTasks.get(scheduledTask.getEndDay()).add(scheduledTask);
+                }
+                //Now we can do the fitness calc.
+
+                int numBlocks = 6;
                 double error = 0;
-                for (int i = 0; i < p.getGene().size(); i++) {
-                    double fraction = p.getGene().getValue(i);
-                    ScheduledTask scheduledTask = scheduledTasks.get(i);
+                for (int i = 0; i < p.getGene().size(); i+=2) {
+                    ScheduledTask scheduledTask = scheduledTasks.get(i / 2);
+                    double bucket = p.getGene().getValue(i / 2) * numBlocks;
+                    double prob = p.getGene().getValue(i + 1);
+                    newTasks.get(scheduledTask.getEndDay()).add(scheduledTask);
+
                     Constraint c = scheduledTask.getConstraint();
                     long targetMillis = millisStart + (long) (millisDifference * fraction);
                     LocalDateTime targetTime = Instant.ofEpochMilli(targetMillis)
@@ -248,24 +320,19 @@ public class Main {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    /*if (targetTime.isBefore(effectiveDeadline)) {
-                        error += calcError(targetTime, effectiveDeadline, 1);
-                    } else if (targetTime.isAfter(fullEndTime)) {
-                        error += calcError(fullEndTime, targetTime, 1);
-                    }*/
                 }
                 return error;
             }
 
             @Override
             public int getDimension() {
-                return scheduledTasks.size();
+                return scheduledTasks.size() * 2;
             }
 
             @Override
             public List<Domain> getDomain() {
                 List<Domain> domains = new ArrayList<>();
-                for (int i = 0; i < scheduledTasks.size(); i++) {
+                for (int i = 0; i < scheduledTasks.size() * 2; i++) {
                     domains.add(new Domain(0.0, 1.0));
                 }
                 return domains;
@@ -308,7 +375,7 @@ public class Main {
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }
+        }*/
         taskLLMProcessor.shutdownPool();
     }
 
@@ -369,7 +436,8 @@ public class Main {
                 parsedTask.taskName = trimmed.trim();
             }
             parsedTask.indent = indent;
-            parsedTask.parentTask = getParent(lines, indent, i);
+            SimpleTask parTask = getParent(tasks, indent);
+            parsedTask.parentTask = (parTask != null) ? getParent(tasks, indent).taskName : null;
             parsedTask.line = i;
             tasks.add(parsedTask);
         }
@@ -377,13 +445,13 @@ public class Main {
         return tasks;
     }
 
-    private static String getParent(List<String> lines, int indent, int i) {
-        for (int j = i - 1; j >= 0; j--) {
-            if (countLeadingSpaces(lines.get(j)) < indent) {
-                return lines.get(j);
-            }
-        }
-        return null;
+    private static SimpleTask getParent(List<SimpleTask> tasks, int currIndent) {
+        return IntStream.range(0, tasks.size())
+                .map(i -> tasks.size() - 1 - i) // Convert to reverse index
+                .mapToObj(tasks::get)
+                .filter(task -> task.indent < currIndent)
+                .findFirst()
+                .orElse(null);
     }
 
     // Utility method to count leading spaces in a string.

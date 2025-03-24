@@ -1,0 +1,164 @@
+2025-03-21 09:01:31 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=6c404bbb-efe4-444f-8d92-66a404f66fa9, name='Email Statefram for insurance information', description='Compose and send an email to Statefram Insurance to request necessary information for policy update.', createdTime=1742572259, lastModifiedTime=1742572259}
+2025-03-21 09:01:53 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=2e829c75-b689-45c5-9c14-2631cd3568e8, name='Shopping', description='Complete grocery shopping for the week including essentials, pantry restocks, and fresh produce.', createdTime=1742572278, lastModifiedTime=1742572278}
+2025-03-21 09:02:08 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 09:02:44 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=6c404bbb-efe4-444f-8d92-66a404f66fa9, name='Email Statefram for insurance information', description='Compose and send an email to Statefram Insurance to request necessary information for policy update.', createdTime=1742572259, lastModifiedTime=1742572259}
+2025-03-21 09:02:47 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=2e829c75-b689-45c5-9c14-2631cd3568e8, name='Shopping', description='Complete grocery shopping for the week including essentials, pantry restocks, and fresh produce.', createdTime=1742572278, lastModifiedTime=1742572278}
+2025-03-21 09:03:24 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 09:03:31 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=6c404bbb-efe4-444f-8d92-66a404f66fa9, name='Email Statefram for insurance information', description='Compose and send an email to Statefram Insurance to request necessary information for policy update.', createdTime=1742572259, lastModifiedTime=1742572259}
+2025-03-21 09:03:34 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=2e829c75-b689-45c5-9c14-2631cd3568e8, name='Shopping', description='Complete grocery shopping for the week including essentials, pantry restocks, and fresh produce.', createdTime=1742572278, lastModifiedTime=1742572278}
+2025-03-21 09:04:16 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=822348a1-b772-4297-8541-75c7ac72709b, name='Gallons of water', description='Track and ensure adequate daily water consumption by measuring and recording the number of gallons consumed.', createdTime=1742572299, lastModifiedTime=1742572299}
+2025-03-21 09:04:51 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=862997ba-edbc-43e4-91ed-71b3f3b0a171, name='Dog Food order', description='Order dog food for the upcoming month to ensure continuous supply.', createdTime=1742572341, lastModifiedTime=1742572341}
+2025-03-21 09:05:21 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=b2a095e1-2a8d-4ce8-ab06-64f2aa4ac675, name='Tea Adjust shoping schedule', description='Adjust the shopping schedule to include tea and ensure availability of preferred brands.', createdTime=1742572360, lastModifiedTime=1742572360}
+2025-03-21 09:14:51 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 12:03:31 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Email Statefarm for insurance information, takes 2-5 mins max
+2025-03-21 12:03:54 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Get email address
+2025-03-21 12:04:10 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Send email
+2025-03-21 12:56:56 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 12:58:22 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 12:59:13 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 12:59:43 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 13:00:36 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=6c404bbb-efe4-444f-8d92-66a404f66fa9, name='Email Statefram for insurance information', description='Compose and send an email to Statefram Insurance to request necessary information for policy update.', createdTime=1742572259, lastModifiedTime=1742572259}
+2025-03-21 13:00:43 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=2e829c75-b689-45c5-9c14-2631cd3568e8, name='Shopping', description='Complete grocery shopping for the week including essentials, pantry restocks, and fresh produce.', createdTime=1742572278, lastModifiedTime=1742572278}
+2025-03-21 13:00:45 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=822348a1-b772-4297-8541-75c7ac72709b, name='Gallons of water', description='Track and ensure adequate daily water consumption by measuring and recording the number of gallons consumed.', createdTime=1742572299, lastModifiedTime=1742572299}
+2025-03-21 13:00:52 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=862997ba-edbc-43e4-91ed-71b3f3b0a171, name='Dog Food order', description='Order dog food for the upcoming month to ensure continuous supply.', createdTime=1742572341, lastModifiedTime=1742572341}
+2025-03-21 13:00:55 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=b2a095e1-2a8d-4ce8-ab06-64f2aa4ac675, name='Tea Adjust shoping schedule', description='Adjust the shopping schedule to include tea and ensure availability of preferred brands.', createdTime=1742572360, lastModifiedTime=1742572360}
+2025-03-21 13:00:57 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=aba7d4fd-1572-4fd0-bc8c-e3f8dac536db, name='Compost bags', description='null', createdTime=1742572360, lastModifiedTime=1742572360}
+2025-03-21 13:00:59 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=e254055f-52ca-4754-b993-5f2992bec74c, name='Pineapple canned', description='null', createdTime=1742572365, lastModifiedTime=1742572365}
+2025-03-21 13:01:01 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 13:06:51 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 13:07:36 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:48)
+2025-03-21 13:07:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Friday 21 March TODO
+2025-03-21 13:08:15 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Shopping
+2025-03-21 13:08:20 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Gallons of water
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Dog Food order
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Tea Adjust shoping schedule
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Compost bags
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pineapple canned
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Corn for pizza
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pink lemonade
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Spag + Panzenela
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Baking topping for waffles
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Fizzy waters
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: creamer
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Ranch dressing
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Cut own hair
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Sweep patio
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Wash bike
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Put sheets away in Ani room
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: USD module 1 continue
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: EAI
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Android App for EAI
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Website for EAI
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Document Coolio and upgrade
+2025-03-21 13:08:36 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Login to Hetzner and document
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Gallons of water
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Dog Food order
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Tea Adjust shoping schedule
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Compost bags
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pineapple canned
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Corn for pizza
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pink lemonade
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Spag + Panzenela
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Baking topping for waffles
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Fizzy waters
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: creamer
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Ranch dressing
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Cut own hair
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Sweep patio
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Wash bike
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Put sheets away in Ani room
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: USD module 1 continue
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: EAI
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Android App for EAI
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Website for EAI
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Document Coolio and upgrade
+2025-03-21 13:08:39 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Login to Hetzner and document
+2025-03-21 13:09:30 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 13:11:01 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-21 13:12:10 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-21 13:12:16 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 07:54:40 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 07:59:17 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:00:19 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:00:51 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:01:24 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:01:34 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-24 08:01:40 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=c897b3d0-1e90-4f94-8b13-0426a1d901e2, name='Gallons of water', description='null', createdTime=1742587719, lastModifiedTime=1742587719}
+2025-03-24 08:01:47 [main] INFO  org.dksd.tasks.Collection - Setting prev task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-24 08:02:44 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:03:17 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=a6bbfddd-7c76-4ea1-8813-04cc422656a9, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742587695, lastModifiedTime=1742587695}
+2025-03-24 08:08:59 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:48)
+2025-03-24 08:10:13 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:48)
+2025-03-24 08:10:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Friday 21 March TODO
+2025-03-24 08:11:25 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Shopping
+2025-03-24 08:21:30 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:22:26 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-24 08:23:35 [main] ERROR org.dksd.tasks.Instance - Could not load tasks, links or constraints
+java.io.FileNotFoundException: data/Friday/tasks.json (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at com.fasterxml.jackson.core.TokenStreamFactory._fileInputStream(TokenStreamFactory.java:318)
+	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:1219)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3745)
+	at org.dksd.tasks.Instance.loadTasks(Instance.java:87)
+	at org.dksd.tasks.Instance.<init>(Instance.java:49)
+	at org.dksd.tasks.Main.main(Main.java:49)
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Friday 21 March TODO
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Shopping
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Gallons of water
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Dog Food order
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Tea Adjust shoping schedule
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Compost bags
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pineapple canned
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Corn for pizza
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Pink lemonade
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Spag + Panzenela
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Baking topping for waffles
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Fizzy waters
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: creamer
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Ranch dressing
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Cut own hair
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Sweep patio
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Wash bike
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Put sheets away in Ani room
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: USD module 1 continue
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: EAI
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Android App for EAI
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Website for EAI
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Document Coolio and upgrade
+2025-03-24 08:23:35 [pool-1-thread-1] INFO  org.dksd.tasks.TaskLLMProcessor - Created task: Login to Hetzner and document
+2025-03-24 08:23:43 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=d5765c22-c9d8-4662-992a-c100e4eeb57c, name='Shopping', description='Purchase groceries and essential items for the week.', createdTime=1742829815, lastModifiedTime=1742829815}
+2025-03-24 08:23:49 [main] INFO  org.dksd.tasks.Collection - Setting next task to :Task{id=2e799b25-f828-40fe-80c6-4369a7cdf465, name='Gallons of water', description='null', createdTime=1742829815, lastModifiedTime=1742829815}
+2025-03-24 08:23:58 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll

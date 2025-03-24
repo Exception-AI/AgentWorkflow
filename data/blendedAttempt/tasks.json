@@ -1,235 +1,637 @@
 [ {
-  "id" : "4c7b2cec-fdf0-4ab1-af8b-f3f2ad79d6b9",
+  "id" : "44ffd496-da15-48ee-a4d5-44d18a9260a5",
   "name" : "EAI",
-  "description" : null,
+  "description" : "Implementation and integration of Enterprise Application Integration modules to ensure seamless data flow between systems.",
   "metadata" : {
-    "schedule" : null,
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : null,
-    "proposedSubTasks" : null,
-    "taskId" : "4c7b2cec-fdf0-4ab1-af8b-f3f2ad79d6b9"
+    "proposedName" : "EAI",
+    "proposedSubTasks" : [ "API_Implementation", "Data_Mapping", "System_Tests" ],
+    "taskId" : "44ffd496-da15-48ee-a4d5-44d18a9260a5"
   },
-  "createdTime" : 1742497352,
-  "lastModifiedTime" : 1742497352
+  "createdTime" : 1742502362,
+  "lastModifiedTime" : 1742502362
 }, {
-  "id" : "23bf9115-26b6-4b59-aa3b-cedf93242cad",
+  "id" : "6d1aca09-c84c-4f66-9131-d1777b5a882e",
   "name" : "File Tax return for EAI",
-  "description" : "Submit Electronic Annual Information (EAI) tax return files to the tax authorities by the deadline.",
+  "description" : "Prepare and file tax return documents for EAI ensuring all forms are accurate and submitted before the deadline.",
   "metadata" : {
-    "schedule" : "0 0 23 * * ?",
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "EAI File Tax Return",
-    "proposedSubTasks" : [ "Verify EAI Data Accuracy", "Generate Tax Return Documents", "Upload EAI Files to Portal", "Confirm Submission Receipt" ],
-    "taskId" : "23bf9115-26b6-4b59-aa3b-cedf93242cad"
+    "proposedName" : "FileTaxReturn",
+    "proposedSubTasks" : [ "GatherFinancialDocuments", "VerifyTaxCalculations", "SubmitElectronicFiling" ],
+    "taskId" : "6d1aca09-c84c-4f66-9131-d1777b5a882e"
   },
-  "createdTime" : 1742497378,
-  "lastModifiedTime" : 1742497378
+  "createdTime" : 1742502390,
+  "lastModifiedTime" : 1742502390
 }, {
-  "id" : "b63112b9-bdac-4b0e-9918-61b2c7d90b05",
+  "id" : "829ad50e-4b10-4b9d-8f61-1557615f6901",
   "name" : "Plan how to get EAI Agents live",
+  "description" : "Develop a comprehensive plan to deploy EAI Agents into live environments, including risk assessment, deployment strategy, and contingency measures.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "PlanEAILive",
+    "proposedSubTasks" : [ "Risk Assessment", "Deployment Strategy Draft", "Contingency Planning" ],
+    "taskId" : "829ad50e-4b10-4b9d-8f61-1557615f6901"
+  },
+  "createdTime" : 1742502411,
+  "lastModifiedTime" : 1742502411
+}, {
+  "id" : "1a32059b-6841-49f9-9c71-ee9c6707e17d",
+  "name" : "Website",
+  "description" : "Develop and maintain website content and functionality.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "WebDev",
+    "proposedSubTasks" : [ "Content Updates", "UI/UX Improvements", "Bug Fixes" ],
+    "taskId" : "1a32059b-6841-49f9-9c71-ee9c6707e17d"
+  },
+  "createdTime" : 1742502431,
+  "lastModifiedTime" : 1742502431
+}, {
+  "id" : "f2b78958-a1e0-4651-9925-0e49d5a7c2d2",
+  "name" : "Decide on stack",
+  "description" : "Evaluate and select the appropriate technology stack for the project, considering factors like scalability, maintainability, and team expertise.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "DecideStack",
+    "proposedSubTasks" : [ ],
+    "taskId" : "f2b78958-a1e0-4651-9925-0e49d5a7c2d2"
+  },
+  "createdTime" : 1742502450,
+  "lastModifiedTime" : 1742502450
+}, {
+  "id" : "06bcd2b4-a1ba-415a-9ba3-9b1ccb5a9497",
+  "name" : "Stripe integration",
+  "description" : "Implement and test Stripe payment gateway integration into the e-commerce platform, ensuring secure transactions and proper API configuration.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "StripeIntegration",
+    "proposedSubTasks" : [ "API Configuration", "Payment Gateway Setup", "Security Compliance Check", "End-to-End Testing" ],
+    "taskId" : "06bcd2b4-a1ba-415a-9ba3-9b1ccb5a9497"
+  },
+  "createdTime" : 1742502471,
+  "lastModifiedTime" : 1742502471
+}, {
+  "id" : "44e8e94c-442d-4866-ad21-64fb0c2f4ee1",
+  "name" : "FE ability to upload lists",
+  "description" : "Develop the front-end functionality allowing users to upload lists via the application interface.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "FEUploadLists",
+    "proposedSubTasks" : [ "Implement file selection UI", "Add list format validation", "Integrate upload API call" ],
+    "taskId" : "44e8e94c-442d-4866-ad21-64fb0c2f4ee1"
+  },
+  "createdTime" : 1742502491,
+  "lastModifiedTime" : 1742502491
+}, {
+  "id" : "328effd3-bfe0-48cb-9f5d-abfe5e98a31d",
+  "name" : "CRUD operations on tasks",
+  "description" : "Implement CRUD (Create, Read, Update, Delete) operations for task management system",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CRUD-OPS",
+    "proposedSubTasks" : [ "Create Task Endpoint", "Read Task Endpoint", "Update Task Endpoint", "Delete Task Endpoint" ],
+    "taskId" : "328effd3-bfe0-48cb-9f5d-abfe5e98a31d"
+  },
+  "createdTime" : 1742502512,
+  "lastModifiedTime" : 1742502512
+}, {
+  "id" : "cf169650-82a0-4d32-8746-c6edcbd9dc9e",
+  "name" : "CRUD operations on links",
+  "description" : "Implement Create, Read, Update, and Delete operations for link entities within the system. Ensure proper validation and error handling for each operation.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CRUD_Links",
+    "proposedSubTasks" : [ "Create Link", "Read Link", "Update Link", "Delete Link" ],
+    "taskId" : "cf169650-82a0-4d32-8746-c6edcbd9dc9e"
+  },
+  "createdTime" : 1742502533,
+  "lastModifiedTime" : 1742502533
+}, {
+  "id" : "03ef3acc-3aad-4ad1-bf4c-afacf1912d4b",
+  "name" : "CRUD operations on constraints",
+  "description" : "Implement CRUD operations for task constraints including create, read, update, and delete functionalities within the scheduling system.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CRUD-Constraints",
+    "proposedSubTasks" : [ "CreateConstraint", "ReadConstraint", "UpdateConstraint", "DeleteConstraint" ],
+    "taskId" : "03ef3acc-3aad-4ad1-bf4c-afacf1912d4b"
+  },
+  "createdTime" : 1742502554,
+  "lastModifiedTime" : 1742502554
+}, {
+  "id" : "44828cd7-a7aa-497c-9df5-7eeab8e20775",
+  "name" : "Combine Instances into collections",
   "description" : null,
   "metadata" : {
-    "schedule" : null,
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "b63112b9-bdac-4b0e-9918-61b2c7d90b05"
+    "taskId" : "44828cd7-a7aa-497c-9df5-7eeab8e20775"
   },
-  "createdTime" : 1742497383,
-  "lastModifiedTime" : 1742497383
+  "createdTime" : 1742502559,
+  "lastModifiedTime" : 1742502559
 }, {
-  "id" : "ca53452a-3610-45be-bc8e-4c942349ea6b",
-  "name" : "Website",
-  "description" : "Update the website with new content and ensure all links are functional.",
-  "metadata" : {
-    "schedule" : "0 0 9 * * 1-5",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Daily Website Update",
-    "proposedSubTasks" : [ "Content Creation", "Link Verification", "Backup Website" ],
-    "taskId" : "ca53452a-3610-45be-bc8e-4c942349ea6b"
-  },
-  "createdTime" : 1742497406,
-  "lastModifiedTime" : 1742497406
-}, {
-  "id" : "325bc761-cd62-4d7a-982e-b8f80c13016a",
-  "name" : "Decide on stack",
-  "description" : "Evaluate and choose the most suitable technology stack for the new project based on project requirements and team expertise.",
-  "metadata" : {
-    "schedule" : "0 0 9 * * 1-5",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "DecideOnStack",
-    "proposedSubTasks" : [ "ResearchAvailableTechnologies", "AssessTeamExpertise", "EvaluateAlternatives", "FinalizeStack" ],
-    "taskId" : "325bc761-cd62-4d7a-982e-b8f80c13016a"
-  },
-  "createdTime" : 1742497431,
-  "lastModifiedTime" : 1742497431
-}, {
-  "id" : "6c5f565a-b1ef-4808-b4fc-05b39cc03e6a",
-  "name" : "Stripe integration",
-  "description" : "Handle recurring subscription payments via Stripe, ensuring timely processing and handling any failures or disputes.",
-  "metadata" : {
-    "schedule" : "0 0 2 * * ? *",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Process Stripe Payments",
-    "proposedSubTasks" : [ "Validate Payment Sources", "Charge Customers", "Handle Failed Payments", "Resolve Disputes" ],
-    "taskId" : "6c5f565a-b1ef-4808-b4fc-05b39cc03e6a"
-  },
-  "createdTime" : 1742497456,
-  "lastModifiedTime" : 1742497456
-}, {
-  "id" : "42156020-dff6-4350-8e82-af2ff0515796",
-  "name" : "FE ability to upload lists",
-  "description" : "Develop and integrate the functionality allowing users to upload lists via the front-end interface, ensuring data validation and proper handling.",
-  "metadata" : {
-    "schedule" : "0 0 9-17 * * 1-5",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Implement List Upload Feature",
-    "proposedSubTasks" : [ "Design UI for list upload", "Implement backend API endpoints", "Validate uploaded data", "Handle errors and edge cases", "Integrate with existing system" ],
-    "taskId" : "42156020-dff6-4350-8e82-af2ff0515796"
-  },
-  "createdTime" : 1742497483,
-  "lastModifiedTime" : 1742497483
-}, {
-  "id" : "5f56e42c-3af2-49ce-a67c-a31e4aaadcb3",
-  "name" : "CRUD operations on tasks",
-  "description" : "Implementing constraints for CRUD operations on tasks, ensuring data integrity and operational limits.",
-  "metadata" : {
-    "schedule" : "0 0 * * *",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "CRUDConstraints",
-    "proposedSubTasks" : [ "ValidateInputData", "EnforcePermissions", "AuditLogs", "RateLimiting" ],
-    "taskId" : "5f56e42c-3af2-49ce-a67c-a31e4aaadcb3"
-  },
-  "createdTime" : 1742497506,
-  "lastModifiedTime" : 1742497506
-}, {
-  "id" : "303fadad-c195-4d77-aade-be116fc7d96b",
-  "name" : "CRUD operations on links",
-  "description" : "Implement constraints for CRUD operations on links to ensure data integrity and security.",
-  "metadata" : {
-    "schedule" : "0 0 9-17 * * 1-5",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Manage CRUD Constraints",
-    "proposedSubTasks" : [ "Validate Input Data", "Implement Authorization Checks", "Audit Logs for CRUD Operations" ],
-    "taskId" : "303fadad-c195-4d77-aade-be116fc7d96b"
-  },
-  "createdTime" : 1742497531,
-  "lastModifiedTime" : 1742497531
-}, {
-  "id" : "dff06c26-eb04-48e2-be62-111237b98314",
-  "name" : "CRUD operations on constraints",
-  "description" : "Analyze and return the constraints inherent in CRUD (Create, Read, Update, Delete) operations, explaining their necessity and implications in system design.",
-  "metadata" : {
-    "schedule" : "0 0 9 * * 1-5",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Constraint from CRUD Operations",
-    "proposedSubTasks" : [ "Identify Constraints in Create Operations", "Analyze Read Operation Limitations", "Evaluate Update Operation Constraints", "Assess Delete Operation Restrictions", "Synthesize Overall System Implications" ],
-    "taskId" : "dff06c26-eb04-48e2-be62-111237b98314"
-  },
-  "createdTime" : 1742497561,
-  "lastModifiedTime" : 1742497561
-}, {
-  "id" : "99f23756-7fda-4230-9111-54787d8a747b",
-  "name" : "Combine Instances into collections",
-  "description" : "Group related instances into collections for better management and efficiency.",
-  "metadata" : {
-    "schedule" : "0 0 9 * * 1-5",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Combine Instances into Collections",
-    "proposedSubTasks" : [ "Identify Related Instances", "Create Collection Structure", "Migrate Instances into Collections", "Verify Collection Integrity" ],
-    "taskId" : "99f23756-7fda-4230-9111-54787d8a747b"
-  },
-  "createdTime" : 1742497595,
-  "lastModifiedTime" : 1742497595
-}, {
-  "id" : "64f5b90c-bd15-4414-9bc0-5f4010bf31f6",
+  "id" : "b07b10e8-72b1-4fb6-85f4-3a6be230c001",
   "name" : "Templates",
-  "description" : "Compile daily sales reports and send them to the management team.",
+  "description" : "Design and develop reusable templates for common tasks to streamline future processes.",
   "metadata" : {
-    "schedule" : "0 30 15 * * MON-FRI",
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Daily Report Compilation",
-    "proposedSubTasks" : [ "Gather Sales Data", "Analyze Key Metrics", "Prepare Summary", "Send Report Email" ],
-    "taskId" : "64f5b90c-bd15-4414-9bc0-5f4010bf31f6"
+    "proposedName" : "Create_Templates",
+    "proposedSubTasks" : [ "Template_Framework", "Content_Standardization", "Review_Library" ],
+    "taskId" : "b07b10e8-72b1-4fb6-85f4-3a6be230c001"
   },
-  "createdTime" : 1742497619,
-  "lastModifiedTime" : 1742497619
+  "createdTime" : 1742502579,
+  "lastModifiedTime" : 1742502579
 }, {
-  "id" : "7a4f9349-4dea-4fda-b1f5-a9dd8273da74",
+  "id" : "9c9f6296-448c-4261-97ae-607ad173a157",
   "name" : "User account",
   "description" : null,
   "metadata" : {
-    "schedule" : null,
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "7a4f9349-4dea-4fda-b1f5-a9dd8273da74"
+    "taskId" : "9c9f6296-448c-4261-97ae-607ad173a157"
   },
-  "createdTime" : 1742497625,
-  "lastModifiedTime" : 1742497625
+  "createdTime" : 1742502587,
+  "lastModifiedTime" : 1742502587
 }, {
-  "id" : "e79f77b5-8495-406a-93af-1f19c84da327",
+  "id" : "fc39dcaf-695b-4a97-b937-9eb84093251c",
   "name" : "Tracking usage and cost",
-  "description" : "Monitor and analyze resource usage and associated costs to ensure efficient spending and prevent overages.",
-  "metadata" : {
-    "schedule" : "0 0 * * *",
-    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Track Usage & Cost",
-    "proposedSubTasks" : [ "Daily Cost Report", "Analyze Spending Trends", "Identify Cost Overruns", "Optimize Resource Usage" ],
-    "taskId" : "e79f77b5-8495-406a-93af-1f19c84da327"
-  },
-  "createdTime" : 1742497649,
-  "lastModifiedTime" : 1742497649
-}, {
-  "id" : "728620db-223f-43ae-97ce-c838e9b68ce8",
-  "name" : "Limiting free tier",
   "description" : null,
   "metadata" : {
-    "schedule" : null,
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
     "proposedName" : null,
     "proposedSubTasks" : null,
-    "taskId" : "728620db-223f-43ae-97ce-c838e9b68ce8"
+    "taskId" : "fc39dcaf-695b-4a97-b937-9eb84093251c"
   },
-  "createdTime" : 1742497655,
-  "lastModifiedTime" : 1742497655
+  "createdTime" : 1742502593,
+  "lastModifiedTime" : 1742502593
 }, {
-  "id" : "741ec22b-6295-42e2-b33a-5d0dddbf1601",
+  "id" : "972a602f-269c-4d95-84e4-abf75bf21cca",
+  "name" : "Limiting free tier",
+  "description" : "Review and adjust usage of free tier services to avoid overages and ensure cost efficiency.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "LimitFreeTier",
+    "proposedSubTasks" : [ "Analyze Free Tier Usage", "Identify Overages", "Adjust Service Settings" ],
+    "taskId" : "972a602f-269c-4d95-84e4-abf75bf21cca"
+  },
+  "createdTime" : 1742502613,
+  "lastModifiedTime" : 1742502613
+}, {
+  "id" : "6252c4c1-c39f-4265-a3df-1813e1fc6c8c",
   "name" : "Backend work to support FE calls",
-  "description" : "Develop and maintain backend endpoints to handle frontend requests efficiently, ensuring smooth communication and data transfer between frontend and backend systems. This includes debugging and optimizing API responses for performance and reliability.",
+  "description" : "Develop and implement backend functionality to support frontend API calls, ensuring efficient data handling and integration.",
   "metadata" : {
-    "schedule" : "0 0/15 * * * ?",
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Support FE Calls",
-    "proposedSubTasks" : [ "API Endpoint Development", "Performance Optimization", "Debugging and Error Handling", "Documentation Update" ],
-    "taskId" : "741ec22b-6295-42e2-b33a-5d0dddbf1601"
+    "proposedName" : "Backend-Work",
+    "proposedSubTasks" : [ "API Endpoint Creation", "Data Validation Logic", "Database Integration", "Error Handling Implementation" ],
+    "taskId" : "6252c4c1-c39f-4265-a3df-1813e1fc6c8c"
   },
-  "createdTime" : 1742497681,
-  "lastModifiedTime" : 1742497681
+  "createdTime" : 1742502634,
+  "lastModifiedTime" : 1742502634
 }, {
-  "id" : "1bb125ca-3ed8-4ba5-aa4c-1f6421ed2055",
+  "id" : "8adfbe99-b84c-45e8-a37d-26d505b8eca3",
   "name" : "Kafka",
-  "description" : "Ensure data ingestion into Kafka topics with high throughput and low latency.",
+  "description" : "Configure and deploy Kafka cluster for real-time data processing",
   "metadata" : {
-    "schedule" : "0 0/15 * * * ?",
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "KafkaDataIngestion",
-    "proposedSubTasks" : [ "Topic Configuration Check", "Producer Monitoring", "Consumer Lag Analysis", "Network Bandwidth Check" ],
-    "taskId" : "1bb125ca-3ed8-4ba5-aa4c-1f6421ed2055"
+    "proposedName" : "KafkaSetup",
+    "proposedSubTasks" : [ "Install Kafka", "Configure Topics", "Set Up Producers/Consumers", "Test Connectivity" ],
+    "taskId" : "8adfbe99-b84c-45e8-a37d-26d505b8eca3"
   },
-  "createdTime" : 1742497707,
-  "lastModifiedTime" : 1742497707
+  "createdTime" : 1742502654,
+  "lastModifiedTime" : 1742502654
 }, {
-  "id" : "b31b5134-4feb-47e3-b862-40c9f1d4dae3",
+  "id" : "f667bcae-63d2-48b8-ae02-2a2128fc2711",
   "name" : "REST?",
-  "description" : "Retrieve and return the constraints defined in the REST API for a specific task, ensuring compliance with system requirements.",
+  "description" : "Ensure adequate rest periods to maintain productivity and well-being throughout the day.",
   "metadata" : {
-    "schedule" : "0 0 9 * * 1-5",
     "fileName" : "data/blendedAttempt/blendedAttempt.todo",
-    "proposedName" : "Return the constraint from REST",
-    "proposedSubTasks" : [ "Access REST API endpoint", "Parse constraint data", "Validate constraint parameters", "Return constraint results" ],
-    "taskId" : "b31b5134-4feb-47e3-b862-40c9f1d4dae3"
+    "proposedName" : "DailyRest",
+    "proposedSubTasks" : [ "MorningBreak", "LunchBreak", "AfternoonBreak" ],
+    "taskId" : "f667bcae-63d2-48b8-ae02-2a2128fc2711"
   },
-  "createdTime" : 1742497745,
-  "lastModifiedTime" : 1742497745
+  "createdTime" : 1742502675,
+  "lastModifiedTime" : 1742502675
+}, {
+  "id" : "3f012ce1-9707-4f49-b506-8794aa4d0df5",
+  "name" : "GrpC?",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "3f012ce1-9707-4f49-b506-8794aa4d0df5"
+  },
+  "createdTime" : 1742502683,
+  "lastModifiedTime" : 1742502683
+}, {
+  "id" : "e8780986-938a-4404-941f-38b205ca69e3",
+  "name" : "Database",
+  "description" : "Optimize database performance by indexing, query optimization, and schema adjustments.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "DatabaseOptimization",
+    "proposedSubTasks" : [ "IndexAnalysis", "QueryTuning", "SchemaReview" ],
+    "taskId" : "e8780986-938a-4404-941f-38b205ca69e3"
+  },
+  "createdTime" : 1742502701,
+  "lastModifiedTime" : 1742502701
+}, {
+  "id" : "03da7d76-9551-4930-9a2f-5951c9574ad0",
+  "name" : "Hosting via Hostinger",
+  "description" : "Configure and deploy website hosting via Hostinger, including domain setup, security configurations, and initial server optimizations.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "HostingerHostingSetup",
+    "proposedSubTasks" : [ "DomainRegistration", "ServerConfiguration", "SecuritySetup", "PerformanceTuning" ],
+    "taskId" : "03da7d76-9551-4930-9a2f-5951c9574ad0"
+  },
+  "createdTime" : 1742502722,
+  "lastModifiedTime" : 1742502722
+}, {
+  "id" : "72a92240-e943-49e0-9a71-28702aef7d4c",
+  "name" : "Garden",
+  "description" : "Maintain garden by weeding, watering plants, and trimming hedges.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Garden",
+    "proposedSubTasks" : [ "Weeding", "Watering", "Trimming Hedges" ],
+    "taskId" : "72a92240-e943-49e0-9a71-28702aef7d4c"
+  },
+  "createdTime" : 1742502741,
+  "lastModifiedTime" : 1742502741
+}, {
+  "id" : "61271989-c8f8-47c0-9ae9-b9eeb9ecb9d5",
+  "name" : "Pick up sticks and put in compost",
+  "description" : "Collect loose sticks from the yard and place them into the compost bin.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CompostSticks",
+    "proposedSubTasks" : [ "Gather sticks", "Transport to compost bin", "Arrange sticks in bin" ],
+    "taskId" : "61271989-c8f8-47c0-9ae9-b9eeb9ecb9d5"
+  },
+  "createdTime" : 1742502761,
+  "lastModifiedTime" : 1742502761
+}, {
+  "id" : "59069320-f7bf-4e94-8d19-c0eda21bad50",
+  "name" : "Sweep Patio",
+  "description" : "Sweep the patio to remove leaves, debris, and ensure cleanliness for upcoming outdoor events.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "SweepPatio",
+    "proposedSubTasks" : [ ],
+    "taskId" : "59069320-f7bf-4e94-8d19-c0eda21bad50"
+  },
+  "createdTime" : 1742502779,
+  "lastModifiedTime" : 1742502779
+}, {
+  "id" : "082d60a5-ab03-4290-9419-9636f6352405",
+  "name" : "Weed Garden Bed",
+  "description" : "Remove weeds from the garden beds to maintain soil health and plant growth.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "WeedGardenBed",
+    "proposedSubTasks" : [ "Remove Weeds", "Dispose of Weeds", "Inspect Garden Bed" ],
+    "taskId" : "082d60a5-ab03-4290-9419-9636f6352405"
+  },
+  "createdTime" : 1742502798,
+  "lastModifiedTime" : 1742502798
+}, {
+  "id" : "35d62704-76a7-4cfa-9fca-06e151effcac",
+  "name" : "Cut grass, once a year lasting multiple days in March.",
+  "description" : "Cut the lawn thoroughly for the annual maintenance, typically requiring multiple days in March.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "AnnualGrassCutting",
+    "proposedSubTasks" : [ "Edge the grass", "Mow the lawn", "Collect clippings" ],
+    "taskId" : "35d62704-76a7-4cfa-9fca-06e151effcac"
+  },
+  "createdTime" : 1742502819,
+  "lastModifiedTime" : 1742502819
+}, {
+  "id" : "15208a5c-10ed-46e0-bf61-b3d13f62e6c8",
+  "name" : "Shed",
+  "description" : "Install the shed in the backyard, ensuring proper alignment and stability.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "ShedInstallation",
+    "proposedSubTasks" : [ "AssembleShedBase", "AttachWalls", "InstallRoof", "SecureDoors" ],
+    "taskId" : "15208a5c-10ed-46e0-bf61-b3d13f62e6c8"
+  },
+  "createdTime" : 1742502838,
+  "lastModifiedTime" : 1742502838
+}, {
+  "id" : "2795fad6-9a5e-4316-a0d7-224eef347e03",
+  "name" : "Clean floor",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "2795fad6-9a5e-4316-a0d7-224eef347e03"
+  },
+  "createdTime" : 1742502844,
+  "lastModifiedTime" : 1742502844
+}, {
+  "id" : "f0c56287-0468-42e5-8f63-a979255446c9",
+  "name" : "Repack tool box",
+  "description" : "Organize and repack all tools into the designated tool box ensuring each tool is accounted for and securely stored.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "RepackToolBox",
+    "proposedSubTasks" : [ ],
+    "taskId" : "f0c56287-0468-42e5-8f63-a979255446c9"
+  },
+  "createdTime" : 1742502863,
+  "lastModifiedTime" : 1742502863
+}, {
+  "id" : "e889f401-18ad-4001-bc3a-e0de0b9bdd75",
+  "name" : "Hangup bike in shed",
+  "description" : "Securely hang the bicycle in the shed to ensure it is stored safely and remains in good condition.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "HangupBike",
+    "proposedSubTasks" : [ ],
+    "taskId" : "e889f401-18ad-4001-bc3a-e0de0b9bdd75"
+  },
+  "createdTime" : 1742502883,
+  "lastModifiedTime" : 1742502883
+}, {
+  "id" : "9bbde7bf-b926-4234-8ef9-3394fa9d0b5e",
+  "name" : "House",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "9bbde7bf-b926-4234-8ef9-3394fa9d0b5e"
+  },
+  "createdTime" : 1742502888,
+  "lastModifiedTime" : 1742502888
+}, {
+  "id" : "04ea3e3d-c45d-495d-93b2-0ab854bb636e",
+  "name" : "Perform night rounds",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "04ea3e3d-c45d-495d-93b2-0ab854bb636e"
+  },
+  "createdTime" : 1742502894,
+  "lastModifiedTime" : 1742502894
+}, {
+  "id" : "a7b97356-265d-4c9e-9a05-31d83a6aadc4",
+  "name" : "Check doors are locked",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "a7b97356-265d-4c9e-9a05-31d83a6aadc4"
+  },
+  "createdTime" : 1742502899,
+  "lastModifiedTime" : 1742502899
+}, {
+  "id" : "430b43d8-f43d-4c3b-93b1-918a3faa52c5",
+  "name" : "Check outside for bikes",
+  "description" : "Go outside and check if any bikes are available for pickup or need maintenance.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CheckBikes",
+    "proposedSubTasks" : [ ],
+    "taskId" : "430b43d8-f43d-4c3b-93b1-918a3faa52c5"
+  },
+  "createdTime" : 1742502918,
+  "lastModifiedTime" : 1742502918
+}, {
+  "id" : "654049d7-591b-4805-a2fe-954e7a3e8361",
+  "name" : "Check car doors",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "654049d7-591b-4805-a2fe-954e7a3e8361"
+  },
+  "createdTime" : 1742502923,
+  "lastModifiedTime" : 1742502923
+}, {
+  "id" : "42b405ed-5c1c-4b51-92ce-fe9c3037db19",
+  "name" : "Any car charging needed?",
+  "description" : "Check if the electric vehicle requires charging and initiate the process if needed.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CarChargingCheck",
+    "proposedSubTasks" : [ ],
+    "taskId" : "42b405ed-5c1c-4b51-92ce-fe9c3037db19"
+  },
+  "createdTime" : 1742502942,
+  "lastModifiedTime" : 1742502942
+}, {
+  "id" : "257934bc-5932-428d-9889-e734d522dcfb",
+  "name" : "Gate closed",
+  "description" : "Ensure the gate is securely closed and locked to prevent unauthorized access and ensure safety.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "GateClosed",
+    "proposedSubTasks" : [ ],
+    "taskId" : "257934bc-5932-428d-9889-e734d522dcfb"
+  },
+  "createdTime" : 1742502961,
+  "lastModifiedTime" : 1742502961
+}, {
+  "id" : "3f5993fd-02d5-4c38-bd5f-3232f57887f4",
+  "name" : "Cleaning",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "3f5993fd-02d5-4c38-bd5f-3232f57887f4"
+  },
+  "createdTime" : 1742502969,
+  "lastModifiedTime" : 1742502969
+}, {
+  "id" : "f5ec092d-448d-4893-be5a-3309c4b45e3a",
+  "name" : "Vacuuming",
+  "description" : "Clean floors using a vacuum cleaner, focusing on high-traffic areas and under furniture.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Vacuuming",
+    "proposedSubTasks" : [ ],
+    "taskId" : "f5ec092d-448d-4893-be5a-3309c4b45e3a"
+  },
+  "createdTime" : 1742502986,
+  "lastModifiedTime" : 1742502986
+}, {
+  "id" : "68b77544-d56f-4f1e-8779-0118db8be468",
+  "name" : "",
+  "description" : "This is the parent task for organizing the weekly schedule.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "ParentTask",
+    "proposedSubTasks" : [ "Plan Daily Objectives", "Allocate Resources", "Review Progress" ],
+    "taskId" : "68b77544-d56f-4f1e-8779-0118db8be468"
+  },
+  "createdTime" : 1742503004,
+  "lastModifiedTime" : 1742503004
+}, {
+  "id" : "e51e029a-14e5-4ac5-a113-f3d878e6307b",
+  "name" : "Replacing consumables",
+  "description" : "Replace all consumables such as printer ink, stationery, and cleaning supplies in the office.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "ReplaceConsumables",
+    "proposedSubTasks" : [ ],
+    "taskId" : "e51e029a-14e5-4ac5-a113-f3d878e6307b"
+  },
+  "createdTime" : 1742503023,
+  "lastModifiedTime" : 1742503023
+}, {
+  "id" : "7c4e1336-abae-4ec8-8848-10218e353c32",
+  "name" : "Toilet paper",
+  "description" : "Check toilet paper supply and restock if necessary to maintain household hygiene and preparedness.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "Toilet Paper Check",
+    "proposedSubTasks" : [ ],
+    "taskId" : "7c4e1336-abae-4ec8-8848-10218e353c32"
+  },
+  "createdTime" : 1742503041,
+  "lastModifiedTime" : 1742503041
+}, {
+  "id" : "a923febe-325e-496f-9e24-4d5e8d663de5",
+  "name" : "Dishwasher pods",
+  "description" : "Load dishwasher pods with dishes, ensure proper placement, and start the cycle",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "DishwasherPods",
+    "proposedSubTasks" : [ ],
+    "taskId" : "a923febe-325e-496f-9e24-4d5e8d663de5"
+  },
+  "createdTime" : 1742503061,
+  "lastModifiedTime" : 1742503061
+}, {
+  "id" : "e72d8b1f-990b-403f-915c-cc31763ea2de",
+  "name" : "Washing machine liquid",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "e72d8b1f-990b-403f-915c-cc31763ea2de"
+  },
+  "createdTime" : 1742503067,
+  "lastModifiedTime" : 1742503067
+}, {
+  "id" : "2a9b82bc-7ffd-44d9-8742-537c02520ba2",
+  "name" : "Compost bags",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "2a9b82bc-7ffd-44d9-8742-537c02520ba2"
+  },
+  "createdTime" : 1742503075,
+  "lastModifiedTime" : 1742503075
+}, {
+  "id" : "c0392998-62f4-471e-927a-db713ec01044",
+  "name" : "3 Gallon I think here",
+  "description" : "Develop and refine the concept for a 3 Gallon product, including initial design sketches and feasibility analysis.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "3GallonIdea",
+    "proposedSubTasks" : [ "ConceptBrainstorming", "FeasibilityAnalysis", "DesignSketches" ],
+    "taskId" : "c0392998-62f4-471e-927a-db713ec01044"
+  },
+  "createdTime" : 1742503096,
+  "lastModifiedTime" : 1742503096
+}, {
+  "id" : "511e171b-8541-4b5a-9072-6d129f9642e9",
+  "name" : "Trash bags",
+  "description" : "Prepare and dispose of trash bags, ensuring all waste is properly collected and taken out to the main disposal area.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "TrashBags",
+    "proposedSubTasks" : [ ],
+    "taskId" : "511e171b-8541-4b5a-9072-6d129f9642e9"
+  },
+  "createdTime" : 1742503114,
+  "lastModifiedTime" : 1742503114
+}, {
+  "id" : "99bd9f8c-c885-427b-ab4b-4ff49f1d073c",
+  "name" : "What type? Type K I think, double check",
+  "description" : "Type K task involving detailed configuration and quality checks.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "ChildTask_K",
+    "proposedSubTasks" : [ "SubTask_K1_Configuration", "SubTask_K2_QualityAssessment" ],
+    "taskId" : "99bd9f8c-c885-427b-ab4b-4ff49f1d073c"
+  },
+  "createdTime" : 1742503133,
+  "lastModifiedTime" : 1742503133
+}, {
+  "id" : "ed657848-c3bd-4fc4-98d2-a3fe5a64646f",
+  "name" : "Getting a Job",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "ed657848-c3bd-4fc4-98d2-a3fe5a64646f"
+  },
+  "createdTime" : 1742503139,
+  "lastModifiedTime" : 1742503139
+}, {
+  "id" : "613291a0-8cd5-422d-b7ea-d46e965cddc5",
+  "name" : "API Design",
+  "description" : null,
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : null,
+    "proposedSubTasks" : null,
+    "taskId" : "613291a0-8cd5-422d-b7ea-d46e965cddc5"
+  },
+  "createdTime" : 1742503147,
+  "lastModifiedTime" : 1742503147
+}, {
+  "id" : "2e856fe3-1f42-40f0-8bb5-453c71a36c34",
+  "name" : "System Design",
+  "description" : "Create a comprehensive system design document outlining architecture, components, interfaces, and deployment strategies for the new project.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "SysDesign",
+    "proposedSubTasks" : [ "Architecture Diagram", "Component Specifications", "Interface Definitions", "Deployment Plan" ],
+    "taskId" : "2e856fe3-1f42-40f0-8bb5-453c71a36c34"
+  },
+  "createdTime" : 1742503168,
+  "lastModifiedTime" : 1742503168
+}, {
+  "id" : "19de6005-ada2-4167-8921-77c42a654fbb",
+  "name" : "Coding",
+  "description" : "Implement the required features and functionality in the codebase, ensuring adherence to coding standards and best practices.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "CodeImplementation",
+    "proposedSubTasks" : [ "WriteUnitTests", "Debugging", "CodeRefactoring" ],
+    "taskId" : "19de6005-ada2-4167-8921-77c42a654fbb"
+  },
+  "createdTime" : 1742503188,
+  "lastModifiedTime" : 1742503188
+}, {
+  "id" : "c62a0e7c-a900-4ef7-80a5-0a4361086ac0",
+  "name" : "Leadership prep on tough questions",
+  "description" : "Prepare answers and strategies for addressing tough leadership questions during upcoming presentations or meetings.",
+  "metadata" : {
+    "fileName" : "data/blendedAttempt/blendedAttempt.todo",
+    "proposedName" : "LeadPrepToughQ",
+    "proposedSubTasks" : [ "Research common tough leadership questions", "Draft responses for each question", "Practice responses with a colleague" ],
+    "taskId" : "c62a0e7c-a900-4ef7-80a5-0a4361086ac0"
+  },
+  "createdTime" : 1742503207,
+  "lastModifiedTime" : 1742503207
 } ]

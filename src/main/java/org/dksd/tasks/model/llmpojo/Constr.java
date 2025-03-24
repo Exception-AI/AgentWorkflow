@@ -13,13 +13,7 @@ import java.time.LocalTime;
 import java.util.Set;
 
 public class Constr implements Serializable {
-    @Description("The schedule in cron format (e.g., \"* * * etc\")")
-    public String schedule;
-
-    @Description("A human-readable description of the schedule")
-    public String scheduleDescription;
-
-    @Description("The set of days of the week when this schedule is active")
+    @Description("The days the task should be completed on")
     public Set<DayOfWeek> daysOfWeek;
 
     @Description("Duration in seconds that the task is expected to run")

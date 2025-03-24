@@ -1,7 +1,6 @@
 package org.dksd.tasks.scheduling;
 
 import org.dksd.tasks.model.Constraint;
-import org.dksd.tasks.model.NodeTask;
 import org.dksd.tasks.model.Task;
 
 import java.time.DayOfWeek;
@@ -49,7 +48,7 @@ public class ScheduledTask {
     @Override
     public String toString() {
         return "ScheduledTask{" +
-                ", taskName='" + taskName + '\'' +
+                "  taskName='" + taskName + '\'' +
                 ", endDay=" + endDay +
                 ", constraint=" + constraint +
                 '}';

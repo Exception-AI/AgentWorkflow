@@ -1,6 +1,5 @@
 package org.dksd.tasks.model;
 
-import net.redhogs.cronparser.CronExpressionDescriptor;
 import org.dksd.tasks.Identifier;
 import org.dksd.tasks.model.llmpojo.Constr;
 import org.slf4j.Logger;
@@ -25,9 +24,8 @@ public class Constraint implements Identifier {
 
     private static final Logger logger = LoggerFactory.getLogger(Constraint.class);
     private UUID id;
-    private String schedule; // "* * * etc
-    private String scheduleDescription;
     private Set<DayOfWeek> daysOfWeek;
+    private int repeatEveryNWeeks = 1;
     private int durationSeconds;
     private LocalTime deadlineTime;
     private int allowedSecondsBeforeDeadline; //How much time needed before deadlines in seconds the task can be started
@@ -39,12 +37,10 @@ public class Constraint implements Identifier {
 
     public Constraint() {
         this.id = UUID.randomUUID();
-        setBase();
+        //setBase();
     }
 
     private void setBase() {
-        this.schedule = "30 22 * * 1"; // Every Monday at 10:30 PM
-        this.scheduleDescription = setSchedDesc(schedule);
         this.durationSeconds = 30*60;
         this.daysOfWeek = new HashSet<>();
         daysOfWeek.add(MONDAY);
@@ -69,8 +65,6 @@ public class Constraint implements Identifier {
             setBase();
             return;
         }
-        this.schedule = constr.schedule;
-        this.scheduleDescription = constr.scheduleDescription;
         this.durationSeconds = constr.durationSeconds;
         this.daysOfWeek = constr.daysOfWeek;
         this.deadlineTime = constr.deadlineTime;
@@ -82,27 +76,8 @@ public class Constraint implements Identifier {
         this.deadlineType = constr.deadlineType;
     }
 
-    private String setSchedDesc(String schedule) {
-        try {
-            return CronExpressionDescriptor.getDescription(schedule);
-        } catch (Exception e) {
-            logger.error("Could not get description from cron expression");
-            this.schedule = "30 22 * * 1";
-        }
-        return setSchedDesc(this.schedule);
-    }
-
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
-        setSchedDesc(schedule);
     }
 
     public Effort getEffort() {
@@ -156,6 +131,14 @@ public class Constraint implements Identifier {
         this.allowedSecondsBeforeDeadline = allowedSecondsBeforeDeadline;
     }
 
+    public int getRepeatEveryNWeeks() {
+        return repeatEveryNWeeks;
+    }
+
+    public void setRepeatEveryNWeeks(int repeatEveryNWeeks) {
+        this.repeatEveryNWeeks = repeatEveryNWeeks;
+    }
+
     public String toCompactString() {
         if (cost == null) {
             cost = Cost.CHEAP;
@@ -174,14 +157,6 @@ public class Constraint implements Identifier {
         }
         return importance.getValue() + ":" + effort.getValue() + ":" + cost.getValue() + ":" +
                 concentration.getValue() + ":" + deadlineType.getValue();
-    }
-
-    public String getScheduleDescription() {
-        return scheduleDescription;
-    }
-
-    public void setScheduleDescription(String scheduleDescription) {
-        this.scheduleDescription = scheduleDescription;
     }
 
     public Set<DayOfWeek> getDaysOfWeek() {
@@ -223,16 +198,16 @@ public class Constraint implements Identifier {
 
     @Override
     public String toString() {
-        return  "daysOfWeek=" + daysOfWeek +
-                ", durationMins=" + durationSeconds / 60.0 +
-                ", deadline=" + deadlineTime +
-                ", leadTimeMinutes=" + allowedSecondsBeforeDeadline / 60.0 +
-                ", effort=" + effort +
-                ", cost=" + cost +
-                ", importance=" + importance +
-                ", concentration=" + concentration +
-                ", deadlineType=" + deadlineType +
-                ", id=" + id +
+        return  "  daysOfWeek=" + daysOfWeek +
+                "\n  durationMins=" + durationSeconds / 60.0 +
+                "\n  deadline=" + deadlineTime +
+                "\n  leadTimeMinutes=" + allowedSecondsBeforeDeadline / 60.0 +
+                "\n  effort=" + effort +
+                "\n  cost=" + cost +
+                "\n  importance=" + importance +
+                "\n  concentration=" + concentration +
+                "\n  deadlineType=" + deadlineType +
+                "\n  id=" + id +
                 '}';
     }
 
@@ -250,11 +225,11 @@ public class Constraint implements Identifier {
             return false;
         }
         Constraint that = (Constraint) o;
-        return Objects.equals(id, that.id) && Objects.equals(schedule, that.schedule) && Objects.equals(scheduleDescription, that.scheduleDescription) && allowedSecondsBeforeDeadline == that.allowedSecondsBeforeDeadline && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
+        return Objects.equals(id, that.id) && allowedSecondsBeforeDeadline == that.allowedSecondsBeforeDeadline && effort == that.effort && cost == that.cost && importance == that.importance && concentration == that.concentration && deadlineType == that.deadlineType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, schedule, scheduleDescription, allowedSecondsBeforeDeadline, effort, cost, importance, concentration, deadlineType);
+        return Objects.hash(id, allowedSecondsBeforeDeadline, effort, cost, importance, concentration, deadlineType);
     }
 }

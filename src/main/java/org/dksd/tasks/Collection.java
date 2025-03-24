@@ -3,6 +3,7 @@ package org.dksd.tasks;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,17 +57,26 @@ public class Collection {
 
     public void displayTasks(List<Task> path) {
         //String greenCheck = "\u001B[32m\u2713\u001B[0m";
-        //TODO
 
-        for (Task nodeTask : path) {
-            String suffix = (nodeTask.equals(getCurrentTask())) ? "(*)" : "";
-            //if (!getInstance().isParent(nodeTask.getId())) {
-                System.out.println(getInstance().getTask(nodeTask.getId()).getName() /*+ " <- " + getInstance().getHierarchy(nodeTask) + " "*/ + suffix);
-                if (nodeTask.equals(getCurrentTask())) {
-                    System.out.println(getInstance().getConstraints(nodeTask));
+        //Do I know the current task?
+        Task task = getCurrentTask();
+        if (task == null) {
+            System.out.println("Hold tight while we create the tasks");
+            return;
+        }
+        int currIndex = path.indexOf(task);
+        //for (int i = getIndex(path, currIndex - 5); i < getIndex(path, currIndex + 5); i++) {
+            //Task task = path.get(i);
+            String suffix = (getInstance().isParent(task.getId())) ? "(P)" : "(*)";
+            //if (!getInstance().isParent(task.getId())) {
+                System.out.println(getInstance().getTask(task.getId()).getName() /*+ " <- " + getInstance().getHierarchy(nodeTask)*/ + " " + suffix);
+                if (task.equals(getCurrentTask())) {
+                    for (Constraint constraint : getInstance().getConstraints(task)) {
+                        System.out.println(constraint);
+                    }
                 }
             //}
-        }
+        //}
         /*List<String> hierarchy = new ArrayList<>();
         while (wtn.getParentId() != null) {
             wtn = getInstance().getTaskNode(wtn.getParentId());
@@ -94,6 +104,16 @@ public class Collection {
         }
         */
         System.out.flush();
+    }
+
+    private int getIndex(List<Task> path, int index) {
+        if (index >= path.size()) {
+            return path.size() - 1;
+        }
+        if (index < 0) {
+            return 0;
+        }
+        return index;
     }
 
     public String toJson(List<?> tasks) {
@@ -191,19 +211,26 @@ public class Collection {
 
     public Task setNextTask() {
         List<Task> tasks = getInstance().getTasks();
-        int indx = tasks.indexOf(curr);
+        int indx = tasks.indexOf(getCurrentTask());
         int next = (indx + 1) % tasks.size();
-        return tasks.get(next);
+        curr = tasks.get(next);
+        logger.info("Setting next task to :" + curr);
+        return curr;
     }
 
     public Task setPrevTask() {
         List<Task> tasks = getInstance().getTasks();
         int indx = tasks.indexOf(curr);
-        int next = (indx - 1) % tasks.size();
-        return tasks.get(next);
+        int prev = (indx - 1) % tasks.size();
+        curr = tasks.get(prev);
+        logger.info("Setting prev task to :" + curr);
+        return curr;
     }
 
     public Task getCurrentTask() {
+        if (curr == null && !getInstance().getTasks().isEmpty()) {
+            curr = getInstance().getTasks().getFirst();
+        }
         return curr;
     }
 }

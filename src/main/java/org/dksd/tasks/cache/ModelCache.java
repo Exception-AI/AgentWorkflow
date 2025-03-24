@@ -2,9 +2,7 @@ package org.dksd.tasks.cache;
 
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
-import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.service.AiServices;
-import org.dksd.tasks.Instance;
 import org.dksd.tasks.TaskModelExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,31 +39,30 @@ public class ModelCache {
                 .modelName("qwq")
                 .build();
 
-        String key = System.getenv("GROQ_API_KEY");
+        /*String key = System.getenv("GROQ_API_KEY");
         ChatLanguageModel groqPojoModel = OpenAiChatModel.builder()
                 .baseUrl("https://api.groq.com/openai/v1")
                 .apiKey(key)
                 .strictJsonSchema(true)
                 .modelName("llama-3.3-70b-versatile")
-                .build();
+                .build();*/
         taskModelExtractor = AiServices.create(TaskModelExtractor.class, pojoModel);
         loadCachesFromDisk();
         // Register a shutdown hook to write caches to disk when the JVM exits.
         Runtime.getRuntime().addShutdownHook(new Thread(this::writeCachesToDisk));
     }
 
-    public TaskModel extractTaskModelFrom(String taskStr) {
+    public TaskModel extractTaskModelFrom(String parent, String taskStr) {
         if (taskCache.containsKey(taskStr)) {
             logger.debug("Cache hit for task model " + taskStr);
             return taskCache.get(taskStr);
         }
         TaskModel taskModel = null;
         try {
-            taskModel = taskModelExtractor.extractTaskModelFrom(taskStr);
+            taskModel = taskModelExtractor.extractTaskModelFrom(parent, taskStr);
         } catch (Exception ep) {
             taskModel = new TaskModel();
             taskModel.shortTaskName = taskStr;
-            taskModel.cronSchedule = "30 22 * * 1";
         }
         taskCache.put(taskStr, taskModel);
         logger.debug("Cache miss for task model " + taskStr);
