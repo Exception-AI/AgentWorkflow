@@ -3,6 +3,8 @@ package org.dksd.tasks.cache;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
 import dev.langchain4j.service.AiServices;
+import org.dksd.tasks.FallbackRateLimiter;
+import org.dksd.tasks.RateLimiter;
 import org.dksd.tasks.TaskModelExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +15,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 
 import static dev.langchain4j.model.chat.request.ResponseFormat.JSON;
 
@@ -25,6 +30,8 @@ public class ModelCache {
     private ChatLanguageModel pojoModel;
     private TaskModelExtractor taskModelExtractor;
     private Map<String, TaskModel> taskCache = new HashMap<>();
+    private RateLimiter rateLimiter = new FallbackRateLimiter();
+    private List<BiFunction<String, String, TaskModel>> functions = new ArrayList<>();
 
     public ModelCache() {
         model = OllamaChatModel.builder()
@@ -47,6 +54,7 @@ public class ModelCache {
                 .modelName("llama-3.3-70b-versatile")
                 .build();*/
         taskModelExtractor = AiServices.create(TaskModelExtractor.class, pojoModel);
+        functions.add((parent, child) -> taskModelExtractor.extractTaskModelFrom(parent, child));
         loadCachesFromDisk();
         // Register a shutdown hook to write caches to disk when the JVM exits.
         Runtime.getRuntime().addShutdownHook(new Thread(this::writeCachesToDisk));
@@ -59,7 +67,7 @@ public class ModelCache {
         }
         TaskModel taskModel = null;
         try {
-            taskModel = taskModelExtractor.extractTaskModelFrom(parent, taskStr);
+            taskModel = rateLimiter.call(parent, taskStr, functions);
         } catch (Exception ep) {
             taskModel = new TaskModel();
             taskModel.shortTaskName = taskStr;
