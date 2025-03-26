@@ -1,1 +1,13 @@
-[ ]
+[ {
+  "id" : "0c208476-0748-4271-9e5a-0f1a228bc54d",
+  "daysOfWeek" : [ "SATURDAY", "WEDNESDAY", "TUESDAY", "THURSDAY", "MONDAY", "FRIDAY", "SUNDAY" ],
+  "repeatEveryNWeeks" : 1,
+  "durationSeconds" : 0,
+  "deadlineTime" : [ 10, 0 ],
+  "allowedSecondsBeforeDeadline" : 0,
+  "effort" : null,
+  "cost" : null,
+  "importance" : null,
+  "concentration" : null,
+  "deadlineType" : "ANYTIME_ON_DAY"
+} ]
