@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
@@ -45,8 +46,8 @@ public class Main {
         updater.accept(c);
     }
 
-    public static void main(String[] args) throws IOException {
-        Collection coll = new Collection(new Instance("Friday"));
+    public static void main(String[] args) throws IOException, InterruptedException {
+                Collection coll = new Collection(new Instance("Friday"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
         List<ScheduledTask> scheduledTasks = new ArrayList<>();
