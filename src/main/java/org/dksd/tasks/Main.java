@@ -1,7 +1,12 @@
 package org.dksd.tasks;
 
+import dev.langchain4j.data.document.loader.FileSystemDocumentLoader;
+import org.dksd.tasks.model.Assistant;
 import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.Instance;
+import org.dksd.tasks.model.SimpleTask;
 import org.dksd.tasks.model.Task;
+import org.dksd.tasks.processor.TaskLLMProcessor;
 import org.dksd.tasks.scheduling.ScheduledTask;
 
 import java.io.BufferedReader;
@@ -9,16 +14,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.time.DayOfWeek;
+import dev.langchain4j.data.document.Document;
+import dev.langchain4j.data.segment.TextSegment;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
+import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
+import dev.langchain4j.service.AiServices;
+import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
+import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
-import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
+
+import static dev.langchain4j.data.document.loader.FileSystemDocumentLoader.loadDocuments;
 
 public class Main {
 
@@ -46,13 +60,40 @@ public class Main {
         updater.accept(c);
     }
 
+    private static ContentRetriever createContentRetriever(List<Document> documents) {
+
+        // Here, we create an empty in-memory store for our documents and their embeddings.
+        InMemoryEmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
+
+        // Here, we are ingesting our documents into the store.
+        // Under the hood, a lot of "magic" is happening, but we can ignore it for now.
+        EmbeddingStoreIngestor.ingest(documents, embeddingStore);
+
+        // Lastly, let's create a content retriever from an embedding store.
+        return EmbeddingStoreContentRetriever.from(embeddingStore);
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException {
-                Collection coll = new Collection(new Instance("Friday"));
+        //Easy RAG
+        List<Document> documents = FileSystemDocumentLoader.loadDocuments("/Users/dylan/Documents/StaffEng");
+        InMemoryEmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
+        EmbeddingStoreIngestor.ingest(documents, embeddingStore);
+
+        //Collection coll = new Collection(getAllInstances());
+        Collection coll = new Collection(new Instance("Friday"));
         TaskLLMProcessor taskLLMProcessor = new TaskLLMProcessor(coll);
         taskLLMProcessor.processSimpleTasks(parseTasks(Files.readAllLines(coll.getInstance().getTodoFilePath())));
         List<ScheduledTask> scheduledTasks = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
+
+        Assistant assistant = AiServices.builder(Assistant.class)
+                .chatLanguageModel(taskLLMProcessor.getChatModel())
+                .chatMemory(MessageWindowChatMemory.withMaxMessages(10)) // it should remember 10 latest messages
+                .contentRetriever(createContentRetriever(documents)) // it should have access to our documents
+                .build();
+        String answer = assistant.chat("How to do Easy RAG with LangChain4j?");
+        System.out.println(answer);
 
         while (!"q".equals(line)) {
             try {

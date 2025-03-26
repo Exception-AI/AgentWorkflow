@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.dksd.tasks.model.Constraint;
+import org.dksd.tasks.model.Instance;
 import org.dksd.tasks.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

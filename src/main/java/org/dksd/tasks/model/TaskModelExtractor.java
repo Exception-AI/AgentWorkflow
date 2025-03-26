@@ -1,4 +1,4 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
 
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;

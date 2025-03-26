@@ -1,6 +1,5 @@
 package org.dksd.tasks.model;
 
-import org.dksd.tasks.Identifier;
 import org.dksd.tasks.model.llmpojo.Constr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

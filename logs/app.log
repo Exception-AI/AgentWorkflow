@@ -640,3 +640,27 @@ java.io.FileNotFoundException: data/test-instance-5d16c57b-61fc-4760-aec8-a67dbb
 	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:66)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+2025-03-26 12:14:28 [Thread-0] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-26 12:43:10 [main] INFO  o.a.t.parser.ocr.TesseractOCRParser - Tesseract is installed and is being invoked. This can add greatly to processing time.  If you do not want tesseract to be applied to your files see: https://cwiki.apache.org/confluence/display/TIKA/TikaOCR#TikaOCR-disable-ocr
+2025-03-26 12:43:16 [main] INFO  ai.djl.util.Platform - Found matching platform from: jar:file:/Users/dylan/.gradle/caches/modules-2/files-2.1/ai.djl.huggingface/tokenizers/0.31.1/4e6411914aaf8cff1400273fc5c19d21cde6477d/tokenizers-0.31.1.jar!/native/lib/tokenizers.properties
+2025-03-26 12:43:16 [main] INFO  a.d.h.tokenizers.jni.LibUtils - Extracting native/lib/osx-aarch64/cpu/libtokenizers.dylib to cache ...
+2025-03-26 12:43:18 [main] WARN  a.d.h.t.HuggingFaceTokenizer - maxLength is not explicitly specified, use modelMaxLength: 512
+2025-03-26 12:49:01 [Thread-136] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-26 12:49:13 [main] INFO  o.a.t.parser.ocr.TesseractOCRParser - Tesseract is installed and is being invoked. This can add greatly to processing time.  If you do not want tesseract to be applied to your files see: https://cwiki.apache.org/confluence/display/TIKA/TikaOCR#TikaOCR-disable-ocr
+2025-03-26 12:49:15 [main] INFO  ai.djl.util.Platform - Found matching platform from: jar:file:/Users/dylan/.gradle/caches/modules-2/files-2.1/ai.djl.huggingface/tokenizers/0.31.1/4e6411914aaf8cff1400273fc5c19d21cde6477d/tokenizers-0.31.1.jar!/native/lib/tokenizers.properties
+2025-03-26 12:49:16 [main] WARN  a.d.h.t.HuggingFaceTokenizer - maxLength is not explicitly specified, use modelMaxLength: 512
+2025-03-26 12:49:55 [Thread-136] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-26 12:49:59 [main] INFO  o.a.t.parser.ocr.TesseractOCRParser - Tesseract is installed and is being invoked. This can add greatly to processing time.  If you do not want tesseract to be applied to your files see: https://cwiki.apache.org/confluence/display/TIKA/TikaOCR#TikaOCR-disable-ocr
+2025-03-26 12:50:06 [main] INFO  ai.djl.util.Platform - Found matching platform from: jar:file:/Users/dylan/.gradle/caches/modules-2/files-2.1/ai.djl.huggingface/tokenizers/0.31.1/4e6411914aaf8cff1400273fc5c19d21cde6477d/tokenizers-0.31.1.jar!/native/lib/tokenizers.properties
+2025-03-26 12:50:07 [main] WARN  a.d.h.t.HuggingFaceTokenizer - maxLength is not explicitly specified, use modelMaxLength: 512
+2025-03-26 12:50:58 [Thread-136] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-26 12:51:57 [main] INFO  o.a.t.parser.ocr.TesseractOCRParser - Tesseract is installed and is being invoked. This can add greatly to processing time.  If you do not want tesseract to be applied to your files see: https://cwiki.apache.org/confluence/display/TIKA/TikaOCR#TikaOCR-disable-ocr
+2025-03-26 12:55:54 [main] INFO  ai.djl.util.Platform - Found matching platform from: jar:file:/Users/dylan/.gradle/caches/modules-2/files-2.1/ai.djl.huggingface/tokenizers/0.31.1/4e6411914aaf8cff1400273fc5c19d21cde6477d/tokenizers-0.31.1.jar!/native/lib/tokenizers.properties
+2025-03-26 12:55:56 [main] WARN  a.d.h.t.HuggingFaceTokenizer - maxLength is not explicitly specified, use modelMaxLength: 512
+2025-03-26 12:57:48 [main] INFO  o.a.t.parser.ocr.TesseractOCRParser - Tesseract is installed and is being invoked. This can add greatly to processing time.  If you do not want tesseract to be applied to your files see: https://cwiki.apache.org/confluence/display/TIKA/TikaOCR#TikaOCR-disable-ocr
+2025-03-26 12:57:54 [main] INFO  ai.djl.util.Platform - Found matching platform from: jar:file:/Users/dylan/.gradle/caches/modules-2/files-2.1/ai.djl.huggingface/tokenizers/0.31.1/4e6411914aaf8cff1400273fc5c19d21cde6477d/tokenizers-0.31.1.jar!/native/lib/tokenizers.properties
+2025-03-26 12:57:55 [main] WARN  a.d.h.t.HuggingFaceTokenizer - maxLength is not explicitly specified, use modelMaxLength: 512
+2025-03-26 13:10:14 [Thread-136] INFO  org.dksd.tasks.Collection - Wrote coll
+2025-03-26 13:10:18 [main] INFO  o.a.t.parser.ocr.TesseractOCRParser - Tesseract is installed and is being invoked. This can add greatly to processing time.  If you do not want tesseract to be applied to your files see: https://cwiki.apache.org/confluence/display/TIKA/TikaOCR#TikaOCR-disable-ocr
+2025-03-26 13:10:21 [main] INFO  ai.djl.util.Platform - Found matching platform from: jar:file:/Users/dylan/.gradle/caches/modules-2/files-2.1/ai.djl.huggingface/tokenizers/0.31.1/4e6411914aaf8cff1400273fc5c19d21cde6477d/tokenizers-0.31.1.jar!/native/lib/tokenizers.properties
+2025-03-26 13:10:23 [main] WARN  a.d.h.t.HuggingFaceTokenizer - maxLength is not explicitly specified, use modelMaxLength: 512
