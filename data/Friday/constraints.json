@@ -1,6 +1,6 @@
 [ {
   "id" : "64be0a8e-58b9-4375-9c99-0707787dc225",
-  "daysOfWeek" : [ "THURSDAY", "FRIDAY", "SATURDAY", "TUESDAY", "MONDAY", "WEDNESDAY", "SUNDAY" ],
+  "daysOfWeek" : [ "MONDAY", "SATURDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY", "SUNDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
@@ -24,7 +24,7 @@
   "deadlineType" : "HARD"
 }, {
   "id" : "ded4424a-a255-418c-b174-6a901d2867dc",
-  "daysOfWeek" : [ "THURSDAY", "FRIDAY", "SATURDAY", "TUESDAY", "MONDAY", "WEDNESDAY", "SUNDAY" ],
+  "daysOfWeek" : [ "MONDAY", "SATURDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY", "SUNDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
@@ -36,7 +36,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "98132382-d6d2-4b2d-bf9a-527bf5cf9932",
-  "daysOfWeek" : [ "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" ],
+  "daysOfWeek" : [ "MONDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 600,
   "deadlineTime" : [ 17, 0 ],
@@ -60,7 +60,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "4ae9178a-102d-4679-bcad-5393c43ab1b2",
-  "daysOfWeek" : [ "THURSDAY", "FRIDAY", "SATURDAY", "TUESDAY", "MONDAY", "WEDNESDAY", "SUNDAY" ],
+  "daysOfWeek" : [ "MONDAY", "SATURDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY", "SUNDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
@@ -72,7 +72,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "8e6f5aea-be08-4a09-9f4d-adc893e37bb0",
-  "daysOfWeek" : [ "THURSDAY", "FRIDAY", "SATURDAY", "TUESDAY", "MONDAY", "WEDNESDAY", "SUNDAY" ],
+  "daysOfWeek" : [ "MONDAY", "SATURDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY", "SUNDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
@@ -84,7 +84,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "75a6d815-4974-4794-a384-a7436b5ec144",
-  "daysOfWeek" : [ "FRIDAY", "SATURDAY" ],
+  "daysOfWeek" : [ "SATURDAY", "FRIDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 600,
   "deadlineTime" : [ 17, 30 ],
@@ -96,7 +96,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "5ce343fa-deb7-4f00-9c1d-b577ac62472e",
-  "daysOfWeek" : [ "THURSDAY", "FRIDAY", "SATURDAY", "TUESDAY", "MONDAY", "WEDNESDAY", "SUNDAY" ],
+  "daysOfWeek" : [ "MONDAY", "SATURDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY", "SUNDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
@@ -108,7 +108,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "f689d42d-5a4e-4181-8819-f05b57c1b165",
-  "daysOfWeek" : [ "FRIDAY", "SATURDAY" ],
+  "daysOfWeek" : [ "SATURDAY", "FRIDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 19, 30 ],
@@ -132,7 +132,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "ec6ca4dd-73ba-4af4-8d8a-de18b7f3435e",
-  "daysOfWeek" : [ "THURSDAY", "FRIDAY", "SATURDAY", "TUESDAY", "MONDAY", "WEDNESDAY", "SUNDAY" ],
+  "daysOfWeek" : [ "MONDAY", "SATURDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY", "SUNDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 1800,
   "deadlineTime" : [ 10, 0 ],
@@ -144,7 +144,7 @@
   "deadlineType" : "ANYTIME_ON_DAY"
 }, {
   "id" : "bc69a298-64b4-4dba-9b70-cef5c67d2c93",
-  "daysOfWeek" : [ "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" ],
+  "daysOfWeek" : [ "MONDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 180,
   "deadlineTime" : [ 9, 30 ],
@@ -252,7 +252,7 @@
   "deadlineType" : "HARD"
 }, {
   "id" : "bc1057d0-ac40-4cc8-8ad0-db433f507cde",
-  "daysOfWeek" : [ "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" ],
+  "daysOfWeek" : [ "MONDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 21600,
   "deadlineTime" : [ 17, 0 ],
@@ -276,7 +276,7 @@
   "deadlineType" : "HARD"
 }, {
   "id" : "f094606e-4b8a-416f-bcbb-67179252159a",
-  "daysOfWeek" : [ "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" ],
+  "daysOfWeek" : [ "MONDAY", "TUESDAY", "FRIDAY", "WEDNESDAY", "THURSDAY" ],
   "repeatEveryNWeeks" : 1,
   "durationSeconds" : 900,
   "deadlineTime" : [ 17, 0 ],

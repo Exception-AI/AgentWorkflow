@@ -68,4 +68,19 @@
   "left" : "7bcaa4bd-24ba-4c9a-b269-6de5be993786",
   "linkType" : "CONSTRAINT",
   "right" : "3eb791a6-a69a-4942-a052-7f32e9705504"
+}, {
+  "id" : "fde3cc25-569a-46c5-b322-c368f70685da",
+  "left" : "985baebb-7e12-4eb7-96ab-b53a98fb334a",
+  "linkType" : "PARENT",
+  "right" : "65552cb7-fe1c-4168-8178-eecbd443fe63"
+}, {
+  "id" : "7cd1dada-d082-4545-92e6-ad8d7623cead",
+  "left" : "65552cb7-fe1c-4168-8178-eecbd443fe63",
+  "linkType" : "CONSTRAINT",
+  "right" : "0c208476-0748-4271-9e5a-0f1a228bc54d"
+}, {
+  "id" : "dbb2f4fa-6508-41d5-8be8-1cf9f73708ab",
+  "left" : "985baebb-7e12-4eb7-96ab-b53a98fb334a",
+  "linkType" : "SUBTASK",
+  "right" : "65552cb7-fe1c-4168-8178-eecbd443fe63"
 } ]

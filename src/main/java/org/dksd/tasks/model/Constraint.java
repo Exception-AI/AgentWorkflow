@@ -199,6 +199,7 @@ public class Constraint implements Identifier {
     @Override
     public String toString() {
         return  "  daysOfWeek=" + daysOfWeek +
+                "\n  repeatsNWeeks=" + repeatEveryNWeeks +
                 "\n  durationMins=" + durationSeconds / 60.0 +
                 "\n  deadline=" + deadlineTime +
                 "\n  leadTimeMinutes=" + allowedSecondsBeforeDeadline / 60.0 +
