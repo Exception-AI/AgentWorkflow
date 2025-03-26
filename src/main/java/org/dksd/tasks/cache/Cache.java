@@ -1,6 +1,6 @@
 package org.dksd.tasks.cache;
 
-import org.dksd.tasks.Identifier;
+import org.dksd.tasks.model.Identifier;
 
 import java.util.HashMap;
 import java.util.List;

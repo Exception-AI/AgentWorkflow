@@ -1,15 +1,9 @@
-package org.dksd.tasks;
+package org.dksd.tasks.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.dksd.tasks.cache.Cache;
-import org.dksd.tasks.cache.NodeTaskCache;
-import org.dksd.tasks.model.Constraint;
-import org.dksd.tasks.model.Link;
-import org.dksd.tasks.model.LinkType;
-import org.dksd.tasks.model.NodeTask;
-import org.dksd.tasks.model.Task;
+import org.dksd.tasks.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +16,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Instance implements Identifier {
 

@@ -1,9 +1,13 @@
-package org.dksd.tasks;
+package org.dksd.tasks.processor;
 
+import dev.langchain4j.model.chat.ChatLanguageModel;
+import org.dksd.tasks.Collection;
+import org.dksd.tasks.model.Instance;
 import org.dksd.tasks.cache.ModelCache;
 import org.dksd.tasks.cache.TaskModel;
 import org.dksd.tasks.model.Constraint;
 import org.dksd.tasks.model.LinkType;
+import org.dksd.tasks.model.SimpleTask;
 import org.dksd.tasks.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,6 +99,10 @@ public class TaskLLMProcessor {
             ep.printStackTrace();
         }
         return null;
+    }
+
+    public ChatLanguageModel getChatModel() {
+        return modelCache.getChatModel();
     }
 
     /*public void createAutoSubTaskFromParent(Task parent) {

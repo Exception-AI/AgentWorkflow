@@ -1,6 +1,4 @@
-package org.dksd.tasks;
-
-import org.dksd.tasks.cache.TaskModel;
+package org.dksd.tasks.cache;
 
 import java.util.List;
 import java.util.function.BiFunction;

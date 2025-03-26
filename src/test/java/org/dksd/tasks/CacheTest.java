@@ -1,6 +1,7 @@
 package org.dksd.tasks;
 
 import org.dksd.tasks.cache.Cache;
+import org.dksd.tasks.model.Identifier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
